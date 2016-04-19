@@ -5,7 +5,7 @@ public class Floor : MonoBehaviour {
 
 	public GameObject blockPrefab;
 
-	//Matt Wrote this
+	//Matt Wrote this TEST COMMENT
 	//private int floorSize = 20;
 	private int[][] blocks = new int[][]{	new int[]{0,1,1,1,0},
 											new int[]{0,0,1,0,0},
