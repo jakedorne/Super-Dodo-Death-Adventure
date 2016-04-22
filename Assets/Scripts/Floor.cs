@@ -4,6 +4,7 @@ using System.Collections;
 public class Floor : MonoBehaviour {
 
 	public GameObject blockPrefab;
+	public GameObject tetrisPrefab;
 	private static int mapSize = 20;
 	private int[,] blocks = new int[mapSize, mapSize];
 
@@ -14,8 +15,15 @@ public class Floor : MonoBehaviour {
 		float y = 0;
 		float z = 0;
 
-//		AddTetrisBlock(0,0, WHAT THE FUCK DO I PUT HERE);
-//		AddTetrisBlock(4,4, WHAT THE FUCK DO I PUT HERE);
+		GameObject blockToAdd = (GameObject) Instantiate(tetrisPrefab, new Vector3(-1000,-1000,-1000), Quaternion.identity);
+
+
+//		TetrisBlock tb = blockToAdd.GetComponent<TetrisBlock>();
+//
+//		AddTetrisBlock(0,0, tb); // FUCKING PLEASE
+//		AddTetrisBlock(1,1, tb);
+//		AddTetrisBlock(4,4, tb);
+//		AddTetrisBlock(0,7, tb);
 
 		// absolutely ashamed of this line
 		GameObject block = (GameObject) Instantiate(blockPrefab, new Vector3(-1000,-1000,-1000), Quaternion.identity);
@@ -45,7 +53,7 @@ public class Floor : MonoBehaviour {
 
 	public void AddTetrisBlock(int row, int col, TetrisBlock block){
 		int[,] blockFormation = block.GetBlocks();
-
+		print(blockFormation);
 		if(FormationFits(row, col, blockFormation)){
 			for(int i = 0; i < 3; i++){
 				for(int j = 0; j < 3; j++){

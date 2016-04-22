@@ -3,7 +3,11 @@ using System.Collections;
 
 public class TetrisBlock : MonoBehaviour {
 
-	private int[,] blocks;
+	private int[,] 	blocks = new int[,]{
+					{1,0,0},
+					{1,0,0},
+					{1,1,0}
+				};
 	public Shape shape = Shape.L;
 
 	public enum Shape{L, T, CROSS, IDK};
@@ -19,6 +23,7 @@ public class TetrisBlock : MonoBehaviour {
 	}
 
 	private void SetShape(){
+		print("calling set shape");
 		switch(shape){
 			case Shape.L:
 				blocks = new int[,]{
