@@ -4,15 +4,8 @@ using System.Collections;
 public class Floor : MonoBehaviour {
 
 	public GameObject blockPrefab;
-
-	//Matt Wrote this TEST COMMENT
-	//private int floorSize = 20;
-	private int[][] blocks = new int[][]{	new int[]{0,1,1,1,0},
-											new int[]{0,0,1,0,0},
-											new int[]{0,0,1,1,0},
-											new int[]{0,1,1,0,0},
-											new int[]{0,0,1,0,0}}; // maybe of booleans or some sort of block object??
-											// is this actually how i have to initialise fucking arrays in c# / unity wtf??
+	private static int mapSize = 20;
+	private int[,] blocks = new int[mapSize, mapSize];
 
 
 	// Use this for initialization
@@ -21,12 +14,15 @@ public class Floor : MonoBehaviour {
 		float y = 0;
 		float z = 0;
 
+//		AddTetrisBlock(0,0, WHAT THE FUCK DO I PUT HERE);
+//		AddTetrisBlock(4,4, WHAT THE FUCK DO I PUT HERE);
+
 		// absolutely ashamed of this line
 		GameObject block = (GameObject) Instantiate(blockPrefab, new Vector3(-1000,-1000,-1000), Quaternion.identity);
-
-		for(int i = 0; i < blocks.Length; i++){
-			for(int j = 0; j < blocks[i].Length; j++){
-				if(blocks[i][j]==1){
+		//print(blocks[0].Length);
+		for(int i = 0; i < mapSize; i++){
+			for(int j = 0; j < mapSize; j++){
+				if(blocks[i,j]==1){
 					// creating new block
 					block = (GameObject) Instantiate(blockPrefab, new Vector3(x,y,z), Quaternion.identity);
 				}
@@ -37,10 +33,40 @@ public class Floor : MonoBehaviour {
 			// increment z position
 			z += block.GetComponent<Collider>().bounds.size.z;
 		}
+
+
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
+	}
+
+	public void AddTetrisBlock(int row, int col, TetrisBlock block){
+		int[,] blockFormation = block.GetBlocks();
+
+		if(FormationFits(row, col, blockFormation)){
+			for(int i = 0; i < 3; i++){
+				for(int j = 0; j < 3; j++){
+					if(blockFormation[i,j]==1){
+						blocks[row+i,col+j]=1;
+					}
+				}
+			}
+		}
+	}
+
+	private bool FormationFits(int row, int col, int[,] formation){
+		// DON'T KNOW HOW 2D ARRAYS WORK IN C# SO CAN'T MAKE ROBUST AND AM USING 3. HELP.
+		for(int i = 0; i < 3; i++){
+			for(int j = 0; j < 3; j++){
+				print(formation);
+				if(formation[i,j]==1 && blocks[row+i,col+j]==1){
+					return false;
+				}
+			}
+		}
+		return true;
 	}
 }
