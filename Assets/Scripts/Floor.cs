@@ -15,15 +15,12 @@ public class Floor : MonoBehaviour {
 		float y = 0;
 		float z = 0;
 
-		GameObject blockToAdd = (GameObject) Instantiate(tetrisPrefab, new Vector3(-1000,-1000,-1000), Quaternion.identity);
+		TetrisBlock tb = tetrisPrefab.GetComponent<TetrisBlock>();
 
-
-//		TetrisBlock tb = blockToAdd.GetComponent<TetrisBlock>();
-//
-//		AddTetrisBlock(0,0, tb); // FUCKING PLEASE
-//		AddTetrisBlock(1,1, tb);
-//		AddTetrisBlock(4,4, tb);
-//		AddTetrisBlock(0,7, tb);
+        AddTetrisBlock(0,0, tb);
+        AddTetrisBlock(1,1, tb);
+        AddTetrisBlock(4,4, tb);
+        AddTetrisBlock(0,7, tb);
 
 		// absolutely ashamed of this line
 		GameObject block = (GameObject) Instantiate(blockPrefab, new Vector3(-1000,-1000,-1000), Quaternion.identity);
@@ -55,8 +52,8 @@ public class Floor : MonoBehaviour {
 		int[,] blockFormation = block.GetBlocks();
 		print(blockFormation);
 		if(FormationFits(row, col, blockFormation)){
-			for(int i = 0; i < 3; i++){
-				for(int j = 0; j < 3; j++){
+			for(int i = 0; i < blockFormation.GetLength(0); i++){
+				for(int j = 0; j < blockFormation.GetLength(1); j++){
 					if(blockFormation[i,j]==1){
 						blocks[row+i,col+j]=1;
 					}
@@ -66,9 +63,8 @@ public class Floor : MonoBehaviour {
 	}
 
 	private bool FormationFits(int row, int col, int[,] formation){
-		// DON'T KNOW HOW 2D ARRAYS WORK IN C# SO CAN'T MAKE ROBUST AND AM USING 3. HELP.
-		for(int i = 0; i < 3; i++){
-			for(int j = 0; j < 3; j++){
+		for(int i = 0; i < formation.GetLength(0); i++){
+			for(int j = 0; j < formation.GetLength(1); j++){
 				print(formation);
 				if(formation[i,j]==1 && blocks[row+i,col+j]==1){
 					return false;
