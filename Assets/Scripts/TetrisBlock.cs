@@ -14,7 +14,7 @@ public class TetrisBlock : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		SetShape();
+		SetShape(shape);
 	}
 	
 	// Update is called once per frame
@@ -32,9 +32,9 @@ public class TetrisBlock : MonoBehaviour {
    		blocks = temp;
 	}
 
-	private void SetShape(){
-		print("calling set shape");
-		switch(shape){
+	public void SetShape(Shape newShape){
+		shape = newShape;
+		switch(newShape){
 			case Shape.L:
 				blocks = new int[,]{
 					{1,0,0},

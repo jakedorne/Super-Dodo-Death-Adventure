@@ -5,42 +5,34 @@ public class Floor : MonoBehaviour {
 
 	public GameObject blockPrefab;
 	public GameObject tetrisPrefab;
+
+	private TetrisBlock tetrisBlock;
+	private GameObject blockObject;
+
+	private float blockXLength;
+	private float blockZLength;
+
 	private static int mapSize = 20;
 	private int[,] blocks = new int[mapSize, mapSize];
 
 
 	// Use this for initialization
 	void Start () {
-		float x = 0;
-		float y = 0;
-		float z = 0;
+		tetrisBlock = tetrisPrefab.GetComponent<TetrisBlock>();
+		// absolutely ashamed of this line -- is used for finding the length of the blocks..
+		blockObject = (GameObject) Instantiate(blockPrefab, new Vector3(-1000,-1000,-1000), Quaternion.identity);
 
-		TetrisBlock tb = tetrisPrefab.GetComponent<TetrisBlock>();
+		blockXLength = blockObject.GetComponent<Collider>().bounds.size.x;
+		blockZLength = blockObject.GetComponent<Collider>().bounds.size.z;
 
-        AddTetrisBlock(0,0, tb);
-        AddTetrisBlock(1,1, tb);
-        AddTetrisBlock(4,4, tb);
-        AddTetrisBlock(0,7, tb);
-
-		// absolutely ashamed of this line
-		GameObject block = (GameObject) Instantiate(blockPrefab, new Vector3(-1000,-1000,-1000), Quaternion.identity);
-		//print(blocks[0].Length);
-		for(int i = 0; i < mapSize; i++){
-			for(int j = 0; j < mapSize; j++){
-				if(blocks[i,j]==1){
-					// creating new block
-					block = (GameObject) Instantiate(blockPrefab, new Vector3(x,y,z), Quaternion.identity);
-				}
-				// increment x position
-				x += block.GetComponent<Collider>().bounds.size.x;
-			}
-			x = 0;
-			// increment z position
-			z += block.GetComponent<Collider>().bounds.size.z;
-		}
-
-
-
+		// testing random shapes and shit
+        AddTetrisBlock(0,0, tetrisBlock);
+        tetrisBlock.SetShape(TetrisBlock.Shape.CROSS);
+        AddTetrisBlock(4,0, tetrisBlock);
+        tetrisBlock.SetShape(TetrisBlock.Shape.T);
+        AddTetrisBlock(0,7, tetrisBlock);
+		tetrisBlock.Rotate();
+        AddTetrisBlock(8,0, tetrisBlock);
 	}
 	
 	// Update is called once per frame
@@ -56,6 +48,7 @@ public class Floor : MonoBehaviour {
 				for(int j = 0; j < blockFormation.GetLength(1); j++){
 					if(blockFormation[i,j]==1){
 						blocks[row+i,col+j]=1;
+						Instantiate(blockPrefab, new Vector3((row + i) * blockXLength, 0, (col + j) * blockZLength), Quaternion.identity);
 					}
 				}
 			}
