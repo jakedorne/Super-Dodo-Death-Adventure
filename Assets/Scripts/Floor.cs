@@ -48,6 +48,35 @@ public class Floor : MonoBehaviour {
 
 	}
 
+    private void redraw()
+    {
+        //This isn't ideal as it is currently just instantiating more new objects each time redraw happens.
+        //Feel free to rewrite this method - I am not sure what is right for this class
+        float x = 0;
+        float y = 0;
+        float z = 0;
+
+        // absolutely ashamed of this line
+        GameObject block = (GameObject)Instantiate(blockPrefab, new Vector3(-1000, -1000, -1000), Quaternion.identity);
+        //print(blocks[0].Length);
+        for (int i = 0; i < mapSize; i++)
+        {
+            for (int j = 0; j < mapSize; j++)
+            {
+                if (blocks[i, j] == 1)
+                {
+                    // creating new block
+                    block = (GameObject)Instantiate(blockPrefab, new Vector3(x, y, z), Quaternion.identity);
+                }
+                // increment x position
+                x += block.GetComponent<Collider>().bounds.size.x;
+            }
+            x = 0;
+            // increment z position
+            z += block.GetComponent<Collider>().bounds.size.z;
+        }
+    }
+
 	public void AddTetrisBlock(int row, int col, TetrisBlock block){
 		int[,] blockFormation = block.GetBlocks();
 		print(blockFormation);
@@ -60,6 +89,7 @@ public class Floor : MonoBehaviour {
 				}
 			}
 		}
+        redraw();
 	}
 
 	private bool FormationFits(int row, int col, int[,] formation){
@@ -73,4 +103,9 @@ public class Floor : MonoBehaviour {
 		}
 		return true;
 	}
+
+    public int[,] getFloor()
+    {
+        return blocks;
+    }
 }
