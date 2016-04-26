@@ -47,8 +47,9 @@ public class BlockPlacement : MonoBehaviour {
                 // creating new block
                 GameObject block = (GameObject)Instantiate(selectorBlock, new Vector3(x, y, z), Quaternion.identity);
                 selectorBlocks[i, j] = block;
-                block.GetComponent<BlockSelector>().row = i;
-                block.GetComponent<BlockSelector>().col = j;
+                //i and j switch because the dimensions of the block grid switched
+                block.GetComponent<BlockSelector>().row = j;
+                block.GetComponent<BlockSelector>().col = i;
                 block.SetActive(false);
                 // increment x position
                 x += blockWidth;
@@ -73,7 +74,8 @@ public class BlockPlacement : MonoBehaviour {
                 if (blocks[i, j] == 0)
                 {
                     //Will show placement grid if placingBlocks is true, or hide it otherwise.
-                    selectorBlocks[i, j].SetActive(placingBlocks);
+                    //i and j switch because the dimensions of the block grid switched
+                    selectorBlocks[j, i].SetActive(placingBlocks);
                 }
             }
         }
