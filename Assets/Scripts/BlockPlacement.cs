@@ -10,12 +10,14 @@ public class BlockPlacement : MonoBehaviour {
     private int mapSize;
     private int[,] blocks;
     private GameObject[,] selectorBlocks;
+    private TetrisBlock tetrisBlock;
 
     // Use this for initialization
     void Start () {
         placingBlocks = false;
+        mapSize = this.GetComponent<Floor>().getFloor().GetLength(0); //I expect this map to be square. Need to change slightly if rectangular
+        blocks = new int[mapSize, mapSize];
         getFloor();
-        mapSize = blocks.GetLength(0); //I expect this map to be square. Need to change slightly if rectangular
         selectorBlocks = new GameObject[mapSize, mapSize];
         setUpPlacementGrid();
     }
@@ -23,9 +25,28 @@ public class BlockPlacement : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
+        //To be replaced - this will part will be done by the UI passing this block in
         if (Input.GetKeyDown("space"))
         {
-            toggleBlockPlacement();
+            if (placingBlocks)
+            {
+                turnBlockPlacementOff();
+            } else
+            {
+                //If we don't instantiate a new one each time, any rotation will stay with each subsequent placement
+                GameObject tetrisPrefab = (GameObject)Instantiate(this.GetComponent<Floor>().tetrisPrefab, new Vector3(-1000, -1000, -1000), Quaternion.identity);
+                TetrisBlock tetrisBlock = tetrisPrefab.GetComponent<TetrisBlock>();
+                tetrisBlock.SetShape(TetrisBlock.Shape.L);
+                turnBlockPlacementOn(tetrisBlock);
+            }
+        }
+        //Block rotation
+        if (Input.GetKeyDown("r"))
+        {
+            if (placingBlocks)
+            {
+                tetrisBlock.Rotate();
+            }
         }
     }
 
@@ -50,6 +71,7 @@ public class BlockPlacement : MonoBehaviour {
                 //i and j switch because the dimensions of the block grid switched
                 block.GetComponent<BlockSelector>().row = j;
                 block.GetComponent<BlockSelector>().col = i;
+                block.GetComponent<Renderer>().material.color = Color.white; //TODO: this may need to be changed once proper materials are used.
                 block.SetActive(false);
                 // increment x position
                 x += blockWidth;
@@ -65,8 +87,6 @@ public class BlockPlacement : MonoBehaviour {
     /// </summary>
     private void togglePlacementGrid()
     {
-        getFloor();
-
         for (int i = 0; i < mapSize; i++)
         {
             for (int j = 0; j < mapSize; j++)
@@ -76,6 +96,11 @@ public class BlockPlacement : MonoBehaviour {
                     //Will show placement grid if placingBlocks is true, or hide it otherwise.
                     //i and j switch because the dimensions of the block grid switched
                     selectorBlocks[j, i].SetActive(placingBlocks);
+                    selectorBlocks[j, i].GetComponent<Renderer>().material.color = Color.white; //TODO: this may need to be changed once proper materials are used.
+                } else if (blocks[i, j] == 2)
+                {
+                    selectorBlocks[j, i].SetActive(placingBlocks);
+                    selectorBlocks[j, i].GetComponent<Renderer>().material.color = Color.green; //TODO: this may need to be changed once proper materials are used.
                 }
             }
         }
@@ -86,15 +111,76 @@ public class BlockPlacement : MonoBehaviour {
     /// </summary>
     private void getFloor()
     {
-        //Help. What is the best way to get the blocks grid from the Floor class.
-        blocks = this.GetComponent<Floor>().getFloor();
+        //Create a clone of the floor.
+        for (int i = 0; i < mapSize; i++)
+        {
+            for (int j = 0; j < mapSize; j++)
+            {
+                blocks[i, j] = this.GetComponent<Floor>().getFloor()[i, j];
+            }
+        }
     }
 
-    public void toggleBlockPlacement()
+    public void turnBlockPlacementOn(TetrisBlock tetrisBlock)
     {
-        //Could instead have two methods - A turnOn and turnOff, but I think a toggle will be better
-        placingBlocks = !placingBlocks;
+        placingBlocks = true;
+        getFloor();
         togglePlacementGrid();
+        this.tetrisBlock = tetrisBlock;
+    }
+
+    public void turnBlockPlacementOff(int row, int col)
+    {
+        placingBlocks = false;
+        getFloor();
+        togglePlacementGrid();
+        this.GetComponent<Floor>().AddTetrisBlock(row, col, tetrisBlock);
+        this.tetrisBlock = null;
+    }
+
+    public void turnBlockPlacementOff()
+    {
+        placingBlocks = false;
+        getFloor();
+        togglePlacementGrid();
+        this.tetrisBlock = null;
+    }
+
+    public void showHoverOver(int row, int col)
+    {
+        getFloor();
+        //Mostly copied from Floor class
+        int[,] blockFormation = tetrisBlock.GetBlocks();
+        if (FormationFits(row, col, blockFormation))
+        {
+            for (int i = 0; i < blockFormation.GetLength(0); i++)
+            {
+                for (int j = 0; j < blockFormation.GetLength(1); j++)
+                {
+                    if (blockFormation[i, j] == 1)
+                    {
+                        blocks[row + i, col + j] = 2;
+                    }
+                }
+            }
+        }
+        togglePlacementGrid();
+    }
+
+    //Copied from Floor class
+    private bool FormationFits(int row, int col, int[,] formation)
+    {
+        for (int i = 0; i < formation.GetLength(0); i++)
+        {
+            for (int j = 0; j < formation.GetLength(1); j++)
+            {
+                if (row + i >= mapSize || col + j >= mapSize || (formation[i, j] == 1 && blocks[row + i, col + j] == 1))
+                {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
 }

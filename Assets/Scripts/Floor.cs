@@ -59,7 +59,7 @@ public class Floor : MonoBehaviour {
 		for(int i = 0; i < formation.GetLength(0); i++){
 			for(int j = 0; j < formation.GetLength(1); j++){
 				print(formation);
-				if(formation[i,j]==1 && blocks[row+i,col+j]==1){
+				if(row + i >= mapSize || col + j >= mapSize || (formation[i,j]==1 && blocks[row+i,col+j]==1)){
 					return false;
 				}
 			}

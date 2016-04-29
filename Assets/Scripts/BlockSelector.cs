@@ -5,7 +5,6 @@ public class BlockSelector : MonoBehaviour {
 
     public int row;
     public int col;
-    public TetrisBlock tetrisBlock; //Placeholder - I think this will eventually be passed in from BlockPlacement
 
     private GameObject Floor;
 
@@ -21,7 +20,11 @@ public class BlockSelector : MonoBehaviour {
 
     void OnMouseDown()
     {
-        Floor.GetComponent<BlockPlacement>().toggleBlockPlacement();
-        Floor.GetComponent<Floor>().AddTetrisBlock(row,col,tetrisBlock);
+        Floor.GetComponent<BlockPlacement>().turnBlockPlacementOff(row,col);
+    }
+
+    void OnMouseOver()
+    {
+        Floor.GetComponent<BlockPlacement>().showHoverOver(row, col);
     }
 }
