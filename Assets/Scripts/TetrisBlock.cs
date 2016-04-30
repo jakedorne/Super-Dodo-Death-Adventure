@@ -25,8 +25,8 @@ public class TetrisBlock : MonoBehaviour {
 	public void Rotate(){
 		int[,] temp = new int[3,3];
 		for(int i=0; i<blocks.GetLength(0); i++){
-        	for(int j=blocks.GetLength(1)-1; j>=0; j--){
-            	temp[i,j] = blocks[j,i];
+        	for(int j = 0; j < blocks.GetLength(1); j++){
+				temp[j,blocks.GetLength(0)-1-i] = blocks[i,j];
         	}
    		}
    		blocks = temp;
