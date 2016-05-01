@@ -176,6 +176,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blockPrefab: {fileID: 187658, guid: 469b6122ec8cf6143b2c0c99e7fdc202, type: 2}
   tetrisPrefab: {fileID: 118034, guid: c0860b06464815b47b56cf972df4a0aa, type: 2}
+  startX: 0
+  startZ: 0
+  endX: 0
+  endZ: 0
 --- !u!4 &839605786
 Transform:
   m_ObjectHideFlags: 0
@@ -185,7 +189,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1821254242}
   m_Father: {fileID: 0}
   m_RootOrder: 2
 --- !u!114 &839605787
@@ -347,3 +352,44 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
+--- !u!1 &1821254241
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1821254242}
+  - 114: {fileID: 1821254243}
+  m_Layer: 0
+  m_Name: Dodo Spawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1821254242
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1821254241}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 839605786}
+  m_RootOrder: 0
+--- !u!114 &1821254243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1821254241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fc493f05e0c7a847b733b32ded54956, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dodoPrefab: {fileID: 143458, guid: 2d761658b38c31e469778bd23bdb0822, type: 2}
+  dodosToSpawn: 5

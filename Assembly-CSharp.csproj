@@ -6,7 +6,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{66C1923C-B9C5-5C74-3304-09FAD01A6FA2}</ProjectGuid>
+    <ProjectGuid>{B506CFD2-F2FE-C9B5-7C2F-92E67C624890}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -47,6 +47,7 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\BlockPlacement.cs" />
      <Compile Include="Assets\Scripts\BlockSelector.cs" />
+     <Compile Include="Assets\Scripts\DodoBehaviour.cs" />
      <Compile Include="Assets\Scripts\Floor.cs" />
      <Compile Include="Assets\Scripts\Spawner.cs" />
      <Compile Include="Assets\Scripts\TetrisBlock.cs" />
