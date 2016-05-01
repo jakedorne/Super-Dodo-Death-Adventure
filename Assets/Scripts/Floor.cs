@@ -12,6 +12,12 @@ public class Floor : MonoBehaviour {
 	private float blockXLength;
 	private float blockZLength;
 
+	// indexes in grid
+	public int startX;
+	public int startZ;
+	public int endX;
+	public int endZ;
+
 	private static int mapSize = 20;
 	private int[,] blocks = new int[mapSize, mapSize];
 
@@ -70,5 +76,9 @@ public class Floor : MonoBehaviour {
     public int[,] getFloor()
     {
         return blocks;
+    }
+
+    public Vector3 getVectorAtCoords(int row, int col){
+    	return new Vector3(row * blockXLength , 0 , col * blockZLength);
     }
 }
