@@ -222,6 +222,7 @@ GameObject:
   - 95: {fileID: 9593512}
   - 114: {fileID: 11490908}
   - 54: {fileID: 5489222}
+  - 136: {fileID: 13639804}
   m_Layer: 0
   m_Name: dodo_char_idle_first_pass
   m_TagString: Untagged
@@ -1222,6 +1223,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d08b968754486964caf330e0b6ca2c4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!136 &13639804
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 143458}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.23
+  m_Height: 0.09
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!137 &13720362
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
