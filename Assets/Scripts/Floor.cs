@@ -78,7 +78,11 @@ public class Floor : MonoBehaviour {
         return blocks;
     }
 
-    public Vector3 getVectorAtCoords(int row, int col){
-    	return new Vector3(row * blockXLength + blockXLength/2, 0 , col * blockZLength + blockZLength/2);
+    public Vector3 getVectorAtCoords(int x, int z){
+    	return new Vector3(x * blockXLength + blockXLength/2, 0 , z * blockZLength + blockZLength/2);
+    }
+
+    public bool positionOnBlock(int x, int z){
+    	return blocks[x, z] == 1;
     }
 }
