@@ -80,8 +80,15 @@ public class Floor : MonoBehaviour {
     }
 
     public bool positionOnBlock(int x, int z){
-    	return blocks[x, z] == 1;
+    	if(x >= 0 && x < blocks.GetLength(0) && z >= 0 && z < blocks.GetLength(1)){
+    		return blocks[x, z] == 1;
+    	} else {
+    		return false;
+    	}
     }
 
+    public Vector2 getCoordAtVector(Vector3 vector){
+		return new Vector2((vector.x - blockXLength) / blockXLength, (vector.z- blockZLength) / blockZLength);
+    }
 
 }
