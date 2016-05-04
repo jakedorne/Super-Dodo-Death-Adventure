@@ -45,7 +45,7 @@ public class Floor : MonoBehaviour {
 	void Update () {
 	}
 
-	public void AddTetrisBlock(int row, int col, TetrisBlock block){
+	public bool AddTetrisBlock(int row, int col, TetrisBlock block){
 		int[,] blockFormation = block.GetBlocks();
 		if(FormationFits(row, col, blockFormation)){
 			for(int i = 0; i < blockFormation.GetLength(0); i++){
@@ -56,7 +56,9 @@ public class Floor : MonoBehaviour {
 					}
 				}
 			}
+			return true;
 		}
+		return false;
 	}
 
 	private bool FormationFits(int row, int col, int[,] formation){

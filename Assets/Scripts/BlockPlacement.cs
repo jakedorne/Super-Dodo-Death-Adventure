@@ -31,14 +31,7 @@ public class BlockPlacement : MonoBehaviour {
             if (placingBlocks)
             {
                 turnBlockPlacementOff();
-            } else
-            {
-                //If we don't instantiate a new one each time, any rotation will stay with each subsequent placement
-                GameObject tetrisPrefab = (GameObject)Instantiate(this.GetComponent<Floor>().tetrisPrefab, new Vector3(-1000, -1000, -1000), Quaternion.identity);
-                TetrisBlock tetrisBlock = tetrisPrefab.GetComponent<TetrisBlock>();
-                tetrisBlock.SetShape(TetrisBlock.Shape.L);
-                turnBlockPlacementOn(tetrisBlock);
-            }
+            } 
         }
         //Block rotation
         if (Input.GetKeyDown("r"))
@@ -134,8 +127,12 @@ public class BlockPlacement : MonoBehaviour {
         placingBlocks = false;
         getFloor();
         togglePlacementGrid();
-        this.GetComponent<Floor>().AddTetrisBlock(row, col, tetrisBlock);
-        this.tetrisBlock = null;
+        bool blockAdded = this.GetComponent<Floor>().AddTetrisBlock(row, col, tetrisBlock);
+		if (blockAdded) {
+			GameObject manager = GameObject.FindGameObjectWithTag ("GameManager");
+			manager.GetComponent<GameManager> ().removeTile(tetrisBlock.shape);
+			this.tetrisBlock = null;
+		}
     }
 
     public void turnBlockPlacementOff()
@@ -182,5 +179,13 @@ public class BlockPlacement : MonoBehaviour {
         }
         return true;
     }
+
+	public void setTetrisShape(TetrisBlock.Shape shape){
+		//If we don't instantiate a new one each time, any rotation will stay with each subsequent placement
+		GameObject tetrisPrefab = (GameObject)Instantiate(this.GetComponent<Floor>().tetrisPrefab, new Vector3(-1000, -1000, -1000), Quaternion.identity);
+		TetrisBlock tetrisBlock = tetrisPrefab.GetComponent<TetrisBlock>();
+		tetrisBlock.SetShape(shape);
+		turnBlockPlacementOn(tetrisBlock);
+	}
 
 }
