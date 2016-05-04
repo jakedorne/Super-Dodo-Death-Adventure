@@ -40,11 +40,10 @@ public class Floor : MonoBehaviour {
 		tetrisBlock.Rotate();
         AddTetrisBlock(8,0, tetrisBlock);
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	}
 
+	/// <summary>
+	/// Adds tetris block at index on floor and returns true if successfully placed.
+	/// </summary>
 	public bool AddTetrisBlock(int row, int col, TetrisBlock block){
 		int[,] blockFormation = block.GetBlocks();
 		if(FormationFits(row, col, blockFormation)){
@@ -61,14 +60,21 @@ public class Floor : MonoBehaviour {
 		return false;
 	}
 
+
+	/// <summary>
+	/// Returns true if a tetris block formation can be placed at an index.
+	/// </summary>
 	private bool FormationFits(int row, int col, int[,] formation){
 		for(int i = 0; i < formation.GetLength(0); i++){
 			for(int j = 0; j < formation.GetLength(1); j++){
 				if ((row + i >= mapSize || row + i < 0) && formation [i, j] == 1) {
+					// part of block is off map
 					return false;
 				} else if ((col + j >= mapSize || col + j < 0) && formation [i, j] == 1) {
+					// part of block is off map
 					return false;
 				} else if (formation[i,j]==1 && blocks[row+i,col+j]==1){
+					// part of block is on another block
 					return false;
 				}
 			}
@@ -81,10 +87,16 @@ public class Floor : MonoBehaviour {
         return blocks;
     }
 
+	/// <summary>
+	/// Returns the world position of an index on the floor.
+	/// </summary>
     public Vector3 getVectorAtCoords(int x, int z){
     	return new Vector3(x * blockXLength + blockXLength/2, 0 , z * blockZLength + blockZLength/2);
     }
 
+	/// <summary>
+	/// Returns true if there is a block placed on the given index of floor
+	/// </summary>
     public bool positionOnBlock(int x, int z){
     	if(x >= 0 && x < blocks.GetLength(0) && z >= 0 && z < blocks.GetLength(1)){
     		return blocks[x, z] == 1;
@@ -93,6 +105,9 @@ public class Floor : MonoBehaviour {
     	}
     }
 
+	/// <summary>
+	/// Returns the x and z index of the floor given a world position.
+	/// </summary>
     public Vector2 getCoordAtVector(Vector3 vector){
 		return new Vector2((vector.x - blockXLength) / blockXLength, (vector.z- blockZLength) / blockZLength);
     }
