@@ -64,7 +64,11 @@ public class Floor : MonoBehaviour {
 	private bool FormationFits(int row, int col, int[,] formation){
 		for(int i = 0; i < formation.GetLength(0); i++){
 			for(int j = 0; j < formation.GetLength(1); j++){
-				if(row + i >= mapSize || col + j >= mapSize || (formation[i,j]==1 && blocks[row+i,col+j]==1)){
+				if ((row + i >= mapSize || row + i < 0) && formation [i, j] == 1) {
+					return false;
+				} else if ((col + j >= mapSize || col + j < 0) && formation [i, j] == 1) {
+					return false;
+				} else if (formation[i,j]==1 && blocks[row+i,col+j]==1){
 					return false;
 				}
 			}

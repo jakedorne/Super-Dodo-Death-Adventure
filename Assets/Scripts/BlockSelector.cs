@@ -20,11 +20,11 @@ public class BlockSelector : MonoBehaviour {
 
     void OnMouseDown()
     {
-        Floor.GetComponent<BlockPlacement>().turnBlockPlacementOff(row,col);
+        Floor.GetComponent<BlockPlacement>().turnBlockPlacementOff(row-1,col-1);
     }
 
     void OnMouseOver()
     {
-        Floor.GetComponent<BlockPlacement>().showHoverOver(row, col);
+        Floor.GetComponent<BlockPlacement>().showHoverOver(row-1, col-1);
     }
 }

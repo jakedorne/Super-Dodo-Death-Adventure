@@ -165,20 +165,20 @@ public class BlockPlacement : MonoBehaviour {
     }
 
     //Copied from Floor class
-    private bool FormationFits(int row, int col, int[,] formation)
-    {
-        for (int i = 0; i < formation.GetLength(0); i++)
-        {
-            for (int j = 0; j < formation.GetLength(1); j++)
-            {
-                if (row + i >= mapSize || col + j >= mapSize || (formation[i, j] == 1 && blocks[row + i, col + j] == 1))
-                {
-                    return false;
-                }
-            }
-        }
-        return true;
-    }
+	private bool FormationFits(int row, int col, int[,] formation){
+		for(int i = 0; i < formation.GetLength(0); i++){
+			for(int j = 0; j < formation.GetLength(1); j++){
+				if ((row + i >= mapSize || row + i < 0) && formation [i, j] == 1) {
+					return false;
+				} else if ((col + j >= mapSize || col + j < 0) && formation [i, j] == 1) {
+					return false;
+				} else if (formation[i,j]==1 && blocks[row+i,col+j]==1){
+					return false;
+				}
+			}
+		}
+		return true;
+	}
 
 	public void setTetrisShape(TetrisBlock.Shape shape){
 		//If we don't instantiate a new one each time, any rotation will stay with each subsequent placement
