@@ -33,7 +33,7 @@ public class Floor : MonoBehaviour {
 		blockXLength = blockObject.GetComponent<Collider>().bounds.size.x;
 		blockZLength = blockObject.GetComponent<Collider>().bounds.size.z;
 
-		blocks = LevelManager.getLevel (SceneManager.GetActiveScene().buildIndex);
+		blocks = GameManager.getLevel (SceneManager.GetActiveScene().buildIndex);
 		renderMap ();
 	}
 

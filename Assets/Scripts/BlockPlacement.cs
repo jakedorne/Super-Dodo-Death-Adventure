@@ -129,8 +129,8 @@ public class BlockPlacement : MonoBehaviour {
         togglePlacementGrid();
         bool blockAdded = this.GetComponent<Floor>().AddTetrisBlock(row, col, tetrisBlock);
 		if (blockAdded) {
-			GameObject manager = GameObject.FindGameObjectWithTag ("GameManager");
-			manager.GetComponent<GameManager> ().removeTile(tetrisBlock.shape);
+			GameObject manager = GameObject.FindGameObjectWithTag ("LevelManager");
+			manager.GetComponent<LevelManager> ().removeTile(tetrisBlock.shape);
 			this.tetrisBlock = null;
 		}
     }

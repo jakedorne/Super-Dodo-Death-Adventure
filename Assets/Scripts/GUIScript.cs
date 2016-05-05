@@ -16,29 +16,29 @@ public class GUIScript : MonoBehaviour {
 	}
 		
 	public void updateGUI(){
-		GameObject managerGO = GameObject.FindGameObjectWithTag ("GameManager");
-		GameManager manager = managerGO.GetComponent<GameManager> ();
+		GameObject managerGO = GameObject.FindGameObjectWithTag ("LevelManager");
+		LevelManager manager = managerGO.GetComponent<LevelManager> ();
 
 		if (manager.noLTiles <= 0) {
 			lTile.interactable = false;
 		} else {
 			lTile.interactable = true;
 		}
-		lTile.GetComponentInChildren<Text> ().text = "L:"+manager.GetComponent<GameManager> ().noLTiles;
+		lTile.GetComponentInChildren<Text> ().text = "L:"+manager.noLTiles;
 
 		if (manager.noTTiles <= 0) {
 			tTile.interactable = false;
 		} else {
 			tTile.interactable = true;
 		}
-		tTile.GetComponentInChildren<Text> ().text = "T:"+manager.GetComponent<GameManager> ().noTTiles;
+		tTile.GetComponentInChildren<Text> ().text = "T:"+manager.noTTiles;
 
 		if (manager.noCrossTiles <= 0) {
 			crossTile.interactable = false;
 		} else {
 			crossTile.interactable = true;
 		}
-		crossTile.GetComponentInChildren<Text> ().text = "+:"+manager.GetComponent<GameManager> ().noCrossTiles;
+		crossTile.GetComponentInChildren<Text> ().text = "+:"+manager.noCrossTiles;
 	}
 
 }

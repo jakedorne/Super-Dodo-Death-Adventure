@@ -1,74 +1,55 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityEngine.SceneManagement;
 
-public class LevelManager : MonoBehaviour {
+public class LevelManager: MonoBehaviour {
 
-	public void loadLevel(string name){
-		Debug.Log("Level load requested for: "+name);
-		SceneManager.LoadScene(name);
+	public int noLTiles;
+	public int noTTiles;
+	public int noCrossTiles;
+
+	public GameObject floor;
+	public GUIScript gui;
+
+	void Start(){
+		gui = gui.GetComponent<GUIScript> ();
+		gui.updateGUI ();
 	}
 
-	public void loadNextLevel(){
-		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex +1);
-	}
-
-	public void quitRequest(){
-		Application.Quit();
-	}
-
-	// ================================ LEVELS. THIS SHIT'S GONNA BE UGLY ================================ //
-	public static int[,] getLevel(int levelNumber){
-		switch (levelNumber) {
-		case 1:
-			return new int[,] {
-				{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-				{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-				{ 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-				{ 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-				{ 0, 0, 0, 0, 0, 3, 3, 3, 0, 0, 0, 0 },
-				{ 0, 0, 0, 0, 0, 3, 3, 3, 0, 0, 0, 0 },
-				{ 0, 0, 0, 0, 0, 3, 3, 3, 0, 0, 0, 0 },
-				{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-				{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-				{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0 },
-				{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1 },
-				{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
-
-			};	
-		case 2:
-			return new int[,] {
-				{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-				{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-				{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-				{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-				{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-				{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-				{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-				{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-				{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-				{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-				{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-				{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
-
-			};
-		case 3:
-			return new int[,] {
-				{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-				{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-				{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-				{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-				{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-				{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-				{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-				{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-				{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-				{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-				{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-				{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
-
-			};
+	public void addTile(string type){
+		TetrisBlock.Shape shape = TetrisBlock.Shape.IDK;
+		switch (type) {
+		case "L":
+			if (noLTiles <= 0) 
+				return; 
+			shape = TetrisBlock.Shape.L;
+			break;
+		case "T":
+			if (noTTiles <= 0)
+				return;
+			shape = TetrisBlock.Shape.T;
+			break;
+		case "+":
+			if (noCrossTiles <= 0)
+				return;
+			shape = TetrisBlock.Shape.CROSS;
+			break;
 		}
-		return null;
+		floor.GetComponent<BlockPlacement>().setTetrisShape (shape);
 	}
+
+	public void removeTile(TetrisBlock.Shape type){
+		switch (type) {
+		case TetrisBlock.Shape.L:
+			noLTiles--;
+			break;
+		case TetrisBlock.Shape.T:
+			noTTiles--;
+			break;
+		case TetrisBlock.Shape.CROSS:
+			noCrossTiles--;
+			break;
+		}
+		gui.updateGUI ();
+	}
+
 }
