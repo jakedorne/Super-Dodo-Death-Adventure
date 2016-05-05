@@ -4,13 +4,12 @@ using System.Collections;
 public class Spawner : MonoBehaviour {
 
 	public GameObject dodoPrefab;
-	public int dodosToSpawn;
 
 	private int dodoCount;
 	private GameObject[] dodoList;
 	private GameObject dodo;
 	private GameObject floor;
-
+	private int dodosToSpawn;
 
 	private int startX;
 	private int startZ;
@@ -18,6 +17,8 @@ public class Spawner : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		GameObject managerGO = GameObject.FindGameObjectWithTag ("LevelManager");
+		dodosToSpawn = managerGO.GetComponent<LevelManager> ().noDodos;
 		dodoList = new GameObject [dodosToSpawn];
 		floor = GameObject.Find("Floor");
 		startX = floor.GetComponent<Floor> ().startX;

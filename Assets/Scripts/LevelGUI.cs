@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 
-public class GUIScript : MonoBehaviour {
+public class LevelGUI : MonoBehaviour {
 
 	public Button lTile;
 	public Button tTile;
@@ -14,7 +14,7 @@ public class GUIScript : MonoBehaviour {
 		tTile = tTile.GetComponent<Button> ();
 		crossTile = crossTile.GetComponent<Button> ();
 	}
-		
+
 	public void updateGUI(){
 		GameObject managerGO = GameObject.FindGameObjectWithTag ("LevelManager");
 		LevelManager manager = managerGO.GetComponent<LevelManager> ();
