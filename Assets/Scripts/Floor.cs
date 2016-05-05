@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class Floor : MonoBehaviour {
 
@@ -7,7 +8,6 @@ public class Floor : MonoBehaviour {
 	public GameObject tetrisPrefab;
 
 	private TetrisBlock tetrisBlock;
-	private GameObject blockObject;
 
 	private float blockXLength;
 	private float blockZLength;
@@ -19,6 +19,8 @@ public class Floor : MonoBehaviour {
 	public int endZ;
 
 	private static int mapSize = 20;
+
+	// 0 = empty, 1 = block down, 2 = block hovered on, 3 = unplaceable space
 	private int[,] blocks = new int[mapSize, mapSize];
 
 
@@ -26,19 +28,26 @@ public class Floor : MonoBehaviour {
 	void Start () {
 		tetrisBlock = tetrisPrefab.GetComponent<TetrisBlock>();
 		// absolutely ashamed of this line -- is used for finding the length of the blocks..
-		blockObject = (GameObject) Instantiate(blockPrefab, new Vector3(-1000,-1000,-1000), Quaternion.identity);
+		GameObject blockObject = (GameObject) Instantiate(blockPrefab, new Vector3(-1000,-1000,-1000), Quaternion.identity);
 
 		blockXLength = blockObject.GetComponent<Collider>().bounds.size.x;
 		blockZLength = blockObject.GetComponent<Collider>().bounds.size.z;
 
-		// testing random shapes and shit
-        AddTetrisBlock(0,0, tetrisBlock);
-        tetrisBlock.SetShape(TetrisBlock.Shape.CROSS);
-        AddTetrisBlock(4,0, tetrisBlock);
-        tetrisBlock.SetShape(TetrisBlock.Shape.T);
-        AddTetrisBlock(0,7, tetrisBlock);
-		tetrisBlock.Rotate();
-        AddTetrisBlock(8,0, tetrisBlock);
+		blocks = LevelManager.getLevel (SceneManager.GetActiveScene().buildIndex);
+		renderMap ();
+	}
+
+	private void renderMap(){
+		for(int i = 0; i < blocks.GetLength(0); i++){
+			for(int j = 0; j < blocks.GetLength(1); j++){
+				if (blocks [i, j] == 1) {
+					Instantiate(blockPrefab, new Vector3(blockXLength * i, 0, blockZLength * j), Quaternion.identity);
+				} 
+				else if(blocks[i,j]==3){
+					// idk yet
+				}
+			}
+		}
 	}
 
 	/// <summary>
@@ -73,8 +82,8 @@ public class Floor : MonoBehaviour {
 				} else if ((col + j >= mapSize || col + j < 0) && formation [i, j] == 1) {
 					// part of block is off map
 					return false;
-				} else if (formation[i,j]==1 && blocks[row+i,col+j]==1){
-					// part of block is on another block
+				} else if (formation[i,j]==1 && blocks[row+i,col+j]==1 || formation[i,j]==1 && blocks[row+i,col+j]==3){
+					// part of block is on another block or unplaceable spot
 					return false;
 				}
 			}

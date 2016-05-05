@@ -4,9 +4,9 @@ using System.Collections;
 public class TetrisBlock : MonoBehaviour {
 
 	private int[,] 	blocks = new int[,]{
-					{1,0,0},
-					{1,0,0},
-					{1,1,0}
+					{0,1,0},
+					{0,1,0},
+					{0,1,1}
 				};
 	public Shape shape = Shape.L;
 
@@ -37,9 +37,9 @@ public class TetrisBlock : MonoBehaviour {
 		switch(newShape){
 			case Shape.L:
 				blocks = new int[,]{
-					{1,0,0},
-					{1,0,0},
-					{1,1,0}
+					{0,1,0},
+					{0,1,0},
+					{0,1,1}
 				};
 				break;
 			case Shape.T:
@@ -58,9 +58,9 @@ public class TetrisBlock : MonoBehaviour {
 				break;
 			case Shape.IDK:
 				blocks = new int[,]{
-					{0,0,0},
-					{0,0,0},
-					{0,0,0}
+					{0,1,1},
+					{0,1,0},
+					{0,1,1}
 				};
 				break;
 

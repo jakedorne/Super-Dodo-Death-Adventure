@@ -164,15 +164,20 @@ public class BlockPlacement : MonoBehaviour {
         togglePlacementGrid();
     }
 
-    //Copied from Floor class
+	/// <summary>
+	/// Returns true if a tetris block formation can be placed at an index.
+	/// </summary>
 	private bool FormationFits(int row, int col, int[,] formation){
 		for(int i = 0; i < formation.GetLength(0); i++){
 			for(int j = 0; j < formation.GetLength(1); j++){
 				if ((row + i >= mapSize || row + i < 0) && formation [i, j] == 1) {
+					// part of block is off map
 					return false;
 				} else if ((col + j >= mapSize || col + j < 0) && formation [i, j] == 1) {
+					// part of block is off map
 					return false;
-				} else if (formation[i,j]==1 && blocks[row+i,col+j]==1){
+				} else if (formation[i,j]==1 && blocks[row+i,col+j]==1 || formation[i,j]==1 && blocks[row+i,col+j]==3){
+					// part of block is on another block or unplaceable spot
 					return false;
 				}
 			}
