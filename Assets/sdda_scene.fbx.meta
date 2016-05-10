@@ -1,0 +1,141 @@
+fileFormatVersion: 2
+guid: e9578147e83e6374a9e549d7e9fe480d
+timeCreated: 1462758219
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: blue_cube
+    100002: cliff_mesh
+    100004: directionalLight1
+    100006: green_cube
+    100008: L_shape_block
+    100010: purple_cube
+    100012: red_cube
+    100014: rock_cube
+    100016: sand_mesh
+    100018: //RootNode
+    100020: tree_mesh
+    100022: X1_block
+    100024: X3_block
+    100026: X4_block1
+    100028: Z_shape_block
+    400000: blue_cube
+    400002: cliff_mesh
+    400004: directionalLight1
+    400006: green_cube
+    400008: L_shape_block
+    400010: purple_cube
+    400012: red_cube
+    400014: rock_cube
+    400016: sand_mesh
+    400018: //RootNode
+    400020: tree_mesh
+    400022: X1_block
+    400024: X3_block
+    400026: X4_block1
+    400028: Z_shape_block
+    2300000: blue_cube
+    2300002: cliff_mesh
+    2300004: green_cube
+    2300006: L_shape_block
+    2300008: purple_cube
+    2300010: red_cube
+    2300012: rock_cube
+    2300014: sand_mesh
+    2300016: tree_mesh
+    2300018: X1_block
+    2300020: X3_block
+    2300022: X4_block1
+    2300024: Z_shape_block
+    3300000: blue_cube
+    3300002: cliff_mesh
+    3300004: green_cube
+    3300006: L_shape_block
+    3300008: purple_cube
+    3300010: red_cube
+    3300012: rock_cube
+    3300014: sand_mesh
+    3300016: tree_mesh
+    3300018: X1_block
+    3300020: X3_block
+    3300022: X4_block1
+    3300024: Z_shape_block
+    4300000: cliff_mesh
+    4300002: sand_mesh
+    4300004: green_cube
+    4300006: red_cube
+    4300008: purple_cube
+    4300010: blue_cube
+    4300012: rock_cube
+    4300014: Z_shape_block
+    4300016: X3_block
+    4300018: L_shape_block
+    4300020: X4_block1
+    4300022: X1_block
+    4300024: tree_mesh
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
