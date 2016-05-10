@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour {
 	// ================================ LEVELS. THIS SHIT'S GONNA BE UGLY ================================ //
 	public static int[,] getLevel(int levelNumber){
 		switch (levelNumber) {
-		case 1:
+		case 2:
 			return new int[,] {
 				{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
 				{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
@@ -60,7 +60,7 @@ public class GameManager : MonoBehaviour {
 				{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
 
 			};	
-		case 2:
+		case 3:
 			return new int[,] {
 				{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
 				{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
@@ -76,7 +76,7 @@ public class GameManager : MonoBehaviour {
 				{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
 
 			};
-		case 3:
+		case 4:
 			return new int[,] {
 				{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
 				{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
