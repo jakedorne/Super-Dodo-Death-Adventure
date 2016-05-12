@@ -266,8 +266,8 @@ MonoBehaviour:
   tetrisPrefab: {fileID: 118034, guid: c0860b06464815b47b56cf972df4a0aa, type: 2}
   startX: 0
   startZ: 0
-  endX: 0
-  endZ: 0
+  endX: 12
+  endZ: 12
 --- !u!4 &839605786
 Transform:
   m_ObjectHideFlags: 0

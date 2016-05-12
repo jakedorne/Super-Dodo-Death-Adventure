@@ -101,7 +101,7 @@ public class DodoBehaviour : MonoBehaviour {
 		foreach (Vector2 gridPos in potentialBlocks) {
 			if (bestGridPos == MAX_VECTOR2) {
 				bestGridPos = gridPos;
-			} else if (Vector3.Distance (gridPos, goalGridPos) > Vector3.Distance (bestGridPos, goalGridPos)) {
+			} else if (Vector2.Distance (gridPos, goalGridPos) < Vector2.Distance (bestGridPos, goalGridPos)) {
 				bestGridPos = gridPos;
 			}
 		}
