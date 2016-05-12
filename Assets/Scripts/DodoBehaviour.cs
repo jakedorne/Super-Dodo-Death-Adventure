@@ -21,7 +21,7 @@ public class DodoBehaviour : MonoBehaviour {
 		currentX = floorScript.startX;
 		currentZ = floorScript.startZ;
 
-		//InvokeRepeating ("moveDodo", 2f, 2f);
+		InvokeRepeating ("moveDodo", 2f, 2f);
 
 	
 	}
