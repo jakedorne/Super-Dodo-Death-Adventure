@@ -7,15 +7,14 @@ public class DodoBehaviour : MonoBehaviour {
 	private GameObject floor;
 	private Floor floorScript;
 
-	int currentX;
-	int currentZ;
+	private int currentX;
+	private int currentZ;
+	private Vector3 currentRotation;
 
-	int lastX;
-	int lastZ;
+	private int lastX;
+	private int lastZ;
 
-	Vector3 currentRotation;
-
-	int count = 0;
+	public static Vector2 MAX_VECTOR2 = new Vector2 (float.MaxValue, float.MaxValue);
 
 
 	// Use this for initialization
@@ -40,19 +39,21 @@ public class DodoBehaviour : MonoBehaviour {
 
 	//These methods are not currently working.
 	private void moveDodo() {
-		float offset = 12f;
-
-
 		List<Vector2> potentialBlocks = new List<Vector2> ();
 
-		if(floorScript.positionOnBlock(currentX+1, currentZ)) potentialBlocks.Add(new Vector2(currentX+1, currentZ));
-		if(floorScript.positionOnBlock(currentX-1, currentZ))potentialBlocks.Add(new Vector2(currentX-1, currentZ));
 		if(floorScript.positionOnBlock(currentX, currentZ+1))potentialBlocks.Add(new Vector2(currentX, currentZ+1));
 		if(floorScript.positionOnBlock(currentX, currentZ-1))potentialBlocks.Add(new Vector2(currentX, currentZ-1));
+		if(floorScript.positionOnBlock(currentX+1, currentZ)) potentialBlocks.Add(new Vector2(currentX+1, currentZ));
+		if(floorScript.positionOnBlock(currentX-1, currentZ))potentialBlocks.Add(new Vector2(currentX-1, currentZ));
+
 
 		//if (floorScript.positionOnBlock ((int)left.x, (int)left.y)) potentialBlocks.Add (left, (transform.right * -1)/offset);
 		//if (floorScript.positionOnBlock ((int)right.x, (int)right.y)) potentialBlocks.Add (right, (transform.right)/offset);
 		//if (floorScript.positionOnBlock ((int)forward.x, (int)forward.y)) potentialBlocks.Add (forward, (transform.forward)/offset);
+
+		foreach (Vector2 gridPos in potentialBlocks) {
+			print ("Potential Block: " + gridPos);
+		}
 
 		potentialBlocks = removeLastPos (potentialBlocks);
 
@@ -76,7 +77,7 @@ public class DodoBehaviour : MonoBehaviour {
 	}
 	
 	public List<Vector2> removeLastPos(List<Vector2> potentialBlocks) {
-		Vector2 toRemove = Vector2.zero;
+		Vector2 toRemove = MAX_VECTOR2;
 		foreach (Vector2 gridPos in potentialBlocks) {
 			if ((int)gridPos.x == lastX && (int)gridPos.y == lastZ) {
 				toRemove = gridPos;
@@ -84,20 +85,23 @@ public class DodoBehaviour : MonoBehaviour {
 			}
 		}
 
-		if(toRemove != Vector2.zero) potentialBlocks.Remove (toRemove);
+		if (toRemove != MAX_VECTOR2) { 
+			potentialBlocks.Remove (toRemove);
+			print ("Removed: " + toRemove);
+		}
 		return potentialBlocks;
 	}
 	
 
 	//Could be the problem
 	private Vector2 findBestBlock(List<Vector2> potentialBlocks) {
-		Vector2 bestGridPos = Vector2.zero;
+		Vector2 bestGridPos = MAX_VECTOR2;
 		Vector2 goalGridPos = new Vector2 (floorScript.endX, floorScript.endZ);
 
 		foreach (Vector2 gridPos in potentialBlocks) {
-			if (bestGridPos == Vector2.zero) {
+			if (bestGridPos == MAX_VECTOR2) {
 				bestGridPos = gridPos;
-			} else if (Vector3.Distance (gridPos, goalGridPos) < Vector3.Distance (bestGridPos, goalGridPos)) {
+			} else if (Vector3.Distance (gridPos, goalGridPos) > Vector3.Distance (bestGridPos, goalGridPos)) {
 				bestGridPos = gridPos;
 			}
 		}
