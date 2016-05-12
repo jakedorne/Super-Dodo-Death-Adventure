@@ -1,44 +1,35 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class LevelGUI : MonoBehaviour {
 
-	public Button lTile;
-	public Button tTile;
-	public Button crossTile;
+	public Button tileButton;
 
 	// Use this for initialization
 	void Start () {
-		lTile = lTile.GetComponent<Button> ();
-		tTile = tTile.GetComponent<Button> ();
-		crossTile = crossTile.GetComponent<Button> ();
+		tileButton = tileButton.GetComponent<Button> ();
 	}
 
 	public void updateGUI(){
+		// First remove the inventory that is currently displayed:
+		int childs = transform.childCount;
+		for (int i = 0; i < childs; i++)
+		{
+			GameObject.Destroy(transform.GetChild(i).gameObject);
+		}
+
 		GameObject managerGO = GameObject.FindGameObjectWithTag ("LevelManager");
 		LevelManager manager = managerGO.GetComponent<LevelManager> ();
+		List<TetrisBlock.Shape> blocks = manager.blocks;
 
-		if (manager.noLTiles <= 0) {
-			lTile.interactable = false;
-		} else {
-			lTile.interactable = true;
+		foreach (TetrisBlock.Shape block in blocks) {
+			Button button = Instantiate (tileButton);
+			button.transform.SetParent (transform, false);
+			button.GetComponent<InventoryButton> ().value = block;
 		}
-		lTile.GetComponentInChildren<Text> ().text = "L:"+manager.noLTiles;
 
-		if (manager.noTTiles <= 0) {
-			tTile.interactable = false;
-		} else {
-			tTile.interactable = true;
-		}
-		tTile.GetComponentInChildren<Text> ().text = "T:"+manager.noTTiles;
-
-		if (manager.noCrossTiles <= 0) {
-			crossTile.interactable = false;
-		} else {
-			crossTile.interactable = true;
-		}
-		crossTile.GetComponentInChildren<Text> ().text = "+:"+manager.noCrossTiles;
 	}
 
 }

@@ -1,13 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class LevelManager: MonoBehaviour {
 
 	// attributes of level
 	public int levelID;
-	public int noLTiles;
-	public int noTTiles;
-	public int noCrossTiles;
+	public List<TetrisBlock.Shape> blocks;
 	public int noDodos;
 
 	public GameObject floor;
@@ -24,40 +23,12 @@ public class LevelManager: MonoBehaviour {
 		dodoFinishedCount = 0;
 	}
 
-	public void addTile(string type){
-		TetrisBlock.Shape shape = TetrisBlock.Shape.IDK;
-		switch (type) {
-		case "L":
-			if (noLTiles <= 0) 
-				return; 
-			shape = TetrisBlock.Shape.L;
-			break;
-		case "T":
-			if (noTTiles <= 0)
-				return;
-			shape = TetrisBlock.Shape.T;
-			break;
-		case "+":
-			if (noCrossTiles <= 0)
-				return;
-			shape = TetrisBlock.Shape.CROSS;
-			break;
-		}
+	public void addTile(TetrisBlock.Shape shape){
 		floor.GetComponent<BlockPlacement>().setTetrisShape (shape);
 	}
 
 	public void removeTile(TetrisBlock.Shape type){
-		switch (type) {
-		case TetrisBlock.Shape.L:
-			noLTiles--;
-			break;
-		case TetrisBlock.Shape.T:
-			noTTiles--;
-			break;
-		case TetrisBlock.Shape.CROSS:
-			noCrossTiles--;
-			break;
-		}
+		blocks.Remove (type);
 		gui.updateGUI ();
 	}
 
