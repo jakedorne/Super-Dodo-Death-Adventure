@@ -13,7 +13,7 @@ GameObject:
   - 65: {fileID: 6586692}
   - 114: {fileID: 11430066}
   m_Layer: 0
-  m_Name: green_cube
+  m_Name: newSelectorBlock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

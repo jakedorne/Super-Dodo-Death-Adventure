@@ -33,17 +33,21 @@ public class DodoBehaviour : MonoBehaviour {
 
 	}
 
-	//These methods are not currently working, hence they are commented out to avoid console spam.
+	//These methods are not currently working.
 	private void moveDodo() {
+		float offset = 12f;
 		Dictionary<Vector2, Vector3> potentialBlocks = new Dictionary<Vector2, Vector3> ();
 
-		Vector2 left = floorScript.getCoordAtVector (transform.right * -1);
-		Vector2 right = floorScript.getCoordAtVector (transform.right);
-		Vector2 forward = floorScript.getCoordAtVector (transform.forward);
+		Vector2 left = floorScript.getCoordAtVector (transform.right * -1)/offset;
+		Vector2 right = floorScript.getCoordAtVector (transform.right)/offset;
+		Vector2 forward = floorScript.getCoordAtVector (transform.forward)/offset;
 
-		if (floorScript.positionOnBlock ((int)left.x, (int)left.y)) potentialBlocks.Add (left, transform.right * -1);
-		if (floorScript.positionOnBlock ((int)right.x, (int)right.y)) potentialBlocks.Add (right, transform.right);
-		if (floorScript.positionOnBlock ((int)forward.x, (int)forward.y)) potentialBlocks.Add (forward, transform.forward);
+		if (floorScript.positionOnBlock ((int)left.x, (int)left.y)) potentialBlocks.Add (left, (transform.right * -1)/offset);
+		if (floorScript.positionOnBlock ((int)right.x, (int)right.y)) potentialBlocks.Add (right, (transform.right)/offset);
+		if (floorScript.positionOnBlock ((int)forward.x, (int)forward.y)) potentialBlocks.Add (forward, (transform.forward)/offset);
+
+		if (potentialBlocks.Count == 0)
+			return;
 
 		Vector2 bestBlock = findBestBlock (potentialBlocks);
 
@@ -56,6 +60,7 @@ public class DodoBehaviour : MonoBehaviour {
 		transform.position = potentialBlocks [bestBlock];
 	}
 
+	//Could be the problem
 	private Vector2 findBestBlock( Dictionary<Vector2, Vector3> potentialBlocks) {
 		Vector2 bestGridPos = Vector2.zero;
 		Vector3 bestWorldPos = Vector3.zero;

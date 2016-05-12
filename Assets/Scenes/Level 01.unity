@@ -116,7 +116,7 @@ MonoBehaviour:
   noLTiles: 3
   noTTiles: 3
   noCrossTiles: 3
-  noDodos: 2
+  noDodos: 1
   floor: {fileID: 839605784}
   gui: {fileID: 1779932318}
 --- !u!4 &418068329
@@ -130,7 +130,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
 --- !u!1001 &719899413
 Prefab:
   m_ObjectHideFlags: 0
@@ -604,7 +604,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fc493f05e0c7a847b733b32ded54956, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dodoPrefab: {fileID: 143458, guid: 2d761658b38c31e469778bd23bdb0822, type: 2}
+  dodoPrefab: {fileID: 192700, guid: fa16471c743793c4792243b304bef308, type: 2}
 --- !u!114 &2091533636 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 11412942, guid: 9394afcf712bb44db992c5419ad26b00,

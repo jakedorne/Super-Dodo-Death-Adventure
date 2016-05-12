@@ -12,6 +12,8 @@ public class Floor : MonoBehaviour {
 	private float blockXLength;
 	private float blockZLength;
 
+	public static float GAME_HEIGHT = 0.035f;
+
 	// indexes in grid
 	public int startX;
 	public int startZ;
@@ -100,7 +102,7 @@ public class Floor : MonoBehaviour {
 	/// Returns the world position of an index on the floor.
 	/// </summary>
     public Vector3 getVectorAtCoords(int x, int z){
-    	return new Vector3(x * blockXLength + blockXLength/2, 0 , z * blockZLength + blockZLength/2);
+		return new Vector3(x * blockXLength, GAME_HEIGHT , z * blockZLength);
     }
 
 	/// <summary>
