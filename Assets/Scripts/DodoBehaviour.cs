@@ -14,6 +14,9 @@ public class DodoBehaviour : MonoBehaviour {
 	private int lastX;
 	private int lastZ;
 
+	private float lerpTime = 100f;
+	private float currentLerpTime;
+
 	public static Vector2 MAX_VECTOR2 = new Vector2 (float.MaxValue, float.MaxValue);
 
 
@@ -25,7 +28,7 @@ public class DodoBehaviour : MonoBehaviour {
 		currentZ = floorScript.startZ;
 		currentRotation = transform.rotation.eulerAngles;
 
-		InvokeRepeating ("moveDodo", 2f, 2f);
+		InvokeRepeating ("moveCycle", 0.5f, 1f);
 
 	
 	}
@@ -38,7 +41,7 @@ public class DodoBehaviour : MonoBehaviour {
 	}
 
 	//These methods are not currently working.
-	private void moveDodo() {
+	private void moveCycle() {
 		List<Vector2> potentialBlocks = new List<Vector2> ();
 
 		if(floorScript.positionOnBlock(currentX, currentZ+1))potentialBlocks.Add(new Vector2(currentX, currentZ+1));
@@ -73,10 +76,26 @@ public class DodoBehaviour : MonoBehaviour {
 		currentX = (int)bestBlock.x;
 		currentZ = (int)bestBlock.y;
 
-		transform.position = floorScript.getVectorAtCoords((int)bestBlock.x, (int)bestBlock.y);
+		//transform.position = floorScript.getVectorAtCoords ((int)bestBlock.x, (int)bestBlock.y);
+		moveDodo(transform.position, floorScript.getVectorAtCoords((int)bestBlock.x, (int)bestBlock.y));
+	}
+
+	private void moveDodo(Vector3 startPosition, Vector3 endPosition) {
+		//Lerp tutorial from: https://chicounity3d.wordpress.com/2014/05/23/how-to-lerp-like-a-pro/
+		currentLerpTime = 0f;
+		while (transform.position != endPosition) {
+			currentLerpTime += Time.deltaTime;
+			if (currentLerpTime > lerpTime) {
+				currentLerpTime = lerpTime;
+			}
+
+			float t = currentLerpTime / lerpTime;
+			t = t * t * t * (t * (6f * t - 15f) + 10f);
+			transform.position = Vector3.Lerp (startPosition, endPosition, t);
+		}
 	}
 	
-	public List<Vector2> removeLastPos(List<Vector2> potentialBlocks) {
+	private List<Vector2> removeLastPos(List<Vector2> potentialBlocks) {
 		Vector2 toRemove = MAX_VECTOR2;
 		foreach (Vector2 gridPos in potentialBlocks) {
 			if ((int)gridPos.x == lastX && (int)gridPos.y == lastZ) {
