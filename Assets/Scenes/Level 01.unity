@@ -113,9 +113,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelID: 0
-  noLTiles: 3
-  noTTiles: 3
-  noCrossTiles: 3
+  blocks: 0300000001000000000000000300000000000000
   noDodos: 1
   floor: {fileID: 839605784}
   gui: {fileID: 1779932318}
@@ -264,6 +262,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blockPrefab: {fileID: 114288, guid: b201618d679ef7840adac818cb7dd7a0, type: 2}
   tetrisPrefab: {fileID: 118034, guid: c0860b06464815b47b56cf972df4a0aa, type: 2}
+  spikePrefab: {fileID: 0}
   startX: 0
   startZ: 0
   endX: 12
@@ -293,18 +292,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectorBlock: {fileID: 180612, guid: 03fe3f713b61276498215f655d1e662b, type: 2}
---- !u!114 &928451669 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 11483866, guid: 9394afcf712bb44db992c5419ad26b00,
-    type: 2}
-  m_PrefabInternal: {fileID: 1352183400}
-  m_Script: {fileID: 1392445389, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
---- !u!114 &1331453048 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 11467674, guid: 9394afcf712bb44db992c5419ad26b00,
-    type: 2}
-  m_PrefabInternal: {fileID: 1352183400}
-  m_Script: {fileID: 1392445389, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
 --- !u!1001 &1352183400
 Prefab:
   m_ObjectHideFlags: 0
@@ -562,9 +549,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5102f325636c649098eb30b05b6ed9b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lTile: {fileID: 928451669}
-  tTile: {fileID: 1331453048}
-  crossTile: {fileID: 2091533636}
+  tileButton: {fileID: 11442766, guid: c8d2ed7b9a8074ff685517e851a8c8d7, type: 2}
 --- !u!1 &1821254241
 GameObject:
   m_ObjectHideFlags: 0
@@ -605,9 +590,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dodoPrefab: {fileID: 192700, guid: fa16471c743793c4792243b304bef308, type: 2}
---- !u!114 &2091533636 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 11412942, guid: 9394afcf712bb44db992c5419ad26b00,
-    type: 2}
-  m_PrefabInternal: {fileID: 1352183400}
-  m_Script: {fileID: 1392445389, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
