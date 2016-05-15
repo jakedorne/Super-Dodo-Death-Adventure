@@ -13,7 +13,7 @@ public class Floor : MonoBehaviour {
 	private float blockXLength;
 	private float blockZLength;
 
-	public static float GAME_HEIGHT = 0.035f;
+	public static float GAME_HEIGHT = 0.35f;
 
 	// indexes in grid
 	public int startX;
