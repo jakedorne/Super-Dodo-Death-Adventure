@@ -82,6 +82,7 @@ public class DodoBehaviour : MonoBehaviour {
 
 	private void moveDodo(Vector3 startPosition, Vector3 endPosition) {
 		//Lerp tutorial from: https://chicounity3d.wordpress.com/2014/05/23/how-to-lerp-like-a-pro/
+		transform.LookAt(endPosition);
 		currentLerpTime = 0f;
 		while (transform.position != endPosition) {
 			currentLerpTime += Time.deltaTime;
