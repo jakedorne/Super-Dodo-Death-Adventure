@@ -1,0 +1,261 @@
+fileFormatVersion: 2
+guid: aa68a4909c5a95440be0936c5e5f5e38
+timeCreated: 1463282047
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: blue_cube
+    100002: cliff2_sizechange:cliff2:big_tree
+    100004: cliff2_sizechange:cliff2:big_tree1
+    100006: cliff2_sizechange:cliff2:curveGrassClump
+    100008: cliff2_sizechange:cliff2:curveGrassClump1
+    100010: cliff2_sizechange:cliff2:extrudedSurface39
+    100012: cliff2_sizechange:cliff2:extrudedSurface43
+    100014: cliff2_sizechange:cliff2:extrudedSurface44
+    100016: cliff2_sizechange:cliff2:extrudedSurface45
+    100018: cliff2_sizechange:cliff2:extrudedSurface46
+    100020: cliff2_sizechange:cliff2:extrudedSurface47
+    100022: cliff2_sizechange:cliff2:extrudedSurface48
+    100024: cliff2_sizechange:cliff2:extrudedSurface49
+    100026: cliff2_sizechange:cliff2:extrudedSurface50
+    100028: cliff2_sizechange:cliff2:extrudedSurface51
+    100030: cliff2_sizechange:cliff2:extrudedSurface52
+    100032: cliff2_sizechange:cliff2:extrudedSurface53
+    100034: cliff2_sizechange:cliff2:extrudedSurface54
+    100036: cliff2_sizechange:cliff2:extrudedSurface55
+    100038: cliff2_sizechange:cliff2:extrudedSurface56
+    100040: cliff2_sizechange:cliff2:extrudedSurface57
+    100042: cliff2_sizechange:cliff2:extrudedSurface58
+    100044: cliff2_sizechange:cliff2:extrudedSurface59
+    100046: cliff2_sizechange:cliff2:extrudedSurface60
+    100048: cliff2_sizechange:cliff2:extrudedSurface61
+    100050: cliff2_sizechange:cliff2:extrudedSurface62
+    100052: cliff2_sizechange:cliff2:extrudedSurface63
+    100054: cliff2_sizechange:cliff2:extrudedSurface64
+    100056: cliff2_sizechange:cliff2:extrudedSurface65
+    100058: cliff2_sizechange:cliff2:extrudedSurface66
+    100060: cliff2_sizechange:cliff2:extrudedSurface67
+    100062: cliff2_sizechange:cliff2:group1
+    100064: cliff2_sizechange:cliff2:group1 1
+    100066: cliff2_sizechange:cliff2:group1 2
+    100068: cliff2_sizechange:cliff2:group2
+    100070: cliff2_sizechange:cliff2:group2 1
+    100072: cliff2_sizechange:cliff2:group2 2
+    100074: cliff2_sizechange:cliff2:group3
+    100076: cliff2_sizechange:cliff2:group3 1
+    100078: cliff2_sizechange:cliff2:group3 2
+    100080: cliff2_sizechange:cliff2:group5
+    100082: cliff2_sizechange:cliff2:group5 1
+    100084: cliff2_sizechange:cliff2:group6
+    100086: cliff2_sizechange:cliff2:group7
+    100088: cliff2_sizechange:cliff2:map_tile_1x1
+    100090: cliff2_sizechange:cliff2:map_tile_3x1
+    100092: cliff2_sizechange:cliff2:map_tile_L
+    100094: cliff2_sizechange:cliff2:map_tile_Z
+    100096: cliff2_sizechange:cliff2:pCube2
+    100098: cliff2_sizechange:cliff2:pCube6
+    100100: cliff2_sizechange:cliff2:pCube7
+    100102: cliff2_sizechange:cliff2:polySurface217
+    100104: cliff2_sizechange:cliff2:rock_group
+    100106: cliff2_sizechange:cliff2:rock_group1
+    100108: cliff2_sizechange:cliff2:small_tree1
+    100110: cliff2_sizechange:cliff2:trunk
+    100112: cliff2_sizechange:cliff2:trunk 1
+    100114: cliff2_sizechange:cliff2:trunk 2
+    100116: cliff_mesh
+    100118: directionalLight1
+    100120: green_cube
+    100122: group1
+    100124: L_shape_block
+    100126: purple_cube
+    100128: red_cube
+    100130: rock_cube
+    100132: sand_mesh
+    100134: //RootNode
+    100136: tree_mesh
+    100138: X1_block
+    100140: X3_block
+    100142: X4_block1
+    100144: Z_shape_block
+    400000: blue_cube
+    400002: cliff2_sizechange:cliff2:big_tree
+    400004: cliff2_sizechange:cliff2:big_tree1
+    400006: cliff2_sizechange:cliff2:curveGrassClump
+    400008: cliff2_sizechange:cliff2:curveGrassClump1
+    400010: cliff2_sizechange:cliff2:extrudedSurface39
+    400012: cliff2_sizechange:cliff2:extrudedSurface43
+    400014: cliff2_sizechange:cliff2:extrudedSurface44
+    400016: cliff2_sizechange:cliff2:extrudedSurface45
+    400018: cliff2_sizechange:cliff2:extrudedSurface46
+    400020: cliff2_sizechange:cliff2:extrudedSurface47
+    400022: cliff2_sizechange:cliff2:extrudedSurface48
+    400024: cliff2_sizechange:cliff2:extrudedSurface49
+    400026: cliff2_sizechange:cliff2:extrudedSurface50
+    400028: cliff2_sizechange:cliff2:extrudedSurface51
+    400030: cliff2_sizechange:cliff2:extrudedSurface52
+    400032: cliff2_sizechange:cliff2:extrudedSurface53
+    400034: cliff2_sizechange:cliff2:extrudedSurface54
+    400036: cliff2_sizechange:cliff2:extrudedSurface55
+    400038: cliff2_sizechange:cliff2:extrudedSurface56
+    400040: cliff2_sizechange:cliff2:extrudedSurface57
+    400042: cliff2_sizechange:cliff2:extrudedSurface58
+    400044: cliff2_sizechange:cliff2:extrudedSurface59
+    400046: cliff2_sizechange:cliff2:extrudedSurface60
+    400048: cliff2_sizechange:cliff2:extrudedSurface61
+    400050: cliff2_sizechange:cliff2:extrudedSurface62
+    400052: cliff2_sizechange:cliff2:extrudedSurface63
+    400054: cliff2_sizechange:cliff2:extrudedSurface64
+    400056: cliff2_sizechange:cliff2:extrudedSurface65
+    400058: cliff2_sizechange:cliff2:extrudedSurface66
+    400060: cliff2_sizechange:cliff2:extrudedSurface67
+    400062: cliff2_sizechange:cliff2:group1
+    400064: cliff2_sizechange:cliff2:group1 1
+    400066: cliff2_sizechange:cliff2:group1 2
+    400068: cliff2_sizechange:cliff2:group2
+    400070: cliff2_sizechange:cliff2:group2 1
+    400072: cliff2_sizechange:cliff2:group2 2
+    400074: cliff2_sizechange:cliff2:group3
+    400076: cliff2_sizechange:cliff2:group3 1
+    400078: cliff2_sizechange:cliff2:group3 2
+    400080: cliff2_sizechange:cliff2:group5
+    400082: cliff2_sizechange:cliff2:group5 1
+    400084: cliff2_sizechange:cliff2:group6
+    400086: cliff2_sizechange:cliff2:group7
+    400088: cliff2_sizechange:cliff2:map_tile_1x1
+    400090: cliff2_sizechange:cliff2:map_tile_3x1
+    400092: cliff2_sizechange:cliff2:map_tile_L
+    400094: cliff2_sizechange:cliff2:map_tile_Z
+    400096: cliff2_sizechange:cliff2:pCube2
+    400098: cliff2_sizechange:cliff2:pCube6
+    400100: cliff2_sizechange:cliff2:pCube7
+    400102: cliff2_sizechange:cliff2:polySurface217
+    400104: cliff2_sizechange:cliff2:rock_group
+    400106: cliff2_sizechange:cliff2:rock_group1
+    400108: cliff2_sizechange:cliff2:small_tree1
+    400110: cliff2_sizechange:cliff2:trunk
+    400112: cliff2_sizechange:cliff2:trunk 1
+    400114: cliff2_sizechange:cliff2:trunk 2
+    400116: cliff_mesh
+    400118: directionalLight1
+    400120: green_cube
+    400122: group1
+    400124: L_shape_block
+    400126: purple_cube
+    400128: red_cube
+    400130: rock_cube
+    400132: sand_mesh
+    400134: //RootNode
+    400136: tree_mesh
+    400138: X1_block
+    400140: X3_block
+    400142: X4_block1
+    400144: Z_shape_block
+    2300000: blue_cube
+    2300002: cliff2_sizechange:cliff2:polySurface217
+    2300004: cliff_mesh
+    2300006: green_cube
+    2300008: L_shape_block
+    2300010: purple_cube
+    2300012: red_cube
+    2300014: rock_cube
+    2300016: sand_mesh
+    2300018: tree_mesh
+    2300020: X1_block
+    2300022: X3_block
+    2300024: X4_block1
+    2300026: Z_shape_block
+    3300000: blue_cube
+    3300002: cliff2_sizechange:cliff2:polySurface217
+    3300004: cliff_mesh
+    3300006: green_cube
+    3300008: L_shape_block
+    3300010: purple_cube
+    3300012: red_cube
+    3300014: rock_cube
+    3300016: sand_mesh
+    3300018: tree_mesh
+    3300020: X1_block
+    3300022: X3_block
+    3300024: X4_block1
+    3300026: Z_shape_block
+    4300000: cliff_mesh
+    4300002: sand_mesh
+    4300004: green_cube
+    4300006: red_cube
+    4300008: purple_cube
+    4300010: blue_cube
+    4300012: rock_cube
+    4300014: Z_shape_block
+    4300016: X3_block
+    4300018: L_shape_block
+    4300020: X4_block1
+    4300022: X1_block
+    4300024: tree_mesh
+    4300026: cliff2_sizechange:cliff2:polySurface217
+    7400000: Take 001
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

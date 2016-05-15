@@ -47,7 +47,7 @@ public class Floor : MonoBehaviour {
 					Instantiate(blockPrefab, new Vector3(blockXLength * i, 0, blockZLength * j), Quaternion.identity);
 				} 
 				else if(blocks[i,j]==3){
-					Instantiate(spikePrefab, new Vector3(blockXLength * i, -0.25f, blockZLength * j), Quaternion.identity);
+					Instantiate(spikePrefab, new Vector3(blockXLength * i, -2f, blockZLength * j), Quaternion.identity);
 				}
 			}
 		}

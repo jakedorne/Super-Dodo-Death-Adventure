@@ -10,7 +10,7 @@ public class TetrisBlock : MonoBehaviour {
 				};
 	public Shape shape = Shape.L;
 
-	public enum Shape{L, T, CROSS, IDK};
+	public enum Shape{L, T, CROSS, IDK, LINE, IDK2};
 
 	// Use this for initialization
 	void Start () {
@@ -23,9 +23,9 @@ public class TetrisBlock : MonoBehaviour {
 	}
 
 	public void Rotate(){
-		int[,] temp = new int[3,3];
-		for(int i=0; i<blocks.GetLength(0); i++){
-        	for(int j = 0; j < blocks.GetLength(1); j++){
+		int[,] temp = new int[blocks.GetLength(1),blocks.GetLength(0)];
+		for(int i=0; i<temp.GetLength(0); i++){
+        	for(int j = 0; j < temp.GetLength(1); j++){
 				temp[j,blocks.GetLength(0)-1-i] = blocks[i,j];
         	}
    		}
@@ -61,6 +61,21 @@ public class TetrisBlock : MonoBehaviour {
 					{0,1,1},
 					{0,1,0},
 					{0,1,1}
+				};
+				break;
+			case Shape.LINE:
+				blocks = new int[,]{
+					{0,1,0,0},
+					{0,1,0,0},
+					{0,1,0,0},
+					{0,1,0,0}
+				};
+				break;
+			case Shape.IDK2:
+				blocks = new int[,]{
+					{0,1,0},
+					{0,1,1},
+					{0,0,1}
 				};
 				break;
 
