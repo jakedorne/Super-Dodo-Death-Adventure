@@ -59,13 +59,16 @@ public class DodoBehaviour : MonoBehaviour {
         //First, check if we have reached our target. If we have, set a new target.
         if (endPosition==Vector3.zero)
         {
+			anim.SetBool("isWalking", true);
             //Walking off an edge. Have to scale it down so the dodo doesnt shoot off the end
             transform.position += transform.forward * 0.02f / lerpTime;
         } else if (transform.position != endPosition)
         {
+			anim.SetBool("isWalking", true);
             moveDodo(startPosition,endPosition);
         } else
         {
+			anim.SetBool("isWalking", false);
             currentLerpTime = 0f;
             moveCycle();
         }
