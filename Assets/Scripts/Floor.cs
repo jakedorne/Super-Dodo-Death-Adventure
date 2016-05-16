@@ -130,7 +130,7 @@ public class Floor : MonoBehaviour {
 	/// Returns the x and z index of the floor given a world position.
 	/// </summary>
     public Vector2 getCoordAtVector(Vector3 vector){
-		return new Vector2(Mathf.Round((vector.x - blockXLength) / blockXLength), Mathf.Round((vector.z- blockZLength) / blockZLength));
+		return new Vector2(Mathf.Round(vector.x / blockXLength), Mathf.Round(vector.z / blockZLength));
     }
 
 }

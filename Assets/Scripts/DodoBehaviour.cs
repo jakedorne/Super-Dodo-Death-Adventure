@@ -19,6 +19,7 @@ public class DodoBehaviour : MonoBehaviour {
 	private Animator anim;
 
 	public static Vector2 MAX_VECTOR2 = new Vector2 (float.MaxValue, float.MaxValue);
+	private Vector2 target;
 
 
 	// Use this for initialization
@@ -28,7 +29,7 @@ public class DodoBehaviour : MonoBehaviour {
 		currentX = floorScript.startX;
 		currentZ = floorScript.startZ;
 		anim = GetComponent<Animator> ();
-
+		target = new Vector2 (floorScript.endX, floorScript.endZ);
 		InvokeRepeating ("moveCycle", 0.5f, 1f);
 
 	
@@ -52,8 +53,10 @@ public class DodoBehaviour : MonoBehaviour {
 
 		potentialBlocks = removeLastPos (potentialBlocks);
 
-		if (potentialBlocks.Count == 0)
+		if (potentialBlocks.Count == 0) {
+			transform.position = transform.position + transform.forward;
 			return;
+		}
 
 		Vector2 bestBlock = findBestBlock (potentialBlocks);
 
@@ -81,6 +84,13 @@ public class DodoBehaviour : MonoBehaviour {
 			transform.position = Vector3.Lerp (startPosition, endPosition, t);
 		}
 		//anim.SetBool ("isWalking", false);
+
+		if(floorScript.getCoordAtVector(endPosition) == target){
+			// clean this shit up eventually
+			LevelManager script = FindObjectOfType<LevelManager> ();
+			script.dodoFinished ();
+			Destroy (this.gameObject);
+		}
 	}
 	
 	private List<Vector2> removeLastPos(List<Vector2> potentialBlocks) {

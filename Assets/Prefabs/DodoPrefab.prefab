@@ -584,7 +584,7 @@ GameObject:
   - 54: {fileID: 5483070}
   - 65: {fileID: 6564790}
   m_Layer: 0
-  m_Name: testDodo
+  m_Name: DodoPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
