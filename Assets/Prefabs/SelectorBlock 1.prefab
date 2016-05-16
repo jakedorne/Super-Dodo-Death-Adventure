@@ -12,7 +12,7 @@ GameObject:
   - 23: {fileID: 2347508}
   - 114: {fileID: 11426660}
   - 65: {fileID: 6511548}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SelectorBlock 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}

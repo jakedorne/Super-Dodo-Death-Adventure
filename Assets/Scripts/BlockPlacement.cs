@@ -11,9 +11,12 @@ public class BlockPlacement : MonoBehaviour {
     private int[,] blocks;
     private GameObject[,] selectorBlocks;
     private TetrisBlock tetrisBlock;
+	private Color selectorBlockColor;
 
     // Use this for initialization
     void Start () {
+		selectorBlockColor = Color.white;
+		selectorBlockColor.a = 0.5f;
         placingBlocks = false;
         mapSize = this.GetComponent<Floor>().getFloor().GetLength(0); //I expect this map to be square. Need to change slightly if rectangular
         blocks = new int[mapSize, mapSize];
@@ -64,8 +67,8 @@ public class BlockPlacement : MonoBehaviour {
                 //i and j switch because the dimensions of the block grid switched
                 block.GetComponent<BlockSelector>().row = j;
                 block.GetComponent<BlockSelector>().col = i;
-                block.GetComponent<Renderer>().material.color = Color.white; //TODO: this may need to be changed once proper materials are used.
-                block.SetActive(false);
+				block.GetComponent<Renderer>().material.color = selectorBlockColor; //TODO: this may need to be changed once proper materials are used.
+				block.SetActive(false);
                 // increment x position
                 x += blockWidth;
             }
@@ -89,7 +92,7 @@ public class BlockPlacement : MonoBehaviour {
                     //Will show placement grid if placingBlocks is true, or hide it otherwise.
                     //i and j switch because the dimensions of the block grid switched
                     selectorBlocks[j, i].SetActive(placingBlocks);
-                    selectorBlocks[j, i].GetComponent<Renderer>().material.color = Color.white; //TODO: this may need to be changed once proper materials are used.
+					selectorBlocks[j, i].GetComponent<Renderer>().material.color = selectorBlockColor; //TODO: this may need to be changed once proper materials are used.
                 } else if (blocks[i, j] == 2)
                 {
                     selectorBlocks[j, i].SetActive(placingBlocks);

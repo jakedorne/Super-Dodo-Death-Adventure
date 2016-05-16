@@ -84,7 +84,7 @@ public class DodoBehaviour : MonoBehaviour {
 			}
 
 			float t = currentLerpTime / lerpTime;
-			t = t * t * t * (t * (6f * t - 15f) + 10f);
+			t = t * t * t * (t * (3f * t - 7f) + 5f);
 			transform.position = Vector3.Lerp (startPosition, endPosition, t);
 		}
 		//anim.SetBool ("isWalking", false);

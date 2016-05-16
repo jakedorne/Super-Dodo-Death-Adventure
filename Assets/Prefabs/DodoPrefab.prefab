@@ -8,7 +8,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 499908}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: dodoidleanimation:joint12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23,7 +23,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 444938}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: dodoidleanimation:ikHandle1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 429702}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: dodoidleanimation:nurbsCircle3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53,7 +53,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 488756}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: skeleton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68,7 +68,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 467392}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: dodoidleanimation:joint4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83,7 +83,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 400400}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: dodoidleanimation:ikHandle2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -98,7 +98,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 412440}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: dodoidleanimation:joint2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -113,7 +113,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 499980}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: dodoidleanimation:ikHandle3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -128,7 +128,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 430176}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: dodoidleanimation:joint15
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -143,7 +143,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 470974}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: controls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -158,7 +158,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 445854}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: dodoidleanimation:joint6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -173,7 +173,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 496966}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: dodoidleanimation:nurbsCircle1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -188,7 +188,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 490494}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: dodoidleanimation:joint8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -204,7 +204,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 443960}
   - 137: {fileID: 13743252}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: dodoidleanimation:polySurface1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -219,7 +219,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 403070}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: dodoidleanimation:joint14
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -234,7 +234,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 415782}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: dodoidleanimation:controlnerbs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -249,7 +249,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 485282}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: dodoidleanimation:joint3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -264,7 +264,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 415534}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: dodoidleanimation:joint5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -279,7 +279,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 412902}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: dodoidleanimation:nurbsCircle7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -294,7 +294,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 486434}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: group1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -309,7 +309,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 419808}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: dodoidleanimation:nurbsCircle5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -324,7 +324,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 428268}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: dodoidleanimation:joint10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -339,7 +339,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 450562}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: dodoidleanimation:nurbsCircle4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -354,7 +354,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 491802}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: dodoidleanimation:joint18
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -369,7 +369,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 409054}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: dodoidleanimation:joint16
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -384,7 +384,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 498894}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: dodoidleanimation:joint11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -399,7 +399,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 488744}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: dodoidleanimation:joint17
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -414,7 +414,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 451228}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: dodoidleanimation:joint1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -429,7 +429,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 497384}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: dodoidleanimation:joint13
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -444,7 +444,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 490808}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -459,7 +459,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 487544}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: dodoidleanimation:group
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -474,7 +474,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 411482}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: dodoidleanimation:joint7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -489,7 +489,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 424924}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: dodoidleanimation:joint9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -504,7 +504,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 497906}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: dodoidleanimation:ikHandle4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -519,7 +519,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 415304}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: dodoidleanimation:joint19
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -534,7 +534,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 413524}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: dodoidleanimation:joint20
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -549,7 +549,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 450468}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: dodoidleanimation:nurbsCircle2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -564,7 +564,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 449004}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: dodoidleanimation:nurbsCircle6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -583,7 +583,7 @@ GameObject:
   - 114: {fileID: 11401306}
   - 54: {fileID: 5483070}
   - 65: {fileID: 6564790}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: DodoPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -598,7 +598,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 494866}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: dodoidleanimation:nurbsCircle8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
