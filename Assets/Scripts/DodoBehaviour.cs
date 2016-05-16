@@ -31,7 +31,7 @@ public class DodoBehaviour : MonoBehaviour {
 		currentX = floorScript.startX;
 		currentZ = floorScript.startZ;
 		anim = GetComponent<Animator> ();
-		target = new Vector2 (floorScript.endX, floorScript.endZ);
+		target = new Vector2 (floorScript.endX-1, floorScript.endZ-1); //Need to subtract 1 because array starts at 0
         //InvokeRepeating ("moveCycle", 0.5f, 1f);
         moveCycle();
         transform.LookAt(endPosition);
@@ -47,7 +47,9 @@ public class DodoBehaviour : MonoBehaviour {
             LevelManager script = FindObjectOfType<LevelManager>();
             script.dodoDeath();
         }
-        if (floorScript.getCoordAtVector(endPosition) == target)
+        Debug.Log(floorScript.getCoordAtVector(endPosition));
+        Debug.Log(target);
+        if (floorScript.getCoordAtVector(transform.position) == target)
         {
             // clean this shit up eventually
             LevelManager script = FindObjectOfType<LevelManager>();
@@ -58,7 +60,7 @@ public class DodoBehaviour : MonoBehaviour {
         if (endPosition==Vector3.zero)
         {
             //Walking off an edge. Have to scale it down so the dodo doesnt shoot off the end
-            transform.position += transform.forward * 0.02f;
+            transform.position += transform.forward * 0.02f / lerpTime;
         } else if (transform.position != endPosition)
         {
             moveDodo(startPosition,endPosition);
