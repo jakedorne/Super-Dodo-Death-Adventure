@@ -97,6 +97,16 @@ public class BlockPlacement : MonoBehaviour {
                 {
                     selectorBlocks[j, i].SetActive(placingBlocks);
                     selectorBlocks[j, i].GetComponent<Renderer>().material.color = Color.green; //TODO: this may need to be changed once proper materials are used.
+                } else if (blocks[i, j] == 9)
+                {
+                    selectorBlocks[j, i].SetActive(placingBlocks);
+                    selectorBlocks[j, i].GetComponent<Renderer>().material.color = Color.red; //TODO: this may need to be changed once proper materials are used.
+                } else if (blocks[i, j] == 3)
+                {
+                    Color opaqueRed = Color.red;
+                    opaqueRed.a = 0.3f;
+                    selectorBlocks[j, i].SetActive(placingBlocks);
+                    selectorBlocks[j, i].GetComponent<Renderer>().material.color = opaqueRed; //TODO: this may need to be changed once proper materials are used.
                 }
             }
         }
@@ -150,43 +160,34 @@ public class BlockPlacement : MonoBehaviour {
     {
         getFloor();
         //Mostly copied from Floor class
-        int[,] blockFormation = tetrisBlock.GetBlocks();
-        if (FormationFits(row, col, blockFormation))
+        int[,] formation = tetrisBlock.GetBlocks();
+        for (int i = 0; i < formation.GetLength(0); i++)
         {
-            for (int i = 0; i < blockFormation.GetLength(0); i++)
+            for (int j = 0; j < formation.GetLength(1); j++)
             {
-                for (int j = 0; j < blockFormation.GetLength(1); j++)
+                if ((row + i >= mapSize || row + i < 0) && formation[i, j] == 1)
                 {
-                    if (blockFormation[i, j] == 1)
-                    {
-                        blocks[row + i, col + j] = 2;
-                    }
+                    // part of block is off map
+                } else if ((col + j >= mapSize || col + j < 0) && formation[i, j] == 1)
+                {
+                    // part of block is off map
+                } else if (formation[i, j] == 1 && blocks[row + i, col + j] == 1)
+                {
+                    // part of block is on another block
+                } else if (formation[i, j] == 1 && blocks[row + i, col + j] == 3)
+                {
+                    // part of block is in an unplaceable spot
+                    blocks[row + i, col + j] = 9;
+
+                } else if (formation[i, j] == 1 && blocks[row + i, col + j] == 0)
+                {
+                    // Block can be placed here!
+                    blocks[row + i, col + j] = 2;
                 }
             }
         }
         togglePlacementGrid();
     }
-
-	/// <summary>
-	/// Returns true if a tetris block formation can be placed at an index.
-	/// </summary>
-	private bool FormationFits(int row, int col, int[,] formation){
-		for(int i = 0; i < formation.GetLength(0); i++){
-			for(int j = 0; j < formation.GetLength(1); j++){
-				if ((row + i >= mapSize || row + i < 0) && formation [i, j] == 1) {
-					// part of block is off map
-					return false;
-				} else if ((col + j >= mapSize || col + j < 0) && formation [i, j] == 1) {
-					// part of block is off map
-					return false;
-				} else if (formation[i,j]==1 && blocks[row+i,col+j]==1 || formation[i,j]==1 && blocks[row+i,col+j]==3){
-					// part of block is on another block or unplaceable spot
-					return false;
-				}
-			}
-		}
-		return true;
-	}
 
 	public void setTetrisShape(TetrisBlock.Shape shape){
 		//If we don't instantiate a new one each time, any rotation will stay with each subsequent placement
