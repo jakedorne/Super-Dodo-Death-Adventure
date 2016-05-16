@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 public class Floor : MonoBehaviour {
 
 	public GameObject blockPrefab;
+    public GameObject tree;
 	public GameObject tetrisPrefab;
 	public GameObject spikePrefab;
 
@@ -62,8 +63,16 @@ public class Floor : MonoBehaviour {
 			for(int i = 0; i < blockFormation.GetLength(0); i++){
 				for(int j = 0; j < blockFormation.GetLength(1); j++){
 					if(blockFormation[i,j]==1){
-						blocks[row+i,col+j]=1;
-						Instantiate(blockPrefab, new Vector3((row + i) * blockXLength, 0, (col + j) * blockZLength), Quaternion.identity);
+                        if (block.shape == TetrisBlock.Shape.TREE)
+                        {
+                            blocks[row + i, col + j] = 3;
+                            Instantiate(blockPrefab, new Vector3((row + i) * blockXLength, 0, (col + j) * blockZLength), Quaternion.identity);
+                            Instantiate(tree, new Vector3((row + i) * blockXLength, 0 + blockPrefab.GetComponent<MeshRenderer>().bounds.size.y, (col + j) * blockZLength), Quaternion.identity);
+                        } else {
+                            blocks[row + i, col + j] = 1;
+                            Instantiate(blockPrefab, new Vector3((row + i) * blockXLength, 0, (col + j) * blockZLength), Quaternion.identity);
+                        }
+
 					}
 				}
 			}

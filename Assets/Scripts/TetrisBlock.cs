@@ -10,7 +10,7 @@ public class TetrisBlock : MonoBehaviour {
 				};
 	public Shape shape = Shape.L;
 
-	public enum Shape{L, T, CROSS, IDK, LINE, IDK2};
+	public enum Shape{L, T, CROSS, C, LINE, S, TREE};
 
 	// Use this for initialization
 	void Start () {
@@ -56,7 +56,7 @@ public class TetrisBlock : MonoBehaviour {
 					{0,1,0}
 				};
 				break;
-			case Shape.IDK:
+			case Shape.C:
 				blocks = new int[,]{
 					{0,1,1},
 					{0,1,0},
@@ -71,15 +71,22 @@ public class TetrisBlock : MonoBehaviour {
 					{0,1,0,0}
 				};
 				break;
-			case Shape.IDK2:
+			case Shape.S:
 				blocks = new int[,]{
 					{0,1,0},
 					{0,1,1},
 					{0,0,1}
 				};
 				break;
+            case Shape.TREE:
+                blocks = new int[,]{
+                    {0,0,0},
+                    {0,1,0},
+                    {0,0,0}
+                };
+                break;
 
-		}
+        }
 	}
 
 	public int[,] GetBlocks(){
