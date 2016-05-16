@@ -20,10 +20,11 @@ public class GameManager : MonoBehaviour {
 		levelUnlocked[0] = true;
 	}
 
-	public static void finishedLevel(int levelID, int score){
+	public static void finishedLevel(int levelID){
+		/*
 		if (score > scores [levelID]) {
 			scores [levelID] = score;
-		}
+		} */
 		// Send back to home screen
 		SceneManager.LoadScene("Level Selection");
 	}

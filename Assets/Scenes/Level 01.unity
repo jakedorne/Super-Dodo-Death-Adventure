@@ -117,6 +117,7 @@ MonoBehaviour:
   noDodos: 1
   floor: {fileID: 839605784}
   gui: {fileID: 523086665}
+  levelgui: {fileID: 1139561933}
 --- !u!4 &418068329
 Transform:
   m_ObjectHideFlags: 0
@@ -257,6 +258,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectorBlock: {fileID: 161964, guid: 0e28a989c94ec8c479deb82ee6d9a64c, type: 2}
+--- !u!114 &1139561933 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11430970, guid: 9394afcf712bb44db992c5419ad26b00,
+    type: 2}
+  m_PrefabInternal: {fileID: 1352183400}
+  m_Script: {fileID: 11500000, guid: 5204bb7718a75499685ec14cf4e1a162, type: 3}
 --- !u!1001 &1352183400
 Prefab:
   m_ObjectHideFlags: 0
@@ -337,28 +344,8 @@ Prefab:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22460378, guid: 9394afcf712bb44db992c5419ad26b00, type: 2}
-      propertyPath: m_AnchoredPosition.x
-      value: 78.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 22460378, guid: 9394afcf712bb44db992c5419ad26b00, type: 2}
-      propertyPath: m_AnchoredPosition.y
-      value: -0.020004272
-      objectReference: {fileID: 0}
-    - target: {fileID: 22460378, guid: 9394afcf712bb44db992c5419ad26b00, type: 2}
-      propertyPath: m_AnchorMin.y
+      propertyPath: m_RootOrder
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 22460378, guid: 9394afcf712bb44db992c5419ad26b00, type: 2}
-      propertyPath: m_SizeDelta.y
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 22460378, guid: 9394afcf712bb44db992c5419ad26b00, type: 2}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 22460378, guid: 9394afcf712bb44db992c5419ad26b00, type: 2}
-      propertyPath: m_SizeDelta.x
-      value: 157
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9394afcf712bb44db992c5419ad26b00, type: 2}

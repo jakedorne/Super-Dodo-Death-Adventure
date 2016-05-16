@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine.UI;
 using System.Collections.Generic;
 
-public class LevelGUI : MonoBehaviour {
+public class InventoryUI : MonoBehaviour {
 
 	public Button tileButton;
 
