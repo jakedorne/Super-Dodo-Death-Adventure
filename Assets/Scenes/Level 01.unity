@@ -116,7 +116,7 @@ MonoBehaviour:
   blocks: 06000000030000000100000000000000030000000400000005000000
   noDodos: 1
   floor: {fileID: 839605784}
-  gui: {fileID: 1779932318}
+  gui: {fileID: 523086665}
 --- !u!4 &418068329
 Transform:
   m_ObjectHideFlags: 0
@@ -129,6 +129,12 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
+--- !u!114 &523086665 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11440930, guid: 9394afcf712bb44db992c5419ad26b00,
+    type: 2}
+  m_PrefabInternal: {fileID: 1352183400}
+  m_Script: {fileID: 11500000, guid: 5102f325636c649098eb30b05b6ed9b6, type: 3}
 --- !u!1 &742515543
 GameObject:
   m_ObjectHideFlags: 0
@@ -330,20 +336,31 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 11412942, guid: 9394afcf712bb44db992c5419ad26b00, type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 418068328}
-    - target: {fileID: 11467674, guid: 9394afcf712bb44db992c5419ad26b00, type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 418068328}
-    - target: {fileID: 11483866, guid: 9394afcf712bb44db992c5419ad26b00, type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 418068328}
-    m_RemovedComponents:
-    - {fileID: 11411116, guid: 9394afcf712bb44db992c5419ad26b00, type: 2}
+    - target: {fileID: 22460378, guid: 9394afcf712bb44db992c5419ad26b00, type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 78.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 22460378, guid: 9394afcf712bb44db992c5419ad26b00, type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.020004272
+      objectReference: {fileID: 0}
+    - target: {fileID: 22460378, guid: 9394afcf712bb44db992c5419ad26b00, type: 2}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22460378, guid: 9394afcf712bb44db992c5419ad26b00, type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 22460378, guid: 9394afcf712bb44db992c5419ad26b00, type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22460378, guid: 9394afcf712bb44db992c5419ad26b00, type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 157
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9394afcf712bb44db992c5419ad26b00, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &1360084906
@@ -535,22 +552,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
---- !u!1 &1779932317 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 101320, guid: 9394afcf712bb44db992c5419ad26b00, type: 2}
-  m_PrefabInternal: {fileID: 1352183400}
---- !u!114 &1779932318
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1779932317}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5102f325636c649098eb30b05b6ed9b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tileButton: {fileID: 11442766, guid: c8d2ed7b9a8074ff685517e851a8c8d7, type: 2}
 --- !u!1 &1821254241
 GameObject:
   m_ObjectHideFlags: 0
