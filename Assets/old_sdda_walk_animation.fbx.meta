@@ -1,0 +1,155 @@
+fileFormatVersion: 2
+guid: 018a003a0ceca9841a23124ab62327f6
+timeCreated: 1462762701
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: controls
+    100002: directionalLight1
+    100004: dodoidleanimation:controlnerbs
+    100006: dodoidleanimation:group
+    100008: dodoidleanimation:ikHandle1
+    100010: dodoidleanimation:ikHandle2
+    100012: dodoidleanimation:ikHandle3
+    100014: dodoidleanimation:ikHandle4
+    100016: dodoidleanimation:joint1
+    100018: dodoidleanimation:joint10
+    100020: dodoidleanimation:joint11
+    100022: dodoidleanimation:joint12
+    100024: dodoidleanimation:joint13
+    100026: dodoidleanimation:joint14
+    100028: dodoidleanimation:joint15
+    100030: dodoidleanimation:joint16
+    100032: dodoidleanimation:joint17
+    100034: dodoidleanimation:joint18
+    100036: dodoidleanimation:joint19
+    100038: dodoidleanimation:joint2
+    100040: dodoidleanimation:joint20
+    100042: dodoidleanimation:joint3
+    100044: dodoidleanimation:joint4
+    100046: dodoidleanimation:joint5
+    100048: dodoidleanimation:joint6
+    100050: dodoidleanimation:joint7
+    100052: dodoidleanimation:joint8
+    100054: dodoidleanimation:joint9
+    100056: dodoidleanimation:nurbsCircle1
+    100058: dodoidleanimation:nurbsCircle2
+    100060: dodoidleanimation:nurbsCircle3
+    100062: dodoidleanimation:nurbsCircle4
+    100064: dodoidleanimation:nurbsCircle5
+    100066: dodoidleanimation:nurbsCircle6
+    100068: dodoidleanimation:nurbsCircle7
+    100070: dodoidleanimation:nurbsCircle8
+    100072: dodoidleanimation:polySurface1
+    100074: mesh
+    100076: //RootNode
+    100078: skeleton
+    400000: controls
+    400002: directionalLight1
+    400004: dodoidleanimation:controlnerbs
+    400006: dodoidleanimation:group
+    400008: dodoidleanimation:ikHandle1
+    400010: dodoidleanimation:ikHandle2
+    400012: dodoidleanimation:ikHandle3
+    400014: dodoidleanimation:ikHandle4
+    400016: dodoidleanimation:joint1
+    400018: dodoidleanimation:joint10
+    400020: dodoidleanimation:joint11
+    400022: dodoidleanimation:joint12
+    400024: dodoidleanimation:joint13
+    400026: dodoidleanimation:joint14
+    400028: dodoidleanimation:joint15
+    400030: dodoidleanimation:joint16
+    400032: dodoidleanimation:joint17
+    400034: dodoidleanimation:joint18
+    400036: dodoidleanimation:joint19
+    400038: dodoidleanimation:joint2
+    400040: dodoidleanimation:joint20
+    400042: dodoidleanimation:joint3
+    400044: dodoidleanimation:joint4
+    400046: dodoidleanimation:joint5
+    400048: dodoidleanimation:joint6
+    400050: dodoidleanimation:joint7
+    400052: dodoidleanimation:joint8
+    400054: dodoidleanimation:joint9
+    400056: dodoidleanimation:nurbsCircle1
+    400058: dodoidleanimation:nurbsCircle2
+    400060: dodoidleanimation:nurbsCircle3
+    400062: dodoidleanimation:nurbsCircle4
+    400064: dodoidleanimation:nurbsCircle5
+    400066: dodoidleanimation:nurbsCircle6
+    400068: dodoidleanimation:nurbsCircle7
+    400070: dodoidleanimation:nurbsCircle8
+    400072: dodoidleanimation:polySurface1
+    400074: mesh
+    400076: //RootNode
+    400078: skeleton
+    4300000: dodoidleanimation:polySurface1
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: dodoidleanimation:polySurface1
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -9,13 +9,14 @@ public class DodoBehaviour : MonoBehaviour {
 
 	private int currentX;
 	private int currentZ;
-	private Vector3 currentRotation;
 
 	private int lastX;
 	private int lastZ;
 
 	private float lerpTime = 100f;
 	private float currentLerpTime;
+
+	private Animator anim;
 
 	public static Vector2 MAX_VECTOR2 = new Vector2 (float.MaxValue, float.MaxValue);
 
@@ -26,7 +27,7 @@ public class DodoBehaviour : MonoBehaviour {
 		floorScript = floor.GetComponent<Floor> ();
 		currentX = floorScript.startX;
 		currentZ = floorScript.startZ;
-		currentRotation = transform.rotation.eulerAngles;
+		anim = GetComponent<Animator> ();
 
 		InvokeRepeating ("moveCycle", 0.5f, 1f);
 
@@ -84,6 +85,7 @@ public class DodoBehaviour : MonoBehaviour {
 		//Lerp tutorial from: https://chicounity3d.wordpress.com/2014/05/23/how-to-lerp-like-a-pro/
 		transform.LookAt(endPosition);
 		currentLerpTime = 0f;
+		anim.SetBool ("isWalking", true);
 		while (transform.position != endPosition) {
 			currentLerpTime += Time.deltaTime;
 			if (currentLerpTime > lerpTime) {
@@ -94,6 +96,7 @@ public class DodoBehaviour : MonoBehaviour {
 			t = t * t * t * (t * (6f * t - 15f) + 10f);
 			transform.position = Vector3.Lerp (startPosition, endPosition, t);
 		}
+		anim.SetBool ("isWalking", false);
 	}
 	
 	private List<Vector2> removeLastPos(List<Vector2> potentialBlocks) {
