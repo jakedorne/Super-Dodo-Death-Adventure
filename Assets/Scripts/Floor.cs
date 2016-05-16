@@ -9,8 +9,6 @@ public class Floor : MonoBehaviour {
 	public GameObject tetrisPrefab;
 	public GameObject spikePrefab;
 
-	private TetrisBlock tetrisBlock;
-
 	private float blockXLength;
 	private float blockZLength;
 
@@ -24,13 +22,12 @@ public class Floor : MonoBehaviour {
 
 	private static int mapSize = 20;
 
-	// 0 = empty, 1 = block down, 2 = block hovered on, 3 = unplaceable space
+	// 0 = empty, 1 = block down, 2 = block hovered on (green), 3 = unplaceable space, 9 = block hovered on (red)
 	private int[,] blocks = new int[mapSize, mapSize];
 
 
 	// Use this for initialization
 	void Start () {
-		tetrisBlock = tetrisPrefab.GetComponent<TetrisBlock>();
 		// absolutely ashamed of this line -- is used for finding the length of the blocks..
 		GameObject blockObject = (GameObject) Instantiate(blockPrefab, new Vector3(-1000,-1000,-1000), Quaternion.identity);
 

@@ -28,7 +28,9 @@ public class DodoBehaviour : MonoBehaviour {
 	void Start () {
 		floor = GameObject.Find ("Floor");
 		floorScript = floor.GetComponent<Floor> ();
-		currentX = floorScript.startX;
+        Spawner spawnerScript = GameObject.Find("Dodo Spawner").GetComponent<Spawner>();
+        lerpTime = spawnerScript.dodoSpawnTimer * 0.2f; //Tie these variables together so speed of spawning is related to speed of dodo movement.
+        currentX = floorScript.startX;
 		currentZ = floorScript.startZ;
 		anim = GetComponent<Animator> ();
 		target = new Vector2 (floorScript.endX-1, floorScript.endZ-1); //Need to subtract 1 because array starts at 0

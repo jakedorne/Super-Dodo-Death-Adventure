@@ -4,6 +4,7 @@ using System.Collections;
 public class Spawner : MonoBehaviour {
 
 	public GameObject dodoPrefab;
+    public float dodoSpawnTimer;
 
 	private int dodoCount;
 	private GameObject[] dodoList;
@@ -24,7 +25,7 @@ public class Spawner : MonoBehaviour {
 		startX = floor.GetComponent<Floor> ().startX;
 		startZ = floor.GetComponent<Floor> ().startZ;
 
-		InvokeRepeating ("spawnDodo", 0f, 5f);
+		InvokeRepeating ("spawnDodo", 0f, dodoSpawnTimer);
 	}
 	
 	// Update is called once per frame
