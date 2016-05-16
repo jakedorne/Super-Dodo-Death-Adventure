@@ -47,8 +47,6 @@ public class DodoBehaviour : MonoBehaviour {
             LevelManager script = FindObjectOfType<LevelManager>();
             script.dodoDeath();
         }
-        Debug.Log(floorScript.getCoordAtVector(endPosition));
-        Debug.Log(target);
         if (floorScript.getCoordAtVector(transform.position) == target)
         {
             // clean this shit up eventually
