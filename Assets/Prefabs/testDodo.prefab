@@ -581,7 +581,8 @@ GameObject:
   - 4: {fileID: 460070}
   - 95: {fileID: 9504746}
   - 114: {fileID: 11401306}
-  - 64: {fileID: 6413266}
+  - 54: {fileID: 5483070}
+  - 65: {fileID: 6564790}
   m_Layer: 0
   m_Name: testDodo
   m_TagString: Untagged
@@ -1123,8 +1124,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 488756}
   m_RootOrder: 2
---- !u!64 &6413266
-MeshCollider:
+--- !u!54 &5483070
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 192700}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &6564790
+BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -1133,8 +1149,8 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Convex: 0
-  m_Mesh: {fileID: 0}
+  m_Size: {x: 0.3, y: 0.3, z: 0.3}
+  m_Center: {x: 0, y: 0.15, z: 0}
 --- !u!95 &9504746
 Animator:
   serializedVersion: 3
