@@ -50,15 +50,6 @@ public class DodoBehaviour : MonoBehaviour {
 		if(floorScript.positionOnBlock(currentX+1, currentZ)) potentialBlocks.Add(new Vector2(currentX+1, currentZ));
 		if(floorScript.positionOnBlock(currentX-1, currentZ))potentialBlocks.Add(new Vector2(currentX-1, currentZ));
 
-
-		//if (floorScript.positionOnBlock ((int)left.x, (int)left.y)) potentialBlocks.Add (left, (transform.right * -1)/offset);
-		//if (floorScript.positionOnBlock ((int)right.x, (int)right.y)) potentialBlocks.Add (right, (transform.right)/offset);
-		//if (floorScript.positionOnBlock ((int)forward.x, (int)forward.y)) potentialBlocks.Add (forward, (transform.forward)/offset);
-
-		foreach (Vector2 gridPos in potentialBlocks) {
-			print ("Potential Block: " + gridPos);
-		}
-
 		potentialBlocks = removeLastPos (potentialBlocks);
 
 		if (potentialBlocks.Count == 0)
@@ -66,18 +57,11 @@ public class DodoBehaviour : MonoBehaviour {
 
 		Vector2 bestBlock = findBestBlock (potentialBlocks);
 
-		//if (bestBlock == left) {
-			//transform.Rotate (0, 270, 0);
-		//} else if (bestBlock == right) {
-			//transform.Rotate (0, 90, 0);
-		//}
-
 		lastX = currentX;
 		lastZ = currentZ;
 		currentX = (int)bestBlock.x;
 		currentZ = (int)bestBlock.y;
 
-		//transform.position = floorScript.getVectorAtCoords ((int)bestBlock.x, (int)bestBlock.y);
 		moveDodo(transform.position, floorScript.getVectorAtCoords((int)bestBlock.x, (int)bestBlock.y));
 	}
 
@@ -85,7 +69,7 @@ public class DodoBehaviour : MonoBehaviour {
 		//Lerp tutorial from: https://chicounity3d.wordpress.com/2014/05/23/how-to-lerp-like-a-pro/
 		transform.LookAt(endPosition);
 		currentLerpTime = 0f;
-		anim.SetBool ("isWalking", true);
+		//anim.SetBool ("isWalking", true);
 		while (transform.position != endPosition) {
 			currentLerpTime += Time.deltaTime;
 			if (currentLerpTime > lerpTime) {
@@ -96,7 +80,7 @@ public class DodoBehaviour : MonoBehaviour {
 			t = t * t * t * (t * (6f * t - 15f) + 10f);
 			transform.position = Vector3.Lerp (startPosition, endPosition, t);
 		}
-		anim.SetBool ("isWalking", false);
+		//anim.SetBool ("isWalking", false);
 	}
 	
 	private List<Vector2> removeLastPos(List<Vector2> potentialBlocks) {
@@ -110,7 +94,6 @@ public class DodoBehaviour : MonoBehaviour {
 
 		if (toRemove != MAX_VECTOR2) { 
 			potentialBlocks.Remove (toRemove);
-			print ("Removed: " + toRemove);
 		}
 		return potentialBlocks;
 	}
