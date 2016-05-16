@@ -109,7 +109,115 @@ ModelImporter:
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Take 001
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 48
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: dodoidleanimation:group
+        weight: 1
+      - path: group1
+        weight: 1
+      - path: group1/controls
+        weight: 1
+      - path: group1/controls/dodoidleanimation:controlnerbs
+        weight: 1
+      - path: group1/controls/dodoidleanimation:controlnerbs/dodoidleanimation:nurbsCircle1
+        weight: 1
+      - path: group1/controls/dodoidleanimation:controlnerbs/dodoidleanimation:nurbsCircle2
+        weight: 1
+      - path: group1/controls/dodoidleanimation:controlnerbs/dodoidleanimation:nurbsCircle3
+        weight: 1
+      - path: group1/controls/dodoidleanimation:controlnerbs/dodoidleanimation:nurbsCircle4
+        weight: 1
+      - path: group1/controls/dodoidleanimation:controlnerbs/dodoidleanimation:nurbsCircle5
+        weight: 1
+      - path: group1/controls/dodoidleanimation:controlnerbs/dodoidleanimation:nurbsCircle7
+        weight: 1
+      - path: group1/controls/dodoidleanimation:controlnerbs/dodoidleanimation:nurbsCircle8
+        weight: 1
+      - path: group1/controls/dodoidleanimation:nurbsCircle6
+        weight: 1
+      - path: group1/mesh
+        weight: 1
+      - path: group1/mesh/dodoidleanimation:polySurface1
+        weight: 1
+      - path: group1/skeleton
+        weight: 1
+      - path: group1/skeleton/dodoidleanimation:ikHandle1
+        weight: 1
+      - path: group1/skeleton/dodoidleanimation:ikHandle2
+        weight: 1
+      - path: group1/skeleton/dodoidleanimation:ikHandle3
+        weight: 1
+      - path: group1/skeleton/dodoidleanimation:ikHandle4
+        weight: 1
+      - path: group1/skeleton/dodoidleanimation:joint1
+        weight: 1
+      - path: group1/skeleton/dodoidleanimation:joint1/dodoidleanimation:joint2
+        weight: 1
+      - path: group1/skeleton/dodoidleanimation:joint1/dodoidleanimation:joint2/dodoidleanimation:joint3
+        weight: 1
+      - path: group1/skeleton/dodoidleanimation:joint1/dodoidleanimation:joint2/dodoidleanimation:joint3/dodoidleanimation:joint4
+        weight: 1
+      - path: group1/skeleton/dodoidleanimation:joint1/dodoidleanimation:joint2/dodoidleanimation:joint3/dodoidleanimation:joint4/dodoidleanimation:joint5
+        weight: 1
+      - path: group1/skeleton/dodoidleanimation:joint1/dodoidleanimation:joint6
+        weight: 1
+      - path: group1/skeleton/dodoidleanimation:joint1/dodoidleanimation:joint6/dodoidleanimation:joint7
+        weight: 1
+      - path: group1/skeleton/dodoidleanimation:joint1/dodoidleanimation:joint6/dodoidleanimation:joint7/dodoidleanimation:joint8
+        weight: 1
+      - path: group1/skeleton/dodoidleanimation:joint1/dodoidleanimation:joint6/dodoidleanimation:joint7/dodoidleanimation:joint8/dodoidleanimation:joint9
+        weight: 1
+      - path: group1/skeleton/dodoidleanimation:joint1/dodoidleanimation:joint10
+        weight: 1
+      - path: group1/skeleton/dodoidleanimation:joint1/dodoidleanimation:joint10/dodoidleanimation:joint11
+        weight: 1
+      - path: group1/skeleton/dodoidleanimation:joint1/dodoidleanimation:joint10/dodoidleanimation:joint11/dodoidleanimation:joint12
+        weight: 1
+      - path: group1/skeleton/dodoidleanimation:joint1/dodoidleanimation:joint10/dodoidleanimation:joint11/dodoidleanimation:joint12/dodoidleanimation:joint13
+        weight: 1
+      - path: group1/skeleton/dodoidleanimation:joint1/dodoidleanimation:joint10/dodoidleanimation:joint11/dodoidleanimation:joint12/dodoidleanimation:joint14
+        weight: 1
+      - path: group1/skeleton/dodoidleanimation:joint1/dodoidleanimation:joint10/dodoidleanimation:joint15
+        weight: 1
+      - path: group1/skeleton/dodoidleanimation:joint1/dodoidleanimation:joint10/dodoidleanimation:joint15/dodoidleanimation:joint16
+        weight: 1
+      - path: group1/skeleton/dodoidleanimation:joint1/dodoidleanimation:joint10/dodoidleanimation:joint15/dodoidleanimation:joint16/dodoidleanimation:joint17
+        weight: 1
+      - path: group1/skeleton/dodoidleanimation:joint1/dodoidleanimation:joint10/dodoidleanimation:joint18
+        weight: 1
+      - path: group1/skeleton/dodoidleanimation:joint1/dodoidleanimation:joint10/dodoidleanimation:joint18/dodoidleanimation:joint19
+        weight: 1
+      - path: group1/skeleton/dodoidleanimation:joint1/dodoidleanimation:joint10/dodoidleanimation:joint18/dodoidleanimation:joint19/dodoidleanimation:joint20
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
     isReadable: 1
   meshes:
     lODScreenPercentages: []
