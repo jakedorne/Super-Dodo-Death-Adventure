@@ -41,7 +41,7 @@ public class LevelManager: MonoBehaviour {
 		dodoDeathCount++;
 		if (dodoDeathCount + dodoFinishedCount == noDodos) {
 			// Finished the level
-			finish();
+			levelgui.CompleteLevel();
 		}
 	}
 
@@ -50,7 +50,7 @@ public class LevelManager: MonoBehaviour {
 		dodoFinishedCount++;
 		if (dodoDeathCount + dodoFinishedCount == noDodos) {
 			// Finished the level
-			finish();
+			levelgui.CompleteLevel();
 		}
 	}
 

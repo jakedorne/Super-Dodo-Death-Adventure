@@ -37,7 +37,11 @@ public class DodoBehaviour : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
+		if (transform.position.y < 0) {
+			Destroy (this.gameObject);
+			LevelManager script = FindObjectOfType<LevelManager> ();
+			script.dodoDeath ();
+		}
 			
 
 	}
