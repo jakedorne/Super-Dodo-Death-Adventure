@@ -13,12 +13,14 @@ public class DodoBehaviour : MonoBehaviour {
 	private int lastX;
 	private int lastZ;
 
-	private float lerpTime = 100f;
+	private float lerpTime = 1f;
 	private float currentLerpTime;
 
 	private Animator anim;
 
 	public static Vector2 MAX_VECTOR2 = new Vector2 (float.MaxValue, float.MaxValue);
+    private Vector3 startPosition;
+    private Vector3 endPosition;
 	private Vector2 target;
 
 
@@ -30,21 +32,42 @@ public class DodoBehaviour : MonoBehaviour {
 		currentZ = floorScript.startZ;
 		anim = GetComponent<Animator> ();
 		target = new Vector2 (floorScript.endX, floorScript.endZ);
-		InvokeRepeating ("moveCycle", 0.5f, 1f);
+        //InvokeRepeating ("moveCycle", 0.5f, 1f);
+        moveCycle();
+        transform.LookAt(endPosition);
 
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		if (transform.position.y < 0) {
-			Destroy (this.gameObject);
-			LevelManager script = FindObjectOfType<LevelManager> ();
-			script.dodoDeath ();
-		}
-			
+    }
 
-	}
+    // Update is called once per frame
+    void Update()
+    {
+        if (transform.position.y < 0)
+        {
+            Destroy(this.gameObject);
+            LevelManager script = FindObjectOfType<LevelManager>();
+            script.dodoDeath();
+        }
+        if (floorScript.getCoordAtVector(endPosition) == target)
+        {
+            // clean this shit up eventually
+            LevelManager script = FindObjectOfType<LevelManager>();
+            script.dodoFinished();
+            Destroy(this.gameObject);
+        }
+        //First, check if we have reached our target. If we have, set a new target.
+        if (endPosition==Vector3.zero)
+        {
+            //Walking off an edge. Have to scale it down so the dodo doesnt shoot off the end
+            transform.position += transform.forward * 0.02f;
+        } else if (transform.position != endPosition)
+        {
+            moveDodo(startPosition,endPosition);
+        } else
+        {
+            currentLerpTime = 0f;
+            moveCycle();
+        }
+    }
 
 	//These methods are not currently working.
 	private void moveCycle() {
@@ -58,7 +81,7 @@ public class DodoBehaviour : MonoBehaviour {
 		potentialBlocks = removeLastPos (potentialBlocks);
 
 		if (potentialBlocks.Count == 0) {
-			transform.position = transform.position + transform.forward;
+            endPosition = Vector3.zero;
 			return;
 		}
 
@@ -69,32 +92,24 @@ public class DodoBehaviour : MonoBehaviour {
 		currentX = (int)bestBlock.x;
 		currentZ = (int)bestBlock.y;
 
-		moveDodo(transform.position, floorScript.getVectorAtCoords((int)bestBlock.x, (int)bestBlock.y));
-	}
+        startPosition = transform.position;
+        endPosition = floorScript.getVectorAtCoords((int)bestBlock.x, (int)bestBlock.y);
+
+        transform.LookAt(endPosition);
+
+        //moveDodo(transform.position, floorScript.getVectorAtCoords((int)bestBlock.x, (int)bestBlock.y));
+    }
 
 	private void moveDodo(Vector3 startPosition, Vector3 endPosition) {
 		//Lerp tutorial from: https://chicounity3d.wordpress.com/2014/05/23/how-to-lerp-like-a-pro/
-		transform.LookAt(endPosition);
-		currentLerpTime = 0f;
-		//anim.SetBool ("isWalking", true);
-		while (transform.position != endPosition) {
-			currentLerpTime += Time.deltaTime;
-			if (currentLerpTime > lerpTime) {
-				currentLerpTime = lerpTime;
-			}
-
-			float t = currentLerpTime / lerpTime;
-			t = t * t * t * (t * (3f * t - 7f) + 5f);
-			transform.position = Vector3.Lerp (startPosition, endPosition, t);
+		currentLerpTime += Time.deltaTime;
+		if (currentLerpTime > lerpTime) {
+			currentLerpTime = lerpTime;
 		}
-		//anim.SetBool ("isWalking", false);
 
-		if(floorScript.getCoordAtVector(endPosition) == target){
-			// clean this shit up eventually
-			LevelManager script = FindObjectOfType<LevelManager> ();
-			script.dodoFinished ();
-			Destroy (this.gameObject);
-		}
+		float t = currentLerpTime / lerpTime;
+		t = t * t * t * (t * (3f * t - 7f) + 5f);
+		transform.position = Vector3.Lerp (startPosition, endPosition, t);
 	}
 	
 	private List<Vector2> removeLastPos(List<Vector2> potentialBlocks) {
