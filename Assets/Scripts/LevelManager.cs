@@ -39,9 +39,12 @@ public class LevelManager: MonoBehaviour {
 		if(Input.GetKeyDown(KeyCode.L)){
 			dodoFinished();
 		}
-
+			
 		if (Input.GetMouseButtonDown (0) && levelCompleted) {
 			GameManager.finishedLevel(levelID, score);
+		}
+		if (Input.GetKeyDown (KeyCode.Space) && levelCompleted) {
+			GameManager.reloadLevel ();
 		}
 	}
 

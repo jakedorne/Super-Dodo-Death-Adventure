@@ -44,6 +44,11 @@ public class GameManager : MonoBehaviour {
 		SceneManager.LoadScene(name);
 	}
 
+	public static void reloadLevel(){
+		Scene scene = SceneManager.GetActiveScene(); 
+		SceneManager.LoadScene(scene.name);
+	}
+
 	// ================================ LEVELS. THIS SHIT'S GONNA BE UGLY ================================ //
 	public static int[,] getLevel(int levelNumber){
 		switch (levelNumber) {

@@ -100,7 +100,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Click anywhere on screen to continue
+  m_Text: Click anywhere on screen to continue, or hit space to replay the level.
 --- !u!114 &11421058
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -233,7 +233,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: -24.200005}
-  m_SizeDelta: {x: -150, y: -80}
+  m_SizeDelta: {x: -120, y: -80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &22446444
 RectTransform:
