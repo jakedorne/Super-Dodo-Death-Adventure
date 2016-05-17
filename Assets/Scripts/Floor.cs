@@ -20,10 +20,10 @@ public class Floor : MonoBehaviour {
 	public int endX;
 	public int endZ;
 
-	private static int mapSize = 20;
+	private static int mapSize;
 
 	// 0 = empty, 1 = block down, 2 = block hovered on (green), 3 = unplaceable space, 9 = block hovered on (red)
-	private int[,] blocks = new int[mapSize, mapSize];
+	private int[,] blocks;
 
 
 	// Use this for initialization
@@ -35,6 +35,7 @@ public class Floor : MonoBehaviour {
 		blockZLength = blockObject.GetComponent<Collider>().bounds.size.z;
 
 		blocks = GameManager.getLevel (SceneManager.GetActiveScene().buildIndex);
+        mapSize = blocks.GetLength(0);
 		renderMap ();
 	}
 
@@ -82,16 +83,17 @@ public class Floor : MonoBehaviour {
 	/// <summary>
 	/// Returns true if a tetris block formation can be placed at an index.
 	/// </summary>
-	private bool FormationFits(int row, int col, int[,] formation){
+	public bool FormationFits(int row, int col, int[,] formation){
 		for(int i = 0; i < formation.GetLength(0); i++){
 			for(int j = 0; j < formation.GetLength(1); j++){
-				if ((row + i >= mapSize || row + i < 0) && formation [i, j] == 1) {
+                //Debug.Log("row: " + row + ", col: " + col + ", i: " + i + ", j: " + j);
+				if ((row + i >= blocks.GetLength(0) || row + i < 0) && formation [i, j] == 1) {
 					// part of block is off map
 					return false;
-				} else if ((col + j >= mapSize || col + j < 0) && formation [i, j] == 1) {
+				} else if ((col + j >= blocks.GetLength(1) || col + j < 0) && formation [i, j] == 1) {
 					// part of block is off map
 					return false;
-				} else if (formation[i,j]==1 && blocks[row+i,col+j]==1 || formation[i,j]==1 && blocks[row+i,col+j]==3){
+				} else if (formation[i,j]==1 && (blocks[row+i,col+j]==1 || blocks[row+i,col+j]==3)){
 					// part of block is on another block or unplaceable spot
 					return false;
 				}

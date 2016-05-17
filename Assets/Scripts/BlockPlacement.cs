@@ -161,6 +161,14 @@ public class BlockPlacement : MonoBehaviour {
         getFloor();
         //Mostly copied from Floor class
         int[,] formation = tetrisBlock.GetBlocks();
+        int blockType = 0;
+        if (this.GetComponent<Floor>().FormationFits(row,col,formation))
+        {
+            blockType = 2; //If the block fits, show in green
+        } else
+        {
+            blockType = 9; //If the block doesn't fit, show in red
+        }
         for (int i = 0; i < formation.GetLength(0); i++)
         {
             for (int j = 0; j < formation.GetLength(1); j++)
@@ -174,15 +182,10 @@ public class BlockPlacement : MonoBehaviour {
                 } else if (formation[i, j] == 1 && blocks[row + i, col + j] == 1)
                 {
                     // part of block is on another block
-                } else if (formation[i, j] == 1 && blocks[row + i, col + j] == 3)
+                } else if (formation[i, j] == 1 && (blocks[row + i, col + j] == 0 || blocks[row + i, col + j] == 3))
                 {
-                    // part of block is in an unplaceable spot
-                    blocks[row + i, col + j] = 9;
-
-                } else if (formation[i, j] == 1 && blocks[row + i, col + j] == 0)
-                {
-                    // Block can be placed here!
-                    blocks[row + i, col + j] = 2;
+                    // part of block is on another block or unplaceable spot
+                    blocks[row + i, col + j] = blockType;
                 }
             }
         }
@@ -196,5 +199,14 @@ public class BlockPlacement : MonoBehaviour {
 		tetrisBlock.SetShape(shape);
 		turnBlockPlacementOn(tetrisBlock);
 	}
+
+    public bool isBlockPlacementOn()
+    {
+        if (tetrisBlock != null)
+        {
+            return true;
+        }
+        return false;
+    }
 
 }
