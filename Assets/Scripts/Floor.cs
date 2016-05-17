@@ -130,4 +130,11 @@ public class Floor : MonoBehaviour {
 		return new Vector2(Mathf.Round(vector.x / blockXLength), Mathf.Round(vector.z / blockZLength));
     }
 
+    public void createObstacle(Vector2 blockPosition) {
+        float x = blockPosition.x;
+        float z = blockPosition.y;
+        blocks[(int)blockPosition.x, (int)blockPosition.y] = 3;
+        Instantiate(tree, new Vector3((x) * blockXLength, 0 + blockPrefab.GetComponent<MeshRenderer>().bounds.size.y, (z) * blockZLength), Quaternion.identity);
+    }
+
 }
