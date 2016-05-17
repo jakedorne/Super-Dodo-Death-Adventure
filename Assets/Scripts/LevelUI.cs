@@ -5,10 +5,14 @@ using UnityEngine.UI;
 public class LevelUI : MonoBehaviour {
 
 	public RectTransform completeLevel;
+	InventoryUI inventoryUI;
+	ExtinctionMeterUI extinctionMeterUI;
 
 	// Use this for initialization
-	void Start () {
+	void Awake () {
 		completeLevel = completeLevel.GetComponent<RectTransform> ();
+		inventoryUI = transform.FindChild ("Inventory").GetComponent<InventoryUI>();
+		extinctionMeterUI = transform.FindChild ("ExtinctionMeter").GetComponent<ExtinctionMeterUI>();
 	}
 
 	public void CompleteLevel(int score){
@@ -18,4 +22,11 @@ public class LevelUI : MonoBehaviour {
 		comLevel.transform.SetParent (transform, false);
 	}
 
+	public void updateInventory(){
+		inventoryUI.updateInventory ();
+	}
+
+	public void lowerExtinctionCount (){
+		extinctionMeterUI.lowerExtinctionCount ();
+	}
 }

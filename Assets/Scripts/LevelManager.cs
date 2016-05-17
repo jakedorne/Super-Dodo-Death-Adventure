@@ -10,7 +10,6 @@ public class LevelManager: MonoBehaviour {
 	public int noDodos;
 
 	public GameObject floor;
-	public InventoryUI gui;
 	public LevelUI levelgui;
 
 	private int dodoDeathCount;
@@ -19,11 +18,8 @@ public class LevelManager: MonoBehaviour {
 	private int score;
 
 	void Start(){
-		gui = gui.GetComponent<InventoryUI> ();
-
-		gui.updateInventory ();
-
 		levelgui = levelgui.GetComponent<LevelUI> ();
+		levelgui.updateInventory ();
 
 		dodoDeathCount = 0;
 		dodoFinishedCount = 0;
@@ -54,13 +50,14 @@ public class LevelManager: MonoBehaviour {
 
 	public void removeTile(TetrisBlock.Shape type){
 		blocks.Remove (type);
-		gui.updateInventory ();
+		levelgui.updateInventory ();
 
 	}
 
 	// Called everytime a dodo dies
 	public void dodoDeath(){
 		dodoDeathCount++;
+		levelgui.lowerExtinctionCount ();
 		if (dodoDeathCount + dodoFinishedCount == noDodos) {
 			// Finished the level
 			calculateScore();
