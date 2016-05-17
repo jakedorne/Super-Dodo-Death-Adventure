@@ -9,6 +9,8 @@ public class Floor : MonoBehaviour {
 	public GameObject tetrisPrefab;
 	public GameObject spikePrefab;
 
+	public Spawner spawner;
+
 	private float blockXLength;
 	private float blockZLength;
 
@@ -30,6 +32,8 @@ public class Floor : MonoBehaviour {
 	void Start () {
 		// absolutely ashamed of this line -- is used for finding the length of the blocks..
 		GameObject blockObject = (GameObject) Instantiate(blockPrefab, new Vector3(-1000,-1000,-1000), Quaternion.identity);
+		spawner = GetComponentInChildren<Spawner> ();
+		print (spawner);
 
 		blockXLength = blockObject.GetComponent<Collider>().bounds.size.x;
 		blockZLength = blockObject.GetComponent<Collider>().bounds.size.z;
@@ -73,6 +77,11 @@ public class Floor : MonoBehaviour {
 
 					}
 				}
+			}
+
+			// starts spawning on first block placement
+			if (!spawner.hasStarted ()) {
+				spawner.beginSpawning ();
 			}
 			return true;
 		}

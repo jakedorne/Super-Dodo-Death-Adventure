@@ -15,6 +15,8 @@ public class Spawner : MonoBehaviour {
 	private int startX;
 	private int startZ;
 
+	private bool started = false;
+
 
 	// Use this for initialization
 	void Start () {
@@ -25,7 +27,6 @@ public class Spawner : MonoBehaviour {
 		startX = floor.GetComponent<Floor> ().startX;
 		startZ = floor.GetComponent<Floor> ().startZ;
 
-		InvokeRepeating ("spawnDodo", 0f, dodoSpawnTimer);
 	}
 	
 	// Update is called once per frame
@@ -34,9 +35,18 @@ public class Spawner : MonoBehaviour {
 	
 	}
 
+	public void beginSpawning(){
+		started = true;
+		InvokeRepeating ("spawnDodo", 0f, dodoSpawnTimer);
+	}
+
 	void spawnDodo() {
 		dodoList[dodoCount] = (GameObject)Instantiate (dodoPrefab, floor.GetComponent<Floor> ().getVectorAtCoords (startX, startZ), Quaternion.identity);
 		dodoCount++;
 		if (dodoCount >= dodosToSpawn) CancelInvoke ("spawnDodo");
+	}
+
+	public bool hasStarted(){
+		return started;
 	}
 }
