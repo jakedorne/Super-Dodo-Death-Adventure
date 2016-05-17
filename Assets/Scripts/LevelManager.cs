@@ -15,15 +15,31 @@ public class LevelManager: MonoBehaviour {
 
 	private int dodoDeathCount;
 	private int dodoFinishedCount;
+	private bool levelCompleted;
+	private int score;
 
 	void Start(){
 		gui = gui.GetComponent<InventoryUI> ();
-		gui.updateGUI ();
+		gui.updateInventory ();
 
 		levelgui = levelgui.GetComponent<LevelUI> ();
 
 		dodoDeathCount = 0;
 		dodoFinishedCount = 0;
+
+		levelCompleted = false;
+	}
+
+	void Update(){
+		if (Input.GetKeyDown (KeyCode.K)) {
+			dodoDeath ();
+		}
+		if(Input.GetKeyDown(KeyCode.L)){
+			dodoFinished();
+		}
+		if (Input.GetMouseButtonDown (0) && levelCompleted) {
+			GameManager.finishedLevel(levelID, score);
+		}
 	}
 
 	public void addTile(TetrisBlock.Shape shape){
@@ -32,7 +48,7 @@ public class LevelManager: MonoBehaviour {
 
 	public void removeTile(TetrisBlock.Shape type){
 		blocks.Remove (type);
-		gui.updateGUI ();
+		gui.updateInventory ();
 
 	}
 
@@ -41,7 +57,9 @@ public class LevelManager: MonoBehaviour {
 		dodoDeathCount++;
 		if (dodoDeathCount + dodoFinishedCount == noDodos) {
 			// Finished the level
-			levelgui.CompleteLevel();
+			calculateScore();
+			levelCompleted = true;
+			levelgui.CompleteLevel(score);
 		}
 	}
 
@@ -50,11 +68,16 @@ public class LevelManager: MonoBehaviour {
 		dodoFinishedCount++;
 		if (dodoDeathCount + dodoFinishedCount == noDodos) {
 			// Finished the level
-			levelgui.CompleteLevel();
+			calculateScore();
+			levelCompleted = true;
+			levelgui.CompleteLevel(score);
 		}
 	}
 
-	public void finish(){
-		GameManager.finishedLevel(levelID);
+	public void calculateScore(){
+		// Needs to be discussed
+		score = dodoFinishedCount * 10;
 	}
+		
+		
 }

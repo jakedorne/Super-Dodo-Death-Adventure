@@ -12,7 +12,7 @@ public class InventoryUI : MonoBehaviour {
 		tileButton = tileButton.GetComponent<Button> ();
 	}
 
-	public void updateGUI(){
+	public void updateInventory(){
 		// First remove the inventory that is currently displayed:
 		int childs = transform.childCount;
 		for (int i = 0; i < childs; i++)
