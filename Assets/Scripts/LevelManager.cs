@@ -20,6 +20,7 @@ public class LevelManager: MonoBehaviour {
 
 	void Start(){
 		gui = gui.GetComponent<InventoryUI> ();
+
 		gui.updateInventory ();
 
 		levelgui = levelgui.GetComponent<LevelUI> ();
@@ -31,12 +32,14 @@ public class LevelManager: MonoBehaviour {
 	}
 
 	void Update(){
+		// For testing purposes
 		if (Input.GetKeyDown (KeyCode.K)) {
 			dodoDeath ();
 		}
 		if(Input.GetKeyDown(KeyCode.L)){
 			dodoFinished();
 		}
+
 		if (Input.GetMouseButtonDown (0) && levelCompleted) {
 			GameManager.finishedLevel(levelID, score);
 		}

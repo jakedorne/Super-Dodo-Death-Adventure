@@ -24,10 +24,22 @@ public class InventoryUI : MonoBehaviour {
 		LevelManager manager = managerGO.GetComponent<LevelManager> ();
 		List<TetrisBlock.Shape> blocks = manager.blocks;
 
-		foreach (TetrisBlock.Shape block in blocks) {
+		Dictionary<TetrisBlock.Shape, int> formattedInventory = new Dictionary<TetrisBlock.Shape, int> ();
+		foreach(TetrisBlock.Shape block in blocks){
+			if (!formattedInventory.ContainsKey (block)) {
+				formattedInventory.Add (block, 1);
+			} else {
+				int amount = formattedInventory[block];
+				formattedInventory [block] = amount + 1;
+			}
+		}
+
+		foreach (TetrisBlock.Shape key in formattedInventory.Keys) {
+			int amount = formattedInventory [key];
 			Button button = Instantiate (tileButton);
 			button.transform.SetParent (transform, false);
-			button.GetComponent<InventoryButton> ().value = block;
+			button.GetComponent<InventoryButton> ().value = key;
+			button.GetComponent<InventoryButton> ().amount = amount;
 		}
 
 	}
