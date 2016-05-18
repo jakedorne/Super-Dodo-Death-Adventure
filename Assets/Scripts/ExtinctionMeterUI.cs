@@ -4,7 +4,18 @@ using UnityEngine.UI;
 
 public class ExtinctionMeterUI : MonoBehaviour {
 
+	public float pointerSpeed = 0.20f;
+
 	float decrementConstant; 
+	Vector2 pointerDestination;
+
+	void Update(){
+		Transform pointer = transform.FindChild ("Pointer");
+		Vector2 pointerCurrentPos = new Vector2 (pointer.position.x, pointer.position.z);
+		if (pointerCurrentPos != pointerDestination) {
+			pointer.transform.position  = Vector2.Lerp(pointer.transform.position, pointerDestination, pointerSpeed);
+		}
+	}
 
 	void Start(){
 		// Set the position of the pointer
@@ -19,11 +30,15 @@ public class ExtinctionMeterUI : MonoBehaviour {
 		LevelManager manager = FindObjectOfType<LevelManager> ();
 
 		decrementConstant = difference / manager.noDodos;
+
+		// Set the current destination as being start position
+		pointerDestination = new Vector2 (pointer.position.x, pointer.position.z);
 	}
 
 	public void lowerExtinctionCount(){
 		Transform pointer = transform.FindChild ("Pointer");
-		pointer.transform.position = new Vector2 ((pointer.position.x - decrementConstant), pointer.position.y);
+		// pointer.transform.position = new Vector2 ((pointer.position.x - decrementConstant), pointer.position.y);
+		pointerDestination = new Vector2 ((pointer.position.x - decrementConstant), pointer.position.y);
 	}
 
 
