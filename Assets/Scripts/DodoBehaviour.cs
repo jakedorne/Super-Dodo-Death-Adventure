@@ -80,7 +80,7 @@ public class DodoBehaviour : MonoBehaviour {
 		List<Vector2> potentialBlocks = new List<Vector2> ();
 		Vector2 bestBlock = MAX_VECTOR2;
 
-		Vector2 left = floorScript.getCoordAtVector (transform.right);
+		Vector2 left = floorScript.getCoordAtVector (transform.right*-1);
 		Vector2 right = floorScript.getCoordAtVector (transform.right);
 		Vector2 forward = floorScript.getCoordAtVector (transform.forward);
 
