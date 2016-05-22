@@ -64,7 +64,7 @@ public class DodoBehaviour : MonoBehaviour {
             transform.position += transform.forward * 0.02f / lerpTime;
         } else if (transform.position != endPosition)
         {
-			print ("I should be moving to: "  + endPosition);
+			//print ("I should be moving to: "  + endPosition);
 			anim.SetBool("isWalking", true);
             moveDodo(startPosition,endPosition);
         } else
@@ -80,11 +80,11 @@ public class DodoBehaviour : MonoBehaviour {
 		List<Vector2> potentialBlocks = new List<Vector2> ();
 		Vector2 bestBlock = MAX_VECTOR2;
 
-		Vector2 left = floorScript.getCoordAtVector (transform.right*-1);
-		Vector2 right = floorScript.getCoordAtVector (transform.right);
-		Vector2 forward = floorScript.getCoordAtVector (transform.forward);
+		Vector2 left = floorScript.getCoordAtVector (transform.position + transform.right*-1);
+		Vector2 right = floorScript.getCoordAtVector (transform.position + transform.right);
+		Vector2 forward = floorScript.getCoordAtVector (transform.position + transform.forward);
 
-		print ("World - Left: " + transform.right + " Right: " + transform.right + " Forward: " + transform.forward);
+		print ("World - Left: " + (transform.position + transform.right)*-1 + " Right: " + (transform.position + transform.right) + " Forward: " + (transform.position + transform.forward));
 		print ("Grid - Left: " + left + " Right: " + right + " Forward: " + forward);
 
 		if(floorScript.positionOnBlock((int)forward.x, (int)forward.y)) {
@@ -97,7 +97,7 @@ public class DodoBehaviour : MonoBehaviour {
 				if (floorScript.positionOnBlock ((int)right.x, (int)right.y)) {
 					//can go both left and right, choose random
 					print("Yo you good to go either, pick one");
-					int randBlock = Random.Range(0, 1);
+					int randBlock = Random.Range(0, 2);
 					if (randBlock == 0) bestBlock = left;
 					else bestBlock = right;
 				} else {
@@ -112,7 +112,7 @@ public class DodoBehaviour : MonoBehaviour {
 			} else {
 				//walk off edge
 				print("Yo kys");
-				bestBlock = forward;
+				bestBlock = MAX_VECTOR2;
 			}
 		}
 
