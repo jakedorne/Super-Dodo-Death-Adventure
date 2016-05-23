@@ -14,7 +14,6 @@ public class PathFinder : MonoBehaviour {
 	void Start () {
 		floor = GameObject.Find ("Floor");
 		floorScript = floor.GetComponent<Floor> ();
-		//rebuildTree ();
 	}
 	
 	// Update is called once per frame
@@ -24,8 +23,8 @@ public class PathFinder : MonoBehaviour {
 
 	public void rebuildTree() {
 		moveTree = buildTree (new Vector2 (floorScript.startX, floorScript.startZ));
-		print("Tree built");
-		printTree (moveTree);
+		//print("Tree built");
+		//printTree (moveTree);
 	}
 
 	private Move buildTree(Vector2 position) {
@@ -37,12 +36,10 @@ public class PathFinder : MonoBehaviour {
 		Vector2 right = floorScript.getCoordAtVector (transform.position + transform.right);
 		Vector2 forward = floorScript.getCoordAtVector (transform.position + transform.forward);
 
-		print ("World - Left: " + (transform.position + transform.right)*-1 + " Right: " + (transform.position + transform.right) + " Forward: " + (transform.position + transform.forward));
-		print ("Grid - Left: " + left + " Right: " + right + " Forward: " + forward);
-
 		if(floorScript.positionOnBlock((int)forward.x, (int)forward.y)) {
 			//can go forward, therefore go forward
 			print("Adding forward child");
+			transform.LookAt (floorScript.getVectorAtCoords ((int)forward.x, (int)forward.y));
 			toReturn.setForward (buildTree (forward));
 			toReturn.setChildNum (1);
 		} 
@@ -51,18 +48,24 @@ public class PathFinder : MonoBehaviour {
 				if (floorScript.positionOnBlock ((int)right.x, (int)right.y)) {
 					//can go both left and right, choose random
 					print("Adding left and right children");
+					transform.LookAt (floorScript.getVectorAtCoords ((int)left.x, (int)left.y));
 					toReturn.setLeft (buildTree (left));
+
+					transform.LookAt (floorScript.getVectorAtCoords ((int)right.x, (int)right.y));
 					toReturn.setRight (buildTree (right));
+
 					toReturn.setChildNum (2);
 				} else {
 					//can only go left
 					print("Adding left child");
+					transform.LookAt (floorScript.getVectorAtCoords ((int)left.x, (int)left.y));
 					toReturn.setLeft (buildTree (left));
 					toReturn.setChildNum (1);
 				}
 			} else if (floorScript.positionOnBlock ((int)right.x, (int)right.y)) {
 				//can only go right
 				print("Adding right child");
+				transform.LookAt (floorScript.getVectorAtCoords ((int)right.x, (int)right.y));
 				toReturn.setRight (buildTree (right));
 				toReturn.setChildNum (1);
 			} else {
