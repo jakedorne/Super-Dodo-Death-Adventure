@@ -64,6 +64,7 @@ public class DodoBehaviour : MonoBehaviour {
             transform.position += transform.forward * 0.02f / lerpTime;
         } else if (transform.position != endPosition)
         {
+			//print ("I should be moving to: "  + endPosition);
 			anim.SetBool("isWalking", true);
             moveDodo(startPosition,endPosition);
         } else
@@ -77,20 +78,57 @@ public class DodoBehaviour : MonoBehaviour {
 	//These methods are not currently working.
 	private void moveCycle() {
 		List<Vector2> potentialBlocks = new List<Vector2> ();
+		Vector2 bestBlock = MAX_VECTOR2;
 
-		if(floorScript.positionOnBlock(currentX, currentZ+1))potentialBlocks.Add(new Vector2(currentX, currentZ+1));
-		if(floorScript.positionOnBlock(currentX, currentZ-1))potentialBlocks.Add(new Vector2(currentX, currentZ-1));
-		if(floorScript.positionOnBlock(currentX+1, currentZ)) potentialBlocks.Add(new Vector2(currentX+1, currentZ));
-		if(floorScript.positionOnBlock(currentX-1, currentZ))potentialBlocks.Add(new Vector2(currentX-1, currentZ));
+		Vector2 left = floorScript.getCoordAtVector (transform.position + transform.right*-1);
+		Vector2 right = floorScript.getCoordAtVector (transform.position + transform.right);
+		Vector2 forward = floorScript.getCoordAtVector (transform.position + transform.forward);
 
-		potentialBlocks = removeLastPos (potentialBlocks);
+		print ("World - Left: " + (transform.position + transform.right)*-1 + " Right: " + (transform.position + transform.right) + " Forward: " + (transform.position + transform.forward));
+		print ("Grid - Left: " + left + " Right: " + right + " Forward: " + forward);
 
-		if (potentialBlocks.Count == 0) {
+		if(floorScript.positionOnBlock((int)forward.x, (int)forward.y)) {
+			//can go forward, therefore go forward
+			print("Yo you good to go forward, to: " + forward);
+			bestBlock = forward;
+		} 
+		else {
+			if (floorScript.positionOnBlock ((int)left.x, (int)left.y)) {
+				if (floorScript.positionOnBlock ((int)right.x, (int)right.y)) {
+					//can go both left and right, choose random
+					print("Yo you good to go either, pick one");
+					int randBlock = Random.Range(0, 2);
+					if (randBlock == 0) bestBlock = left;
+					else bestBlock = right;
+				} else {
+					//can only go left
+					print("Yo you good to go left to: " + left);
+					bestBlock = left;
+				}
+			} else if (floorScript.positionOnBlock ((int)right.x, (int)right.y)) {
+				//can only go right
+				print("Yo you good to go right to: " + right);
+				bestBlock = right;
+			} else {
+				//walk off edge
+				print("Yo kys");
+				bestBlock = MAX_VECTOR2;
+			}
+		}
+
+		//if(floorScript.positionOnBlock(currentX, currentZ+1))potentialBlocks.Add(new Vector2(currentX, currentZ+1));
+		//if(floorScript.positionOnBlock(currentX, currentZ-1))potentialBlocks.Add(new Vector2(currentX, currentZ-1));
+		//if(floorScript.positionOnBlock(currentX+1, currentZ)) potentialBlocks.Add(new Vector2(currentX+1, currentZ));
+		//if(floorScript.positionOnBlock(currentX-1, currentZ))potentialBlocks.Add(new Vector2(currentX-1, currentZ));
+
+		//potentialBlocks = removeLastPos (potentialBlocks);
+
+		if (bestBlock == MAX_VECTOR2) {
             endPosition = Vector3.zero;
 			return;
 		}
 
-		Vector2 bestBlock = findBestBlock (potentialBlocks);
+		//bestBlock = findBestBlock (potentialBlocks);
 
 		lastX = currentX;
 		lastZ = currentZ;
