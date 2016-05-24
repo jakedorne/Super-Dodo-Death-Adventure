@@ -60,6 +60,7 @@
      <Compile Include="Assets\Scripts\LevelsMenu.cs" />
      <Compile Include="Assets\Scripts\Menu.cs" />
      <Compile Include="Assets\Scripts\ObstaclePlacer.cs" />
+     <Compile Include="Assets\Scripts\PathFinder.cs" />
      <Compile Include="Assets\Scripts\Spawner.cs" />
      <Compile Include="Assets\Scripts\TetrisBlock.cs" />
      <None Include="Assets\Lava_Flowing_Shader\Shaders\Unlit_Lava_Simple.shader" />
