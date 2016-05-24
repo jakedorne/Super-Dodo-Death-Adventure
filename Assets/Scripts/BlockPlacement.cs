@@ -155,11 +155,14 @@ public class BlockPlacement : MonoBehaviour {
         getFloor();
         togglePlacementGrid();
         bool blockAdded = this.GetComponent<Floor>().AddTetrisBlock(row, col, tetrisBlock);
+		GameObject manager = GameObject.FindGameObjectWithTag ("LevelManager");
 		if (blockAdded) {
-			GameObject manager = GameObject.FindGameObjectWithTag ("LevelManager");
-			manager.GetComponent<LevelManager> ().removeTile(tetrisBlock.shape);
-			this.tetrisBlock = null;
+			manager.GetComponent<LevelManager> ().removeTile (tetrisBlock.shape);
+		} else {
+			// update inventory so that the button is no longer selected
+			manager.GetComponent<LevelManager> ().levelgui.updateInventory ();
 		}
+		this.tetrisBlock = null;
     }
 
     public void turnBlockPlacementOff()
