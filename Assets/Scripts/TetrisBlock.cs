@@ -22,14 +22,19 @@ public class TetrisBlock : MonoBehaviour {
 	
 	}
 
-	public void Rotate(){
+	public void RotateLeft(){
 		int[,] temp = new int[blocks.GetLength(1),blocks.GetLength(0)];
 		for(int i=0; i<temp.GetLength(0); i++){
-        	for(int j = 0; j < temp.GetLength(1); j++){
+			for(int j = 0; j < temp.GetLength(1); j++){
 				temp[j,blocks.GetLength(0)-1-i] = blocks[i,j];
-        	}
-   		}
-   		blocks = temp;
+			}
+		}
+		blocks = temp;
+	}
+
+	public void RotateRight(){
+		// the shame...
+		RotateLeft (); RotateLeft (); RotateLeft ();
 	}
 
 	public void SetShape(Shape newShape){
