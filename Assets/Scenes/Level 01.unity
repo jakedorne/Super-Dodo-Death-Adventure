@@ -116,7 +116,6 @@ MonoBehaviour:
   blocks: 050000000300000001000000000000000300000004000000
   noDodos: 10
   floor: {fileID: 839605784}
-  gui: {fileID: 523086665}
   levelgui: {fileID: 1139561933}
 --- !u!4 &418068329
 Transform:
@@ -130,12 +129,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
---- !u!114 &523086665 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 11440930, guid: 9394afcf712bb44db992c5419ad26b00,
-    type: 2}
-  m_PrefabInternal: {fileID: 1352183400}
-  m_Script: {fileID: 11500000, guid: 5102f325636c649098eb30b05b6ed9b6, type: 3}
 --- !u!1 &742515543
 GameObject:
   m_ObjectHideFlags: 0
@@ -343,6 +336,30 @@ Prefab:
     - target: {fileID: 22467624, guid: 9394afcf712bb44db992c5419ad26b00, type: 2}
       propertyPath: m_Pivot.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22416316, guid: 9394afcf712bb44db992c5419ad26b00, type: 2}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 22416316, guid: 9394afcf712bb44db992c5419ad26b00, type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: -37.699997
+      objectReference: {fileID: 0}
+    - target: {fileID: 22416316, guid: 9394afcf712bb44db992c5419ad26b00, type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 72
+      objectReference: {fileID: 0}
+    - target: {fileID: 22416316, guid: 9394afcf712bb44db992c5419ad26b00, type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 22416316, guid: 9394afcf712bb44db992c5419ad26b00, type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 243.49997
+      objectReference: {fileID: 0}
+    - target: {fileID: 22416316, guid: 9394afcf712bb44db992c5419ad26b00, type: 2}
+      propertyPath: m_SizeDelta.x
+      value: -487
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9394afcf712bb44db992c5419ad26b00, type: 2}
