@@ -37,13 +37,21 @@ public class BlockPlacement : MonoBehaviour {
             } 
         }
         //Block rotation
-        if (Input.GetKeyDown("r") || Input.GetAxis("Mouse ScrollWheel")>0)
+        if (Input.GetAxis("Mouse ScrollWheel")>0)
         {
             if (placingBlocks)
             {
-                tetrisBlock.Rotate();
-            }
-        } else if (Input.GetKeyDown("t") || Input.GetAxis("Mouse ScrollWheel") < 0)
+                tetrisBlock.RotateLeft();
+            } 
+        } 
+		else if (Input.GetAxis("Mouse ScrollWheel")<0) 
+		{
+			if (placingBlocks)
+			{
+				tetrisBlock.RotateRight();
+			}	
+		}
+		else if (Input.GetKeyDown("t") || Input.GetAxis("Mouse ScrollWheel") < 0)
         {
             if (placingBlocks)
             {
