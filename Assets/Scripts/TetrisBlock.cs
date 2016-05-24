@@ -10,7 +10,7 @@ public class TetrisBlock : MonoBehaviour {
 				};
 	public Shape shape = Shape.L;
 
-	public enum Shape{L, T, CROSS, C, LINE, S};
+	public enum Shape{L, T, CROSS, C, LINE, S, Z};
 
 	// Use this for initialization
 	void Start () {
@@ -70,10 +70,9 @@ public class TetrisBlock : MonoBehaviour {
 				break;
 			case Shape.LINE:
 				blocks = new int[,]{
-					{0,1,0,0},
-					{0,1,0,0},
-					{0,1,0,0},
-					{0,1,0,0}
+					{0,1,0},
+					{0,1,0},
+					{0,1,0}
 				};
 				break;
 			case Shape.S:
@@ -83,6 +82,13 @@ public class TetrisBlock : MonoBehaviour {
 					{0,0,1}
 				};
 				break;
+            case Shape.Z:
+                blocks = new int[,]{
+                    {0,0,1},
+                    {0,1,1},
+                    {0,1,0}
+                };
+                break;
 
         }
 	}

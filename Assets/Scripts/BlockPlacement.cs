@@ -15,8 +15,13 @@ public class BlockPlacement : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-		selectorBlockColor = Color.white;
-		selectorBlockColor.a = 0.5f;
+
+    }
+
+    public void initialisePlacementBlocks()
+    {
+        selectorBlockColor = Color.white;
+        selectorBlockColor.a = 0.5f;
         placingBlocks = false;
         mapSize = this.GetComponent<Floor>().getFloor().GetLength(0); //I expect this map to be square. Need to change slightly if rectangular
         blocks = new int[mapSize, mapSize];
@@ -151,12 +156,12 @@ public class BlockPlacement : MonoBehaviour {
 
     public void turnBlockPlacementOff(int row, int col)
     {
-        placingBlocks = false;
-        getFloor();
-        togglePlacementGrid();
         bool blockAdded = this.GetComponent<Floor>().AddTetrisBlock(row, col, tetrisBlock);
 		if (blockAdded) {
-			GameObject manager = GameObject.FindGameObjectWithTag ("LevelManager");
+            placingBlocks = false;
+            togglePlacementGrid();
+            getFloor();
+            GameObject manager = GameObject.FindGameObjectWithTag ("LevelManager");
 			manager.GetComponent<LevelManager> ().removeTile(tetrisBlock.shape);
 			this.tetrisBlock = null;
 		}
