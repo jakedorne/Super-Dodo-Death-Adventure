@@ -113,7 +113,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelID: 0
-  blocks: 00000000
+  blocks: 000000000300000001000000030000000500000004000000
   noDodos: 5
   floor: {fileID: 839605784}
   levelgui: {fileID: 1139561933}

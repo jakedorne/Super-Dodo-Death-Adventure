@@ -59,6 +59,7 @@ public class GameManager : MonoBehaviour {
 		switch (levelNumber) {
 		case 2:
 			return new int[,] {
+                /* for later as a first level
                 { 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
                 { 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
                 { 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
@@ -71,7 +72,7 @@ public class GameManager : MonoBehaviour {
                 { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
                 { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
                 { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
-                /* original level
+                */
 				{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
 				{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
 				{ 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
@@ -84,7 +85,7 @@ public class GameManager : MonoBehaviour {
 				{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0 },
 				{ 0, 0, 0, 0, 0, 3, 3, 0, 0, 0, 1, 1 },
 				{ 0, 0, 0, 0, 3, 3, 3, 0, 0, 0, 0, 1 },
-                */
+                
 
 			};	
 		case 3:
