@@ -28,14 +28,15 @@ public class BlockPlacement : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        //To be replaced - this will part will be done by the UI passing this block in
-        if (Input.GetKeyDown("space"))
-        {
-            if (placingBlocks)
-            {
-                turnBlockPlacementOff();
-            } 
-        }
+		if (Input.GetKeyDown("space"))
+		{
+			if (placingBlocks)
+			{
+				GameObject manager = GameObject.FindGameObjectWithTag ("LevelManager");
+				manager.GetComponent<LevelManager> ().levelgui.deselectBlocks();
+				turnBlockPlacementOff();
+			} 
+		}
         //Block rotation
         if (Input.GetAxis("Mouse ScrollWheel")>0)
         {
@@ -160,7 +161,7 @@ public class BlockPlacement : MonoBehaviour {
 			manager.GetComponent<LevelManager> ().removeTile (tetrisBlock.shape);
 		} else {
 			// update inventory so that the button is no longer selected
-			manager.GetComponent<LevelManager> ().levelgui.updateInventory ();
+			manager.GetComponent<LevelManager> ().levelgui.deselectBlocks();
 		}
 		this.tetrisBlock = null;
     }
@@ -171,6 +172,9 @@ public class BlockPlacement : MonoBehaviour {
         getFloor();
         togglePlacementGrid();
         this.tetrisBlock = null;
+		// deselect block
+		GameObject manager = GameObject.FindGameObjectWithTag ("LevelManager");
+		manager.GetComponent<LevelManager> ().levelgui.deselectBlocks();
     }
 
     public void showHoverOver(int row, int col)

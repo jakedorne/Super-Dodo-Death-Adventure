@@ -34,7 +34,7 @@ public class LevelUI : MonoBehaviour {
 		inventoryUI.tetrisBlockSelected (shapeSelected);
 	}
 
-	public void tetrisBlockDeselected(TetrisBlock.Shape deselectShape){
-		inventoryUI.tetrisBlockDeselected (deselectShape);
+	public void deselectBlocks(){
+		inventoryUI.deselectBlocks();
 	}
 }

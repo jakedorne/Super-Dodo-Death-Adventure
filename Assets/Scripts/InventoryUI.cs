@@ -55,15 +55,12 @@ public class InventoryUI : MonoBehaviour {
 		}
 	}
 
-	public void tetrisBlockDeselected(TetrisBlock.Shape shapeSelected){
+	public void deselectBlocks(){
 		int childs = transform.childCount;
 		for (int i = 0; i < childs; i++)
 		{
 			InventoryButton tileButton = transform.GetChild (i).GetComponent<InventoryButton> ();
-			if (tileButton.value == shapeSelected) {
-				tileButton.unselectButton ();
-				return;
-			}
+			tileButton.unselectButton ();
 		}
 	}
 

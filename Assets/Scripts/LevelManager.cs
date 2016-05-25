@@ -27,14 +27,6 @@ public class LevelManager: MonoBehaviour {
 	}
 
 	void Update(){
-		// For testing purposes
-		if (Input.GetKeyDown (KeyCode.K)) {
-			dodoDeath ();
-		}
-		if(Input.GetKeyDown(KeyCode.L)){
-			dodoFinished();
-		}
-
 		if (Input.GetMouseButtonDown (1)) {
 			if (blocks.Count != 0) {
 				TetrisBlock.Shape automaticBlock = getAutomaticBlock ();
@@ -58,7 +50,7 @@ public class LevelManager: MonoBehaviour {
 			block = blocks [0];
 		} else {
 			// If there is a block selected, need to deselect it
-			levelgui.tetrisBlockDeselected(currentBlock.shape);
+			levelgui.deselectBlocks();
 			// need to find the next block to toggle to
 			List<TetrisBlock.Shape> uniqueBlockTypes = new List<TetrisBlock.Shape> ();
 			foreach(TetrisBlock.Shape inventoryBlock in blocks){
