@@ -29,5 +29,13 @@ public class InventoryButton : MonoBehaviour {
 		GetComponent<Image> ().sprite = sprite;
 		manager.addTile (value);
 	}
+
+	public void unselectButton(){
+		GameObject managerGO = GameObject.FindGameObjectWithTag ("LevelManager");
+		LevelManager manager = managerGO.GetComponent<LevelManager> ();
+		string filename = value.ToString() + UNCLICKED_EXTENSION;
+		Sprite sprite = Resources.Load<Sprite>(filename);
+		GetComponent<Image> ().sprite = sprite;
+	}
 		
 }

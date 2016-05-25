@@ -226,4 +226,7 @@ public class BlockPlacement : MonoBehaviour {
         return false;
     }
 
+	public TetrisBlock getSelectedShape(){
+		return tetrisBlock;
+	}
 }
