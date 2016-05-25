@@ -8,12 +8,20 @@ public class PathFinder : MonoBehaviour {
 	private GameObject floor;
 	private Floor floorScript;
 
+	private GameObject trailMaker;
+
+	private Vector2 startPos;
+
 	private Move moveTree;
+
+	public GameObject trailPrefab;
 
 	// Use this for initialization
 	void Start () {
 		floor = GameObject.Find ("Floor");
 		floorScript = floor.GetComponent<Floor> ();
+		trailMaker = GameObject.Find ("TrailMaker");
+		startPos = new Vector2 (floorScript.startX, floorScript.startZ);
 	}
 	
 	// Update is called once per frame
@@ -22,9 +30,8 @@ public class PathFinder : MonoBehaviour {
 	}
 
 	public void rebuildTree() {
-		moveTree = buildTree (new Vector2 (floorScript.startX, floorScript.startZ));
-		//print("Tree built");
-		//printTree (moveTree);
+		moveTree = buildTree (startPos);
+		//buildTrail ();
 	}
 
 	private Move buildTree(Vector2 position) {
@@ -77,6 +84,16 @@ public class PathFinder : MonoBehaviour {
 
 		return toReturn;
 
+	}
+
+	public void buildTrail() {
+		Move currentNode = moveTree;
+
+		while (currentNode.getChildNum() != 2 && currentNode.getChildNum() != 0) {
+			Vector3 position = floorScript.getVectorAtCoords ((int)currentNode.getPosition ().x, (int)currentNode.getPosition ().y);
+			Instantiate (trailPrefab, position, Quaternion.identity);
+			currentNode = currentNode.findOnlyChild ();
+		}
 	}
 
 	public Vector2 findNextMove(Vector2 currentPosition) {
