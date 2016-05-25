@@ -22,12 +22,22 @@ public class InventoryButton : MonoBehaviour {
 	}
 
 	public void buttonClicked(){
+		// First deselect all blocks in case one is already selected
+		transform.parent.GetComponent<InventoryUI> ().deselectBlocks ();
 		GameObject managerGO = GameObject.FindGameObjectWithTag ("LevelManager");
 		LevelManager manager = managerGO.GetComponent<LevelManager> ();
 		string filename = value.ToString() + CLICKED_EXTENSION;
 		Sprite sprite = Resources.Load<Sprite>(filename);
 		GetComponent<Image> ().sprite = sprite;
 		manager.addTile (value);
+	}
+
+	public void unselectButton(){
+		GameObject managerGO = GameObject.FindGameObjectWithTag ("LevelManager");
+		LevelManager manager = managerGO.GetComponent<LevelManager> ();
+		string filename = value.ToString() + UNCLICKED_EXTENSION;
+		Sprite sprite = Resources.Load<Sprite>(filename);
+		GetComponent<Image> ().sprite = sprite;
 	}
 		
 }

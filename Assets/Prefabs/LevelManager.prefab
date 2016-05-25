@@ -1,48 +1,49 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &118034
+--- !u!1 &135294
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 448664}
-  - 114: {fileID: 11425668}
+  - 4: {fileID: 467180}
+  - 114: {fileID: 11430542}
   m_Layer: 0
-  m_Name: tetrisPrefab
-  m_TagString: Untagged
+  m_Name: LevelManager
+  m_TagString: LevelManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &448664
+--- !u!4 &467180
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 118034}
+  m_GameObject: {fileID: 135294}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 601.3763, y: 278.81332, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!114 &11425668
+--- !u!114 &11430542
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 118034}
+  m_GameObject: {fileID: 135294}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c9a5b0038b3dc14887e2eaa3a195e57, type: 3}
+  m_Script: {fileID: 11500000, guid: e78277bdcd03541ebb5a46e23cdcea80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blockPrefab: {fileID: 130856, guid: 0ab47ce7d12c73d4784d88b4efc7a5f1, type: 2}
-  bridgePrefab: {fileID: 110524, guid: c7e3c4627a9b9ba49b44e824fc97ebb5, type: 2}
-  block: {fileID: 0}
-  shape: 1
+  levelID: 0
+  blocks: 050000000300000001000000000000000300000004000000
+  noDodos: 10
+  floor: {fileID: 0}
+  levelgui: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -52,5 +53,5 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 118034}
+  m_RootGameObject: {fileID: 135294}
   m_IsPrefabParent: 1

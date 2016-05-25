@@ -48,6 +48,11 @@
      <Compile Include="Assets\Lava_Flowing_Shader\Scripts\ScrollingUVs_Layers.cs" />
      <Compile Include="Assets\Scripts\BlockPlacement.cs" />
      <Compile Include="Assets\Scripts\BlockSelector.cs" />
+     <Compile Include="Assets\Scripts\Blocks\BasicBlock.cs" />
+     <Compile Include="Assets\Scripts\Blocks\Block.cs" />
+     <Compile Include="Assets\Scripts\Blocks\BreakableBlock.cs" />
+     <Compile Include="Assets\Scripts\Blocks\JumpBlock.cs" />
+     <Compile Include="Assets\Scripts\Blocks\TetrisBlock.cs" />
      <Compile Include="Assets\Scripts\DodoBehaviour.cs" />
      <Compile Include="Assets\Scripts\ExtinctionMeterUI.cs" />
      <Compile Include="Assets\Scripts\Floor.cs" />
@@ -61,7 +66,6 @@
      <Compile Include="Assets\Scripts\Menu.cs" />
      <Compile Include="Assets\Scripts\ObstaclePlacer.cs" />
      <Compile Include="Assets\Scripts\Spawner.cs" />
-     <Compile Include="Assets\Scripts\TetrisBlock.cs" />
      <None Include="Assets\Lava_Flowing_Shader\Shaders\Unlit_Lava_Simple.shader" />
      <None Include="Assets\Lava_Flowing_Shader\Shaders\Unlit_Lava_Distort.shader" />
      <None Include="Assets\Lava_Flowing_Shader\ReadMe.txt" />

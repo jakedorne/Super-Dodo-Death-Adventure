@@ -3,18 +3,24 @@ using System.Collections;
 
 public class TetrisBlock : MonoBehaviour {
 
-	private int[,] 	blocks = new int[,]{
-					{0,1,0},
-					{0,1,0},
-					{0,1,1}
-				};
-	public Shape shape = Shape.L;
+	private int[,] 	blocks;
+
+
+	// prefabs
+	public GameObject blockPrefab;
+	public GameObject bridgePrefab;
+
+	public GameObject block;
+	public Shape shape;
+	public Type type;
 
 	public enum Shape{L, T, CROSS, C, LINE, S};
+	public enum Type{BASIC, BRIDGE, JUMP};
 
 	// Use this for initialization
-	void Start () {
-		SetShape(shape);
+	void Awake () {
+		// just because most likely case.
+		SetType (Type.BASIC);
 	}
 	
 	// Update is called once per frame
@@ -35,6 +41,18 @@ public class TetrisBlock : MonoBehaviour {
 	public void RotateRight(){
 		// the shame...
 		RotateLeft (); RotateLeft (); RotateLeft ();
+	}
+
+	public void SetType(Type type){
+		this.type = type;
+		switch(type){
+			case Type.BASIC:
+				block = blockPrefab;
+				break;
+			case Type.BRIDGE:
+				block = bridgePrefab;
+				break;
+		}
 	}
 
 	public void SetShape(Shape newShape){
@@ -70,10 +88,9 @@ public class TetrisBlock : MonoBehaviour {
 				break;
 			case Shape.LINE:
 				blocks = new int[,]{
-					{0,1,0,0},
-					{0,1,0,0},
-					{0,1,0,0},
-					{0,1,0,0}
+					{0,1,0},
+					{0,1,0},
+					{0,1,0},
 				};
 				break;
 			case Shape.S:
