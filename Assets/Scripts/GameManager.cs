@@ -36,6 +36,10 @@ public class GameManager : MonoBehaviour {
 		if (score > scores [levelID]) {
 			scores [levelID] = score;
 		} 
+        if (levelID + 1 < numberOfLevels)
+        {
+            levelUnlocked[levelID + 1] = true;
+        }
 		// Send back to home screen
 		SceneManager.LoadScene("Level Selection");
 	}
@@ -54,6 +58,7 @@ public class GameManager : MonoBehaviour {
 		switch (levelNumber) {
 		case 2:
 			return new int[,] {
+                /* Original level we tested with
 				{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
 				{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
 				{ 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
@@ -66,6 +71,7 @@ public class GameManager : MonoBehaviour {
 				{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0 },
 				{ 0, 0, 0, 0, 0, 3, 3, 0, 0, 0, 1, 1 },
 				{ 0, 0, 0, 0, 3, 3, 3, 0, 0, 0, 0, 1 },
+                */
 
 			};	
 		case 3:
