@@ -28,37 +28,30 @@ public class BlockPlacement : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-		if (Input.GetKeyDown("space"))
-		{
-			if (placingBlocks)
-			{
-				GameObject manager = GameObject.FindGameObjectWithTag ("LevelManager");
-				manager.GetComponent<LevelManager> ().levelgui.deselectBlocks();
-				turnBlockPlacementOff();
-			} 
-		}
+        if (Input.GetKeyDown("space"))
+        {
+            if (placingBlocks)
+            {
+                GameObject manager = GameObject.FindGameObjectWithTag("LevelManager");
+                manager.GetComponent<LevelManager>().levelgui.deselectBlocks();
+                turnBlockPlacementOff();
+            }
+        }
         //Block rotation
-        if (Input.GetAxis("Mouse ScrollWheel")>0)
+        if (Input.GetAxis("Mouse ScrollWheel") > 0 || Input.GetKeyDown("a"))
         {
             if (placingBlocks)
             {
                 tetrisBlock.RotateLeft();
-            } 
-        } 
-		else if (Input.GetAxis("Mouse ScrollWheel")<0) 
+            }
+        }
+        else if (Input.GetAxis("Mouse ScrollWheel") < 0 || Input.GetKeyDown("d")) 
 		{
 			if (placingBlocks)
 			{
 				tetrisBlock.RotateRight();
 			}	
 		}
-		else if (Input.GetKeyDown("t") || Input.GetAxis("Mouse ScrollWheel") < 0)
-        {
-            if (placingBlocks)
-            {
-                //tetrisBlock.Rotate(); //Rotate the other way, once implemented
-            }
-        }
     }
 
     /// <summary>

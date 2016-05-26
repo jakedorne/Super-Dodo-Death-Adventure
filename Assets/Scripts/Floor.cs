@@ -178,4 +178,15 @@ public class Floor : MonoBehaviour {
         Instantiate(tree, new Vector3((x) * blockXLength, 0 + blockPrefab.GetComponent<MeshRenderer>().bounds.size.y, (z) * blockZLength), Quaternion.identity);
     }
 
+    public void createDeadDodoBlock(Vector2 blockPosition)
+    {
+        float x = blockPosition.x;
+        float z = blockPosition.y;
+        if (x>=0 && z>=0 && x<mapSize && z<mapSize)
+        {
+            map[(int)blockPosition.x, (int)blockPosition.y] = 1; //Eventually change this to its own number perhaps?
+            Instantiate(blockPrefab, new Vector3(blockXLength * x, 0, blockZLength * z), Quaternion.identity);
+        }
+    }
+
 }

@@ -23,9 +23,11 @@ public class DodoBehaviour : MonoBehaviour {
     private Vector3 endPosition;
 	private Vector2 target;
 
+    private bool spawnBlockOnDeath = true; //Wanted to try this out and see how it feels.
 
-	// Use this for initialization
-	void Start () {
+
+    // Use this for initialization
+    void Start () {
 		floor = GameObject.Find ("Floor");
 		floorScript = floor.GetComponent<Floor> ();
         Spawner spawnerScript = GameObject.Find("Dodo Spawner").GetComponent<Spawner>();
@@ -48,6 +50,12 @@ public class DodoBehaviour : MonoBehaviour {
             Destroy(this.gameObject);
             LevelManager script = FindObjectOfType<LevelManager>();
             script.dodoDeath();
+            if (spawnBlockOnDeath)
+            {
+                //Might need to wait for animation to finish before calling this.
+                Vector2 pos = floorScript.getCoordAtVector(transform.position);
+                floorScript.createDeadDodoBlock(pos);
+            }
         }
         if (floorScript.getCoordAtVector(transform.position) == target)
         {
@@ -61,7 +69,8 @@ public class DodoBehaviour : MonoBehaviour {
         {
 			anim.SetBool("isWalking", true);
             //Walking off an edge. Have to scale it down so the dodo doesnt shoot off the end
-            transform.position += transform.forward * 0.02f / lerpTime;
+            //Just fall, no movement necessary
+            //transform.position += transform.forward * 0.02f / lerpTime;
         } else if (transform.position != endPosition)
         {
 			//print ("I should be moving to: "  + endPosition);
@@ -79,40 +88,47 @@ public class DodoBehaviour : MonoBehaviour {
 	private void moveCycle() {
 		List<Vector2> potentialBlocks = new List<Vector2> ();
 		Vector2 bestBlock = MAX_VECTOR2;
+        Vector2 pos = floorScript.getCoordAtVector(transform.position);
+        if (pos.x<0 || pos.y<0 || floorScript.FormationFits((int)pos.x,(int)pos.y,new int[,] { { 1, } }))
+        {
+            endPosition = Vector3.zero;
+            print("Stop and die, thanks Mr Dodo");
+            return;
+        }
 
 		Vector2 left = floorScript.getCoordAtVector (transform.position + transform.right*-1);
 		Vector2 right = floorScript.getCoordAtVector (transform.position + transform.right);
 		Vector2 forward = floorScript.getCoordAtVector (transform.position + transform.forward);
 
-		print ("World - Left: " + (transform.position + transform.right)*-1 + " Right: " + (transform.position + transform.right) + " Forward: " + (transform.position + transform.forward));
-		print ("Grid - Left: " + left + " Right: " + right + " Forward: " + forward);
+		//print ("World - Left: " + (transform.position + transform.right)*-1 + " Right: " + (transform.position + transform.right) + " Forward: " + (transform.position + transform.forward));
+		//print ("Grid - Left: " + left + " Right: " + right + " Forward: " + forward);
 
 		if(floorScript.positionOnBlock((int)forward.x, (int)forward.y)) {
 			//can go forward, therefore go forward
-			print("Yo you good to go forward, to: " + forward);
+			//print("Yo you good to go forward, to: " + forward);
 			bestBlock = forward;
 		} 
 		else {
 			if (floorScript.positionOnBlock ((int)left.x, (int)left.y)) {
 				if (floorScript.positionOnBlock ((int)right.x, (int)right.y)) {
 					//can go both left and right, choose random
-					print("Yo you good to go either, pick one");
+					//print("Yo you good to go either, pick one");
 					int randBlock = Random.Range(0, 2);
 					if (randBlock == 0) bestBlock = left;
 					else bestBlock = right;
 				} else {
 					//can only go left
-					print("Yo you good to go left to: " + left);
+					//print("Yo you good to go left to: " + left);
 					bestBlock = left;
 				}
 			} else if (floorScript.positionOnBlock ((int)right.x, (int)right.y)) {
 				//can only go right
-				print("Yo you good to go right to: " + right);
+				//print("Yo you good to go right to: " + right);
 				bestBlock = right;
 			} else {
 				//walk off edge
-				print("Yo kys");
-				bestBlock = MAX_VECTOR2;
+				//print("Yo kys");
+				bestBlock = forward;
 			}
 		}
 

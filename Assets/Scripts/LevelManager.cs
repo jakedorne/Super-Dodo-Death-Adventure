@@ -27,7 +27,7 @@ public class LevelManager: MonoBehaviour {
 	}
 
 	void Update(){
-		if (Input.GetMouseButtonDown (1)) {
+		if (Input.GetMouseButtonDown (1) || Input.GetKeyDown("w")) {
 			if (blocks.Count != 0) {
 				TetrisBlock.Shape automaticBlock = getAutomaticBlock ();
 				addTile(automaticBlock);
