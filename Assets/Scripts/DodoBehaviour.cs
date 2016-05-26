@@ -89,7 +89,7 @@ public class DodoBehaviour : MonoBehaviour {
 		List<Vector2> potentialBlocks = new List<Vector2> ();
 		Vector2 bestBlock = MAX_VECTOR2;
         Vector2 pos = floorScript.getCoordAtVector(transform.position);
-        if (pos.x<0 || pos.y<0 || floorScript.FormationFits((int)pos.x,(int)pos.y,new int[,] { { 1, } }))
+        if (!floorScript.isBlock(pos))
         {
             endPosition = Vector3.zero;
             print("Stop and die, thanks Mr Dodo");
@@ -139,7 +139,7 @@ public class DodoBehaviour : MonoBehaviour {
 
 		//potentialBlocks = removeLastPos (potentialBlocks);
 
-		if (bestBlock == MAX_VECTOR2) {
+		if (floorScript.isTree(bestBlock)) {
             endPosition = Vector3.zero;
 			return;
 		}

@@ -225,4 +225,9 @@ public class BlockPlacement : MonoBehaviour {
 	public TetrisBlock getSelectedShape(){
 		return tetrisBlock;
 	}
+
+    public void updateOnDodoDeath(int row, int col)
+    {
+        selectorBlocks[col, row].SetActive(false);
+    }
 }

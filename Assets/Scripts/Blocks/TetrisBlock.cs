@@ -14,7 +14,7 @@ public class TetrisBlock : MonoBehaviour {
 	public Shape shape;
 	public Type type;
 
-	public enum Shape{L, T, CROSS, C, LINE, S};
+	public enum Shape{L, T, CROSS, C, LINE, S, Z, J};
 	public enum Type{BASIC, BRIDGE, JUMP};
 
 	// Use this for initialization
@@ -100,6 +100,20 @@ public class TetrisBlock : MonoBehaviour {
 					{0,0,1}
 				};
 				break;
+            case Shape.Z:
+                blocks = new int[,]{
+                    {0,1,0},
+                    {1,1,0},
+                    {1,0,0}
+                };
+                break;
+            case Shape.J:
+                blocks = new int[,]{
+                    {0,1,0},
+                    {0,1,0},
+                    {1,1,0}
+                };
+                break;
 
         }
 	}

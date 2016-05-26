@@ -180,13 +180,30 @@ public class Floor : MonoBehaviour {
 
     public void createDeadDodoBlock(Vector2 blockPosition)
     {
-        float x = blockPosition.x;
-        float z = blockPosition.y;
-        if (x>=0 && z>=0 && x<mapSize && z<mapSize)
+        int x = (int)blockPosition.x;
+        int z = (int)blockPosition.y;
+        if (x>=0 && z>=0 && x<mapSize && z<mapSize && map[x,z]==0)
         {
-            map[(int)blockPosition.x, (int)blockPosition.y] = 1; //Eventually change this to its own number perhaps?
+            map[x, z] = 1; //Eventually change this to its own number perhaps?
             Instantiate(blockPrefab, new Vector3(blockXLength * x, 0, blockZLength * z), Quaternion.identity);
+            this.GetComponent<BlockPlacement>().updateOnDodoDeath((int)x,(int)z);
         }
+    }
+
+    public bool isBlock(Vector2 pos)
+    {
+        int x = (int)pos.x;
+        int z = (int)pos.y;
+        if (x >= 0 && z >= 0 && x < mapSize && z < mapSize &&map[x,z]==1) return true;
+        return false;
+    }
+
+    public bool isTree(Vector2 pos)
+    {
+        int x = (int)pos.x;
+        int z = (int)pos.y;
+        if (x >= 0 && z >= 0 && x < mapSize && z < mapSize && map[x, z] == 3) return true;
+        return false;
     }
 
 }
