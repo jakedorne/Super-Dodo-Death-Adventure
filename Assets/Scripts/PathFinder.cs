@@ -45,7 +45,7 @@ public class PathFinder : MonoBehaviour {
 
 		if(floorScript.positionOnBlock((int)forward.x, (int)forward.y)) {
 			//can go forward, therefore go forward
-			print("Adding forward child");
+			//print("Adding forward child");
 			transform.LookAt (floorScript.getVectorAtCoords ((int)forward.x, (int)forward.y));
 			toReturn.setForward (buildTree (forward));
 			toReturn.setChildNum (1);
@@ -54,7 +54,7 @@ public class PathFinder : MonoBehaviour {
 			if (floorScript.positionOnBlock ((int)left.x, (int)left.y)) {
 				if (floorScript.positionOnBlock ((int)right.x, (int)right.y)) {
 					//can go both left and right, choose random
-					print("Adding left and right children");
+					//print("Adding left and right children");
 					transform.LookAt (floorScript.getVectorAtCoords ((int)left.x, (int)left.y));
 					toReturn.setLeft (buildTree (left));
 
@@ -64,20 +64,20 @@ public class PathFinder : MonoBehaviour {
 					toReturn.setChildNum (2);
 				} else {
 					//can only go left
-					print("Adding left child");
+					//print("Adding left child");
 					transform.LookAt (floorScript.getVectorAtCoords ((int)left.x, (int)left.y));
 					toReturn.setLeft (buildTree (left));
 					toReturn.setChildNum (1);
 				}
 			} else if (floorScript.positionOnBlock ((int)right.x, (int)right.y)) {
 				//can only go right
-				print("Adding right child");
+				//print("Adding right child");
 				transform.LookAt (floorScript.getVectorAtCoords ((int)right.x, (int)right.y));
 				toReturn.setRight (buildTree (right));
 				toReturn.setChildNum (1);
 			} else {
 				//walk off edge
-				print("Adding no children");
+				//print("Adding no children");
 				toReturn.setChildNum(0);
 			}
 		}
