@@ -18,8 +18,26 @@ public class LevelUI : MonoBehaviour {
 	public void CompleteLevel(int score){
 		RectTransform comLevel =  Instantiate (completeLevel);
 		Transform scoreLabel = comLevel.FindChild ("Score");
-		scoreLabel.GetComponent<Text> ().text = "Score: " + score;
-		comLevel.transform.SetParent (transform, false);
+        // The trophy info should probably be stored in a seperate label, but for now I put it in the score one.
+        string trophy = "You got no trophy.";
+        if (score / 10 > GameManager.getGold())
+        {
+            trophy = "You got Platinum!";
+        }
+        else if (score / 10 == GameManager.getGold())
+        {
+            trophy = "You got Gold!";
+        }
+        else if (score / 10 >= GameManager.getSilver())
+        {
+            trophy = "You got Silver!";
+        }
+        else if (score / 10 >= GameManager.getBronze())
+        {
+            trophy = "You got Bronze!";
+        }
+        scoreLabel.GetComponent<Text>().text = "Score: " + score + "\n " + trophy;
+        comLevel.transform.SetParent (transform, false);
 	}
 
 	public void updateInventory(){

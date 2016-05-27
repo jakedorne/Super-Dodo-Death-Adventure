@@ -153,8 +153,9 @@ public class BlockPlacement : MonoBehaviour {
             getFloor();
             this.tetrisBlock = null;
             // update inventory so that the button is no longer selected
+            manager.GetComponent<LevelManager>().removeTile(tetrisBlock.shape);
             manager.GetComponent<LevelManager>().levelgui.deselectBlocks();
-            manager.GetComponent<LevelManager> ().removeTile (tetrisBlock.shape);
+            
         }
     }
 

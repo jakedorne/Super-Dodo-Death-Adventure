@@ -59,6 +59,7 @@
      <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\InventoryButton.cs" />
      <Compile Include="Assets\Scripts\InventoryUI.cs" />
+     <Compile Include="Assets\Scripts\LevelInfo.cs" />
      <Compile Include="Assets\Scripts\LevelManager.cs" />
      <Compile Include="Assets\Scripts\LevelPanel.cs" />
      <Compile Include="Assets\Scripts\LevelUI.cs" />

@@ -11,7 +11,7 @@ public class LevelManager: MonoBehaviour {
 	public GameObject floor;
 	public LevelUI levelgui;
 
-	private int dodoDeathCount;
+    private int dodoDeathCount;
 	private int dodoFinishedCount;
 	private bool levelCompleted;
 	private int score;
@@ -24,6 +24,8 @@ public class LevelManager: MonoBehaviour {
 		dodoFinishedCount = 0;
 
 		levelCompleted = false;
+
+        GameManager.setUpLevels();
 	}
 
 	void Update(){
