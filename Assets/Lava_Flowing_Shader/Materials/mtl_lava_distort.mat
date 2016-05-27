@@ -8,7 +8,7 @@ Material:
   m_PrefabInternal: {fileID: 0}
   m_Name: mtl_lava_distort
   m_Shader: {fileID: 4800000, guid: 6a151f652f5ba03458e9a7cd03ae88e8, type: 3}
-  m_ShaderKeywords: 
+  m_ShaderKeywords:
   m_LightmapFlags: 5
   m_CustomRenderQueue: -1
   stringTagMap: {}
@@ -35,7 +35,7 @@ Material:
         second:
           m_Texture: {fileID: 2800000, guid: 0b372f5e66a9c654caa0e9630ba10928, type: 3}
           m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0.99291575, y: 0}
+          m_Offset: {x: 0.27589282, y: 0}
       data:
         first:
           name: _MainTex2

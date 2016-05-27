@@ -8,11 +8,10 @@ public class LevelManager: MonoBehaviour {
 	public int levelID;
 	public List<TetrisBlock.Shape> blocks;
 	public int noDodos;
-
 	public GameObject floor;
 	public LevelUI levelgui;
 
-	private int dodoDeathCount;
+    private int dodoDeathCount;
 	private int dodoFinishedCount;
 	private bool levelCompleted;
 	private int score;
@@ -25,23 +24,57 @@ public class LevelManager: MonoBehaviour {
 		dodoFinishedCount = 0;
 
 		levelCompleted = false;
+
+        GameManager.setUpLevels();
 	}
 
 	void Update(){
-		// For testing purposes
-		if (Input.GetKeyDown (KeyCode.K)) {
-			dodoDeath ();
+		if (Input.GetMouseButtonDown (1) || Input.GetKeyDown("w")) {
+			if (blocks.Count != 0) {
+				TetrisBlock.Shape automaticBlock = getAutomaticBlock ();
+				addTile(automaticBlock);
+				levelgui.tetrisBlockSelected (automaticBlock);
+			}
 		}
-		if(Input.GetKeyDown(KeyCode.L)){
-			dodoFinished();
-		}
-			
 		if (Input.GetMouseButtonDown (0) && levelCompleted) {
 			GameManager.finishedLevel(levelID, score);
 		}
 		if (Input.GetKeyDown (KeyCode.Space) && levelCompleted) {
 			GameManager.reloadLevel ();
 		}
+	}
+
+	public TetrisBlock.Shape getAutomaticBlock(){
+		TetrisBlock.Shape block;
+		TetrisBlock currentBlock = floor.GetComponent<BlockPlacement> ().getSelectedShape ();
+		if (currentBlock == null) {
+			// Get the first block
+			block = blocks [0];
+		} else {
+			// If there is a block selected, need to deselect it
+			levelgui.deselectBlocks();
+			// need to find the next block to toggle to
+			List<TetrisBlock.Shape> uniqueBlockTypes = new List<TetrisBlock.Shape> ();
+			foreach(TetrisBlock.Shape inventoryBlock in blocks){
+				bool duplicate = false;
+				foreach(TetrisBlock.Shape uniqueBlock in uniqueBlockTypes){
+					if (uniqueBlock == inventoryBlock) {
+						duplicate = true;
+						break;
+					}
+				}
+				if (!duplicate) {
+					uniqueBlockTypes.Add (inventoryBlock);
+				}
+			}
+			int currentIndex = uniqueBlockTypes.IndexOf(currentBlock.shape);
+			if (currentIndex == (uniqueBlockTypes.Count - 1)) {
+				block = uniqueBlockTypes [0];
+			} else {
+				block = uniqueBlockTypes [currentIndex + 1];
+			}
+		}
+		return block;
 	}
 
 	public void addTile(TetrisBlock.Shape shape){

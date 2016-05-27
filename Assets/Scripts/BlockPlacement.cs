@@ -33,36 +33,30 @@ public class BlockPlacement : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        //To be replaced - this will part will be done by the UI passing this block in
         if (Input.GetKeyDown("space"))
         {
             if (placingBlocks)
             {
+                GameObject manager = GameObject.FindGameObjectWithTag("LevelManager");
+                manager.GetComponent<LevelManager>().levelgui.deselectBlocks();
                 turnBlockPlacementOff();
-            } 
+            }
         }
         //Block rotation
-        if (Input.GetAxis("Mouse ScrollWheel")>0)
+        if (Input.GetAxis("Mouse ScrollWheel") > 0 || Input.GetKeyDown("a"))
         {
             if (placingBlocks)
             {
                 tetrisBlock.RotateLeft();
-            } 
-        } 
-		else if (Input.GetAxis("Mouse ScrollWheel")<0) 
+            }
+        }
+        else if (Input.GetAxis("Mouse ScrollWheel") < 0 || Input.GetKeyDown("d")) 
 		{
 			if (placingBlocks)
 			{
 				tetrisBlock.RotateRight();
 			}	
 		}
-		else if (Input.GetKeyDown("t") || Input.GetAxis("Mouse ScrollWheel") < 0)
-        {
-            if (placingBlocks)
-            {
-                //tetrisBlock.Rotate(); //Rotate the other way, once implemented
-            }
-        }
     }
 
     /// <summary>
@@ -157,14 +151,17 @@ public class BlockPlacement : MonoBehaviour {
     public void turnBlockPlacementOff(int row, int col)
     {
         bool blockAdded = this.GetComponent<Floor>().AddTetrisBlock(row, col, tetrisBlock);
+		GameObject manager = GameObject.FindGameObjectWithTag ("LevelManager");
 		if (blockAdded) {
             placingBlocks = false;
             togglePlacementGrid();
             getFloor();
-            GameObject manager = GameObject.FindGameObjectWithTag ("LevelManager");
-			manager.GetComponent<LevelManager> ().removeTile(tetrisBlock.shape);
-			this.tetrisBlock = null;
-		}
+            this.tetrisBlock = null;
+            // update inventory so that the button is no longer selected
+            manager.GetComponent<LevelManager>().removeTile(tetrisBlock.shape);
+            manager.GetComponent<LevelManager>().levelgui.deselectBlocks();
+            
+        }
     }
 
     public void turnBlockPlacementOff()
@@ -173,6 +170,9 @@ public class BlockPlacement : MonoBehaviour {
         getFloor();
         togglePlacementGrid();
         this.tetrisBlock = null;
+		// deselect block
+		GameObject manager = GameObject.FindGameObjectWithTag ("LevelManager");
+		manager.GetComponent<LevelManager> ().levelgui.deselectBlocks();
     }
 
     public void showHoverOver(int row, int col)
@@ -228,4 +228,12 @@ public class BlockPlacement : MonoBehaviour {
         return false;
     }
 
+	public TetrisBlock getSelectedShape(){
+		return tetrisBlock;
+	}
+
+    public void updateOnDodoDeath(int row, int col)
+    {
+        selectorBlocks[col, row].SetActive(false);
+    }
 }

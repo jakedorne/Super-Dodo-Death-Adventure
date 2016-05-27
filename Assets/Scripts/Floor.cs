@@ -25,7 +25,8 @@ public class Floor : MonoBehaviour {
 	private static int mapSize;
 
 	// 0 = empty, 1 = block down, 2 = block hovered on (green), 3 = unplaceable space, 9 = block hovered on (red)
-	private int[,] blocks;
+	private int[,] map;
+	private Block[,] blocks;
 
 
 	// Use this for initialization
@@ -38,19 +39,19 @@ public class Floor : MonoBehaviour {
 		blockXLength = blockObject.GetComponent<Collider>().bounds.size.x;
 		blockZLength = blockObject.GetComponent<Collider>().bounds.size.z;
 
-		blocks = GameManager.getLevel (SceneManager.GetActiveScene().buildIndex);
-        mapSize = blocks.GetLength(0);
+		map = GameManager.getLevel (SceneManager.GetActiveScene().buildIndex);
+        mapSize = map.GetLength(0);
 		renderMap ();
         this.GetComponent<BlockPlacement>().initialisePlacementBlocks();
     }
 
 	private void renderMap(){
-		for(int i = 0; i < blocks.GetLength(0); i++){
-			for(int j = 0; j < blocks.GetLength(1); j++){
-				if (blocks [i, j] == 1) {
+		for(int i = 0; i < map.GetLength(0); i++){
+			for(int j = 0; j < map.GetLength(1); j++){
+				if (map [i, j] == 1) {
 					Instantiate(blockPrefab, new Vector3(blockXLength * i, 0, blockZLength * j), Quaternion.identity);
 				} 
-				else if(blocks[i,j]==3){
+				else if(map[i,j]==3){
 					Instantiate(spikePrefab, new Vector3(blockXLength * i, -2f, blockZLength * j), Quaternion.identity);
 				}
 			}
@@ -63,13 +64,15 @@ public class Floor : MonoBehaviour {
 	public bool AddTetrisBlock(int row, int col, TetrisBlock block){
 		int[,] blockFormation = block.GetBlocks();
 		if(FormationFits(row, col, blockFormation)){
-			for(int i = 0; i < blockFormation.GetLength(0); i++){
-				for(int j = 0; j < blockFormation.GetLength(1); j++){
-					if(blockFormation[i,j]==1){
-                        blocks[row + i, col + j] = 1;
-                        Instantiate(blockPrefab, new Vector3((row + i) * blockXLength, 0, (col + j) * blockZLength), Quaternion.identity);
-					}
-				}
+			switch (block.type) {
+				case TetrisBlock.Type.BASIC:
+						print ("basic case");
+						AddBasicBlock (row, col, block);
+						break;
+				case TetrisBlock.Type.BRIDGE:
+						print ("bridge case");
+						AddBridgeBlock (row, col, block);
+						break;
 			}
 
 			// starts spawning on first block placement
@@ -81,6 +84,41 @@ public class Floor : MonoBehaviour {
 		return false;
 	}
 
+	public void AddBasicBlock(int row, int col, TetrisBlock block){
+		print ("Coords: " + row + ", " + col);
+		int[,] blockFormation = block.GetBlocks ();
+		for(int i = 0; i < blockFormation.GetLength(0); i++){
+			for(int j = 0; j < blockFormation.GetLength(1); j++){
+				if(blockFormation[i,j]==1){
+					map[row + i, col + j] = 1;
+					GameObject placedBlock = (GameObject) Instantiate(block.block, new Vector3((row + i) * blockXLength, 0, (col + j) * blockZLength), Quaternion.identity);
+					//blocks [row + i, col + j] = placedBlock.GetComponent<BasicBlock> ();
+				}
+			}
+		}
+	}
+
+	public void AddBridgeBlock(int row, int col, TetrisBlock block){
+
+		print ("adding bridge block");
+		int[,] blockFormation = block.GetBlocks ();
+		GameObject bridge;
+		bridge = (GameObject) Instantiate(block.block, getVectorAtCoords(row + 1,col + 1), Quaternion.identity);
+
+		if (blockFormation [1,1] == 1 && blockFormation[2,1]==1) {
+			bridge.transform.Rotate (0, 90, 0);
+		}
+
+		for(int i = 0; i < blockFormation.GetLength(0); i++){
+			for(int j = 0; j < blockFormation.GetLength(1); j++){
+				if(blockFormation[i,j]==1){
+					map[row + i, col + j] = 1;
+					//blocks [row + i, col + j] = bridge.GetComponent<BreakableBlock>();
+				}
+			}
+		}
+	}
+
 
 	/// <summary>
 	/// Returns true if a tetris block formation can be placed at an index.
@@ -89,13 +127,13 @@ public class Floor : MonoBehaviour {
 		for(int i = 0; i < formation.GetLength(0); i++){
 			for(int j = 0; j < formation.GetLength(1); j++){
                 //Debug.Log("row: " + row + ", col: " + col + ", i: " + i + ", j: " + j);
-				if ((row + i >= blocks.GetLength(0) || row + i < 0) && formation [i, j] == 1) {
+				if ((row + i >= map.GetLength(0) || row + i < 0) && formation [i, j] == 1) {
 					// part of block is off map
 					return false;
-				} else if ((col + j >= blocks.GetLength(1) || col + j < 0) && formation [i, j] == 1) {
+				} else if ((col + j >= map.GetLength(1) || col + j < 0) && formation [i, j] == 1) {
 					// part of block is off map
 					return false;
-				} else if (formation[i,j]==1 && (blocks[row+i,col+j]==1 || blocks[row+i,col+j]==3)){
+				} else if (formation[i,j]==1 && (map[row+i,col+j]==1 || map[row+i,col+j]==3)){
 					// part of block is on another block or unplaceable spot
 					return false;
 				}
@@ -106,7 +144,7 @@ public class Floor : MonoBehaviour {
 
     public int[,] getFloor()
     {
-        return blocks;
+        return map;
     }
 
 	/// <summary>
@@ -120,8 +158,8 @@ public class Floor : MonoBehaviour {
 	/// Returns true if there is a block placed on the given index of floor
 	/// </summary>
     public bool positionOnBlock(int x, int z){
-    	if(x >= 0 && x < blocks.GetLength(0) && z >= 0 && z < blocks.GetLength(1)){
-    		return blocks[x, z] == 1;
+    	if(x >= 0 && x < map.GetLength(0) && z >= 0 && z < map.GetLength(1)){
+    		return map[x, z] == 1;
     	} else {
     		return false;
     	}
@@ -137,8 +175,36 @@ public class Floor : MonoBehaviour {
     public void createObstacle(Vector2 blockPosition) {
         float x = blockPosition.x;
         float z = blockPosition.y;
-        blocks[(int)blockPosition.x, (int)blockPosition.y] = 3;
+        map[(int)blockPosition.x, (int)blockPosition.y] = 3;
         Instantiate(tree, new Vector3((x) * blockXLength, 0 + blockPrefab.GetComponent<MeshRenderer>().bounds.size.y, (z) * blockZLength), Quaternion.identity);
+    }
+
+    public void createDeadDodoBlock(Vector2 blockPosition)
+    {
+        int x = (int)blockPosition.x;
+        int z = (int)blockPosition.y;
+        if (x>=0 && z>=0 && x<mapSize && z<mapSize && map[x,z]==0)
+        {
+            map[x, z] = 1; //Eventually change this to its own number perhaps?
+            Instantiate(blockPrefab, new Vector3(blockXLength * x, 0, blockZLength * z), Quaternion.identity);
+            this.GetComponent<BlockPlacement>().updateOnDodoDeath((int)x,(int)z);
+        }
+    }
+
+    public bool isBlock(Vector2 pos)
+    {
+        int x = (int)pos.x;
+        int z = (int)pos.y;
+        if (x >= 0 && z >= 0 && x < mapSize && z < mapSize &&map[x,z]==1) return true;
+        return false;
+    }
+
+    public bool isTree(Vector2 pos)
+    {
+        int x = (int)pos.x;
+        int z = (int)pos.y;
+        if (x >= 0 && z >= 0 && x < mapSize && z < mapSize && map[x, z] == 3) return true;
+        return false;
     }
 
 }

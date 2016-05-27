@@ -41,7 +41,27 @@ public class InventoryUI : MonoBehaviour {
 			button.GetComponent<InventoryButton> ().value = key;
 			button.GetComponent<InventoryButton> ().amount = amount;
 		}
+	}
 
+	public void tetrisBlockSelected(TetrisBlock.Shape shapeSelected){
+		int childs = transform.childCount;
+		for (int i = 0; i < childs; i++)
+		{
+			InventoryButton tileButton = transform.GetChild (i).GetComponent<InventoryButton> ();
+			if (tileButton.value == shapeSelected) {
+				tileButton.buttonClicked ();
+				return;
+			}
+		}
+	}
+
+	public void deselectBlocks(){
+		int childs = transform.childCount;
+		for (int i = 0; i < childs; i++)
+		{
+			InventoryButton tileButton = transform.GetChild (i).GetComponent<InventoryButton> ();
+			tileButton.unselectButton ();
+		}
 	}
 
 }

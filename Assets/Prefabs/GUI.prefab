@@ -200,7 +200,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -269,7 +269,7 @@ MonoBehaviour:
   m_Padding:
     m_Left: 0
     m_Right: 0
-    m_Top: 50
+    m_Top: 30
     m_Bottom: 0
   m_ChildAlignment: 1
   m_StartCorner: 0
@@ -337,6 +337,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e29f812fd38e84f72a2daed4d11809da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pointerSpeed: 0.2
 --- !u!222 &22217580
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -417,10 +418,10 @@ RectTransform:
   - {fileID: 22413582}
   m_Father: {fileID: 22467624}
   m_RootOrder: 1
-  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 243.49997, y: 178.8}
-  m_SizeDelta: {x: -487, y: -361}
+  m_AnchoredPosition: {x: 243.49997, y: -37.699997}
+  m_SizeDelta: {x: -487, y: 72}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &22460378
 RectTransform:

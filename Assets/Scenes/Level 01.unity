@@ -3,7 +3,7 @@
 --- !u!29 &1
 SceneSettings:
   m_ObjectHideFlags: 0
-  m_PVSData: 
+  m_PVSData:
   m_PVSObjectsArray: []
   m_PVSPortalsArray: []
   m_OcclusionBakeSettings:
@@ -110,11 +110,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e78277bdcd03541ebb5a46e23cdcea80, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   levelID: 0
-  blocks: 000000000300000001000000030000000500000004000000
-  noDodos: 5
+  blocks: 0000000005000000
+  noDodos: 10
   floor: {fileID: 839605784}
   levelgui: {fileID: 1139561933}
 --- !u!4 &418068329
@@ -216,8 +216,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0157ffc92e570fa4c968abd1c896cb0b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   blockPrefab: {fileID: 130856, guid: 0ab47ce7d12c73d4784d88b4efc7a5f1, type: 2}
   tree: {fileID: 107936, guid: 005dd1888ce5c7f4f91bdf58f5e3b121, type: 2}
   tetrisPrefab: {fileID: 118034, guid: c0860b06464815b47b56cf972df4a0aa, type: 2}
@@ -249,8 +249,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9d47c6451156ef44bb9239c67f211185, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   selectorBlock: {fileID: 161964, guid: 0e28a989c94ec8c479deb82ee6d9a64c, type: 2}
 --- !u!114 &1139561933 stripped
 MonoBehaviour:
@@ -336,6 +336,30 @@ Prefab:
     - target: {fileID: 22467624, guid: 9394afcf712bb44db992c5419ad26b00, type: 2}
       propertyPath: m_Pivot.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22416316, guid: 9394afcf712bb44db992c5419ad26b00, type: 2}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 22416316, guid: 9394afcf712bb44db992c5419ad26b00, type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: -37.699997
+      objectReference: {fileID: 0}
+    - target: {fileID: 22416316, guid: 9394afcf712bb44db992c5419ad26b00, type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 72
+      objectReference: {fileID: 0}
+    - target: {fileID: 22416316, guid: 9394afcf712bb44db992c5419ad26b00, type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 22416316, guid: 9394afcf712bb44db992c5419ad26b00, type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 243.49997
+      objectReference: {fileID: 0}
+    - target: {fileID: 22416316, guid: 9394afcf712bb44db992c5419ad26b00, type: 2}
+      propertyPath: m_SizeDelta.x
+      value: -487
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9394afcf712bb44db992c5419ad26b00, type: 2}
@@ -529,8 +553,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 1077351063, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   m_HorizontalAxis: Horizontal
   m_VerticalAxis: Vertical
   m_SubmitButton: Submit
@@ -547,8 +571,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: -619905303, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
   m_DragThreshold: 5
@@ -601,8 +625,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2fc493f05e0c7a847b733b32ded54956, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   dodoPrefab: {fileID: 192700, guid: fa16471c743793c4792243b304bef308, type: 2}
   dodoSpawnTimer: 2
 --- !u!1001 &2125713247

@@ -39,6 +39,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c9a5b0038b3dc14887e2eaa3a195e57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  blockPrefab: {fileID: 130856, guid: 0ab47ce7d12c73d4784d88b4efc7a5f1, type: 2}
+  bridgePrefab: {fileID: 110524, guid: c7e3c4627a9b9ba49b44e824fc97ebb5, type: 2}
+  block: {fileID: 0}
   shape: 1
 --- !u!1001 &100100000
 Prefab:
