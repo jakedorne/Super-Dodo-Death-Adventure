@@ -31,3 +31,4 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+Assets/Lava_Flowing_Shader/Materials/mtl_lava_distort.mat
