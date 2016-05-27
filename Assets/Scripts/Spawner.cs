@@ -10,6 +10,7 @@ public class Spawner : MonoBehaviour {
 	private GameObject[] dodoList;
 	private GameObject dodo;
 	private GameObject floor;
+	private GameObject pathFinder;
 	private int dodosToSpawn;
 
 	private int startX;
@@ -24,6 +25,7 @@ public class Spawner : MonoBehaviour {
 		dodosToSpawn = managerGO.GetComponent<LevelManager> ().noDodos;
 		dodoList = new GameObject [dodosToSpawn];
 		floor = GameObject.Find("Floor");
+		pathFinder = GameObject.Find ("PathFinder");
 		startX = floor.GetComponent<Floor> ().startX;
 		startZ = floor.GetComponent<Floor> ().startZ;
 
@@ -37,6 +39,7 @@ public class Spawner : MonoBehaviour {
 
 	public void beginSpawning(){
 		started = true;
+		pathFinder.GetComponent<PathFinder> ().rebuildTree ();
 		InvokeRepeating ("spawnDodo", 0f, dodoSpawnTimer);
 	}
 

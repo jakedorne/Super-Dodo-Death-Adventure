@@ -5,7 +5,6 @@ public class TetrisBlock : MonoBehaviour {
 
 	private int[,] 	blocks;
 
-
 	// prefabs
 	public GameObject blockPrefab;
 	public GameObject bridgePrefab;
@@ -90,7 +89,7 @@ public class TetrisBlock : MonoBehaviour {
 				blocks = new int[,]{
 					{0,1,0},
 					{0,1,0},
-					{0,1,0},
+					{0,1,0}
 				};
 				break;
 			case Shape.S:

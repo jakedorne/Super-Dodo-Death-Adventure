@@ -15,8 +15,13 @@ public class BlockPlacement : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-		selectorBlockColor = Color.white;
-		selectorBlockColor.a = 0.5f;
+
+    }
+
+    public void initialisePlacementBlocks()
+    {
+        selectorBlockColor = Color.white;
+        selectorBlockColor.a = 0.5f;
         placingBlocks = false;
         mapSize = this.GetComponent<Floor>().getFloor().GetLength(0); //I expect this map to be square. Need to change slightly if rectangular
         blocks = new int[mapSize, mapSize];

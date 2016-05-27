@@ -29,7 +29,8 @@ public class GameManager : MonoBehaviour {
 		}
 		// Set the first level to unlocked
 		levelUnlocked [0] = true;
-		intialised = true;
+        // For now, set level 2 to unlocked too (eventually change this to unlock after completing level 1)
+        intialised = true;
 	}
 
 	public static void finishedLevel(int levelID, int score){
@@ -55,7 +56,7 @@ public class GameManager : MonoBehaviour {
 		Scene scene = SceneManager.GetActiveScene(); 
 		SceneManager.LoadScene(scene.name);
 	}
-
+		
     // ================================ LEVELS. THIS SHIT'S GONNA BE UGLY ================================ //
     public static void setUpLevels()
     {

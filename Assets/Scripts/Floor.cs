@@ -42,7 +42,8 @@ public class Floor : MonoBehaviour {
 		map = GameManager.getLevel (SceneManager.GetActiveScene().buildIndex);
         mapSize = map.GetLength(0);
 		renderMap ();
-	}
+        this.GetComponent<BlockPlacement>().initialisePlacementBlocks();
+    }
 
 	private void renderMap(){
 		for(int i = 0; i < map.GetLength(0); i++){
@@ -55,7 +56,7 @@ public class Floor : MonoBehaviour {
 				}
 			}
 		}
-	}
+    }
 
 	/// <summary>
 	/// Adds tetris block at index on floor and returns true if successfully placed.
