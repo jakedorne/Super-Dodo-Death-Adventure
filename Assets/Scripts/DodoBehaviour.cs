@@ -95,20 +95,104 @@ public class DodoBehaviour : MonoBehaviour {
             return;
         }
 
-		Vector2 endCoord = pathFinder.findNextMove (floorScript.getCoordAtVector (transform.position));
+        //Vector2 endCoord = pathFinder.findNextMove (floorScript.getCoordAtVector (transform.position));
+        getEndCoord();
 
         //If we are told that the goal is our own block, we don't know where to go
         //For now, just go forwards
-        if (endCoord == floorScript.getCoordAtVector(transform.position))
+        if (endPosition == transform.position)
         {
-            endCoord = floorScript.getCoordAtVector(transform.position + transform.forward);
+            endPosition = floorScript.getCoordAtVector(transform.position + transform.forward);
         }
 
 		startPosition = transform.position;
-		endPosition = floorScript.getVectorAtCoords((int)endCoord.x, (int)endCoord.y);
+		//endPosition = floorScript.getVectorAtCoords((int)endPosition.x, (int)endPosition.z);
         transform.LookAt(endPosition);
         floorScript.updateBlock(floorScript.getCoordAtVector(transform.position));
         //moveDodo(transform.position, floorScript.getVectorAtCoords((int)bestBlock.x, (int)bestBlock.y));
+    }
+
+    private void getEndCoord()
+    {
+        List<Vector2> potentialBlocks = new List<Vector2>();
+        Vector2 bestBlock = MAX_VECTOR2;
+        Vector2 pos = floorScript.getCoordAtVector(transform.position);
+        if (!floorScript.isBlock(pos))
+        {
+            endPosition = Vector3.zero;
+            print("Stop and die, thanks Mr Dodo");
+            return;
+        }
+        Vector2 left = floorScript.getCoordAtVector(transform.position + transform.right * -1);
+        Vector2 right = floorScript.getCoordAtVector(transform.position + transform.right);
+        Vector2 forward = floorScript.getCoordAtVector(transform.position + transform.forward);
+
+        //print ("World - Left: " + (transform.position + transform.right)*-1 + " Right: " + (transform.position + transform.right) + " Forward: " + (transform.position + transform.forward));
+        //print ("Grid - Left: " + left + " Right: " + right + " Forward: " + forward);
+
+        if (floorScript.positionOnBlock((int)forward.x, (int)forward.y))
+        {
+            //can go forward, therefore go forward
+            //print("Yo you good to go forward, to: " + forward);
+            bestBlock = forward;
+        }
+        else
+        {
+            if (floorScript.positionOnBlock((int)left.x, (int)left.y))
+            {
+                if (floorScript.positionOnBlock((int)right.x, (int)right.y))
+                {
+                    //can go both left and right, choose random
+                    //print("Yo you good to go either, pick one");
+                    int randBlock = Random.Range(0, 2);
+                    if (randBlock == 0) bestBlock = left;
+                    else bestBlock = right;
+                }
+                else
+                {
+                    //can only go left
+                    //print("Yo you good to go left to: " + left);
+                    bestBlock = left;
+                }
+            }
+            else if (floorScript.positionOnBlock((int)right.x, (int)right.y))
+            {
+                //can only go right
+                //print("Yo you good to go right to: " + right);
+                bestBlock = right;
+            }
+            else
+            {
+                //walk off edge
+                //print("Yo kys");
+                bestBlock = forward;
+            }
+        }
+
+        //if(floorScript.positionOnBlock(currentX, currentZ+1))potentialBlocks.Add(new Vector2(currentX, currentZ+1));
+        //if(floorScript.positionOnBlock(currentX, currentZ-1))potentialBlocks.Add(new Vector2(currentX, currentZ-1));
+        //if(floorScript.positionOnBlock(currentX+1, currentZ)) potentialBlocks.Add(new Vector2(currentX+1, currentZ));
+        //if(floorScript.positionOnBlock(currentX-1, currentZ))potentialBlocks.Add(new Vector2(currentX-1, currentZ));
+
+        //potentialBlocks = removeLastPos (potentialBlocks);
+
+        if (floorScript.isTree(bestBlock))
+        {
+            Destroy(this.gameObject);
+            LevelManager script = FindObjectOfType<LevelManager>();
+            script.dodoDeath();
+            return;
+        }
+
+        //bestBlock = findBestBlock (potentialBlocks);
+
+        lastX = currentX;
+        lastZ = currentZ;
+        currentX = (int)bestBlock.x;
+        currentZ = (int)bestBlock.y;
+
+        startPosition = transform.position;
+        endPosition = floorScript.getVectorAtCoords((int)bestBlock.x, (int)bestBlock.y);
     }
 
 	private void moveDodo(Vector3 startPosition, Vector3 endPosition) {

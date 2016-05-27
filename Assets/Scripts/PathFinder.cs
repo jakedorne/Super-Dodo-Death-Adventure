@@ -16,12 +16,23 @@ public class PathFinder : MonoBehaviour {
 
 	public GameObject trailPrefab;
 
-	// Use this for initialization
-	void Start () {
-		floor = GameObject.Find ("Floor");
+    private Color pathfinderBlockColor;
+
+    private int[,] pathCounter;
+
+    //Very dirty way of stopping the path from going infinite in cycles.
+    private int maxPathLength = 100;
+    private int currentPathLength = 0;
+
+    // Use this for initialization
+    void Start () {
+        pathfinderBlockColor = Color.white;
+        pathfinderBlockColor.a = 0.05f;
+        floor = GameObject.Find ("Floor");
 		floorScript = floor.GetComponent<Floor> ();
 		trailMaker = GameObject.Find ("TrailMaker");
 		startPos = new Vector2 (floorScript.startX, floorScript.startZ);
+        pathCounter = new int[floorScript.getFloor().GetLength(0), floorScript.getFloor().GetLength(1)];
 	}
 	
 	// Update is called once per frame
@@ -30,7 +41,8 @@ public class PathFinder : MonoBehaviour {
 	}
 
 	public void rebuildTree() {
-		moveTree = buildTree (startPos);
+        currentPathLength = 0;
+        moveTree = buildTree (startPos);
 		buildTrail ();
 	}
 
@@ -38,12 +50,14 @@ public class PathFinder : MonoBehaviour {
 		transform.position = floorScript.getVectorAtCoords ((int)position.x, (int)position.y);
 		Move toReturn = new Move (position);
 
-
-		Vector2 left = floorScript.getCoordAtVector (transform.position + transform.right*-1);
+        Vector2 left = floorScript.getCoordAtVector (transform.position + transform.right*-1);
 		Vector2 right = floorScript.getCoordAtVector (transform.position + transform.right);
 		Vector2 forward = floorScript.getCoordAtVector (transform.position + transform.forward);
 
-		if(floorScript.positionOnBlock((int)forward.x, (int)forward.y)) {
+        currentPathLength++;
+        if (currentPathLength >= maxPathLength) return toReturn;
+
+        if (floorScript.positionOnBlock((int)forward.x, (int)forward.y)) {
 			//can go forward, therefore go forward
 			//print("Adding forward child");
 			transform.LookAt (floorScript.getVectorAtCoords ((int)forward.x, (int)forward.y));
@@ -89,11 +103,15 @@ public class PathFinder : MonoBehaviour {
 	public void buildTrail() {
 		Move currentNode = moveTree;
 		bool atEnd = false;
+        currentPathLength = 0;
 
 		while (!atEnd) {
 			
 			Vector3 position = floorScript.getVectorAtCoords ((int)currentNode.getPosition ().x, (int)currentNode.getPosition ().y);
-			Instantiate (trailPrefab, position, Quaternion.identity);
+			GameObject block = (GameObject)Instantiate (trailPrefab, position, Quaternion.identity);
+            block.GetComponent<Renderer>().material.color = pathfinderBlockColor;
+            currentPathLength++;
+            if (currentPathLength >= maxPathLength) atEnd=true;
 
 			if (currentNode.getChildNum () == 1) {
 				//if only one possible child continue drawing the trail.
@@ -106,20 +124,26 @@ public class PathFinder : MonoBehaviour {
 				Vector3 leftPos = floorScript.getVectorAtCoords ((int)leftChild.getPosition ().x, (int)leftChild.getPosition ().y);
 				Vector3 rightPos = floorScript.getVectorAtCoords ((int)rightChild.getPosition ().x, (int)rightChild.getPosition ().y);
 
-				Instantiate (trailPrefab, leftPos, Quaternion.identity);
-				Instantiate (trailPrefab, rightPos, Quaternion.identity);
-				atEnd = true;
+                block = (GameObject)Instantiate (trailPrefab, leftPos, Quaternion.identity);
+                block.GetComponent<Renderer>().material.color = pathfinderBlockColor;
+                block = (GameObject)Instantiate (trailPrefab, rightPos, Quaternion.identity);
+                block.GetComponent<Renderer>().material.color = pathfinderBlockColor;
+                atEnd = true;
 			} else {
 				//If no children stop the trail.
 				atEnd = true;
 			}
 		}
-	}
+        transform.LookAt(floorScript.getVectorAtCoords(1, 0)); //Need to reset the look direction. Otherwise if you end facing left the dodo doesn't know what to do.
+    }
 
+    /* This stuff doesn't work.
 	public Vector2 findNextMove(Vector2 currentPosition) {
-		Move currentNode = traverse (moveTree, currentPosition);
+        //Move currentNode = buildTree(currentPosition);
+        resetPathCounter();
+        Move currentNode = traverse (moveTree, currentPosition);
 
-		if (currentNode == null) {
+        if (currentNode == null) {
 			return MAX_VECTOR2;
 		}
 
@@ -138,7 +162,17 @@ public class PathFinder : MonoBehaviour {
 
 	}
 
+    private void resetPathCounter()
+    {
+        pathCounter = new int[floorScript.getFloor().GetLength(0), floorScript.getFloor().GetLength(1)];
+    }
+
 	public Move traverse(Move currentNode,  Vector2 searchPosition) {
+        pathCounter[(int)currentNode.getPosition().x, (int)currentNode.getPosition().y]++;
+        if (pathCounter[(int)currentNode.getPosition().x,(int)currentNode.getPosition().y]>=5)
+        {
+            return null;
+        }
 		if (currentNode.getPosition() == searchPosition) {
 			return currentNode;
 		} else if (currentNode.getChildNum() == 1) {
@@ -154,6 +188,7 @@ public class PathFinder : MonoBehaviour {
 			return null;
 		}
 	}
+    */
 
 	public void printTree(Move currentNode) {
 		print (currentNode);

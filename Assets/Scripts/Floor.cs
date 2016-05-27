@@ -81,11 +81,12 @@ public class Floor : MonoBehaviour {
 			}
 
 			// starts spawning on first block placement
-			if (!spawner.hasStarted ()) {
-				spawner.beginSpawning ();
-			}
 			pathfinder.rebuildTree ();
-			return true;
+            if (!spawner.hasStarted())
+            {
+                spawner.beginSpawning();
+            }
+            return true;
 		}
 		return false;
 	}
