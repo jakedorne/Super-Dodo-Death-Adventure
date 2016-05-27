@@ -126,7 +126,7 @@ public class Floor : MonoBehaviour {
 		if (blocks [(int)position.x, (int)position.y].interact ()) {
 			removeBridgeAt (new Vector2((int)position.x, (int)position.y));
 		}
-		pathfinder.rebuildTree ();
+		//pathfinder.rebuildTree ();
 	}
 
 	public void removeBridgeAt(Vector2 position){
