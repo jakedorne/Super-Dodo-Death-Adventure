@@ -135,7 +135,6 @@ public class Floor : MonoBehaviour {
 			if (updatedBlock is BreakableBlock) {
 				BreakableBlock bridgeBlock = (BreakableBlock)updatedBlock;
 				if (bridgeBlock.getHealth () <= 0) {
-					print ("BRIDGE IS DED");
 					removeBridgeAt (new Vector2 ((int)position.x, (int)position.y));
 				}
 			}
