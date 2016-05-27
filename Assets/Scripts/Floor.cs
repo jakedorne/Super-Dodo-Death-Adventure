@@ -106,31 +106,59 @@ public class Floor : MonoBehaviour {
 	public void AddBridgeBlock(int row, int col, TetrisBlock block){
 		int[,] blockFormation = block.GetBlocks ();
 		GameObject bridge = (GameObject) Instantiate(block.block, getVectorAtCoords(row + 1,col + 1), Quaternion.identity);
-		print ("BRIDGE STRING: "+bridge.ToString ());
-		if (blockFormation [1,1] == 1 && blockFormation[2,1]==1) {
+		BreakableBlock script = bridge.GetComponent<BreakableBlock> ();
+		script.setPosition (new Vector2 (row + 1, col + 1));
+
+		if (blockFormation [1, 1] == 1 && blockFormation [2, 1] == 1) {
 			bridge.transform.Rotate (0, 90, 0);
+			script.setOrientation ('v');
+		} else {
+			script.setOrientation ('h');
 		}
+
+		blocks [row + 1, col + 1] = script;
 
 		for(int i = 0; i < blockFormation.GetLength(0); i++){
 			for(int j = 0; j < blockFormation.GetLength(1); j++){
 				if(blockFormation[i,j]==1){
 					map[row + i, col + j] = 1;
-					BreakableBlock script = bridge.GetComponent<BreakableBlock> ();
-					blocks [row + i, col + j] = script;
 				}
 			}
 		}
 	}
 
 	public void updateBlock(Vector2 position){
-		if (blocks [(int)position.x, (int)position.y].interact ()) {
-			removeBridgeAt (new Vector2((int)position.x, (int)position.y));
+		Block updatedBlock = blocks [(int)position.x, (int)position.y];
+		if (updatedBlock) {
+			updatedBlock.interact ();
+
+			if (updatedBlock is BreakableBlock) {
+				BreakableBlock bridgeBlock = (BreakableBlock)updatedBlock;
+				if (bridgeBlock.getHealth () <= 0) {
+					print ("BRIDGE IS DED");
+					removeBridgeAt (new Vector2 ((int)position.x, (int)position.y));
+				}
+			}
 		}
-		pathfinder.rebuildTree ();
 	}
 
 	public void removeBridgeAt(Vector2 position){
-		
+		BreakableBlock block = (BreakableBlock)blocks [(int)position.x, (int)position.y];
+		int x = (int)position.x;
+		int z = (int)position.y;
+
+		if (block.getOrientation () == 'h') {
+			map[x,z] = 0;
+			map[x,z+1] = 0;
+			map[x,z-1] = 0;
+		} else {
+			map[x,z] = 0;
+			map[x+1,z] = 0;
+			map[x-1,z] = 0;
+		}
+		blocks [x, z] = null;
+
+		pathfinder.rebuildTree ();
 	}
 
 

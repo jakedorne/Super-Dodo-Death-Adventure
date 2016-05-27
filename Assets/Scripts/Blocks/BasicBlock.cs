@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class BasicBlock : MonoBehaviour, Block {
+public class BasicBlock : Block {
 
 	// Use this for initialization
 	void Start () {
@@ -13,7 +13,7 @@ public class BasicBlock : MonoBehaviour, Block {
 	
 	}
 		
-	public virtual bool interact(){
+	public override bool interact(){
 		// do nothing. is basically only an extension of block for consistency..
 		return false;
 	}

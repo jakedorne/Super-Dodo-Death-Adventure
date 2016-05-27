@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public interface Block {
+public abstract class Block : MonoBehaviour {
 
-	bool interact ();
+
+
+	public abstract bool interact ();
 }

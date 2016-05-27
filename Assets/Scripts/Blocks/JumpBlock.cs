@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class JumpBlock : MonoBehaviour, Block {
+public class JumpBlock : Block {
 
 	// Use this for initialization
 	void Start () {
@@ -13,7 +13,7 @@ public class JumpBlock : MonoBehaviour, Block {
 	
 	}
 
-	public virtual bool interact(){
+	public override bool interact(){
 		return false;
 	}
 }
