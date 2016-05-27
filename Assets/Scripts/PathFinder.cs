@@ -18,7 +18,7 @@ public class PathFinder : MonoBehaviour {
 
     private Color pathfinderBlockColor;
 
-    private int[,] pathCounter;
+    private GameObject[,] pathFinderBlocks;
 
     //Very dirty way of stopping the path from going infinite in cycles.
     private int maxPathLength = 100;
@@ -32,15 +32,43 @@ public class PathFinder : MonoBehaviour {
 		floorScript = floor.GetComponent<Floor> ();
 		trailMaker = GameObject.Find ("TrailMaker");
 		startPos = new Vector2 (floorScript.startX, floorScript.startZ);
-        pathCounter = new int[floorScript.getFloor().GetLength(0), floorScript.getFloor().GetLength(1)];
-	}
+        //pathCounter = new int[floorScript.getFloor().GetLength(0), floorScript.getFloor().GetLength(1)];
+        pathFinderBlocks = new GameObject[floorScript.getFloor().GetLength(0), floorScript.getFloor().GetLength(1)];
+        setUpPathFinderBlocks();
+    }
 	
 	// Update is called once per frame
 	void Update () {
 		//rebuildTree ();
 	}
 
-	public void rebuildTree() {
+    private void setUpPathFinderBlocks()
+    {
+        for (int i=0; i< floorScript.getFloor().GetLength(0); i++)
+        {
+            for (int j=0; j< floorScript.getFloor().GetLength(1); j++)
+            {
+                Vector3 position = floorScript.getVectorAtCoords(i, j);
+                GameObject block = (GameObject)Instantiate(trailPrefab, position, Quaternion.identity);
+                pathFinderBlocks[i, j] = block;
+                block.SetActive(false);
+            }
+        }
+    }
+
+    private void deleteOldPath()
+    {
+        for (int i = 0; i < floorScript.getFloor().GetLength(0); i++)
+        {
+            for (int j = 0; j < floorScript.getFloor().GetLength(1); j++)
+            {
+                pathFinderBlocks[i, j].SetActive(false);
+            }
+        }
+    }
+
+    public void rebuildTree() {
+        deleteOldPath();
         currentPathLength = 0;
         moveTree = buildTree (startPos);
 		buildTrail ();
@@ -108,7 +136,8 @@ public class PathFinder : MonoBehaviour {
 		while (!atEnd) {
 			
 			Vector3 position = floorScript.getVectorAtCoords ((int)currentNode.getPosition ().x, (int)currentNode.getPosition ().y);
-			GameObject block = (GameObject)Instantiate (trailPrefab, position, Quaternion.identity);
+            GameObject block = pathFinderBlocks[(int)currentNode.getPosition().x, (int)currentNode.getPosition().y]; //(GameObject)Instantiate (trailPrefab, position, Quaternion.identity);
+            block.SetActive(true);
             block.GetComponent<Renderer>().material.color = pathfinderBlockColor;
             currentPathLength++;
             if (currentPathLength >= maxPathLength) atEnd=true;
@@ -124,9 +153,11 @@ public class PathFinder : MonoBehaviour {
 				Vector3 leftPos = floorScript.getVectorAtCoords ((int)leftChild.getPosition ().x, (int)leftChild.getPosition ().y);
 				Vector3 rightPos = floorScript.getVectorAtCoords ((int)rightChild.getPosition ().x, (int)rightChild.getPosition ().y);
 
-                block = (GameObject)Instantiate (trailPrefab, leftPos, Quaternion.identity);
+                block = pathFinderBlocks[(int)leftChild.getPosition().x, (int)leftChild.getPosition().y];//(GameObject)Instantiate (trailPrefab, leftPos, Quaternion.identity);
+                block.SetActive(true);
                 block.GetComponent<Renderer>().material.color = pathfinderBlockColor;
-                block = (GameObject)Instantiate (trailPrefab, rightPos, Quaternion.identity);
+                block = pathFinderBlocks[(int)rightChild.getPosition().x, (int)rightChild.getPosition().y];//(GameObject)Instantiate (trailPrefab, rightPos, Quaternion.identity);
+                block.SetActive(true);
                 block.GetComponent<Renderer>().material.color = pathfinderBlockColor;
                 atEnd = true;
 			} else {
@@ -134,10 +165,10 @@ public class PathFinder : MonoBehaviour {
 				atEnd = true;
 			}
 		}
-        transform.LookAt(floorScript.getVectorAtCoords(1, 0)); //Need to reset the look direction. Otherwise if you end facing left the dodo doesn't know what to do.
+        //transform.LookAt(floorScript.getVectorAtCoords(1, 0)); //Need to reset the look direction. Otherwise if you end facing left the dodo doesn't know what to do.
     }
 
-    /* This stuff doesn't work.
+    /* This stuff doesn't work. It can never deal with dodo's that are not on the current path (ones that get treed off or whatever)
 	public Vector2 findNextMove(Vector2 currentPosition) {
         //Move currentNode = buildTree(currentPosition);
         resetPathCounter();
