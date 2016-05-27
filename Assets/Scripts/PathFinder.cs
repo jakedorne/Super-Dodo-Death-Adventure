@@ -31,7 +31,7 @@ public class PathFinder : MonoBehaviour {
 
 	public void rebuildTree() {
 		moveTree = buildTree (startPos);
-		//buildTrail ();
+		buildTrail ();
 	}
 
 	private Move buildTree(Vector2 position) {
@@ -88,11 +88,31 @@ public class PathFinder : MonoBehaviour {
 
 	public void buildTrail() {
 		Move currentNode = moveTree;
+		bool atEnd = false;
 
-		while (currentNode.getChildNum() != 2 && currentNode.getChildNum() != 0) {
+		while (!atEnd) {
+			
 			Vector3 position = floorScript.getVectorAtCoords ((int)currentNode.getPosition ().x, (int)currentNode.getPosition ().y);
 			Instantiate (trailPrefab, position, Quaternion.identity);
-			currentNode = currentNode.findOnlyChild ();
+
+			if (currentNode.getChildNum () == 1) {
+				//if only one possible child continue drawing the trail.
+				currentNode = currentNode.findOnlyChild ();
+			} else if (currentNode.getChildNum () == 2) {
+				//If at a fork, show left and right children, then stop the trail.
+				Move leftChild = currentNode.getLeft ();
+				Move rightChild = currentNode.getRight ();
+
+				Vector3 leftPos = floorScript.getVectorAtCoords ((int)leftChild.getPosition ().x, (int)leftChild.getPosition ().y);
+				Vector3 rightPos = floorScript.getVectorAtCoords ((int)rightChild.getPosition ().x, (int)rightChild.getPosition ().y);
+
+				Instantiate (trailPrefab, leftPos, Quaternion.identity);
+				Instantiate (trailPrefab, rightPos, Quaternion.identity);
+				atEnd = true;
+			} else {
+				//If no children stop the trail.
+				atEnd = true;
+			}
 		}
 	}
 
