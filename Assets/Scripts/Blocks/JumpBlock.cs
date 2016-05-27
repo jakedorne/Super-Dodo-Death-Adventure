@@ -13,7 +13,7 @@ public class JumpBlock : MonoBehaviour, Block {
 	
 	}
 
-	void Block.interact(){
-		
+	public virtual bool interact(){
+		return false;
 	}
 }

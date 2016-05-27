@@ -10,6 +10,7 @@ public class Floor : MonoBehaviour {
 	public GameObject spikePrefab;
 
 	public Spawner spawner;
+	public PathFinder pathfinder;
 
 	private float blockXLength;
 	private float blockZLength;
@@ -34,13 +35,17 @@ public class Floor : MonoBehaviour {
 		// absolutely ashamed of this line -- is used for finding the length of the blocks..
 		GameObject blockObject = (GameObject) Instantiate(blockPrefab, new Vector3(-1000,-1000,-1000), Quaternion.identity);
 		spawner = GetComponentInChildren<Spawner> ();
+		pathfinder = GameObject.Find ("PathFinder").GetComponent<PathFinder> ();
 		print (spawner);
 
 		blockXLength = blockObject.GetComponent<Collider>().bounds.size.x;
 		blockZLength = blockObject.GetComponent<Collider>().bounds.size.z;
 
+
+
 		map = GameManager.getLevel (SceneManager.GetActiveScene().buildIndex);
         mapSize = map.GetLength(0);
+		blocks = new Block[mapSize, mapSize];
 		renderMap ();
         this.GetComponent<BlockPlacement>().initialisePlacementBlocks();
     }
@@ -79,32 +84,29 @@ public class Floor : MonoBehaviour {
 			if (!spawner.hasStarted ()) {
 				spawner.beginSpawning ();
 			}
+			pathfinder.rebuildTree ();
 			return true;
 		}
 		return false;
 	}
 
 	public void AddBasicBlock(int row, int col, TetrisBlock block){
-		print ("Coords: " + row + ", " + col);
 		int[,] blockFormation = block.GetBlocks ();
 		for(int i = 0; i < blockFormation.GetLength(0); i++){
 			for(int j = 0; j < blockFormation.GetLength(1); j++){
 				if(blockFormation[i,j]==1){
 					map[row + i, col + j] = 1;
 					GameObject placedBlock = (GameObject) Instantiate(block.block, new Vector3((row + i) * blockXLength, 0, (col + j) * blockZLength), Quaternion.identity);
-					//blocks [row + i, col + j] = placedBlock.GetComponent<BasicBlock> ();
+					blocks [row + i, col + j] = placedBlock.GetComponent<BasicBlock> ();
 				}
 			}
 		}
 	}
 
 	public void AddBridgeBlock(int row, int col, TetrisBlock block){
-
-		print ("adding bridge block");
 		int[,] blockFormation = block.GetBlocks ();
-		GameObject bridge;
-		bridge = (GameObject) Instantiate(block.block, getVectorAtCoords(row + 1,col + 1), Quaternion.identity);
-
+		GameObject bridge = (GameObject) Instantiate(block.block, getVectorAtCoords(row + 1,col + 1), Quaternion.identity);
+		print ("BRIDGE STRING: "+bridge.ToString ());
 		if (blockFormation [1,1] == 1 && blockFormation[2,1]==1) {
 			bridge.transform.Rotate (0, 90, 0);
 		}
@@ -113,10 +115,22 @@ public class Floor : MonoBehaviour {
 			for(int j = 0; j < blockFormation.GetLength(1); j++){
 				if(blockFormation[i,j]==1){
 					map[row + i, col + j] = 1;
-					//blocks [row + i, col + j] = bridge.GetComponent<BreakableBlock>();
+					BreakableBlock script = bridge.GetComponent<BreakableBlock> ();
+					blocks [row + i, col + j] = script;
 				}
 			}
 		}
+	}
+
+	public void updateBlock(Vector2 position){
+		if (blocks [(int)position.x, (int)position.y].interact ()) {
+			removeBridgeAt (new Vector2((int)position.x, (int)position.y));
+		}
+		pathfinder.rebuildTree ();
+	}
+
+	public void removeBridgeAt(Vector2 position){
+		
 	}
 
 
@@ -177,6 +191,7 @@ public class Floor : MonoBehaviour {
         float z = blockPosition.y;
         map[(int)blockPosition.x, (int)blockPosition.y] = 3;
         Instantiate(tree, new Vector3((x) * blockXLength, 0 + blockPrefab.GetComponent<MeshRenderer>().bounds.size.y, (z) * blockZLength), Quaternion.identity);
+		pathfinder.rebuildTree ();
     }
 
     public void createDeadDodoBlock(Vector2 blockPosition)
@@ -188,6 +203,7 @@ public class Floor : MonoBehaviour {
             map[x, z] = 1; //Eventually change this to its own number perhaps?
             Instantiate(blockPrefab, new Vector3(blockXLength * x, 0, blockZLength * z), Quaternion.identity);
             this.GetComponent<BlockPlacement>().updateOnDodoDeath((int)x,(int)z);
+			pathfinder.rebuildTree ();
         }
     }
 

@@ -12,8 +12,9 @@ public class BasicBlock : MonoBehaviour, Block {
 	void Update () {
 	
 	}
-
-	void Block.interact(){
+		
+	public virtual bool interact(){
 		// do nothing. is basically only an extension of block for consistency..
+		return false;
 	}
 }

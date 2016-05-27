@@ -161,12 +161,13 @@ public class DodoBehaviour : MonoBehaviour {
 		startPosition = transform.position;
 		endPosition = floorScript.getVectorAtCoords((int)endCoord.x, (int)endCoord.y);
         transform.LookAt(endPosition);
-
+		floorScript.updateBlock (floorScript.getCoordAtVector (transform.position));
         //moveDodo(transform.position, floorScript.getVectorAtCoords((int)bestBlock.x, (int)bestBlock.y));
     }
 
 	private void moveDodo(Vector3 startPosition, Vector3 endPosition) {
 		//Lerp tutorial from: https://chicounity3d.wordpress.com/2014/05/23/how-to-lerp-like-a-pro/
+
 		currentLerpTime += Time.deltaTime;
 		if (currentLerpTime > lerpTime) {
 			currentLerpTime = lerpTime;

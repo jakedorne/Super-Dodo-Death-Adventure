@@ -14,15 +14,20 @@ public class BreakableBlock : MonoBehaviour, Block {
 	void Update () {
 	
 	}
-
-	void Block.interact(){
+		
+	public virtual bool interact(){
+		print ("Interact called");
 		health--;
 		if (health <= 0) {
 			Die ();
-		}
+			return true;
+		} 
+		return false;
+		
+
 	}
 
 	void Die(){
-		
+		Destroy (gameObject);
 	}
 }
