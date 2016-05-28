@@ -18,6 +18,8 @@ public class Spawner : MonoBehaviour {
 
 	private bool started = false;
 
+    private bool paused = false;
+
 
 	// Use this for initialization
 	void Start () {
@@ -52,4 +54,9 @@ public class Spawner : MonoBehaviour {
 	public bool hasStarted(){
 		return started;
 	}
+
+    public void OnGamePause()
+    {
+        //Pause the invoke so dodos stop spawning... How??
+    }
 }

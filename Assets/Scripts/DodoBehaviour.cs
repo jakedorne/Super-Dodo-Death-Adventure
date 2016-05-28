@@ -26,6 +26,8 @@ public class DodoBehaviour : MonoBehaviour {
 
     private bool spawnBlockOnDeath = true; //Wanted to try this out and see how it feels.
 
+    private bool paused;
+
 
     // Use this for initialization
     void Start () {
@@ -40,12 +42,19 @@ public class DodoBehaviour : MonoBehaviour {
         //InvokeRepeating ("moveCycle", 0.5f, 1f);
         moveCycle();
         transform.LookAt(endPosition);
-
+        paused = false;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (paused)
+        {
+            anim.SetBool("isWalking", false);
+        } else
+        {
+
+        
         if (transform.position.y < 0)
         {
             Destroy(this.gameObject);
@@ -82,6 +91,7 @@ public class DodoBehaviour : MonoBehaviour {
 			anim.SetBool("isWalking", false);
             currentLerpTime = 0f;
             moveCycle();
+        }
         }
     }
 
@@ -208,6 +218,7 @@ public class DodoBehaviour : MonoBehaviour {
 		transform.position = Vector3.Lerp (startPosition, endPosition, t);
 	}
 	
+    /*
 	private List<Vector2> removeLastPos(List<Vector2> potentialBlocks) {
 		Vector2 toRemove = MAX_VECTOR2;
 		foreach (Vector2 gridPos in potentialBlocks) {
@@ -222,22 +233,14 @@ public class DodoBehaviour : MonoBehaviour {
 		}
 		return potentialBlocks;
 	}
+    */
 	
 
-	//Could be the problem
-	private Vector2 findBestBlock(List<Vector2> potentialBlocks) {
-		Vector2 bestGridPos = MAX_VECTOR2;
-		Vector2 goalGridPos = new Vector2 (floorScript.endX, floorScript.endZ);
 
-		foreach (Vector2 gridPos in potentialBlocks) {
-			if (bestGridPos == MAX_VECTOR2) {
-				bestGridPos = gridPos;
-			} else if (Vector2.Distance (gridPos, goalGridPos) < Vector2.Distance (bestGridPos, goalGridPos)) {
-				bestGridPos = gridPos;
-			}
-		}
 
-		return bestGridPos;
-	}
+    public void OnGamePause()
+    {
+        paused = !paused;
+    }
 		
 }

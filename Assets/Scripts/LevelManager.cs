@@ -15,6 +15,7 @@ public class LevelManager: MonoBehaviour {
 	private int dodoFinishedCount;
 	private bool levelCompleted;
 	private int score;
+    private bool paused;
 
 	void Start(){
 		levelgui = levelgui.GetComponent<LevelUI> ();
@@ -42,6 +43,10 @@ public class LevelManager: MonoBehaviour {
 		if (Input.GetKeyDown (KeyCode.Space) && levelCompleted) {
 			GameManager.reloadLevel ();
 		}
+        if (Input.GetKeyDown("p"))
+        {
+            pause();
+        }
 	}
 
 	public TetrisBlock.Shape getAutomaticBlock(){
@@ -114,6 +119,32 @@ public class LevelManager: MonoBehaviour {
 		// Needs to be discussed
 		score = dodoFinishedCount * 10;
 	}
+
+    private void pause()
+    {
+        //Messing around with different pause options
+        //Timescale stops all animations. Not ideal.
+        /*
+        paused = !paused;
+        if (paused)
+        {
+            Time.timeScale = 0;
+        } else
+        {
+            Time.timeScale = 1;
+        }
+        */
+        
+        //Pause function can stop dodos but not animations which is cool.
+        //BUT unsure how to pause the invoke to stop more dodos from spawning.
+        /*
+        Object[] objects = FindObjectsOfType(typeof(GameObject));
+        foreach (GameObject go in objects)
+        {
+            go.SendMessage("OnGamePause", SendMessageOptions.DontRequireReceiver);
+        }
+        */
+    }
 		
 		
 }

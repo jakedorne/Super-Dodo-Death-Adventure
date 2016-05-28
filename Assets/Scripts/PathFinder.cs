@@ -21,13 +21,13 @@ public class PathFinder : MonoBehaviour {
     private GameObject[,] pathFinderBlocks;
 
     //Very dirty way of stopping the path from going infinite in cycles.
-    private int maxPathLength = 100;
+    private int maxPathLength = 300;
     private int currentPathLength = 0;
 
     // Use this for initialization
     void Start () {
         pathfinderBlockColor = Color.white;
-        pathfinderBlockColor.a = 0.05f;
+        pathfinderBlockColor.a = 0.2f;
         floor = GameObject.Find ("Floor");
 		floorScript = floor.GetComponent<Floor> ();
 		trailMaker = GameObject.Find ("TrailMaker");
@@ -70,6 +70,7 @@ public class PathFinder : MonoBehaviour {
     public void rebuildTree() {
         deleteOldPath();
         currentPathLength = 0;
+        transform.LookAt(floorScript.getVectorAtCoords(0, 1000)); //Need to reset the look direction. Otherwise if you end facing left the dodo doesn't know what to do.
         moveTree = buildTree (startPos);
 		buildTrail ();
 	}
@@ -165,7 +166,6 @@ public class PathFinder : MonoBehaviour {
 				atEnd = true;
 			}
 		}
-        //transform.LookAt(floorScript.getVectorAtCoords(1, 0)); //Need to reset the look direction. Otherwise if you end facing left the dodo doesn't know what to do.
     }
 
     /* This stuff doesn't work. It can never deal with dodo's that are not on the current path (ones that get treed off or whatever)
