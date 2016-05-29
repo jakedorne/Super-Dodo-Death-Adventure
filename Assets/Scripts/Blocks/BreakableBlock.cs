@@ -8,9 +8,20 @@ public class BreakableBlock : Block {
 	private Vector2 position;
 	private char orientation;
 
+	public GameObject bridge;
+	public GameObject bridge1;
+	public GameObject bridge2;
+	public GameObject bridge3;
+
+	public Mesh[] meshes = new Mesh[4];
+
 	// Use this for initialization
 	void Start () {
 		health = 3;
+		meshes [0] = bridge3.GetComponent<MeshFilter> ().sharedMesh;
+		meshes [1] = bridge2.GetComponent<MeshFilter> ().sharedMesh;
+		meshes [2] = bridge1.GetComponent<MeshFilter> ().sharedMesh;
+		meshes [3] = bridge.GetComponent<MeshFilter> ().sharedMesh;
 	}
 	
 	// Update is called once per frame
@@ -21,6 +32,7 @@ public class BreakableBlock : Block {
 	public override bool interact(){
 		print ("Interact called");
 		health--;
+		gameObject.GetComponent<MeshFilter> ().mesh = meshes [health]; 
 		if (health <= 0) {
 			Die ();
 			return true;

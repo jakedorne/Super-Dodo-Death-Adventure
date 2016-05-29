@@ -19,7 +19,7 @@ public class TetrisBlock : MonoBehaviour {
 	// Use this for initialization
 	void Awake () {
 		// just because most likely case.
-		SetType (Type.BASIC);
+		SetType (Type.BRIDGE);
 	}
 	
 	// Update is called once per frame
