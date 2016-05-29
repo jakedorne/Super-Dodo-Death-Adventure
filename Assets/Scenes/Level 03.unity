@@ -255,6 +255,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectorBlock: {fileID: 161964, guid: 0e28a989c94ec8c479deb82ee6d9a64c, type: 2}
   blockRotation: {fileID: 8300000, guid: fe41dc00406f9294a85957e10f98253d, type: 3}
+  blockPlacement: {fileID: 8300000, guid: e0ce116cd1af46d47a9c0e44ca538f2e, type: 3}
 --- !u!82 &839605788
 AudioSource:
   m_ObjectHideFlags: 0

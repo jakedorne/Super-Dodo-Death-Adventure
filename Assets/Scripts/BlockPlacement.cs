@@ -6,6 +6,7 @@ public class BlockPlacement : MonoBehaviour {
     public GameObject selectorBlock; //I'm expecting this to be an opaque version of the original block
 
     public AudioClip blockRotation;
+    public AudioClip blockPlacement;
     AudioSource audio;
 
     private bool placingBlocks;
@@ -158,6 +159,7 @@ public class BlockPlacement : MonoBehaviour {
         bool blockAdded = this.GetComponent<Floor>().AddTetrisBlock(row, col, tetrisBlock);
 		GameObject manager = GameObject.FindGameObjectWithTag ("LevelManager");
 		if (blockAdded) {
+            playPlacementSound();
             placingBlocks = false;
             togglePlacementGrid();
             getFloor();
@@ -245,5 +247,10 @@ public class BlockPlacement : MonoBehaviour {
     private void playRotationSound()
     {
         audio.PlayOneShot(blockRotation, 0.1F);
+    }
+
+    public void playPlacementSound()
+    {
+        audio.PlayOneShot(blockPlacement, 0.3F);
     }
 }

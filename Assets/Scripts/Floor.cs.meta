@@ -1,10 +1,17 @@
 fileFormatVersion: 2
 guid: 0157ffc92e570fa4c968abd1c896cb0b
-timeCreated: 1464062171
+timeCreated: 1464559071
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - blockPrefab: {instanceID: 0}
+  - tree: {instanceID: 0}
+  - tetrisPrefab: {instanceID: 0}
+  - spikePrefab: {instanceID: 0}
+  - watermelonPrefab: {fileID: 150728, guid: 01e19dcc75ad0c848ac17d03fc598801, type: 2}
+  - spawner: {instanceID: 0}
+  - pathfinder: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
