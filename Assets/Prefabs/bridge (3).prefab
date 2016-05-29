@@ -1,42 +1,42 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &110524
+--- !u!1 &182496
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 427450}
-  - 33: {fileID: 3346170}
-  - 23: {fileID: 2343824}
-  - 64: {fileID: 6401790}
-  - 114: {fileID: 11428010}
+  - 4: {fileID: 455206}
+  - 33: {fileID: 3347470}
+  - 23: {fileID: 2370682}
+  - 64: {fileID: 6402064}
+  - 114: {fileID: 11455580}
   m_Layer: 0
-  m_Name: bridge
+  m_Name: bridge (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &427450
+--- !u!4 &455206
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 110524}
+  m_GameObject: {fileID: 182496}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071067}
-  m_LocalPosition: {x: 3.56, y: 0.49, z: 1.47}
+  m_LocalPosition: {x: -1.6, y: 0.49, z: 4.8}
   m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!23 &2343824
+--- !u!23 &2370682
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 110524}
+  m_GameObject: {fileID: 182496}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -58,45 +58,36 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!33 &3346170
+--- !u!33 &3347470
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 110524}
-  m_Mesh: {fileID: 4300000, guid: 9169e1bc626f8924a8021984abeb6a16, type: 3}
---- !u!64 &6401790
+  m_GameObject: {fileID: 182496}
+  m_Mesh: {fileID: 4300000, guid: 2b51eb510b570e047b0f142f06ea52ab, type: 3}
+--- !u!64 &6402064
 MeshCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 110524}
+  m_GameObject: {fileID: 182496}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Convex: 0
   m_Mesh: {fileID: 4300000, guid: 9169e1bc626f8924a8021984abeb6a16, type: 3}
---- !u!114 &11428010
+--- !u!114 &11455580
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 110524}
+  m_GameObject: {fileID: 182496}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7b2e2bcad71836f4bb4ebcc78faa38af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bridge: {fileID: 110524}
-  bridge1: {fileID: 116926, guid: 1bf902df28442d5408a4915b2e6fd432, type: 2}
-  bridge2: {fileID: 133974, guid: 56b4a099ae86162429a343081be0a630, type: 2}
-  bridge3: {fileID: 182496, guid: 8b0bd8471f50a8d4ba35eeed8789ad5c, type: 2}
-  meshes:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -106,5 +97,5 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 110524}
+  m_RootGameObject: {fileID: 182496}
   m_IsPrefabParent: 1
