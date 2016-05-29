@@ -218,7 +218,7 @@ public class DodoBehaviour : MonoBehaviour {
 		transform.position = Vector3.Lerp (startPosition, endPosition, t);
 	}
 	
-    /*
+    /* we aren't using this at the moment
 	private List<Vector2> removeLastPos(List<Vector2> potentialBlocks) {
 		Vector2 toRemove = MAX_VECTOR2;
 		foreach (Vector2 gridPos in potentialBlocks) {

@@ -25,7 +25,7 @@ public class Floor : MonoBehaviour {
 
 	private static int mapSize;
 
-	// 0 = empty, 1 = block down, 2 = block hovered on (green), 3 = unplaceable space, 9 = block hovered on (red)
+	// 0 = empty, 1 = block down, 2 = block hovered on (green), 3 = unplaceable space, 4 = tree, 9 = block hovered on (red)
 	private int[,] map;
 	private Block[,] blocks;
 
@@ -53,8 +53,12 @@ public class Floor : MonoBehaviour {
 	private void renderMap(){
 		for(int i = 0; i < map.GetLength(0); i++){
 			for(int j = 0; j < map.GetLength(1); j++){
-				if (map [i, j] == 1) {
+				if (map [i, j] == 1 || map[i,j] == 4) {
 					Instantiate(blockPrefab, new Vector3(blockXLength * i, 0, blockZLength * j), Quaternion.identity);
+                    if (map[i,j] == 4)
+                    {
+                        Instantiate(tree, new Vector3((i) * blockXLength, 0 + blockPrefab.GetComponent<MeshRenderer>().bounds.size.y, (j) * blockZLength), Quaternion.identity);
+                    }
 				} 
 				else if(map[i,j]==3){
 					Instantiate(spikePrefab, new Vector3(blockXLength * i, -2f, blockZLength * j), Quaternion.identity);
@@ -175,7 +179,7 @@ public class Floor : MonoBehaviour {
 				} else if ((col + j >= map.GetLength(1) || col + j < 0) && formation [i, j] == 1) {
 					// part of block is off map
 					return false;
-				} else if (formation[i,j]==1 && (map[row+i,col+j]==1 || map[row+i,col+j]==3)){
+				} else if (formation[i,j]==1 && (map[row+i,col+j]==1 || map[row+i,col+j]==3 || map[row + i, col + j] == 4)){
 					// part of block is on another block or unplaceable spot
 					return false;
 				}
@@ -217,7 +221,7 @@ public class Floor : MonoBehaviour {
     public void createObstacle(Vector2 blockPosition) {
         float x = blockPosition.x;
         float z = blockPosition.y;
-        map[(int)blockPosition.x, (int)blockPosition.y] = 3;
+        map[(int)blockPosition.x, (int)blockPosition.y] = 4;
         Instantiate(tree, new Vector3((x) * blockXLength, 0 + blockPrefab.GetComponent<MeshRenderer>().bounds.size.y, (z) * blockZLength), Quaternion.identity);
 		pathfinder.rebuildTree ();
     }
@@ -247,7 +251,7 @@ public class Floor : MonoBehaviour {
     {
         int x = (int)pos.x;
         int z = (int)pos.y;
-        if (x >= 0 && z >= 0 && x < mapSize && z < mapSize && map[x, z] == 3) return true;
+        if (x >= 0 && z >= 0 && x < mapSize && z < mapSize && map[x, z] == 4) return true;
         return false;
     }
 
