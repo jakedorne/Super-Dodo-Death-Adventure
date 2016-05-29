@@ -1,12 +1,12 @@
 fileFormatVersion: 2
 guid: 9d47c6451156ef44bb9239c67f211185
-timeCreated: 1461617958
+timeCreated: 1464556429
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
   defaultReferences:
-  - selectorBlock: {fileID: 187658, guid: 8f6e90ca8545af54baf01a536e2c59f6, type: 2}
-  - floorScript: {instanceID: 0}
+  - selectorBlock: {instanceID: 0}
+  - blockRotation: {fileID: 8300000, guid: fe41dc00406f9294a85957e10f98253d, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

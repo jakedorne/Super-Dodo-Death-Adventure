@@ -179,11 +179,6 @@ public class DodoBehaviour : MonoBehaviour {
             }
         }
 
-        //if(floorScript.positionOnBlock(currentX, currentZ+1))potentialBlocks.Add(new Vector2(currentX, currentZ+1));
-        //if(floorScript.positionOnBlock(currentX, currentZ-1))potentialBlocks.Add(new Vector2(currentX, currentZ-1));
-        //if(floorScript.positionOnBlock(currentX+1, currentZ)) potentialBlocks.Add(new Vector2(currentX+1, currentZ));
-        //if(floorScript.positionOnBlock(currentX-1, currentZ))potentialBlocks.Add(new Vector2(currentX-1, currentZ));
-
         //potentialBlocks = removeLastPos (potentialBlocks);
 
         if (floorScript.isTree(bestBlock))
@@ -218,7 +213,7 @@ public class DodoBehaviour : MonoBehaviour {
 		transform.position = Vector3.Lerp (startPosition, endPosition, t);
 	}
 	
-    /* we aren't using this at the moment
+    /* we aren't using this at the moment. Old method.
 	private List<Vector2> removeLastPos(List<Vector2> potentialBlocks) {
 		Vector2 toRemove = MAX_VECTOR2;
 		foreach (Vector2 gridPos in potentialBlocks) {

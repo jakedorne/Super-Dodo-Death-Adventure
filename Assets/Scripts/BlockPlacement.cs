@@ -4,7 +4,9 @@ using System.Collections;
 public class BlockPlacement : MonoBehaviour {
 
     public GameObject selectorBlock; //I'm expecting this to be an opaque version of the original block
-    //For now it is just a white block. SelectorBlock MUST be the same size as the original block.
+
+    public AudioClip blockRotation;
+    AudioSource audio;
 
     private bool placingBlocks;
     private int mapSize;
@@ -28,6 +30,7 @@ public class BlockPlacement : MonoBehaviour {
         getFloor();
         selectorBlocks = new GameObject[mapSize, mapSize];
         setUpPlacementGrid();
+        audio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -47,6 +50,7 @@ public class BlockPlacement : MonoBehaviour {
         {
             if (placingBlocks)
             {
+                playRotationSound();
                 tetrisBlock.RotateLeft();
             }
         }
@@ -54,6 +58,7 @@ public class BlockPlacement : MonoBehaviour {
 		{
 			if (placingBlocks)
 			{
+                playRotationSound();
 				tetrisBlock.RotateRight();
 			}	
 		}
@@ -235,5 +240,10 @@ public class BlockPlacement : MonoBehaviour {
     public void updateOnDodoDeath(int row, int col)
     {
         selectorBlocks[col, row].SetActive(false);
+    }
+
+    private void playRotationSound()
+    {
+        audio.PlayOneShot(blockRotation, 0.1F);
     }
 }
