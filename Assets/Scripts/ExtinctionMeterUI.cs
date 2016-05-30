@@ -38,6 +38,11 @@ public class ExtinctionMeterUI : MonoBehaviour {
 	public void lowerExtinctionCount(){
 		Transform pointer = transform.FindChild ("Pointer");
 		// pointer.transform.position = new Vector2 ((pointer.position.x - decrementConstant), pointer.position.y);
+		LevelManager manager = FindObjectOfType<LevelManager> ();
+		Transform endPointer = transform.FindChild ("EndPointer");
+		if (manager.noDodosLeft() == 0) {
+			pointerDestination = endPointer.transform.position;
+		}
 		pointerDestination = new Vector2 ((pointer.position.x - decrementConstant), pointer.position.y);
 	}
 

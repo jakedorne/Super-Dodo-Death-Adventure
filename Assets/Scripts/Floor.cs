@@ -74,14 +74,12 @@ public class Floor : MonoBehaviour {
 		int[,] blockFormation = block.GetBlocks();
 		if(FormationFits(row, col, blockFormation)){
 			switch (block.type) {
-				case TetrisBlock.Type.BASIC:
-						print ("basic case");
-						AddBasicBlock (row, col, block);
-						break;
 				case TetrisBlock.Type.BRIDGE:
-						print ("bridge case");
-						AddBridgeBlock (row, col, block);
-						break;
+					AddBridgeBlock (row, col, block);
+					break;
+				default:
+					AddBasicBlock (row, col, block);
+					break;
 			}
 
 			// starts spawning on first block placement
@@ -97,6 +95,7 @@ public class Floor : MonoBehaviour {
 
 	public void AddBasicBlock(int row, int col, TetrisBlock block){
 		int[,] blockFormation = block.GetBlocks ();
+		print (blockFormation);
 		for(int i = 0; i < blockFormation.GetLength(0); i++){
 			for(int j = 0; j < blockFormation.GetLength(1); j++){
 				if(blockFormation[i,j]==1){
