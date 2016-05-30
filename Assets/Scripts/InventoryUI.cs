@@ -22,10 +22,10 @@ public class InventoryUI : MonoBehaviour {
 
 		GameObject managerGO = GameObject.FindGameObjectWithTag ("LevelManager");
 		LevelManager manager = managerGO.GetComponent<LevelManager> ();
-		List<TetrisBlock.Shape> blocks = manager.blocks;
+		List<TetrisBlock.Type> blocks = manager.blocks;
 
-		Dictionary<TetrisBlock.Shape, int> formattedInventory = new Dictionary<TetrisBlock.Shape, int> ();
-		foreach(TetrisBlock.Shape block in blocks){
+		Dictionary<TetrisBlock.Type, int> formattedInventory = new Dictionary<TetrisBlock.Type, int> ();
+		foreach(TetrisBlock.Type block in blocks){
 			if (!formattedInventory.ContainsKey (block)) {
 				formattedInventory.Add (block, 1);
 			} else {
@@ -34,7 +34,7 @@ public class InventoryUI : MonoBehaviour {
 			}
 		}
 
-		foreach (TetrisBlock.Shape key in formattedInventory.Keys) {
+		foreach (TetrisBlock.Type key in formattedInventory.Keys) {
 			int amount = formattedInventory [key];
 			Button button = Instantiate (tileButton);
 			button.transform.SetParent (transform, false);
@@ -43,7 +43,7 @@ public class InventoryUI : MonoBehaviour {
 		}
 	}
 
-	public void tetrisBlockSelected(TetrisBlock.Shape shapeSelected){
+	public void tetrisBlockSelected(TetrisBlock.Type shapeSelected){
 		int childs = transform.childCount;
 		for (int i = 0; i < childs; i++)
 		{

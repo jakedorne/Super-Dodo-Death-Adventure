@@ -6,7 +6,7 @@ public class LevelManager: MonoBehaviour {
 
 	// attributes of level
 	public int levelID;
-	public List<TetrisBlock.Shape> blocks;
+	public List<TetrisBlock.Type> blocks;
 	public int noDodos;
 	public GameObject floor;
 	public LevelUI levelgui;
@@ -40,7 +40,7 @@ public class LevelManager: MonoBehaviour {
 
 		if (Input.GetMouseButtonDown (1) || Input.GetKeyDown("w")) {
 			if (blocks.Count != 0) {
-				TetrisBlock.Shape automaticBlock = getAutomaticBlock ();
+				TetrisBlock.Type automaticBlock = getAutomaticBlock ();
 				addTile(automaticBlock);
 				levelgui.tetrisBlockSelected (automaticBlock);
 			}
@@ -57,8 +57,8 @@ public class LevelManager: MonoBehaviour {
         }
 	}
 
-	public TetrisBlock.Shape getAutomaticBlock(){
-		TetrisBlock.Shape block;
+	public TetrisBlock.Type getAutomaticBlock(){
+		TetrisBlock.Type block;
 		TetrisBlock currentBlock = floor.GetComponent<BlockPlacement> ().getSelectedShape ();
 		if (currentBlock == null) {
 			// Get the first block
@@ -67,10 +67,10 @@ public class LevelManager: MonoBehaviour {
 			// If there is a block selected, need to deselect it
 			levelgui.deselectBlocks();
 			// need to find the next block to toggle to
-			List<TetrisBlock.Shape> uniqueBlockTypes = new List<TetrisBlock.Shape> ();
-			foreach(TetrisBlock.Shape inventoryBlock in blocks){
+			List<TetrisBlock.Type> uniqueBlockTypes = new List<TetrisBlock.Type> ();
+			foreach(TetrisBlock.Type inventoryBlock in blocks){
 				bool duplicate = false;
-				foreach(TetrisBlock.Shape uniqueBlock in uniqueBlockTypes){
+				foreach(TetrisBlock.Type uniqueBlock in uniqueBlockTypes){
 					if (uniqueBlock == inventoryBlock) {
 						duplicate = true;
 						break;
@@ -80,7 +80,7 @@ public class LevelManager: MonoBehaviour {
 					uniqueBlockTypes.Add (inventoryBlock);
 				}
 			}
-			int currentIndex = uniqueBlockTypes.IndexOf(currentBlock.shape);
+			int currentIndex = uniqueBlockTypes.IndexOf(currentBlock.type);
 			if (currentIndex == (uniqueBlockTypes.Count - 1)) {
 				block = uniqueBlockTypes [0];
 			} else {
@@ -90,11 +90,11 @@ public class LevelManager: MonoBehaviour {
 		return block;
 	}
 
-	public void addTile(TetrisBlock.Shape shape){
+	public void addTile(TetrisBlock.Type shape){
 		floor.GetComponent<BlockPlacement>().setTetrisShape (shape);
 	}
 
-	public void removeTile(TetrisBlock.Shape type){
+	public void removeTile(TetrisBlock.Type type){
 		blocks.Remove (type);
 		levelgui.updateInventory ();
 
@@ -126,6 +126,10 @@ public class LevelManager: MonoBehaviour {
 	public void calculateScore(){
 		// Needs to be discussed
 		score = dodoFinishedCount * 10;
+	}
+
+	public int noDodosLeft(){
+		return noDodos - dodoFinishedCount - dodoDeathCount;
 	}
 
     private void pause()

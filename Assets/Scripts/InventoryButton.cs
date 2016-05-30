@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class InventoryButton : MonoBehaviour {
 
-	public TetrisBlock.Shape value;
+	public TetrisBlock.Type value;
 	public int amount;
 
 	const string UNCLICKED_EXTENSION = "0";

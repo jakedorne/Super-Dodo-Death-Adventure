@@ -10,16 +10,12 @@ public class TetrisBlock : MonoBehaviour {
 	public GameObject bridgePrefab;
 
 	public GameObject block;
-	public Shape shape;
 	public Type type;
 
-	public enum Shape{L, T, CROSS, C, LINE, S, Z, J};
-	public enum Type{BASIC, BRIDGE, JUMP};
+	public enum Type{L, T, CROSS, C, LINE, S, Z, J, BRIDGE, JUMP};
 
 	// Use this for initialization
 	void Awake () {
-		// just because most likely case.
-		SetType (Type.BASIC);
 	}
 	
 	// Update is called once per frame
@@ -42,79 +38,81 @@ public class TetrisBlock : MonoBehaviour {
 		RotateLeft (); RotateLeft (); RotateLeft ();
 	}
 
-	public void SetType(Type type){
-		this.type = type;
-		switch(type){
-			case Type.BASIC:
-				block = blockPrefab;
-				break;
-			case Type.BRIDGE:
-				block = bridgePrefab;
-				break;
-		}
-	}
-
-	public void SetShape(Shape newShape){
-		shape = newShape;
+	public void SetShape(Type newShape){
+		print ("Set Shape");
+		type = newShape;
 		switch(newShape){
-			case Shape.L:
+			case Type.L:
 				blocks = new int[,]{
 					{0,1,0},
 					{0,1,0},
 					{0,1,1}
 				};
 				break;
-			case Shape.T:
+			case Type.T:
 				blocks = new int[,]{
 					{1,1,1},
 					{0,1,0},
 					{0,1,0}
 				};
 				break;
-			case Shape.CROSS:
+			case Type.CROSS:
 				blocks = new int[,]{
 					{0,1,0},
 					{1,1,1},
 					{0,1,0}
 				};
 				break;
-			case Shape.C:
+			case Type.C:
 				blocks = new int[,]{
 					{0,1,1},
 					{0,1,0},
 					{0,1,1}
 				};
 				break;
-			case Shape.LINE:
+			case Type.LINE:
 				blocks = new int[,]{
 					{0,1,0},
 					{0,1,0},
 					{0,1,0}
 				};
 				break;
-			case Shape.S:
+			case Type.S:
 				blocks = new int[,]{
 					{0,1,0},
 					{0,1,1},
 					{0,0,1}
 				};
 				break;
-            case Shape.Z:
+            case Type.Z:
                 blocks = new int[,]{
                     {0,1,0},
                     {1,1,0},
                     {1,0,0}
                 };
                 break;
-            case Shape.J:
+            case Type.J:
                 blocks = new int[,]{
                     {0,1,0},
                     {0,1,0},
                     {1,1,0}
                 };
                 break;
+		case Type.BRIDGE:
+			blocks = new int[,] {
+				{ 0, 1, 0 },
+				{ 0, 1, 0 },
+				{ 0, 1, 0 }
+			};
+				break;
 
         }
+		// Set the prefab that should be used
+		if (type == Type.BRIDGE) {
+			block = bridgePrefab;
+		} else {
+			block = blockPrefab;
+		}
 	}
 
 	public int[,] GetBlocks(){

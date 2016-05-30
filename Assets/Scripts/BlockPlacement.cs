@@ -164,7 +164,7 @@ public class BlockPlacement : MonoBehaviour {
             togglePlacementGrid();
             getFloor();
             // update inventory so that the button is no longer selected
-            manager.GetComponent<LevelManager>().removeTile(tetrisBlock.shape);
+            manager.GetComponent<LevelManager>().removeTile(tetrisBlock.type);
             manager.GetComponent<LevelManager>().levelgui.deselectBlocks();
 			this.tetrisBlock = null;
             
@@ -218,7 +218,7 @@ public class BlockPlacement : MonoBehaviour {
         togglePlacementGrid();
     }
 
-	public void setTetrisShape(TetrisBlock.Shape shape){
+	public void setTetrisShape(TetrisBlock.Type shape){
 		//If we don't instantiate a new one each time, any rotation will stay with each subsequent placement
 		GameObject tetrisPrefab = (GameObject)Instantiate(this.GetComponent<Floor>().tetrisPrefab, new Vector3(-1000, -1000, -1000), Quaternion.identity);
 		TetrisBlock tetrisBlock = tetrisPrefab.GetComponent<TetrisBlock>();
