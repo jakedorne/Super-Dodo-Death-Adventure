@@ -175,12 +175,34 @@ public class DodoBehaviour : MonoBehaviour {
             {
                 //walk off edge
                 //print("Yo kys");
-                bestBlock = forward;
+                if (!floorScript.isTree(forward))
+                {
+                    //If you can go forward, go forward.
+                    bestBlock = forward;
+                } else if (floorScript.isTree(left) && !floorScript.isTree(right))
+                {
+                    //If you can't go forward or left, go right.
+                    bestBlock = right;
+                } else if (!floorScript.isTree(left) && floorScript.isTree(right))
+                {
+                    bestBlock = left;
+                } else if (!floorScript.isTree(left) && !floorScript.isTree(right))
+                {
+                    int randBlock = Random.Range(0, 2);
+                    if (randBlock == 0) bestBlock = left;
+                    else bestBlock = right;
+                } else
+                {
+                    Destroy(this.gameObject);
+                    LevelManager script = FindObjectOfType<LevelManager>();
+                    script.dodoDeath();
+                    return;
+                }
             }
         }
 
         //potentialBlocks = removeLastPos (potentialBlocks);
-
+        /*
         if (floorScript.isTree(bestBlock))
         {
             Destroy(this.gameObject);
@@ -188,7 +210,7 @@ public class DodoBehaviour : MonoBehaviour {
             script.dodoDeath();
             return;
         }
-
+        */
         //bestBlock = findBestBlock (potentialBlocks);
 
         lastX = currentX;
