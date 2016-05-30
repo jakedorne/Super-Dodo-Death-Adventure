@@ -16,7 +16,9 @@ public class PathFinder : MonoBehaviour {
 
 	public GameObject trailPrefab;
 
-    private Color pathfinderBlockColor;
+    private Color pathfinderBlock;
+	private Color pathfinderForkBlock;
+	private Color pathfinderEndBlock;
 
     private GameObject[,] pathFinderBlocks;
 
@@ -26,8 +28,18 @@ public class PathFinder : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        pathfinderBlockColor = Color.white;
-        pathfinderBlockColor.a = 0.2f;
+		//Normal Block Color
+        pathfinderBlock = Color.white;
+        pathfinderBlock.a = 0.2f;
+
+		//Fork Block Color
+		pathfinderForkBlock = Color.red;
+		pathfinderForkBlock.a = 0.4f;
+
+		//End Block Color
+		pathfinderEndBlock = Color.black;
+		pathfinderEndBlock.a = 0.4f;
+
         floor = GameObject.Find ("Floor");
 		floorScript = floor.GetComponent<Floor> ();
 		trailMaker = GameObject.Find ("TrailMaker");
@@ -138,16 +150,20 @@ public class PathFinder : MonoBehaviour {
 			
 			Vector3 position = floorScript.getVectorAtCoords ((int)currentNode.getPosition ().x, (int)currentNode.getPosition ().y);
             GameObject block = pathFinderBlocks[(int)currentNode.getPosition().x, (int)currentNode.getPosition().y]; //(GameObject)Instantiate (trailPrefab, position, Quaternion.identity);
-            block.SetActive(true);
-            block.GetComponent<Renderer>().material.color = pathfinderBlockColor;
+
             currentPathLength++;
             if (currentPathLength >= maxPathLength) atEnd=true;
 
 			if (currentNode.getChildNum () == 1) {
 				//if only one possible child continue drawing the trail.
+				block.SetActive(true);
+				block.GetComponent<Renderer>().material.color = pathfinderBlock;
 				currentNode = currentNode.findOnlyChild ();
 			} else if (currentNode.getChildNum () == 2) {
 				//If at a fork, show left and right children, then stop the trail.
+				block.SetActive(true);
+				block.GetComponent<Renderer>().material.color = pathfinderEndBlock;
+
 				Move leftChild = currentNode.getLeft ();
 				Move rightChild = currentNode.getRight ();
 
@@ -156,13 +172,15 @@ public class PathFinder : MonoBehaviour {
 
                 block = pathFinderBlocks[(int)leftChild.getPosition().x, (int)leftChild.getPosition().y];//(GameObject)Instantiate (trailPrefab, leftPos, Quaternion.identity);
                 block.SetActive(true);
-                block.GetComponent<Renderer>().material.color = pathfinderBlockColor;
+                block.GetComponent<Renderer>().material.color = pathfinderForkBlock;
                 block = pathFinderBlocks[(int)rightChild.getPosition().x, (int)rightChild.getPosition().y];//(GameObject)Instantiate (trailPrefab, rightPos, Quaternion.identity);
                 block.SetActive(true);
-                block.GetComponent<Renderer>().material.color = pathfinderBlockColor;
+                block.GetComponent<Renderer>().material.color = pathfinderForkBlock;
                 atEnd = true;
 			} else {
 				//If no children stop the trail.
+				block.SetActive(true);
+				block.GetComponent<Renderer>().material.color = pathfinderEndBlock;
 				atEnd = true;
 			}
 		}
