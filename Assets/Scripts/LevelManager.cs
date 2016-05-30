@@ -30,6 +30,14 @@ public class LevelManager: MonoBehaviour {
 	}
 
 	void Update(){
+		// For testing purposes
+		if (Input.GetKeyDown (KeyCode.K)) {
+			dodoDeath ();
+		}
+		if(Input.GetKeyDown(KeyCode.L)){
+			dodoFinished();
+		}
+
 		if (Input.GetMouseButtonDown (1) || Input.GetKeyDown("w")) {
 			if (blocks.Count != 0) {
 				TetrisBlock.Shape automaticBlock = getAutomaticBlock ();
