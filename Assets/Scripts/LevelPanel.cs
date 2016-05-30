@@ -11,8 +11,6 @@ public class LevelPanel : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		button = button.GetComponent<Button> ();
-		label = label.GetComponent<Text> ();
-		label.text = "Level " + levelNumber;
 	}
 
 	public void setlevelUnlocked(bool value){
@@ -20,7 +18,7 @@ public class LevelPanel : MonoBehaviour {
 	}
 
 	public void setScore(int score){
-		label.text = "Level " + levelNumber + ":" + score;
+		// label.text = "Level " + levelNumber + ":" + score;
 	}
 
 }

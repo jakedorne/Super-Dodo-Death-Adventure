@@ -24,8 +24,8 @@ public class GameManager : MonoBehaviour {
 		scores = new int[numberOfLevels];
 		levelUnlocked = new bool[numberOfLevels];
 		for (int i = 0; i < numberOfLevels; i++) {
-			scores [i] = -1; // -1 means that the level has not been played yet
-			levelUnlocked [i] = false; // Intialise all levels to locked
+			scores [i] = 0; // -1 means that the level has not been played yet
+			levelUnlocked [i] = true; // Intialise all levels to locked
 		}
 		// Set the first level to unlocked
 		levelUnlocked [0] = true;
