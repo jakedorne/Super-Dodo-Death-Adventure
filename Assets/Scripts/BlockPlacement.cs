@@ -251,6 +251,6 @@ public class BlockPlacement : MonoBehaviour {
 
     public void playPlacementSound()
     {
-        audio.PlayOneShot(blockPlacement, 0.3F);
+        audio.PlayOneShot(blockPlacement, 0.1F);
     }
 }
