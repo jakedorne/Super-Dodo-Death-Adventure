@@ -100,8 +100,9 @@ public class Floor : MonoBehaviour {
 			for(int j = 0; j < blockFormation.GetLength(1); j++){
 				if(blockFormation[i,j]==1){
 					map[row + i, col + j] = 1;
-					GameObject placedBlock = (GameObject) Instantiate(block.block, new Vector3((row + i) * blockXLength, 0, (col + j) * blockZLength), Quaternion.identity);
+					GameObject placedBlock = (GameObject) Instantiate(block.block, new Vector3((row + i) * blockXLength, 1, (col + j) * blockZLength), Quaternion.identity);
 					blocks [row + i, col + j] = placedBlock.GetComponent<BasicBlock> ();
+                    placedBlock.GetComponent<BasicBlock>().fallToPlace();
 				}
 			}
 		}
