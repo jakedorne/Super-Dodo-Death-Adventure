@@ -144,6 +144,30 @@ public class GameManager : MonoBehaviour {
         LevelInfo level3 = (LevelInfo)ScriptableObject.CreateInstance("LevelInfo");
         level3.init(map3, bronze, silver, gold);
         levelInfo[levelNumber] = level3;
+		//-------------------------------------------- Level 4 --------------------------------------------
+		// Tutorial Level 1, set Level4 for now.
+		levelNumber = 5;
+		int[,] map4 = new int[,]
+		{
+			{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+			{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+			{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+			{ 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0 },
+			{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+			{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+			{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+			{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+			{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+			{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+			{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+			{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+		};
+		bronze = 5;
+		silver = 8;
+		gold = 9;
+		LevelInfo level4 = (LevelInfo)ScriptableObject.CreateInstance("LevelInfo");
+		level4.init(map4, bronze, silver, gold);
+		levelInfo[levelNumber] = level4;
         //-------------------------------------------- Done --------------------------------------------
     }
 
