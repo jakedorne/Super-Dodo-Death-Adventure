@@ -1,0 +1,145 @@
+fileFormatVersion: 2
+guid: ce4f92d6e6e304c1fbbf13c73199b950
+timeCreated: 1464645806
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: cliff
+    100002: L_shape_block
+    100004: L_shape_block_MeshPart0
+    100006: L_shape_block_MeshPart1
+    100008: //RootNode
+    100010: rock1
+    100012: rock2
+    100014: rock3
+    100016: tile_rock1
+    100018: tile_rock2
+    100020: tiles
+    100022: X1_block
+    100024: X3_block
+    100026: X4_block1
+    100028: Z_shape_block
+    100030: Z_shape_block_MeshPart0
+    100032: Z_shape_block_MeshPart1
+    400000: cliff
+    400002: L_shape_block
+    400004: L_shape_block_MeshPart0
+    400006: L_shape_block_MeshPart1
+    400008: //RootNode
+    400010: rock1
+    400012: rock2
+    400014: rock3
+    400016: tile_rock1
+    400018: tile_rock2
+    400020: tiles
+    400022: X1_block
+    400024: X3_block
+    400026: X4_block1
+    400028: Z_shape_block
+    400030: Z_shape_block_MeshPart0
+    400032: Z_shape_block_MeshPart1
+    2300000: cliff
+    2300002: L_shape_block_MeshPart0
+    2300004: L_shape_block_MeshPart1
+    2300006: rock1
+    2300008: rock2
+    2300010: rock3
+    2300012: tile_rock1
+    2300014: tile_rock2
+    2300016: X1_block
+    2300018: X3_block
+    2300020: X4_block1
+    2300022: Z_shape_block_MeshPart0
+    2300024: Z_shape_block_MeshPart1
+    3300000: cliff
+    3300002: L_shape_block_MeshPart0
+    3300004: L_shape_block_MeshPart1
+    3300006: rock1
+    3300008: rock2
+    3300010: rock3
+    3300012: tile_rock1
+    3300014: tile_rock2
+    3300016: X1_block
+    3300018: X3_block
+    3300020: X4_block1
+    3300022: Z_shape_block_MeshPart0
+    3300024: Z_shape_block_MeshPart1
+    4300000: Z_shape_block_MeshPart0
+    4300002: Z_shape_block_MeshPart1
+    4300004: X3_block
+    4300006: L_shape_block_MeshPart0
+    4300008: L_shape_block_MeshPart1
+    4300010: X4_block1
+    4300012: X1_block
+    4300014: cliff
+    4300016: rock3
+    4300018: rock2
+    4300020: rock1
+    4300022: tile_rock1
+    4300024: tile_rock2
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

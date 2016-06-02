@@ -12,10 +12,15 @@ public class TetrisBlock : MonoBehaviour {
 	public GameObject block;
 	public Type type;
 
+	private GameObject floor;
+	private Floor floorscript;
+
 	public enum Type{L, T, CROSS, C, LINE, S, Z, J, BRIDGE, JUMP};
 
 	// Use this for initialization
 	void Awake () {
+		floor = GameObject.Find ("Floor");
+		floorscript = floor.GetComponent<Floor> ();
 	}
 	
 	// Update is called once per frame
@@ -111,7 +116,7 @@ public class TetrisBlock : MonoBehaviour {
 		if (type == Type.BRIDGE) {
 			block = bridgePrefab;
 		} else {
-			block = blockPrefab;
+			block = floorscript.blockPrefab;
 		}
 	}
 
