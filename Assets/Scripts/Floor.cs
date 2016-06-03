@@ -61,7 +61,7 @@ public class Floor : MonoBehaviour {
                     }
 				} 
 				else if(map[i,j]==3){
-					Instantiate(spikePrefab, new Vector3(blockXLength * i, -2f, blockZLength * j), Quaternion.identity);
+					Instantiate(spikePrefab, new Vector3(blockXLength * i, -0.5f, blockZLength * j), Quaternion.identity);
 				}
 			}
 		}
@@ -222,7 +222,7 @@ public class Floor : MonoBehaviour {
         float x = blockPosition.x;
         float z = blockPosition.y;
         map[(int)blockPosition.x, (int)blockPosition.y] = 4;
-        Instantiate(tree, new Vector3((x) * blockXLength, 0 + blockPrefab.GetComponent<MeshRenderer>().bounds.size.y, (z) * blockZLength), Quaternion.identity);
+        Instantiate(tree, new Vector3((x) * blockXLength, 0 + blockPrefab.GetComponent<MeshRenderer>().bounds.size.y/2, (z) * blockZLength), Quaternion.identity);
 		pathfinder.rebuildTree ();
     }
 
