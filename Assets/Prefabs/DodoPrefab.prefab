@@ -1254,7 +1254,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d08b968754486964caf330e0b6ca2c4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dodoDeath: {fileID: 8300000, guid: d478758517f7b4c479ae945ca0f48412, type: 3}
+  dodoDeath: {fileID: 8300000, guid: d3c226c3ef0c4f1449bdbc2b362958da, type: 3}
 --- !u!137 &13743252
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
