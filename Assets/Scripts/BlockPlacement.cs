@@ -7,6 +7,7 @@ public class BlockPlacement : MonoBehaviour {
 
     public AudioClip blockRotation;
     public AudioClip blockPlacement;
+    public AudioClip blockDenied;
     AudioSource audio;
 
     private bool placingBlocks;
@@ -15,6 +16,9 @@ public class BlockPlacement : MonoBehaviour {
     private GameObject[,] selectorBlocks;
     private TetrisBlock tetrisBlock;
 	private Color selectorBlockColor;
+
+    private float volume = 0.1f;
+    private float volumeVariation = 0.01f;
 
     // Use this for initialization
     void Start () {
@@ -167,7 +171,9 @@ public class BlockPlacement : MonoBehaviour {
             manager.GetComponent<LevelManager>().removeTile(tetrisBlock.type);
             manager.GetComponent<LevelManager>().levelgui.deselectBlocks();
 			this.tetrisBlock = null;
-            
+        } else
+        {
+            PlayBlockDeniedSound();
         }
     }
 
@@ -246,11 +252,16 @@ public class BlockPlacement : MonoBehaviour {
 
     private void playRotationSound()
     {
-        audio.PlayOneShot(blockRotation, 0.1F);
+        audio.PlayOneShot(blockRotation, volume);
     }
 
     public void playPlacementSound()
     {
-        audio.PlayOneShot(blockPlacement, 0.1F);
+        audio.PlayOneShot(blockPlacement, volume);
+    }
+
+    private void PlayBlockDeniedSound()
+    {
+        audio.PlayOneShot(blockDenied, volume);
     }
 }

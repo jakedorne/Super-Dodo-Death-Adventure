@@ -8,7 +8,12 @@ public class DodoBehaviour : MonoBehaviour {
 
 	private PathFinder pathFinder;
 
-	private int currentX;
+    public AudioClip dodoDeath;
+    AudioSource audio;
+    private float volume = 0.1f;
+    private float volumeVariation = 0.01f;
+
+    private int currentX;
 	private int currentZ;
 
 	private int lastX;
@@ -43,6 +48,7 @@ public class DodoBehaviour : MonoBehaviour {
         moveCycle();
         transform.LookAt(endPosition);
         paused = false;
+        audio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -53,45 +59,45 @@ public class DodoBehaviour : MonoBehaviour {
             anim.SetBool("isWalking", false);
         } else
         {
-
-        
-        if (transform.position.y < 0)
-        {
-            Destroy(this.gameObject);
-            LevelManager script = FindObjectOfType<LevelManager>();
-            script.dodoDeath();
-            if (spawnBlockOnDeath)
+            if (transform.position.y < 0)
             {
-                //Might need to wait for animation to finish before calling this.
-                Vector2 pos = floorScript.getCoordAtVector(transform.position);
-                floorScript.createDeadDodoBlock(pos);
+                Destroy(this.gameObject);
+                LevelManager script = FindObjectOfType<LevelManager>();
+                script.dodoDeath();
+                if (spawnBlockOnDeath)
+                {
+                    //Might need to wait for animation to finish before calling this.
+                    Vector2 pos = floorScript.getCoordAtVector(transform.position);
+                    floorScript.createDeadDodoBlock(pos);
+                }
             }
-        }
-        if (floorScript.getCoordAtVector(transform.position) == target)
-        {
-            // clean this shit up eventually
-            LevelManager script = FindObjectOfType<LevelManager>();
-            script.dodoFinished();
-            Destroy(this.gameObject);
-        }
-        //First, check if we have reached our target. If we have, set a new target.
-        if (endPosition==Vector3.zero)
-        {
-			anim.SetBool("isWalking", true);
-            //Walking off an edge. Have to scale it down so the dodo doesnt shoot off the end
-            //Just fall, no movement necessary
-            //transform.position += transform.forward * 0.02f / lerpTime;
-        } else if (transform.position != endPosition)
-        {
-			//print ("I should be moving to: "  + endPosition);
-			anim.SetBool("isWalking", true);
-            moveDodo(startPosition,endPosition);
-        } else
-        {
-			anim.SetBool("isWalking", false);
-            currentLerpTime = 0f;
-            moveCycle();
-        }
+            if (floorScript.getCoordAtVector(transform.position) == target)
+            {
+                // clean this shit up eventually
+                LevelManager script = FindObjectOfType<LevelManager>();
+                script.dodoFinished();
+                Destroy(this.gameObject);
+            }
+            //First, check if we have reached our target. If we have, set a new target.
+            if (endPosition == Vector3.zero)
+            {
+                anim.SetBool("isWalking", true);
+                //Walking off an edge. Have to scale it down so the dodo doesnt shoot off the end
+                //Just fall, no movement necessary
+                //transform.position += transform.forward * 0.02f / lerpTime;
+            }
+            else if (transform.position != endPosition)
+            {
+                //print ("I should be moving to: "  + endPosition);
+                anim.SetBool("isWalking", true);
+                moveDodo(startPosition, endPosition);
+            }
+            else
+            {
+                anim.SetBool("isWalking", false);
+                currentLerpTime = 0f;
+                moveCycle();
+            }
         }
     }
 
@@ -101,6 +107,7 @@ public class DodoBehaviour : MonoBehaviour {
         //If we are not standing on a block, we should stop moving and have no goal.
         if (!floorScript.isBlock(floorScript.getCoordAtVector(transform.position)))
         {
+            playDodoDeathSound();
             endPosition = Vector3.zero;
             return;
         }
@@ -251,9 +258,12 @@ public class DodoBehaviour : MonoBehaviour {
 		return potentialBlocks;
 	}
     */
-	
 
-
+    private void playDodoDeathSound()
+    {
+        //This may need to be played through another object, as the dodo gets destroyed, which stops the sound.
+        audio.PlayOneShot(dodoDeath, volume);
+    }
 
     public void OnGamePause()
     {

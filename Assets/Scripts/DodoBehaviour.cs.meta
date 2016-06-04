@@ -1,10 +1,11 @@
 fileFormatVersion: 2
 guid: d08b968754486964caf330e0b6ca2c4c
-timeCreated: 1462060509
+timeCreated: 1465001888
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - dodoDeath: {fileID: 8300000, guid: d478758517f7b4c479ae945ca0f48412, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
