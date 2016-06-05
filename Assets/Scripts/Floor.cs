@@ -8,6 +8,7 @@ public class Floor : MonoBehaviour {
     public GameObject tree;
 	public GameObject tetrisPrefab;
 	public GameObject spikePrefab;
+	public GameObject dustParticles;
 
 	public Spawner spawner;
 	public PathFinder pathfinder;
@@ -76,18 +77,15 @@ public class Floor : MonoBehaviour {
 			switch (block.type) {
 				case TetrisBlock.Type.BRIDGE:
 					AddBridgeBlock (row, col, block);
+					Instantiate(dustParticles, new Vector3(row * blockXLength, 1, col * blockZLength), Quaternion.identity);
 					break;
 				default:
 					AddBasicBlock (row, col, block);
+					Instantiate(dustParticles, new Vector3(row * blockXLength, 1, col * blockZLength), Quaternion.identity);
 					break;
-			}
 
-			// starts spawning on first block placement
+			}
 			pathfinder.rebuildTree ();
-            if (!spawner.hasStarted())
-            {
-                spawner.beginSpawning();
-            }
             return true;
 		}
 		return false;

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class Spawner : MonoBehaviour {
@@ -17,8 +18,10 @@ public class Spawner : MonoBehaviour {
 	private int startZ;
 
 	private bool started = false;
-
     private bool paused = false;
+
+	private float countdown = 10.0f;
+	public Text countdownText;
 
 
 	// Use this for initialization
@@ -35,7 +38,14 @@ public class Spawner : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
+		if (!started) {
+			countdown -= Time.deltaTime;
+			countdownText.text = "Dodos spawn in: "+ Mathf.Ceil(countdown).ToString();
+			if (countdown <= 0) {
+				beginSpawning ();
+				countdownText.text = "";
+			}
+		}
 	
 	}
 
