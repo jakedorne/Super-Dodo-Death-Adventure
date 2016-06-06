@@ -139,6 +139,7 @@ public class PathFinder : MonoBehaviour {
 				//walk off edge
 				//print("Adding no children");
 				toReturn.setChildNum(0);
+				toReturn.setDirection (transform.eulerAngles);
 			}
 		}
 
