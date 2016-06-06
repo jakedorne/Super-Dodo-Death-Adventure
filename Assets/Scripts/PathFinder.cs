@@ -102,6 +102,7 @@ public class PathFinder : MonoBehaviour {
 			//can go forward, therefore go forward
 			//print("Adding forward child");
 			transform.LookAt (floorScript.getVectorAtCoords ((int)forward.x, (int)forward.y));
+			toReturn.setDirection (transform.eulerAngles);
 			toReturn.setForward (buildTree (forward));
 			toReturn.setChildNum (1);
 		} 
@@ -111,9 +112,11 @@ public class PathFinder : MonoBehaviour {
 					//can go both left and right, choose random
 					//print("Adding left and right children");
 					transform.LookAt (floorScript.getVectorAtCoords ((int)left.x, (int)left.y));
+					toReturn.setDirection (transform.eulerAngles);
 					toReturn.setLeft (buildTree (left));
 
 					transform.LookAt (floorScript.getVectorAtCoords ((int)right.x, (int)right.y));
+					toReturn.setDirection (transform.eulerAngles);
 					toReturn.setRight (buildTree (right));
 
 					toReturn.setChildNum (2);
@@ -121,6 +124,7 @@ public class PathFinder : MonoBehaviour {
 					//can only go left
 					//print("Adding left child");
 					transform.LookAt (floorScript.getVectorAtCoords ((int)left.x, (int)left.y));
+					toReturn.setDirection (transform.eulerAngles);
 					toReturn.setLeft (buildTree (left));
 					toReturn.setChildNum (1);
 				}
@@ -128,6 +132,7 @@ public class PathFinder : MonoBehaviour {
 				//can only go right
 				//print("Adding right child");
 				transform.LookAt (floorScript.getVectorAtCoords ((int)right.x, (int)right.y));
+				toReturn.setDirection (transform.eulerAngles);
 				toReturn.setRight (buildTree (right));
 				toReturn.setChildNum (1);
 			} else {
@@ -152,6 +157,9 @@ public class PathFinder : MonoBehaviour {
             GameObject block = pathFinderBlocks[(int)currentNode.getPosition().x, (int)currentNode.getPosition().y]; //(GameObject)Instantiate (trailPrefab, position, Quaternion.identity);
 
             currentPathLength++;
+
+			block.transform.eulerAngles = currentNode.getDirection();
+
             if (currentPathLength >= maxPathLength) atEnd=true;
 
 			if (currentNode.getChildNum () == 1) {
@@ -171,9 +179,11 @@ public class PathFinder : MonoBehaviour {
 				Vector3 rightPos = floorScript.getVectorAtCoords ((int)rightChild.getPosition ().x, (int)rightChild.getPosition ().y);
 
                 block = pathFinderBlocks[(int)leftChild.getPosition().x, (int)leftChild.getPosition().y];//(GameObject)Instantiate (trailPrefab, leftPos, Quaternion.identity);
+				block.transform.eulerAngles = currentNode.getDirection();
                 block.SetActive(true);
                 block.GetComponent<Renderer>().material.color = pathfinderForkBlock;
                 block = pathFinderBlocks[(int)rightChild.getPosition().x, (int)rightChild.getPosition().y];//(GameObject)Instantiate (trailPrefab, rightPos, Quaternion.identity);
+				block.transform.eulerAngles = currentNode.getDirection();
                 block.SetActive(true);
                 block.GetComponent<Renderer>().material.color = pathfinderForkBlock;
                 atEnd = true;
@@ -258,6 +268,8 @@ public class PathFinder : MonoBehaviour {
 
 		private Vector2 position;
 
+		private Vector3 direction;
+
 		private Move left;
 		private Move right;
 		private Move forward;
@@ -286,6 +298,9 @@ public class PathFinder : MonoBehaviour {
 
 
 		//GETTERS
+		public Vector3 getDirection() {
+			return direction;
+		}
 		public Vector2 getPosition() {
 			return position;
 		}
@@ -304,6 +319,9 @@ public class PathFinder : MonoBehaviour {
 
 
 		//SETTERS
+		public void setDirection(Vector3 dir){
+			this.direction = dir;
+		}
 		public void setChildNum(int childNum) {
 			this.childNum = childNum;
 		}
