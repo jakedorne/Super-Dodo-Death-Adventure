@@ -75,6 +75,10 @@ public class TutorialUI : MonoBehaviour {
 			levelScreen = Instantiate (lessonScreenPrefab) as GameObject;
 
 			levelScreen.transform.SetParent (transform);
+
+			//RectTransform rt = SelectionLessonPlaceholder.GetComponent<RectTransform> ();
+			//Vector3 poition = new Vector3 (rt.rect.xMin, rt.rect.yMin, rt.position.z);
+			//print ("pos: " + poition.ToString ());
 			levelScreen.GetComponent<LessonScreen> ().SetPosition (SelectionLessonPlaceholder.transform.position);
 			levelScreen.GetComponent<LessonScreen> ().StartBobbing (LessonScreen.Axis.x);
 

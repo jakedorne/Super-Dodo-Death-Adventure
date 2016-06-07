@@ -114,8 +114,8 @@ RectTransform:
   m_RootOrder: 2
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -240, y: 137}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: -301, y: 154.9}
+  m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &418068327
 GameObject:
@@ -145,7 +145,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelID: 0
-  blocks: 0000000005000000
+  blocks: 04000000
   noDodos: 10
   floor: {fileID: 839605784}
   levelgui: {fileID: 1139561933}
@@ -260,7 +260,7 @@ MonoBehaviour:
   tree: {fileID: 107936, guid: 005dd1888ce5c7f4f91bdf58f5e3b121, type: 2}
   tetrisPrefab: {fileID: 118034, guid: c0860b06464815b47b56cf972df4a0aa, type: 2}
   spikePrefab: {fileID: 148766, guid: 61cec79fbeff40842b29780c723eea1f, type: 2}
-  dustParticles: {fileID: 0}
+  dustParticles: {fileID: 163860, guid: a86801195d81c8e4b87d2551eea97290, type: 2}
   spawner: {fileID: 0}
   pathfinder: {fileID: 0}
   startX: 0
@@ -399,8 +399,8 @@ RectTransform:
   m_RootOrder: 4
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 122, y: 47}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 134, y: 53}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1139561933 stripped
 MonoBehaviour:
@@ -437,8 +437,8 @@ RectTransform:
   m_RootOrder: 3
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 268.00024, y: -50}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 168, y: -49}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &1352183400
 Prefab:
