@@ -86,9 +86,9 @@ public class DodoBehaviour : MonoBehaviour {
                 //Just fall, no movement necessary
                 //transform.position += transform.forward * 0.02f / lerpTime;
             }
-            else if (transform.position != endPosition)
+			else if (!atSamePos(transform.position, endPosition))
             {
-                //print ("I should be moving to: "  + endPosition);
+				atSamePos (transform.position, endPosition);
                 anim.SetBool("isWalking", true);
                 moveDodo(startPosition, endPosition);
             }
@@ -100,6 +100,36 @@ public class DodoBehaviour : MonoBehaviour {
             }
         }
     }
+
+	public bool atSamePos(Vector3 position1, Vector3 position2){
+		
+		double x1 = System.Math.Round (position1.x, 4);
+		double x2 = System.Math.Round (position2.x, 4);
+
+		double y1 = System.Math.Round (position1.y, 2);
+		double y2 = System.Math.Round (position2.y, 2);
+
+		double z1 = System.Math.Round (position1.z, 2);
+		double z2 = System.Math.Round (position2.z, 2);
+
+		bool x = false;
+		bool y = false;
+		bool z = false;			
+
+		if (Mathf.Abs ((float) (y1 - y2)) <= 0.01) {
+			y = true;
+		}
+
+		if(x1 == x2){
+			x = true;
+		}
+
+		if (z1 == z2) {
+			z = true;
+		}
+			
+		return (x && y && z);
+	}
 
 	//These methods are not currently working.
 	private void moveCycle() {

@@ -18,8 +18,8 @@ public class TutorialUI : MonoBehaviour {
 	const int PlacementLessonID = 2;
 
 	// Lesson Texts are defined in here for now, might move into a text file
-	string SelectionLesson = "You need to select a block from the inventory UI";
-	string RotationLesson = "Use the mouse track pad to rotate block";
+	string SelectionLesson = "To get started, select a block from your inventory. This can be done by selecting the block with the mouse, or you can iterate through your inventory by right clicking the mouse or using the W and S keys";
+	string RotationLesson = "You can rotate the block by using the scroll wheel on your mouse, or using the A and D keys.";
 	string PlacementLesson = "Once you've decided where you would like to place the block, left click on the mouse";
 
 	int lessonID = 0;
