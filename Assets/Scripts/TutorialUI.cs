@@ -18,9 +18,9 @@ public class TutorialUI : MonoBehaviour {
 	const int PlacementLessonID = 2;
 
 	// Lesson Texts are defined in here for now, might move into a text file
-	string SelectionLesson = "To get started, select a block from your inventory. This can be done by selecting the block with the mouse, or you can iterate through your inventory by right clicking the mouse or using the W and S keys";
-	string RotationLesson = "You can rotate the block by using the scroll wheel on your mouse, or using the A and D keys.";
-	string PlacementLesson = "Once you've decided where you would like to place the block, left click on the mouse";
+	string SelectionLesson = "To get started, select a block from your inventory.\n\nThis can be done by selecting the block with the mouse, or you can iterate through your inventory by right clicking the mouse or using the W and S keys.";
+	string RotationLesson = "Try rotating the block.\n\nYou can do this by using the scroll wheel on your mouse, or using the A and D keys.";
+	string PlacementLesson = "Now try place the block.\n\nWhen you have positioned it where you would like to place it, left click on the mouse.";
 
 	int lessonID = 0;
 	GameObject levelScreen;
@@ -62,7 +62,7 @@ public class TutorialUI : MonoBehaviour {
 
 		if (lessonID == PlacementLessonID) {
 			if (manager.getNumberOfBlocksPlaced() > 0) {
-				nextLesson ();
+				completeTutorial ();
 			}
 		}
 	}
@@ -113,6 +113,12 @@ public class TutorialUI : MonoBehaviour {
 			screensChild.GetComponent<Text>().text = PlacementLesson;
 
 		}
+	}
+
+	public void completeTutorial(){
+		Destroy (levelScreen);
+		lessonID = -1;
+		FindObjectOfType<Spawner> ().beginSpawning();
 	}
 
 	public void nextLesson(){

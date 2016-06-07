@@ -7,6 +7,9 @@ public class Spawner : MonoBehaviour {
 	public GameObject dodoPrefab;
     public float dodoSpawnTimer;
 
+	// Don't spawn until TutorialUI says so.
+	public bool tutorialMode = false;
+
 	private int dodoCount;
 	private GameObject[] dodoList;
 	private GameObject dodo;
@@ -38,7 +41,7 @@ public class Spawner : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (!started) {
+		if (!started && !tutorialMode) {
 			countdown -= Time.deltaTime;
 			countdownText.text = "Dodos spawn in: "+ Mathf.Ceil(countdown).ToString();
 			if (countdown <= 0) {

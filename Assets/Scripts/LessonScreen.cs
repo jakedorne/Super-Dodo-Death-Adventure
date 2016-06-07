@@ -11,8 +11,6 @@ public class LessonScreen : MonoBehaviour {
 	Axis axis = Axis.stationary; 
 
 	void Start(){
-		// Compute size
-		print(Screen.width + " : " + Screen.height);
 	}
 
 	void Update () { 
