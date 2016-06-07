@@ -81,6 +81,12 @@ public class DodoBehaviour : MonoBehaviour {
             //First, check if we have reached our target. If we have, set a new target.
             if (endPosition == Vector3.zero)
             {
+                if (floorScript.isTree(floorScript.getCoordAtVector(transform.position)))
+                {
+                    LevelManager script = FindObjectOfType<LevelManager>();
+                    script.dodoDeath();
+                    Destroy(this.gameObject);
+                }
                 anim.SetBool("isWalking", true);
                 //Walking off an edge. Have to scale it down so the dodo doesnt shoot off the end
                 //Just fall, no movement necessary
