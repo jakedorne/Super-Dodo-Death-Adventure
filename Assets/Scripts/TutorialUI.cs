@@ -6,9 +6,8 @@ public class TutorialUI : MonoBehaviour {
 
 	public GameObject lessonScreenPrefab;
 
-	public GameObject SelectionLessonPlaceholder;
-	public GameObject RotationLessonPlaceholder;
-	public GameObject PlacementLessonPlaceholder;
+	public GameObject infoObject;
+	public GameObject lessonPlaceholder;
 
 	const float DELAYONLESSON = 2.0f;
 
@@ -79,8 +78,8 @@ public class TutorialUI : MonoBehaviour {
 			//RectTransform rt = SelectionLessonPlaceholder.GetComponent<RectTransform> ();
 			//Vector3 poition = new Vector3 (rt.rect.xMin, rt.rect.yMin, rt.position.z);
 			//print ("pos: " + poition.ToString ());
-			levelScreen.GetComponent<LessonScreen> ().SetPosition (SelectionLessonPlaceholder.transform.position);
-			levelScreen.GetComponent<LessonScreen> ().StartBobbing (LessonScreen.Axis.x);
+			levelScreen.GetComponent<LessonScreen> ().SetPosition (lessonPlaceholder.transform.position);
+			levelScreen.GetComponent<LessonScreen> ().StartBobbing (LessonScreen.Axis.y);
 
 			Transform screensChild = levelScreen.transform.GetChild (0); // get text
 			screensChild.GetComponent<Text>().text = SelectionLesson;
@@ -92,7 +91,7 @@ public class TutorialUI : MonoBehaviour {
 			levelScreen = Instantiate (lessonScreenPrefab) as GameObject;
 
 			levelScreen.transform.SetParent (transform);
-			levelScreen.GetComponent<LessonScreen> ().SetPosition(RotationLessonPlaceholder.transform.position);
+			levelScreen.GetComponent<LessonScreen> ().SetPosition(lessonPlaceholder.transform.position);
 			levelScreen.GetComponent<LessonScreen> ().StartBobbing (LessonScreen.Axis.y);
 
 			Transform screensChild = levelScreen.transform.GetChild (0); // get text
@@ -106,19 +105,29 @@ public class TutorialUI : MonoBehaviour {
 			levelScreen = Instantiate (lessonScreenPrefab) as GameObject;
 
 			levelScreen.transform.SetParent (transform);
-			levelScreen.GetComponent<LessonScreen> ().SetPosition(PlacementLessonPlaceholder.transform.position);
+			levelScreen.GetComponent<LessonScreen> ().SetPosition(lessonPlaceholder.transform.position);
 			levelScreen.GetComponent<LessonScreen> ().StartBobbing (LessonScreen.Axis.y);
 
 			Transform screensChild = levelScreen.transform.GetChild (0); // get text
 			screensChild.GetComponent<Text>().text = PlacementLesson;
 
 		}
+
+		// notify user
+		string filename = "info1";
+		Sprite sprite = Resources.Load<Sprite>(filename);
+		infoObject.GetComponent<Image> ().sprite = sprite;
 	}
 
 	public void completeTutorial(){
 		Destroy (levelScreen);
 		lessonID = -1;
 		FindObjectOfType<Spawner> ().beginSpawning();
+
+		// disable notification
+		string filename = "info0";
+		Sprite sprite = Resources.Load<Sprite>(filename);
+		infoObject.GetComponent<Image> ().sprite = sprite;
 	}
 
 	public void nextLesson(){
@@ -126,5 +135,10 @@ public class TutorialUI : MonoBehaviour {
 		lessonID = lessonID+1;
 		timerOn = true;
 		timeLeftBeforeLesson = DELAYONLESSON;
+
+		// disable notification
+		string filename = "info0";
+		Sprite sprite = Resources.Load<Sprite>(filename);
+		infoObject.GetComponent<Image> ().sprite = sprite;
 	}
 }
