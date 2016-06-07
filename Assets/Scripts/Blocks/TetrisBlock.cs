@@ -12,15 +12,13 @@ public class TetrisBlock : MonoBehaviour {
 	public GameObject block;
 	public Type type;
 
-	private GameObject floor;
-	private Floor floorscript;
-
 	public enum Type{L, T, CROSS, C, LINE, S, Z, J, BRIDGE, JUMP};
+
+	// Used for the tutorial
+	public bool hasBeenRotated = false;
 
 	// Use this for initialization
 	void Awake () {
-		floor = GameObject.Find ("Floor");
-		floorscript = floor.GetComponent<Floor> ();
 	}
 	
 	// Update is called once per frame
@@ -36,11 +34,17 @@ public class TetrisBlock : MonoBehaviour {
 			}
 		}
 		blocks = temp;
+		if (!hasBeenRotated) {
+			hasBeenRotated = true;
+		}
 	}
 
 	public void RotateRight(){
 		// the shame...
 		RotateLeft (); RotateLeft (); RotateLeft ();
+		if (!hasBeenRotated) {
+			hasBeenRotated = true;
+		}
 	}
 
 	public void SetShape(Type newShape){
@@ -116,7 +120,7 @@ public class TetrisBlock : MonoBehaviour {
 		if (type == Type.BRIDGE) {
 			block = bridgePrefab;
 		} else {
-			block = floorscript.blockPrefab;
+			block = blockPrefab;
 		}
 	}
 

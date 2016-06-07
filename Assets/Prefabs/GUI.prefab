@@ -12,6 +12,7 @@ GameObject:
   - 114: {fileID: 11451628}
   - 114: {fileID: 11440740}
   - 114: {fileID: 11430970}
+  - 114: {fileID: 11467094}
   m_Layer: 0
   m_Name: GUI
   m_TagString: Untagged
@@ -343,6 +344,18 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+--- !u!114 &11467094
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 101320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2d367f055d524570973a954b494cc3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lessonScreenPrefab: {fileID: 125474, guid: 89989cd4aca83487abe8679c5b08dbd3, type: 2}
 --- !u!114 &11467404
 MonoBehaviour:
   m_ObjectHideFlags: 1

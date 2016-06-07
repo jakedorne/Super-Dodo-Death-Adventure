@@ -56,10 +56,10 @@ public class LevelManager: MonoBehaviour {
             pause();
         }
 	}
-
+		
 	public TetrisBlock.Type getAutomaticBlock(){
 		TetrisBlock.Type block;
-		TetrisBlock currentBlock = floor.GetComponent<BlockPlacement> ().getSelectedShape ();
+		TetrisBlock currentBlock = getCurrentBlock ();
 		if (currentBlock == null) {
 			// Get the first block
 			block = blocks [0];
@@ -157,6 +157,15 @@ public class LevelManager: MonoBehaviour {
         }
         */
     }
-		
+
+	// Methods below used for tutorial
+	public TetrisBlock getCurrentBlock(){
+		TetrisBlock currentBlock = floor.GetComponent<BlockPlacement> ().getSelectedShape ();
+		return currentBlock;
+	}
+	// Methods below used for tutorial
+	public int getNumberOfBlocksPlaced(){
+		return floor.GetComponent<Floor> ().numberOfBlocksPlaced;
+	}
 		
 }

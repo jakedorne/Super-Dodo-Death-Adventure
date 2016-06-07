@@ -6,8 +6,21 @@ public class TutorialUI : MonoBehaviour {
 
 	public GameObject lessonScreenPrefab;
 
+	public GameObject SelectionLessonPlaceholder;
+	public GameObject RotationLessonPlaceholder;
+	public GameObject PlacementLessonPlaceholder;
+
+	const float DELAYONLESSON = 2.0f;
+
+	// Different lessons
+	const int SelectionLessonID = 0;
+	const int RotationLessonID = 1;
+	const int PlacementLessonID = 2;
+
 	// Lesson Texts are defined in here for now, might move into a text file
-	string lesson1 = "You need to select a block from the inventory UI";
+	string SelectionLesson = "You need to select a block from the inventory UI";
+	string RotationLesson = "Use the mouse track pad to rotate block";
+	string PlacementLesson = "Once you've decided where you would like to place the block, left click on the mouse";
 
 	int lessonID = 0;
 	GameObject levelScreen;
@@ -15,14 +28,18 @@ public class TutorialUI : MonoBehaviour {
 	float timeLeftBeforeLesson;
 	bool timerOn;
 
+	LevelManager manager;
+
 	// Use this for initialization
 	void Start () {
-		timeLeftBeforeLesson = 3.0f;
+		timeLeftBeforeLesson = DELAYONLESSON;
 		timerOn = true;
+		manager = FindObjectOfType<LevelManager> ();
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		
 		if (timerOn) {
 			timeLeftBeforeLesson -= Time.deltaTime;
 			if (timeLeftBeforeLesson < 0) {
@@ -30,34 +47,74 @@ public class TutorialUI : MonoBehaviour {
 				timerOn = false;
 			}
 		}
+
+		if (lessonID == SelectionLessonID) {
+			if (manager.getCurrentBlock() != null){
+				nextLesson ();
+			}
+		}
+
+		if (lessonID == RotationLessonID) {
+			if (manager.getCurrentBlock ().hasBeenRotated) {
+				nextLesson ();
+			}
+		}
+
+		if (lessonID == PlacementLessonID) {
+			if (manager.getNumberOfBlocksPlaced() > 0) {
+				nextLesson ();
+			}
+		}
 	}
 
 	public void presentLesson(){
+		
 		// Set listener to button so we know when lesson is done
-		if(lessonID == 0){
-			Vector3 bricksLocation = Vector3.zero;
-			for (int i = 0; i < transform.childCount; i++) {
-				Transform child = transform.GetChild (i);
-				if (child.name == "Inventory") {
-					// Find first brick
-					Transform brick = child.GetChild (0);
-					brick.GetComponent<Button> ().onClick.AddListener (() => nextLesson ());
-					bricksLocation = brick.position;
-				}
-			}
+		if(lessonID == SelectionLessonID){
+			
+			levelScreen = Instantiate (lessonScreenPrefab) as GameObject;
 
-			// Where to show lesson screen, at the moment the x-extension is hard coded, it should be calculated using resolution.
-			Vector3 lessonPosition = new Vector3 (bricksLocation.x + 150.0f, bricksLocation.y, bricksLocation.z);
-			levelScreen = Instantiate (lessonScreenPrefab, lessonPosition, Quaternion.identity) as GameObject;
 			levelScreen.transform.SetParent (transform);
+			levelScreen.GetComponent<LessonScreen> ().SetPosition (SelectionLessonPlaceholder.transform.position);
+			levelScreen.GetComponent<LessonScreen> ().StartBobbing (LessonScreen.Axis.x);
+
 			Transform screensChild = levelScreen.transform.GetChild (0); // get text
-			screensChild.GetComponent<Text>().text = lesson1;
+			screensChild.GetComponent<Text>().text = SelectionLesson;
+		}
+
+		// Block rotattion
+		if (lessonID == RotationLessonID) {
+			
+			levelScreen = Instantiate (lessonScreenPrefab) as GameObject;
+
+			levelScreen.transform.SetParent (transform);
+			levelScreen.GetComponent<LessonScreen> ().SetPosition(RotationLessonPlaceholder.transform.position);
+			levelScreen.GetComponent<LessonScreen> ().StartBobbing (LessonScreen.Axis.y);
+
+			Transform screensChild = levelScreen.transform.GetChild (0); // get text
+			screensChild.GetComponent<Text>().text = RotationLesson;
+
+		}
+
+		// Block placement
+		if(lessonID == PlacementLessonID) {
+			
+			levelScreen = Instantiate (lessonScreenPrefab) as GameObject;
+
+			levelScreen.transform.SetParent (transform);
+			levelScreen.GetComponent<LessonScreen> ().SetPosition(PlacementLessonPlaceholder.transform.position);
+			levelScreen.GetComponent<LessonScreen> ().StartBobbing (LessonScreen.Axis.y);
+
+			Transform screensChild = levelScreen.transform.GetChild (0); // get text
+			screensChild.GetComponent<Text>().text = PlacementLesson;
+
 		}
 	}
 
 	public void nextLesson(){
 		Destroy (levelScreen);
-
-
+		lessonID = lessonID+1;
+		timerOn = true;
+		timeLeftBeforeLesson = DELAYONLESSON;
 	}
 }

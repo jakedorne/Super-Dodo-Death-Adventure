@@ -26,6 +26,9 @@ public class Floor : MonoBehaviour {
 
 	private static int mapSize;
 
+	// Used for the tutorial
+	public int numberOfBlocksPlaced;
+
 	// 0 = empty, 1 = block down, 2 = block hovered on (green), 3 = unplaceable space, 4 = tree, 9 = block hovered on (red)
 	private int[,] map;
 	private Block[,] blocks;
@@ -49,6 +52,8 @@ public class Floor : MonoBehaviour {
 		blocks = new Block[mapSize, mapSize];
 		renderMap ();
         this.GetComponent<BlockPlacement>().initialisePlacementBlocks();
+
+		numberOfBlocksPlaced = 0;
     }
 
 	private void renderMap(){
@@ -85,6 +90,7 @@ public class Floor : MonoBehaviour {
 					break;
 
 			}
+			numberOfBlocksPlaced++;
 			pathfinder.rebuildTree ();
             return true;
 		}

@@ -28,7 +28,11 @@ ExportedObj/
 # Unity3D Generated File On Crash Reports
 sysinfo.txt
 
+/Assets/Lava_Flowing_Shader/Materials/mtl_lava_distort.mat
+/Assets/Lava_Flowing_Shader/Materials/mtl_swamp_distort.mat
+/Assets/Lava_Flowing_Shader/Materials/mtl_water_distort.mat
+
 # Builds
 *.apk
 *.unitypackage
-Assets/Lava_Flowing_Shader/Materials/mtl_lava_distort.mat
+
