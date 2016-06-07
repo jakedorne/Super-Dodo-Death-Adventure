@@ -146,7 +146,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelID: 0
   blocks: 04000000
-  noDodos: 10
+  noDodos: 3
   floor: {fileID: 839605784}
   levelgui: {fileID: 1139561933}
 --- !u!4 &418068329
@@ -265,8 +265,8 @@ MonoBehaviour:
   pathfinder: {fileID: 0}
   startX: 0
   startZ: 0
-  endX: 12
-  endZ: 12
+  endX: 4
+  endZ: 7
   numberOfBlocksPlaced: 0
 --- !u!4 &839605786
 Transform:
@@ -800,6 +800,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dodoPrefab: {fileID: 192700, guid: fa16471c743793c4792243b304bef308, type: 2}
   dodoSpawnTimer: 2
+  tutorialMode: 1
   countdownText: {fileID: 0}
 --- !u!1 &1928401863 stripped
 GameObject:
