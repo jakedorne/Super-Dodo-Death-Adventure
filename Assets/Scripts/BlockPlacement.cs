@@ -20,6 +20,8 @@ public class BlockPlacement : MonoBehaviour {
     private float volume = 0.1f;
     private float volumeVariation = 0.01f;
 
+    private float globalVolume = 1;
+
     // Use this for initialization
     void Start () {
 
@@ -66,7 +68,18 @@ public class BlockPlacement : MonoBehaviour {
                 playRotationSound();
 				tetrisBlock.RotateRight();
 			}	
-		}
+		} else if (Input.GetKeyDown("m"))
+        {
+            if (globalVolume == 1)
+            {
+                globalVolume = 0;
+                AudioListener.volume = 0;
+            } else
+            {
+                globalVolume = 1;
+                AudioListener.volume = 1;
+            }
+        }
     }
 
     /// <summary>
