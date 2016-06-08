@@ -70,7 +70,8 @@
      <Compile Include="Assets\Scripts\PathFinder.cs" />
      <Compile Include="Assets\Scripts\Spawner.cs" />
      <Compile Include="Assets\Scripts\TrailBehaviour.cs" />
-     <Compile Include="Assets\Scripts\TutorialUI.cs" />
+     <Compile Include="Assets\Scripts\Tutorials\Tutorial1.cs" />
+     <Compile Include="Assets\Scripts\Tutorials\TutorialAbstract.cs" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlendOneOne.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\NoiseEffectShaderRGB.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_DepthOfField\SeparableWeightedBlurDof34.shader" />

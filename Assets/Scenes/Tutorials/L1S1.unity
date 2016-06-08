@@ -113,7 +113,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelID: 0
-  blocks: 04000000
+  blocks: 0400000004000000
   noDodos: 3
   floor: {fileID: 839605784}
   levelgui: {fileID: 1139561933}
@@ -233,8 +233,8 @@ MonoBehaviour:
   pathfinder: {fileID: 0}
   startX: 0
   startZ: 0
-  endX: 4
-  endZ: 7
+  endX: 12
+  endZ: 12
   numberOfBlocksPlaced: 0
 --- !u!4 &839605786
 Transform:
@@ -817,12 +817,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1928401863}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2d367f055d524570973a954b494cc3a, type: 3}
+  m_Script: {fileID: 11500000, guid: 455def7d553604f8caa251795c24b021, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   lessonScreenPrefab: {fileID: 160740, guid: 419366fbd914645579bd9b16c697b381, type: 2}
   infoObject: {fileID: 1186189596}
   lessonPlaceholder: {fileID: 1081415983}
+  noOfLessons: 3
+  manager: {fileID: 0}
 --- !u!1001 &2120771664
 Prefab:
   m_ObjectHideFlags: 0
