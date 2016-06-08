@@ -12,7 +12,7 @@ public class TetrisBlock : MonoBehaviour {
 	public GameObject block;
 	public Type type;
 
-	public enum Type{L, T, CROSS, C, LINE, S, Z, J, BRIDGE, JUMP};
+	public enum Type{L, T, CROSS, C, LINE, S, Z, J, W, BRIDGE, JUMP};
 
 	// Used for the tutorial
 	public bool hasBeenRotated = false;
@@ -107,7 +107,14 @@ public class TetrisBlock : MonoBehaviour {
                     {1,1,0}
                 };
                 break;
-		case Type.BRIDGE:
+            case Type.W:
+                blocks = new int[,]{
+                    {1,1,0},
+                    {0,1,1},
+                    {0,0,1}
+                };
+                break;
+            case Type.BRIDGE:
 			blocks = new int[,] {
 				{ 0, 1, 0 },
 				{ 0, 1, 0 },

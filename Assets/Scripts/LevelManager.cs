@@ -13,6 +13,7 @@ public class LevelManager: MonoBehaviour {
 
     private int dodoDeathCount;
 	private int dodoFinishedCount;
+    private int watermelonCollectedCount;
 	private bool levelCompleted;
 	private int score;
     private bool paused;
@@ -23,6 +24,7 @@ public class LevelManager: MonoBehaviour {
 
 		dodoDeathCount = 0;
 		dodoFinishedCount = 0;
+        watermelonCollectedCount = 0;
 
 		levelCompleted = false;
 
@@ -125,12 +127,18 @@ public class LevelManager: MonoBehaviour {
 
 	public void calculateScore(){
 		// Needs to be discussed
-		score = dodoFinishedCount * 10;
+		score = (dodoFinishedCount * 10) + (watermelonCollectedCount * 25);
 	}
 
 	public int noDodosLeft(){
 		return noDodos - dodoFinishedCount - dodoDeathCount;
 	}
+
+    //For the collectables
+    public void watermelonCollected()
+    {
+        watermelonCollectedCount++;
+    }
 
     private void pause()
     {

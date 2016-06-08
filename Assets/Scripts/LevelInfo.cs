@@ -9,16 +9,24 @@ public class LevelInfo : ScriptableObject {
     //Will probably have the blocks available for the level in here too?
 
     //Goals for number of dodos left
-    private int bronze;
-    private int silver;
-    private int gold;
+    private float bronze;
+    private float silver;
+    private float gold;
 
-    public void init(int[,] map, int bronze, int silver, int gold)
+    private string levelName;
+
+    private int rocksAvailable;
+
+    private int nextLevelNumber; //equals 1 if there is no next level (go back to level select)
+
+    public void init(int[,] map, float bronze, float silver, float gold, int nextLevelNumber, int rocksAvailable)
     {
         this.map = map;
         this.bronze = bronze;
         this.silver = silver;
         this.gold = gold;
+        this.nextLevelNumber = nextLevelNumber;
+        this.rocksAvailable = rocksAvailable;
     }
 
     public int[,] getMap()
@@ -26,19 +34,24 @@ public class LevelInfo : ScriptableObject {
         return map;
     }
 
-    public int getBronze()
+    public float getBronze()
     {
         return bronze;
     }
 
-    public int getSilver()
+    public float getSilver()
     {
         return silver;
     }
 
-    public int getGold()
+    public float getGold()
     {
         return gold;
+    }
+
+    public int getNextLevelNumber()
+    {
+        return nextLevelNumber;
     }
 
 }
