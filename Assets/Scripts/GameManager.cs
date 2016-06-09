@@ -203,6 +203,32 @@ public class GameManager : MonoBehaviour {
         LevelInfo level5 = (LevelInfo)ScriptableObject.CreateInstance("LevelInfo");
         level5.init(map5, bronze, silver, gold, nextLevelNumber, rocksAvailable);
         levelInfo[levelNumber] = level5;
+		//-------------------------------------------- Level 6 --------------------------------------------
+		// Tutorial for level 2
+		levelNumber = 7;
+		int[,] map6 = new int[,]
+		{
+			{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+			{ 1, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0, 0 },
+			{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0 },
+			{ 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0 },
+			{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+			{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+			{ 0, 0, 0, 1, 1, 0, 0, 0, 1, 0, 0, 0 },
+			{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+			{ 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0 },
+			{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+			{ 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0 },
+			{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
+		};
+		bronze = 8;
+		silver = 9;
+		gold = 10;
+		nextLevelNumber = 1;
+		rocksAvailable = 1;
+		LevelInfo level6 = (LevelInfo)ScriptableObject.CreateInstance("LevelInfo");
+		level6.init(map6, bronze, silver, gold, nextLevelNumber, rocksAvailable);
+		levelInfo[levelNumber] = level6;
         //-------------------------------------------- Done --------------------------------------------
     }
 
