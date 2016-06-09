@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: mtl_swamp_distort
+  m_Name: mtl_lightWater_distort
   m_Shader: {fileID: 4800000, guid: 6a151f652f5ba03458e9a7cd03ae88e8, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
@@ -26,16 +26,16 @@ Material:
         first:
           name: _Distort
         second:
-          m_Texture: {fileID: 2800000, guid: 0ebfaeff4eb7328498165095f9cfc32f, type: 3}
+          m_Texture: {fileID: 2800000, guid: 6f1c302c273fa8d48b24b307960a97b2, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
         first:
           name: _LavaTex
         second:
-          m_Texture: {fileID: 2800000, guid: ab6d2781b0ad1004592dac12ab405862, type: 3}
+          m_Texture: {fileID: 2800000, guid: 2d4f8eb668503804ab6cdaf185e82267, type: 3}
           m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 12.41187, y: 0}
+          m_Offset: {x: 0.44844282, y: 0}
       data:
         first:
           name: _MainTex2
