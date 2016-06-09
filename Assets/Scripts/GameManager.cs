@@ -79,6 +79,7 @@ public class GameManager : MonoBehaviour {
 				{ 0, 0, 0, 0, 3, 3, 3, 0, 0, 0, 0, 1 },
                 */
         //-------------------------------------------- Level 1 --------------------------------------------
+        //Outdated level
         int levelNumber = 2;
         int[,] map1 = new int[,]
         {
@@ -99,12 +100,13 @@ public class GameManager : MonoBehaviour {
         float bronze = 5;
         float silver = 7;
         float gold = 8;
-        int nextLevelNumber = 6;
+        int nextLevelNumber = 1;
         int rocksAvailable = 1;
         LevelInfo level1 = (LevelInfo)ScriptableObject.CreateInstance("LevelInfo");
         level1.init(map1, bronze, silver, gold, nextLevelNumber, rocksAvailable, levelName);
         levelInfo[levelNumber] = level1;
         //-------------------------------------------- Level 2 --------------------------------------------
+        //Outdated level
         levelNumber = 3;
         int[,] map2 = new int[,]
         {
@@ -125,12 +127,13 @@ public class GameManager : MonoBehaviour {
         bronze = 5;
         silver = 7;
         gold = 8;
-        nextLevelNumber = 8;
+        nextLevelNumber = 1;
         rocksAvailable = 1;
         LevelInfo level2 = (LevelInfo)ScriptableObject.CreateInstance("LevelInfo");
         level2.init(map2, bronze, silver, gold, nextLevelNumber, rocksAvailable, levelName);
         levelInfo[levelNumber] = level2;
         //-------------------------------------------- Level 3 --------------------------------------------
+        //Outdated level
         levelNumber = 4;
         int[,] map3 = new int[,]
         {
@@ -178,12 +181,13 @@ public class GameManager : MonoBehaviour {
         bronze = 5;
 		silver = 8;
 		gold = 9;
-        nextLevelNumber = 1;
+        nextLevelNumber = 10;
         rocksAvailable = 1;
         LevelInfo level4 = (LevelInfo)ScriptableObject.CreateInstance("LevelInfo");
 		level4.init(map4, bronze, silver, gold, nextLevelNumber, rocksAvailable, levelName);
 		levelInfo[levelNumber] = level4;
         //-------------------------------------------- Level 5 --------------------------------------------
+        //Stage 1 Level 3
         levelNumber = 6;
         int[,] map5 = new int[,]
         {
@@ -200,11 +204,11 @@ public class GameManager : MonoBehaviour {
             { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
             { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
         };
-        levelName = "How do I get back?";
-        bronze = 8;
-        silver = 9;
-        gold = 10;
-        nextLevelNumber = 1;
+        levelName = "The watermelon sacrifice";
+        bronze = 0 + (watermelonPoints * 0);
+        silver = -2 + (watermelonPoints * 1);
+        gold = -1 + (watermelonPoints * 1);
+        nextLevelNumber = 11;
         rocksAvailable = 1;
         LevelInfo level5 = (LevelInfo)ScriptableObject.CreateInstance("LevelInfo");
         level5.init(map5, bronze, silver, gold, nextLevelNumber, rocksAvailable, levelName);
@@ -237,6 +241,7 @@ public class GameManager : MonoBehaviour {
 		level6.init(map6, bronze, silver, gold, nextLevelNumber, rocksAvailable, levelName);
 		levelInfo[levelNumber] = level6;
         //-------------------------------------------- Level 7 --------------------------------------------
+        //Stage 2 Level 3
         levelNumber = 8;
         int[,] map7 = new int[,]
         {
@@ -262,7 +267,7 @@ public class GameManager : MonoBehaviour {
         LevelInfo level7 = (LevelInfo)ScriptableObject.CreateInstance("LevelInfo");
         level7.init(map7, bronze, silver, gold, nextLevelNumber, rocksAvailable, levelName);
         levelInfo[levelNumber] = level7;
-		//-------------------------------------------- Level 7 --------------------------------------------
+		//-------------------------------------------- Level 8 --------------------------------------------
 		// Tutorial for level 3
 		levelNumber = 9;
 		int[,] map8 = new int[,]
@@ -289,6 +294,87 @@ public class GameManager : MonoBehaviour {
 		LevelInfo level8 = (LevelInfo)ScriptableObject.CreateInstance("LevelInfo");
 		level8.init(map8, bronze, silver, gold, nextLevelNumber, rocksAvailable, levelName);
 		levelInfo[levelNumber] = level8;
+        //-------------------------------------------- Level 9 --------------------------------------------
+        // Stage 1 Level 2
+        levelNumber = 10;
+        int[,] map9 = new int[,]
+        {
+            { 1, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0 },
+            { 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0 },
+            { 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0, 0 },
+            { 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0 },
+            { 0, 0, 1, 1, 1, 1, 1, 1, 3, 0, 0, 0 },
+            { 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+            { 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+            { 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0 },
+            { 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0 },
+            { 0, 0, 3, 0, 0, 0, 0, 0, 0, 1, 1, 1 },
+        };
+        levelName = "Help dumb dodos with rocks";
+        bronze = 0 + (watermelonPoints * 0);
+        silver = -2 + (watermelonPoints * 1);
+        gold = -1 + (watermelonPoints * 1);
+        nextLevelNumber = 6;
+        rocksAvailable = 4;
+        LevelInfo level9 = (LevelInfo)ScriptableObject.CreateInstance("LevelInfo");
+        level9.init(map9, bronze, silver, gold, nextLevelNumber, rocksAvailable, levelName);
+        levelInfo[levelNumber] = level9;
+        //-------------------------------------------- Level 10 -------------------------------------------
+        // Stage 1 Level 4
+        levelNumber = 11;
+        int[,] map10 = new int[,]
+        {
+            { 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+            { 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
+            { 1, 1, 1, 0, 0, 0, 0, 3, 3, 3, 0, 0 },
+            { 0, 0, 0, 0, 0, 0, 0, 3, 3, 3, 0, 0 },
+            { 0, 0, 0, 0, 3, 3, 3, 3, 3, 3, 0, 0 },
+            { 0, 0, 0, 0, 3, 3, 3, 3, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 3, 3, 3, 3, 0, 0, 0, 0 },
+            { 0, 0, 3, 3, 3, 3, 3, 3, 0, 0, 0, 0 },
+            { 0, 0, 3, 3, 3, 0, 0, 0, 0, 0, 0, 0 },
+            { 0, 0, 3, 3, 3, 0, 0, 0, 0, 1, 0, 0 },
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0 },
+            { 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1 },
+        };
+        levelName = "Your choice";
+        bronze = 0 + (watermelonPoints * 0);
+        silver = -1 + (watermelonPoints * 1);
+        gold = 0 + (watermelonPoints * 1);
+        nextLevelNumber = 12;
+        rocksAvailable = 0;
+        LevelInfo level10 = (LevelInfo)ScriptableObject.CreateInstance("LevelInfo");
+        level10.init(map10, bronze, silver, gold, nextLevelNumber, rocksAvailable, levelName);
+        levelInfo[levelNumber] = level10;
+        //-------------------------------------------- Level 11 -------------------------------------------
+        // Stage 1 Level 5
+        levelNumber = 12;
+        int[,] map11 = new int[,]
+        {
+            { 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+            { 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+            { 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 3, 3, 3, 3, 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 3, 0, 0, 1, 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0, 3, 3, 3, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0 },
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0 },
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1 },
+        };
+        levelName = "Lets just go the easy way";
+        bronze = 0 + (watermelonPoints * 0);
+        silver = -1 + (watermelonPoints * 1);
+        gold = 0 + (watermelonPoints * 1);
+        nextLevelNumber = 1;
+        rocksAvailable = 0;
+        LevelInfo level11 = (LevelInfo)ScriptableObject.CreateInstance("LevelInfo");
+        level11.init(map11, bronze, silver, gold, nextLevelNumber, rocksAvailable, levelName);
+        levelInfo[levelNumber] = level11;
         //-------------------------------------------- Done --------------------------------------------
     }
 
