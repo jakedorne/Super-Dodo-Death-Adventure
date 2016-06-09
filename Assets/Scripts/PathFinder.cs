@@ -226,13 +226,10 @@ public class PathFinder : MonoBehaviour {
     {
         pathCounter = new int[floorScript.getFloor().GetLength(0), floorScript.getFloor().GetLength(1)];
     }
+    */
 
+	/** Don't need anymore/** Don't need anymore
 	public Move traverse(Move currentNode,  Vector2 searchPosition) {
-        pathCounter[(int)currentNode.getPosition().x, (int)currentNode.getPosition().y]++;
-        if (pathCounter[(int)currentNode.getPosition().x,(int)currentNode.getPosition().y]>=5)
-        {
-            return null;
-        }
 		if (currentNode.getPosition() == searchPosition) {
 			return currentNode;
 		} else if (currentNode.getChildNum() == 1) {
@@ -248,7 +245,7 @@ public class PathFinder : MonoBehaviour {
 			return null;
 		}
 	}
-    */
+	*/
 
 	public void printTree(Move currentNode) {
 		print (currentNode);
@@ -262,6 +259,15 @@ public class PathFinder : MonoBehaviour {
 		if (currentNode.getForward () != null)
 			printTree (currentNode.getForward ());
 	}
+	/** Don't need anymore
+	public Vector3 getDirectionAtCoord(Vector2 coord) {
+		Move target = traverse (moveTree, coord);
+		if (target == null) {
+			print("Got no direction");
+			return Vector3.zero; //This seems bad, Meh...
+		}
+		return target.getDirection ();
+	}*/
 
 
 	//Inner class representing a move in the tree
