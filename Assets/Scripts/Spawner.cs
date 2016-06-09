@@ -38,7 +38,7 @@ public class Spawner : MonoBehaviour {
 		startZ = floor.GetComponent<Floor> ().startZ;
 
 		// Special case for beginning tutorial
-		if(FindObjectOfType<TutorialAbstract>().delaySpawn()){
+		if(FindObjectOfType<TutorialAbstract>() != null && FindObjectOfType<TutorialAbstract>().delaySpawn()){
 			countdown = 3.0f;
 			paused = true;
 		}
