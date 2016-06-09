@@ -3,17 +3,19 @@ using System.Collections;
 
 public class Tutorial1 : TutorialAbstract {
 
-	int numberOfLessons = 3;
+	int numberOfLessons = 4;
 
 	// Different lessons
 	const int SelectionLessonID = 0;
 	const int RotationLessonID = 1;
 	const int PlacementLessonID = 2;
+	const int RockLessonID = 3;
 
 	// Lesson Texts are defined in here for now, might move into a text file
 	string SelectionLesson = "To get started, select a block from your inventory.\n\nThis can be done by selecting the block with the mouse, or you can iterate through your inventory by right clicking the mouse or using the W and S keys.";
 	string RotationLesson = "Try rotating the block.\n\nYou can do this by using the scroll wheel on your mouse, or using the A and D keys.";
-	string PlacementLesson = "Now try place the block.\n\nWhen you have positioned it where you would like to place it, left click on the mouse.";
+	string PlacementLesson = "Try place the block.\n\nWhen you have positioned the block where you would like to place it, left click on the mouse.";
+	string RockLesson = "The footsteps on the blocks indicate the path that the dodos will take. The red footsteps appear when there is more than one path that the dodos can take.\n\n You can place a rock obstacle on a block by left clicking it. Rocks prevent the dodos from walking in a particular direction.";
 
 	bool[] completeLessons;
 	string[] lessons;
@@ -25,12 +27,12 @@ public class Tutorial1 : TutorialAbstract {
 			completeLessons [i] = false;
 			if (SelectionLessonID == i) {
 				lessons [i] = SelectionLesson;
-			}
-			else if (RotationLessonID == i) {
+			} else if (RotationLessonID == i) {
 				lessons [i] = RotationLesson;
-			}
-			else if (PlacementLessonID == i) {
+			} else if (PlacementLessonID == i) {
 				lessons [i] = PlacementLesson;
+			} else if (RockLessonID == i) {
+				lessons [i] = RockLesson;
 			}
 		}
 	}
@@ -48,13 +50,18 @@ public class Tutorial1 : TutorialAbstract {
 			completeLessons [SelectionLessonID] = true;
 		}
 
-		if(manager.getNumberOfBlocksPlaced() > 0) {
+		if(FindObjectOfType<Floor>().getNumberOfBlocksPlaced() > 0) {
 			completeLessons [PlacementLessonID] = true;
+		}
+
+		if(FindObjectOfType<Floor>().getNumberOfObstalcesPlaced() > 0) {
+			completeLessons [RockLessonID] = true;
 		}
 	}
 
 	public override string getNextLesson(){
 		for (int i = 0; i < numberOfLessons; i++) {
+			print (i);
 			if (completeLessons [i] == false) {
 				return lessons [i];
 			}
@@ -71,6 +78,10 @@ public class Tutorial1 : TutorialAbstract {
 		}
 
 		return false;
+	}
+
+	public override bool delaySpawn (){
+		return true;
 	}
 		
 }

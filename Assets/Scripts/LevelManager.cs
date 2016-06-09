@@ -171,9 +171,5 @@ public class LevelManager: MonoBehaviour {
 		TetrisBlock currentBlock = floor.GetComponent<BlockPlacement> ().getSelectedShape ();
 		return currentBlock;
 	}
-	// Methods below used for tutorial
-	public int getNumberOfBlocksPlaced(){
-		return floor.GetComponent<Floor> ().getNumberOfBlocksPlaced();
-	}
-		
+
 }

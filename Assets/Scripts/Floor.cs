@@ -29,6 +29,7 @@ public class Floor : MonoBehaviour {
 
 	// Used for the tutorial
 	int numberOfBlocksPlaced;
+	int numberOfObstaclesPlaced;
 
 	// 0 = empty, 1 = block down, 2 = block hovered on (green), 3 = unplaceable space, 4 = tree, 9 = block hovered on (red)
 	private int[,] map;
@@ -55,6 +56,7 @@ public class Floor : MonoBehaviour {
         this.GetComponent<BlockPlacement>().initialisePlacementBlocks();
 
 		numberOfBlocksPlaced = 0;
+		numberOfObstaclesPlaced = 0;
     }
 
 	private void renderMap(){
@@ -246,6 +248,7 @@ public class Floor : MonoBehaviour {
         map[(int)blockPosition.x, (int)blockPosition.y] = 4;
         Instantiate(tree, new Vector3((x) * blockXLength, 0 + blockPrefab.GetComponent<MeshRenderer>().bounds.size.y/2, (z) * blockZLength), Quaternion.identity);
 		pathfinder.rebuildTree ();
+		numberOfObstaclesPlaced++;
     }
 
     public void createDeadDodoBlock(Vector2 blockPosition)
@@ -283,4 +286,7 @@ public class Floor : MonoBehaviour {
 		return numberOfBlocksPlaced;
 	}
 
+	public int getNumberOfObstalcesPlaced(){
+		return numberOfObstaclesPlaced;
+	}
 }

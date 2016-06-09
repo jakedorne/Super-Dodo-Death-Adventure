@@ -21,6 +21,7 @@ public abstract class TutorialAbstract : MonoBehaviour {
 	abstract public string getNextLesson ();
 	abstract public bool isLessonComplete (string lesson);
 	abstract public void intialise();
+	abstract public bool delaySpawn ();
 
 	// Use this for initialization
 	void Start () {
@@ -67,7 +68,11 @@ public abstract class TutorialAbstract : MonoBehaviour {
 
 	public void completeTutorial(){
 		Destroy (levelScreen);
-		FindObjectOfType<Spawner> ().beginSpawning();
+		if (delaySpawn()) {
+			// start spawn
+			FindObjectOfType<Spawner> ().resumeGame();
+		}
+
 
 		// disable notification
 		string filename = "info0";

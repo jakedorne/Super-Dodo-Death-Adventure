@@ -54,4 +54,8 @@ public class Tutorial2 : TutorialAbstract{
 		return false;
 	}
 
+	public override bool delaySpawn (){
+		return false;
+	}
+
 }

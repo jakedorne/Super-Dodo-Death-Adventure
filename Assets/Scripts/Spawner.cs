@@ -7,8 +7,8 @@ public class Spawner : MonoBehaviour {
 	public GameObject dodoPrefab;
     public float dodoSpawnTimer;
 
-	// Don't spawn until TutorialUI says so.
-	public bool tutorialMode = false;
+	// SpecialCase for first tutorial
+	public bool firstTutorial = false;
 
 	private int dodoCount;
 	private GameObject[] dodoList;
@@ -37,19 +37,24 @@ public class Spawner : MonoBehaviour {
 		startX = floor.GetComponent<Floor> ().startX;
 		startZ = floor.GetComponent<Floor> ().startZ;
 
+		// Special case for beginning tutorial
+		if(FindObjectOfType<TutorialAbstract>().delaySpawn()){
+			countdown = 3.0f;
+			paused = true;
+		}
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (!started && !tutorialMode) {
+		if (!started && !paused) {
 			countdown -= Time.deltaTime;
-			countdownText.text = "Dodos spawn in: "+ Mathf.Ceil(countdown).ToString();
+			countdownText.text = "Dodos spawn in: " + Mathf.Ceil (countdown).ToString ();
 			if (countdown <= 0) {
 				beginSpawning ();
 				countdownText.text = "";
 			}
 		}
-	
 	}
 
 	public void beginSpawning(){
@@ -72,4 +77,8 @@ public class Spawner : MonoBehaviour {
     {
         //Pause the invoke so dodos stop spawning... How??
     }
+
+	public void resumeGame(){
+		paused = false;
+	}
 }
