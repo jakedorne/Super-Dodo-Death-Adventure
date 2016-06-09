@@ -251,7 +251,7 @@ public class Floor : MonoBehaviour {
 		numberOfObstaclesPlaced++;
     }
 
-    public void createDeadDodoBlock(Vector2 blockPosition)
+    public void createDeadDodoBlock(Vector2 blockPosition, Vector3 rotation)
     {
 		float deadDodoHeight = 0.3f;
         int x = (int)blockPosition.x;
@@ -260,7 +260,7 @@ public class Floor : MonoBehaviour {
         {
             this.GetComponent<BlockPlacement>().playPlacementSound();
             map[x, z] = 1; //Eventually change this to its own number perhaps?
-			Instantiate(deadDodoPrefab, new Vector3(blockXLength * x, deadDodoHeight, blockZLength * z), Quaternion.Euler(0, 0, 180));
+			Instantiate(deadDodoPrefab, new Vector3(blockXLength * x, deadDodoHeight, blockZLength * z), Quaternion.Euler(0, rotation.y, 180));
             this.GetComponent<BlockPlacement>().updateOnDodoDeath((int)x,(int)z);
 			pathfinder.rebuildTree ();
         }
