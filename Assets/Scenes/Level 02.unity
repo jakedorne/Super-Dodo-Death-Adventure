@@ -379,12 +379,14 @@ MonoBehaviour:
   tetrisPrefab: {fileID: 118034, guid: c0860b06464815b47b56cf972df4a0aa, type: 2}
   spikePrefab: {fileID: 139504, guid: e5c949b40cbaeff41bc1eaa6dfe0a408, type: 2}
   dustParticles: {fileID: 163860, guid: a9bbb911b272f9d40b214a0b770f50eb, type: 2}
+  deadDodoPrefab: {fileID: 118066, guid: 7fe8e23020fc0774da533f5007b3370d, type: 2}
   spawner: {fileID: 0}
   pathfinder: {fileID: 0}
   startX: 0
   startZ: 0
   endX: 12
   endZ: 12
+  numberOfBlocksPlaced: 0
 --- !u!4 &839605786
 Transform:
   m_ObjectHideFlags: 0
@@ -842,6 +844,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dodoPrefab: {fileID: 192700, guid: fa16471c743793c4792243b304bef308, type: 2}
   dodoSpawnTimer: 2
+  tutorialMode: 0
   countdownText: {fileID: 153205163}
 --- !u!1001 &2125713247
 Prefab:

@@ -9,6 +9,7 @@ public class Floor : MonoBehaviour {
 	public GameObject tetrisPrefab;
 	public GameObject spikePrefab;
 	public GameObject dustParticles;
+	public GameObject deadDodoPrefab;
 
 	public Spawner spawner;
 	public PathFinder pathfinder;
@@ -232,13 +233,14 @@ public class Floor : MonoBehaviour {
 
     public void createDeadDodoBlock(Vector2 blockPosition)
     {
+		float deadDodoHeight = 0.3f;
         int x = (int)blockPosition.x;
         int z = (int)blockPosition.y;
         if (x>=0 && z>=0 && x<mapSize && z<mapSize && map[x,z]==0)
         {
             this.GetComponent<BlockPlacement>().playPlacementSound();
             map[x, z] = 1; //Eventually change this to its own number perhaps?
-            Instantiate(blockPrefab, new Vector3(blockXLength * x, 0, blockZLength * z), Quaternion.identity);
+			Instantiate(deadDodoPrefab, new Vector3(blockXLength * x, deadDodoHeight, blockZLength * z), Quaternion.Euler(0, 0, 180));
             this.GetComponent<BlockPlacement>().updateOnDodoDeath((int)x,(int)z);
 			pathfinder.rebuildTree ();
         }
