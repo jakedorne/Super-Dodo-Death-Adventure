@@ -78,8 +78,7 @@ public class Floor : MonoBehaviour {
 	/// Adds tetris block at index on floor and returns true if successfully placed.
 	/// </summary>
 	public bool AddTetrisBlock(int row, int col, TetrisBlock block){
-		int[,] blockFormation = block.GetBlocks();
-		if(FormationFits(row, col, blockFormation)){
+		if(BlockFits(row, col, block)){
 			switch (block.type) {
 				case TetrisBlock.Type.BRIDGE:
 					AddBridgeBlock (row, col, block);
@@ -174,7 +173,8 @@ public class Floor : MonoBehaviour {
 	/// <summary>
 	/// Returns true if a tetris block formation can be placed at an index.
 	/// </summary>
-	public bool FormationFits(int row, int col, int[,] formation){
+	public bool BlockFits(int row, int col, TetrisBlock block){
+		int[,] formation = block.GetBlocks ();
 		for(int i = 0; i < formation.GetLength(0); i++){
 			for(int j = 0; j < formation.GetLength(1); j++){
                 //Debug.Log("row: " + row + ", col: " + col + ", i: " + i + ", j: " + j);
@@ -186,6 +186,22 @@ public class Floor : MonoBehaviour {
 					return false;
 				} else if (formation[i,j]==1 && (map[row+i,col+j]==1 || map[row+i,col+j]==3 || map[row + i, col + j] == 4)){
 					// part of block is on another block or unplaceable spot
+					return false;
+				}
+			}
+		}
+
+		if (block.block.GetComponent<BreakableBlock>()) {
+			BreakableBlock bridge = block.block.GetComponent<BreakableBlock>();
+
+			if (block.GetBlocks()[0,1]==1) {
+				print ("checking for vertical");
+				if (row -1 < 0 || row + 3 > map.GetLength(0) || col + 1 > map.GetLength(1) || map [row - 1, col + 1] != 1 || map [row + 3, col + 1] != 1) {
+					return false;
+				}
+			} else {
+				print ("checking for horizontal");
+				if (col -1 < 0 || col + 3 > map.GetLength(1) || row + 1 > map.GetLength(0) || map [row + 1, col - 1] != 1 || map [row + 1, col + 3] != 1) {
 					return false;
 				}
 			}
