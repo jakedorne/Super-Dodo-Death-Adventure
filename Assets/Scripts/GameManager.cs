@@ -61,7 +61,8 @@ public class GameManager : MonoBehaviour {
     // ================================ LEVELS. THIS SHIT'S GONNA BE UGLY ================================ //
     public static void setUpLevels()
     {
-        float watermelonPoints = 2.5f; //a watermelon is worth 2.5 dodos
+        //For now watermelons have not been implemented, so watermelons are worth 0.
+        float watermelonPoints = 0f; //a watermelon will be worth 2.5 dodos
         levelInfo = new Dictionary<int,LevelInfo>();
                 /* Original level we tested with
 				{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
