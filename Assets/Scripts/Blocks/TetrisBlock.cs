@@ -127,7 +127,7 @@ public class TetrisBlock : MonoBehaviour {
 		if (type == Type.BRIDGE) {
 			block = bridgePrefab;
 		} else {
-			block = blockPrefab;
+			block = GameObject.Find ("Floor").GetComponent<Floor> ().blockPrefab;
 		}
 	}
 
