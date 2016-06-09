@@ -51,7 +51,7 @@ public class BreakableBlock : Block {
 	public void setOrientation(char c){
 		this.orientation = c;
 	}
-
+		
 	public void setPosition(Vector2 position){
 		this.position = position;
 	}
@@ -62,5 +62,10 @@ public class BreakableBlock : Block {
 
 	public Vector2 getPosition(){
 		return this.position;
+	}
+
+	public void setParent(TetrisBlock tetris){
+		print ("parent set");
+		this.tetrisBlock = tetris;
 	}
 }

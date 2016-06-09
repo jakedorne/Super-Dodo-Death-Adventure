@@ -207,7 +207,7 @@ public class BlockPlacement : MonoBehaviour {
         //Mostly copied from Floor class
         int[,] formation = tetrisBlock.GetBlocks();
         int blockType = 0;
-        if (this.GetComponent<Floor>().FormationFits(row,col,formation))
+		if (this.GetComponent<Floor>().BlockFits(row,col,tetrisBlock))
         {
             blockType = 2; //If the block fits, show in green
         } else
