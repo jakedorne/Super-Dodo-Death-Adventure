@@ -61,6 +61,7 @@ public class DodoBehaviour : MonoBehaviour {
         {
             if (transform.position.y < 0)
             {
+				Vector3 rotation = transform.eulerAngles;
                 Destroy(this.gameObject);
                 LevelManager script = FindObjectOfType<LevelManager>();
                 script.dodoDeath();
@@ -68,7 +69,7 @@ public class DodoBehaviour : MonoBehaviour {
                 {
                     //Might need to wait for animation to finish before calling this.
                     Vector2 pos = floorScript.getCoordAtVector(transform.position);
-                    floorScript.createDeadDodoBlock(pos);
+					floorScript.createDeadDodoBlock(pos, rotation);
                 }
             }
             if (floorScript.getCoordAtVector(transform.position) == target)
@@ -274,7 +275,6 @@ public class DodoBehaviour : MonoBehaviour {
 		}
 
 		float t = currentLerpTime / lerpTime;
-		t = t * t * t * (t * (3f * t - 7f) + 5f);
 		transform.position = Vector3.Lerp (startPosition, endPosition, t);
 	}
 	
