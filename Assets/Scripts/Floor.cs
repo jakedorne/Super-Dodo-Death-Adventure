@@ -28,7 +28,7 @@ public class Floor : MonoBehaviour {
 	private static int mapSize;
 
 	// Used for the tutorial
-	public int numberOfBlocksPlaced;
+	int numberOfBlocksPlaced;
 
 	// 0 = empty, 1 = block down, 2 = block hovered on (green), 3 = unplaceable space, 4 = tree, 9 = block hovered on (red)
 	private int[,] map;
@@ -278,5 +278,9 @@ public class Floor : MonoBehaviour {
         if (x >= 0 && z >= 0 && x < mapSize && z < mapSize && map[x, z] == 4) return true;
         return false;
     }
+
+	public int getNumberOfBlocksPlaced(){
+		return numberOfBlocksPlaced;
+	}
 
 }

@@ -173,7 +173,7 @@ public class LevelManager: MonoBehaviour {
 	}
 	// Methods below used for tutorial
 	public int getNumberOfBlocksPlaced(){
-		return floor.GetComponent<Floor> ().numberOfBlocksPlaced;
+		return floor.GetComponent<Floor> ().getNumberOfBlocksPlaced();
 	}
 		
 }

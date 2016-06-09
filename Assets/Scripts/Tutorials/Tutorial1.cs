@@ -64,7 +64,7 @@ public class Tutorial1 : TutorialAbstract {
 
 	public override bool isLessonComplete (string lesson)
 	{
-		for(int i = 0; i < noOfLessons; i++){
+		for(int i = 0; i < numberOfLessons; i++){
 			if (lessons [i] == lesson && completeLessons[i]) {
 				return true;
 			}

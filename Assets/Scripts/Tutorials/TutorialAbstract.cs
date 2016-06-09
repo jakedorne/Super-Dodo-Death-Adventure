@@ -10,12 +10,10 @@ public abstract class TutorialAbstract : MonoBehaviour {
 
 	const float DELAYONLESSON = 2.0f;
 
-	public int noOfLessons = 0;
-
 	GameObject levelScreen;
 	float timeLeftBeforeLesson;
 	bool timerOn;
-	public LevelManager manager;
+	protected LevelManager manager;
 	string currentLesson;
 
 	// Abstract methods
