@@ -53,6 +53,7 @@
      <Compile Include="Assets\Scripts\Blocks\BreakableBlock.cs" />
      <Compile Include="Assets\Scripts\Blocks\JumpBlock.cs" />
      <Compile Include="Assets\Scripts\Blocks\TetrisBlock.cs" />
+     <Compile Include="Assets\Scripts\CameraEffects.cs" />
      <Compile Include="Assets\Scripts\DeadDodo.cs" />
      <Compile Include="Assets\Scripts\DodoBehaviour.cs" />
      <Compile Include="Assets\Scripts\ExtinctionMeterUI.cs" />

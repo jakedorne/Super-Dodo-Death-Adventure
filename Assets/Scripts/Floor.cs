@@ -92,6 +92,7 @@ public class Floor : MonoBehaviour {
 			}
 			numberOfBlocksPlaced++;
 			pathfinder.rebuildTree ();
+			GameObject.Find ("Main Camera").GetComponent<CameraEffects> ().Shake ();
             return true;
 		}
 		return false;
