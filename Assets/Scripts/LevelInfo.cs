@@ -19,7 +19,7 @@ public class LevelInfo : ScriptableObject {
 
     private int nextLevelNumber; //equals 1 if there is no next level (go back to level select)
 
-    public void init(int[,] map, float bronze, float silver, float gold, int nextLevelNumber, int rocksAvailable)
+    public void init(int[,] map, float bronze, float silver, float gold, int nextLevelNumber, int rocksAvailable, string levelName)
     {
         this.map = map;
         this.bronze = bronze;
@@ -27,6 +27,7 @@ public class LevelInfo : ScriptableObject {
         this.gold = gold;
         this.nextLevelNumber = nextLevelNumber;
         this.rocksAvailable = rocksAvailable;
+        this.levelName = levelName;
     }
 
     public int[,] getMap()
