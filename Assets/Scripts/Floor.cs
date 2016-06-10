@@ -71,7 +71,7 @@ public class Floor : MonoBehaviour {
                     } else if (map[i,j] == 5)
                     {
                         //Instantiate watermelon here.
-                        Instantiate(watermelon, new Vector3((i) * blockXLength, 0 + blockPrefab.GetComponent<MeshRenderer>().bounds.size.y, (j) * blockZLength), Quaternion.identity);
+                        Instantiate(watermelon, new Vector3((i) * blockXLength, -0.3f + blockPrefab.GetComponent<MeshRenderer>().bounds.size.y, (j) * blockZLength), Quaternion.identity);
                         map[i, j] = 1; //After this point we don't need to know this spot has a watermelon.
                         //Will instead be dealt with through colliders.
                     }

@@ -1,16 +1,14 @@
 fileFormatVersion: 2
-guid: f17d4bf00148dd4449c8c6cd2857846c
-timeCreated: 1464558735
+guid: be73eea76c7f461418788c2996e3153a
+timeCreated: 1465520775
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
     100000: polySurface1
-    100002: transform1
-    100004: //RootNode
+    100002: //RootNode
     400000: polySurface1
-    400002: transform1
-    400004: //RootNode
+    400002: //RootNode
     2300000: polySurface1
     3300000: polySurface1
     4300000: polySurface1
