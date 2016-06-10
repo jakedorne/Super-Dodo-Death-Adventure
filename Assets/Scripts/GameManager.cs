@@ -449,8 +449,8 @@ public class GameManager : MonoBehaviour {
         };
         levelName = "A long journey";
         bronze = -3 + (watermelonPoints * 1);
-        silver = -2 + (watermelonPoints * 2);
-        gold = -2 + (watermelonPoints * 3);
+        silver = -3 + (watermelonPoints * 2);
+        gold = -3 + (watermelonPoints * 3);
         nextLevelNumber = 1;
         rocksAvailable = 1;
         LevelInfo level14 = (LevelInfo)ScriptableObject.CreateInstance("LevelInfo");
