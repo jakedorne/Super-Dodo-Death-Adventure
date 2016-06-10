@@ -15,6 +15,7 @@ public class LevelManager: MonoBehaviour {
 	private int dodoFinishedCount;
     private int watermelonCollectedCount;
 	private bool levelCompleted;
+    private int rocksAvailable;
 	private int score;
     private bool paused;
 
@@ -29,7 +30,8 @@ public class LevelManager: MonoBehaviour {
 		levelCompleted = false;
 
         GameManager.setUpLevels();
-	}
+        rocksAvailable = GameManager.getRocksAvailable();
+    }
 
 	void Update(){
 		// For testing purposes
@@ -171,5 +173,15 @@ public class LevelManager: MonoBehaviour {
 		TetrisBlock currentBlock = floor.GetComponent<BlockPlacement> ().getSelectedShape ();
 		return currentBlock;
 	}
+
+    public bool placeRock()
+    {
+        if (rocksAvailable == 0)
+        {
+            return false;
+        }
+        rocksAvailable--;
+        return true;
+    }
 
 }

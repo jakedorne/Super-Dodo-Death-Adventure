@@ -273,7 +273,7 @@ public class BlockPlacement : MonoBehaviour {
         audio.PlayOneShot(blockPlacement, volume);
     }
 
-    private void PlayBlockDeniedSound()
+    public void PlayBlockDeniedSound()
     {
         audio.PlayOneShot(blockDenied, volume);
     }

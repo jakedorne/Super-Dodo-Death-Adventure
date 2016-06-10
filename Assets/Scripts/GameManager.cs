@@ -51,12 +51,12 @@ public class GameManager : MonoBehaviour {
 
 	public void loadLevel(string name){
 		SceneManager.LoadScene(name);
-	}
+    }
 
 	public static void reloadLevel(){
 		Scene scene = SceneManager.GetActiveScene(); 
 		SceneManager.LoadScene(scene.name);
-	}
+    }
 		
     // ================================ LEVELS. THIS SHIT'S GONNA BE UGLY ================================ //
     public static void setUpLevels()
@@ -490,6 +490,12 @@ public class GameManager : MonoBehaviour {
 	public void quitRequest(){
 		Application.Quit();
 	}
+
+    public static int getRocksAvailable()
+    {
+        return levelInfo[SceneManager.GetActiveScene().buildIndex].getRocksAvailable();
+    }
+
 }
 
 //// TEMPLATE

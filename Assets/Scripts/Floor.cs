@@ -250,12 +250,19 @@ public class Floor : MonoBehaviour {
     }
 
     public void createObstacle(Vector2 blockPosition) {
-        float x = blockPosition.x;
-        float z = blockPosition.y;
-        map[(int)blockPosition.x, (int)blockPosition.y] = 4;
-        Instantiate(tree, new Vector3((x) * blockXLength, 0 + blockPrefab.GetComponent<MeshRenderer>().bounds.size.y/2, (z) * blockZLength), Quaternion.identity);
-		pathfinder.rebuildTree ();
-		numberOfObstaclesPlaced++;
+        if (GameObject.Find("LevelManager").GetComponent<LevelManager>().placeRock())
+        {
+            float x = blockPosition.x;
+            float z = blockPosition.y;
+            map[(int)blockPosition.x, (int)blockPosition.y] = 4;
+            Instantiate(tree, new Vector3((x) * blockXLength, 0 + blockPrefab.GetComponent<MeshRenderer>().bounds.size.y / 2, (z) * blockZLength), Quaternion.identity);
+            pathfinder.rebuildTree();
+            numberOfObstaclesPlaced++;
+        } else
+        {
+            //Play blockPlacementFailed sound here
+            this.GetComponent<BlockPlacement>().PlayBlockDeniedSound();
+        }
     }
 
     public void createDeadDodoBlock(Vector2 blockPosition, Vector3 rotation)

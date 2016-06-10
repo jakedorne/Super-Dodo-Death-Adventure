@@ -55,4 +55,9 @@ public class LevelInfo : ScriptableObject {
         return nextLevelNumber;
     }
 
+    public int getRocksAvailable()
+    {
+        return rocksAvailable;
+    }
+
 }
