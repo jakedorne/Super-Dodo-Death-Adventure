@@ -10,6 +10,7 @@ public class Floor : MonoBehaviour {
 	public GameObject spikePrefab;
 	public GameObject dustParticles;
 	public GameObject deadDodoPrefab;
+    public GameObject watermelon;
 
 	public Spawner spawner;
 	public PathFinder pathfinder;
@@ -31,7 +32,7 @@ public class Floor : MonoBehaviour {
 	int numberOfBlocksPlaced;
 	int numberOfObstaclesPlaced;
 
-	// 0 = empty, 1 = block down, 2 = block hovered on (green), 3 = unplaceable space, 4 = tree, 9 = block hovered on (red)
+	// 0 = empty, 1 = block down, 2 = block hovered on (green), 3 = unplaceable space, 4 = tree, 5 = watermelon (but only for map creation, is 1 after map creation) 9 = block hovered on (red)
 	private int[,] map;
 	private Block[,] blocks;
 
@@ -62,11 +63,17 @@ public class Floor : MonoBehaviour {
 	private void renderMap(){
 		for(int i = 0; i < map.GetLength(0); i++){
 			for(int j = 0; j < map.GetLength(1); j++){
-				if (map [i, j] == 1 || map[i,j] == 4) {
+				if (map [i, j] == 1 || map[i,j] == 4 || map[i,j] == 5) {
 					Instantiate(blockPrefab, new Vector3(blockXLength * i, 0, blockZLength * j), Quaternion.identity);
                     if (map[i,j] == 4)
                     {
                         Instantiate(tree, new Vector3((i) * blockXLength, 0 + blockPrefab.GetComponent<MeshRenderer>().bounds.size.y, (j) * blockZLength), Quaternion.identity);
+                    } else if (map[i,j] == 5)
+                    {
+                        //Instantiate watermelon here.
+                        Instantiate(watermelon, new Vector3((i) * blockXLength, 0 + blockPrefab.GetComponent<MeshRenderer>().bounds.size.y, (j) * blockZLength), Quaternion.identity);
+                        map[i, j] = 1; //After this point we don't need to know this spot has a watermelon.
+                        //Will instead be dealt with through colliders.
                     }
 				} 
 				else if(map[i,j]==3){

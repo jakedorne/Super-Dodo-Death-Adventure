@@ -225,6 +225,7 @@ MonoBehaviour:
   spikePrefab: {fileID: 141410, guid: 89c2870f5cc9b1b438808796e0815072, type: 2}
   dustParticles: {fileID: 163860, guid: a86801195d81c8e4b87d2551eea97290, type: 2}
   deadDodoPrefab: {fileID: 118066, guid: 7fe8e23020fc0774da533f5007b3370d, type: 2}
+  watermelon: {fileID: 150728, guid: 01e19dcc75ad0c848ac17d03fc598801, type: 2}
   spawner: {fileID: 0}
   pathfinder: {fileID: 0}
   startX: 0
@@ -655,7 +656,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dodoPrefab: {fileID: 192700, guid: fa16471c743793c4792243b304bef308, type: 2}
   dodoSpawnTimer: 2
-  tutorialMode: 0
+  firstTutorial: 0
   countdownText: {fileID: 1860192697}
 --- !u!114 &1860192697 stripped
 MonoBehaviour:
