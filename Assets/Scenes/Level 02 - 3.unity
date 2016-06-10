@@ -268,7 +268,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelID: 1
-  blocks: 0600000004000000
+  blocks: 040000000000000008000000
   noDodos: 10
   floor: {fileID: 839605784}
   levelgui: {fileID: 1139561933}
@@ -843,7 +843,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dodoPrefab: {fileID: 192700, guid: fa16471c743793c4792243b304bef308, type: 2}
   dodoSpawnTimer: 2
-  firstTutorial: 0
+  tutorialMode: 0
   countdownText: {fileID: 153205163}
 --- !u!1001 &2125713247
 Prefab:

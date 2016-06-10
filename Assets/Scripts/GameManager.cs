@@ -235,7 +235,7 @@ public class GameManager : MonoBehaviour {
         bronze = 8;
 		silver = 9;
 		gold = 10;
-		nextLevelNumber = 1;
+		nextLevelNumber = 8;
 		rocksAvailable = 1;
 		LevelInfo level6 = (LevelInfo)ScriptableObject.CreateInstance("LevelInfo");
 		level6.init(map6, bronze, silver, gold, nextLevelNumber, rocksAvailable, levelName);
@@ -249,20 +249,20 @@ public class GameManager : MonoBehaviour {
             { 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
             { 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
             { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
-            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
             { 0, 0, 0, 0, 0, 3, 3, 0, 0, 0, 0, 1 },
             { 0, 0, 0, 0, 0, 3, 3, 0, 0, 0, 0, 0 },
             { 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
             { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
             { 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1 },
-            { 0, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1 },
+            { 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1 },
             { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
         };
         levelName = "Options";
-        bronze = 8;
-        silver = 9;
-        gold = 10;
-        nextLevelNumber = 1;
+        bronze = -3 + (watermelonPoints * 0);
+        silver = -4 + (watermelonPoints * 1);
+        gold = -2 + (watermelonPoints * 1);
+        nextLevelNumber = 14;
         rocksAvailable = 1;
         LevelInfo level7 = (LevelInfo)ScriptableObject.CreateInstance("LevelInfo");
         level7.init(map7, bronze, silver, gold, nextLevelNumber, rocksAvailable, levelName);
@@ -375,6 +375,87 @@ public class GameManager : MonoBehaviour {
         LevelInfo level11 = (LevelInfo)ScriptableObject.CreateInstance("LevelInfo");
         level11.init(map11, bronze, silver, gold, nextLevelNumber, rocksAvailable, levelName);
         levelInfo[levelNumber] = level11;
+        //-------------------------------------------- Level 12 -------------------------------------------
+        // Stage 2 Level 2
+        levelNumber = 13;
+        int[,] map12 = new int[,]
+        {
+            { 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+            { 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+            { 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 0 },
+            { 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0 },
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0 },
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1 },
+        };
+        levelName = "For the greater good";
+        bronze = -6 + (watermelonPoints * 1);
+        silver = -2 + (watermelonPoints * 0);
+        gold = -2 + (watermelonPoints * 1);
+        nextLevelNumber = 8;
+        rocksAvailable = 1;
+        LevelInfo level12 = (LevelInfo)ScriptableObject.CreateInstance("LevelInfo");
+        level12.init(map12, bronze, silver, gold, nextLevelNumber, rocksAvailable, levelName);
+        levelInfo[levelNumber] = level12;
+        //-------------------------------------------- Level 13 -------------------------------------------
+        // Stage 2 Level 4
+        levelNumber = 14;
+        int[,] map13 = new int[,]
+        {
+            { 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0 },
+            { 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+            { 1, 1, 1, 3, 3, 0, 0, 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0, 0, 1, 3, 3, 3, 0, 0 },
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 3 },
+            { 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0 },
+            { 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0 },
+            { 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1 },
+        };
+        levelName = "A directional problem";
+        bronze = -3 + (watermelonPoints * 0);
+        silver = -2 + (watermelonPoints * 0);
+        gold = -2 + (watermelonPoints * 1);
+        nextLevelNumber = 15;
+        rocksAvailable = 0;
+        LevelInfo level13 = (LevelInfo)ScriptableObject.CreateInstance("LevelInfo");
+        level13.init(map13, bronze, silver, gold, nextLevelNumber, rocksAvailable, levelName);
+        levelInfo[levelNumber] = level13;
+        //-------------------------------------------- Level 14 -------------------------------------------
+        // Stage 2 Level 5
+        levelNumber = 15;
+        int[,] map14 = new int[,]
+        {
+            { 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+            { 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1 },
+            { 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
+            { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
+            { 3, 3, 3, 3, 3, 3, 3, 3, 3, 1, 1, 0 },
+            { 3, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0 },
+            { 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+            { 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 3 },
+            { 0, 1, 0, 3, 3, 3, 3, 3, 3, 3, 3, 3 },
+            { 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0 },
+            { 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
+        };
+        levelName = "A long journey";
+        bronze = -3 + (watermelonPoints * 1);
+        silver = -2 + (watermelonPoints * 2);
+        gold = -2 + (watermelonPoints * 3);
+        nextLevelNumber = 1;
+        rocksAvailable = 1;
+        LevelInfo level14 = (LevelInfo)ScriptableObject.CreateInstance("LevelInfo");
+        level14.init(map14, bronze, silver, gold, nextLevelNumber, rocksAvailable, levelName);
+        levelInfo[levelNumber] = level14;
         //-------------------------------------------- Done --------------------------------------------
     }
 
