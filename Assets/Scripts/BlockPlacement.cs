@@ -8,6 +8,7 @@ public class BlockPlacement : MonoBehaviour {
     public AudioClip blockRotation;
     public AudioClip blockPlacement;
     public AudioClip blockDenied;
+    public AudioClip rockPlacement;
     AudioSource audio;
 
     private bool placingBlocks;
@@ -276,5 +277,10 @@ public class BlockPlacement : MonoBehaviour {
     public void PlayBlockDeniedSound()
     {
         audio.PlayOneShot(blockDenied, volume);
+    }
+
+    public void PlayRockPlacementSound()
+    {
+        audio.PlayOneShot(rockPlacement, volume);
     }
 }

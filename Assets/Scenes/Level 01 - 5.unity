@@ -260,6 +260,7 @@ MonoBehaviour:
   blockRotation: {fileID: 8300000, guid: fe41dc00406f9294a85957e10f98253d, type: 3}
   blockPlacement: {fileID: 8300000, guid: b7324a9ca605a4546a08310a280f1a67, type: 3}
   blockDenied: {fileID: 8300000, guid: 0af6027aa12ebaa49a56d4176562ffef, type: 3}
+  rockPlacement: {fileID: 8300000, guid: c060192c88c724b48b012e0d14baae63, type: 3}
 --- !u!82 &839605788
 AudioSource:
   m_ObjectHideFlags: 0

@@ -1,11 +1,13 @@
 fileFormatVersion: 2
 guid: d08b968754486964caf330e0b6ca2c4c
-timeCreated: 1465001888
+timeCreated: 1465550728
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
   defaultReferences:
   - dodoDeath: {fileID: 8300000, guid: d478758517f7b4c479ae945ca0f48412, type: 3}
+  - watermelonCollected: {fileID: 8300000, guid: b414102f50f11ee4b905aa74056dd8d6,
+      type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

@@ -253,6 +253,7 @@ public class Floor : MonoBehaviour {
         if (GameObject.Find("LevelManager").GetComponent<LevelManager>().placeRock())
         {
             //Play a rockPlacement sound here.
+            this.GetComponent<BlockPlacement>().PlayRockPlacementSound();
             float x = blockPosition.x;
             float z = blockPosition.y;
             map[(int)blockPosition.x, (int)blockPosition.y] = 4;

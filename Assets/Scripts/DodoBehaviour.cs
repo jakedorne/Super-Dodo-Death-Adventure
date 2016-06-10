@@ -9,6 +9,7 @@ public class DodoBehaviour : MonoBehaviour {
 	private PathFinder pathFinder;
 
     public AudioClip dodoDeath;
+    public AudioClip watermelonCollected;
     AudioSource audio;
     private float volume = 0.1f;
     private float volumeVariation = 0.01f;
@@ -302,6 +303,7 @@ public class DodoBehaviour : MonoBehaviour {
             LevelManager script = FindObjectOfType<LevelManager>();
             script.watermelonCollected();
             Destroy(other.gameObject);
+            playWatermelonCollectedSound();
         }
     }
 
@@ -309,6 +311,11 @@ public class DodoBehaviour : MonoBehaviour {
     {
         //This may need to be played through another object, as the dodo gets destroyed, which stops the sound.
         audio.PlayOneShot(dodoDeath, volume);
+    }
+
+    private void playWatermelonCollectedSound()
+    {
+        audio.PlayOneShot(watermelonCollected, volume*3);
     }
 
     public void OnGamePause()

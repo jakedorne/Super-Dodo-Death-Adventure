@@ -13,7 +13,6 @@ GameObject:
   - 65: {fileID: 6586176}
   - 114: {fileID: 11413780}
   - 114: {fileID: 11454634}
-  - 114: {fileID: 11470950}
   m_Layer: 0
   m_Name: Level 01 Block
   m_TagString: Untagged
@@ -91,17 +90,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &11454634
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 161822}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 621973da6868de44b898836fff5f0a14, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &11470950
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}

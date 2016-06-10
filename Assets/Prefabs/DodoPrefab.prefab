@@ -1255,6 +1255,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dodoDeath: {fileID: 8300000, guid: d3c226c3ef0c4f1449bdbc2b362958da, type: 3}
+  watermelonCollected: {fileID: 8300000, guid: b414102f50f11ee4b905aa74056dd8d6, type: 3}
 --- !u!137 &13743252
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
