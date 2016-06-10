@@ -277,7 +277,7 @@ public class DodoBehaviour : MonoBehaviour {
 		float t = currentLerpTime / lerpTime;
 		transform.position = Vector3.Lerp (startPosition, endPosition, t);
 	}
-	
+
     /* we aren't using this at the moment. Old method.
 	private List<Vector2> removeLastPos(List<Vector2> potentialBlocks) {
 		Vector2 toRemove = MAX_VECTOR2;
@@ -294,6 +294,16 @@ public class DodoBehaviour : MonoBehaviour {
 		return potentialBlocks;
 	}
     */
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Collectable")
+        {
+            LevelManager script = FindObjectOfType<LevelManager>();
+            script.watermelonCollected();
+            Destroy(other.gameObject);
+        }
+    }
 
     private void playDodoDeathSound()
     {

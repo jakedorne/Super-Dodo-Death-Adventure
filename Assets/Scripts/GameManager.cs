@@ -62,7 +62,7 @@ public class GameManager : MonoBehaviour {
     public static void setUpLevels()
     {
         //For now watermelons have not been implemented, so watermelons are worth 0.
-        float watermelonPoints = 0f; //a watermelon will be worth 2.5 dodos
+        float watermelonPoints = 2.5f; //a watermelon will be worth 2.5 dodos
         levelInfo = new Dictionary<int,LevelInfo>();
                 /* Original level we tested with
 				{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
@@ -178,9 +178,9 @@ public class GameManager : MonoBehaviour {
 			{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1 },
 		};
         levelName = "Tutorial 1";
-        bronze = 5;
-		silver = 8;
-		gold = 9;
+        bronze = -2;
+		silver = -1;
+		gold = 0;
         nextLevelNumber = 10;
         rocksAvailable = 1;
         LevelInfo level4 = (LevelInfo)ScriptableObject.CreateInstance("LevelInfo");
@@ -232,9 +232,9 @@ public class GameManager : MonoBehaviour {
 			{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0 },
 		};
         levelName = "Tutorial 2";
-        bronze = 8;
-		silver = 9;
-		gold = 10;
+        bronze = -2;
+		silver = -1;
+		gold = 0;
 		nextLevelNumber = 8;
 		rocksAvailable = 1;
 		LevelInfo level6 = (LevelInfo)ScriptableObject.CreateInstance("LevelInfo");

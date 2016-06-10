@@ -15,24 +15,25 @@ public class LevelUI : MonoBehaviour {
 		extinctionMeterUI = transform.FindChild ("ExtinctionMeter").GetComponent<ExtinctionMeterUI>();
 	}
 
-	public void CompleteLevel(int score){
+	public void CompleteLevel(int score, int numDodos){
 		RectTransform comLevel =  Instantiate (completeLevel);
 		Transform scoreLabel = comLevel.FindChild ("Score");
         // The trophy info should probably be stored in a seperate label, but for now I put it in the score one.
         string trophy = "You got no trophy.";
-        if (score / 10 > GameManager.getGold())
+        print(score + ", " + numDodos + ", " + GameManager.getGold());
+        if (score > (numDodos + GameManager.getGold()) * 10)
         {
             trophy = "You got Platinum!";
         }
-        else if (score / 10 == GameManager.getGold())
+        else if (score == (numDodos + GameManager.getGold()) * 10)
         {
             trophy = "You got Gold!";
         }
-        else if (score / 10 >= GameManager.getSilver())
+        else if (score >= (numDodos + GameManager.getSilver()) *10)
         {
             trophy = "You got Silver!";
         }
-        else if (score / 10 >= GameManager.getBronze())
+        else if (score >= (numDodos + GameManager.getBronze()) *10)
         {
             trophy = "You got Bronze!";
         }

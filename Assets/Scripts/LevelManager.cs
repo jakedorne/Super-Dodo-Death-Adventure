@@ -110,7 +110,7 @@ public class LevelManager: MonoBehaviour {
 			// Finished the level
 			calculateScore();
 			levelCompleted = true;
-			levelgui.CompleteLevel(score);
+			levelgui.CompleteLevel(score, noDodos);
 		}
 	}
 
@@ -121,7 +121,7 @@ public class LevelManager: MonoBehaviour {
 			// Finished the level
 			calculateScore();
 			levelCompleted = true;
-			levelgui.CompleteLevel(score);
+			levelgui.CompleteLevel(score, noDodos);
 		}
 	}
 
