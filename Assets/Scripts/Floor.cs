@@ -252,6 +252,7 @@ public class Floor : MonoBehaviour {
     public void createObstacle(Vector2 blockPosition) {
         if (GameObject.Find("LevelManager").GetComponent<LevelManager>().placeRock())
         {
+            //Play a rockPlacement sound here.
             float x = blockPosition.x;
             float z = blockPosition.y;
             map[(int)blockPosition.x, (int)blockPosition.y] = 4;

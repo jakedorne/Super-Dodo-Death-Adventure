@@ -59,7 +59,7 @@ public class DodoBehaviour : MonoBehaviour {
             anim.SetBool("isWalking", false);
         } else
         {
-            if (transform.position.y < 0)
+            if (transform.position.y < -0.5)
             {
 				Vector3 rotation = transform.eulerAngles;
                 Destroy(this.gameObject);
