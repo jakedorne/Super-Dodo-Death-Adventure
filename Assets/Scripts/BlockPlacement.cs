@@ -31,7 +31,7 @@ public class BlockPlacement : MonoBehaviour {
     public void initialisePlacementBlocks()
     {
         selectorBlockColor = Color.white;
-        selectorBlockColor.a = 0.5f;
+        selectorBlockColor.a = 0.1f;
         placingBlocks = false;
         mapSize = this.GetComponent<Floor>().getFloor().GetLength(0); //I expect this map to be square. Need to change slightly if rectangular
         blocks = new int[mapSize, mapSize];
