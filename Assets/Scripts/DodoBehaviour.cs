@@ -34,6 +34,8 @@ public class DodoBehaviour : MonoBehaviour {
 
     private bool paused;
 
+	int interval = 1; 
+	float nextTime = 0;
 
     // Use this for initialization
     void Start () {
@@ -55,6 +57,15 @@ public class DodoBehaviour : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
+		if (Time.time >= nextTime) {
+
+			print("Coord: " + floorScript.getCoordAtVector (transform.position));
+			Vector2 coord = floorScript.getCoordAtVector (transform.position);
+			print("floor below: " + floorScript.getFloor()[((int) coord.x), ((int) coord.y)]);
+			nextTime += interval; 
+
+		}
+
         if (paused)
         {
             anim.SetBool("isWalking", false);
@@ -96,7 +107,6 @@ public class DodoBehaviour : MonoBehaviour {
             }
 			else if (!atSamePos(transform.position, endPosition))
             {
-				atSamePos (transform.position, endPosition);
                 anim.SetBool("isWalking", true);
                 moveDodo(startPosition, endPosition);
             }
@@ -109,8 +119,13 @@ public class DodoBehaviour : MonoBehaviour {
         }
     }
 
+	public bool noFloorBelow(Vector2 position){
+		Vector2 coord = floorScript.getCoordAtVector (transform.position);
+		return floorScript.getFloor () [((int)coord.x), ((int)coord.y)] == 0;
+	}
+
 	public bool atSamePos(Vector3 position1, Vector3 position2){
-		
+
 		double x1 = System.Math.Round (position1.x, 4);
 		double x2 = System.Math.Round (position2.x, 4);
 
@@ -120,15 +135,14 @@ public class DodoBehaviour : MonoBehaviour {
 		double z1 = System.Math.Round (position1.z, 2);
 		double z2 = System.Math.Round (position2.z, 2);
 
+		print ("currentPos: " + x1 + " : " + y1 + " : " + z1);
+		print ("TargetPos: " + x2 + " : " + y2 + " : " + z2);
+
 		bool x = false;
-		bool y = false;
+		bool y = true;
 		bool z = false;			
 
-		if (Mathf.Abs ((float) (y1 - y2)) <= 0.01) {
-			y = true;
-		}
-
-		if(x1 == x2){
+		if (Mathf.Abs ((float) (x1 - x2)) <= 0.001) {
 			x = true;
 		}
 
