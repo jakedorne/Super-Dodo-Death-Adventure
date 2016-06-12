@@ -10,6 +10,7 @@ public class SidePanelUI : MonoBehaviour {
 	Transform rockInventory;
 	Transform liveDodoCount;
 	Transform levelName;
+	Transform watermelonCount;
 
 	// Use this for initialization
 	void Awake () {
@@ -26,6 +27,8 @@ public class SidePanelUI : MonoBehaviour {
 				liveDodoCount = child;
 			} else if (child.name == "LevelName") {
 				levelName = child;
+			} else if (child.name == "WatermelonCount") {
+				watermelonCount = child;
 			}
 		}
 	}
@@ -38,6 +41,8 @@ public class SidePanelUI : MonoBehaviour {
 		// Set level title
 		LevelManager manager = GameObject.FindObjectOfType<LevelManager>();
 		levelName.GetComponent<Text> ().text = manager.getLevelName ();
+		// Set watermelonCount
+		watermelonCount.GetComponent<Text>().text = "" + manager.getNumberOfWatermelon();
 	}
 
 	public void updateDodoCounts(){

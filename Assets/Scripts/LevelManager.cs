@@ -140,6 +140,7 @@ public class LevelManager: MonoBehaviour {
     public void watermelonCollected()
     {
         watermelonCollectedCount++;
+		levelgui.updateInventory ();
     }
 
     private void pause()
@@ -197,6 +198,10 @@ public class LevelManager: MonoBehaviour {
 
 	public string getLevelName(){
 		return GameManager.getLevelName ();
+	}
+
+	public int getNumberOfWatermelon(){
+		return watermelonCollectedCount;
 	}
 		
 }
