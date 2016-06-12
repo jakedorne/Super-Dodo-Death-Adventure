@@ -226,6 +226,7 @@ MonoBehaviour:
   dustParticles: {fileID: 163860, guid: a86801195d81c8e4b87d2551eea97290, type: 2}
   deadDodoPrefab: {fileID: 118066, guid: 7fe8e23020fc0774da533f5007b3370d, type: 2}
   watermelon: {fileID: 150728, guid: 01e19dcc75ad0c848ac17d03fc598801, type: 2}
+  flag: {fileID: 140974, guid: 34e0966aad88e5542b1d043adfea3ab5, type: 2}
   spawner: {fileID: 0}
   pathfinder: {fileID: 0}
   startX: 0

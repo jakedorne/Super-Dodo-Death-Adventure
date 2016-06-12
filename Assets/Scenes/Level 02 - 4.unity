@@ -175,7 +175,7 @@ Transform:
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 11489496, guid: 9394afcf712bb44db992c5419ad26b00,
     type: 2}
-  m_PrefabInternal: {fileID: 1352183400}
+  m_PrefabInternal: {fileID: 1363113223}
   m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
 --- !u!1 &742515543
 GameObject:
@@ -274,6 +274,7 @@ MonoBehaviour:
   dustParticles: {fileID: 163860, guid: a9bbb911b272f9d40b214a0b770f50eb, type: 2}
   deadDodoPrefab: {fileID: 118066, guid: 7fe8e23020fc0774da533f5007b3370d, type: 2}
   watermelon: {fileID: 150728, guid: 01e19dcc75ad0c848ac17d03fc598801, type: 2}
+  flag: {fileID: 140974, guid: 34e0966aad88e5542b1d043adfea3ab5, type: 2}
   spawner: {fileID: 0}
   pathfinder: {fileID: 0}
   startX: 0
@@ -435,7 +436,7 @@ Transform:
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 11430970, guid: 9394afcf712bb44db992c5419ad26b00,
     type: 2}
-  m_PrefabInternal: {fileID: 1352183400}
+  m_PrefabInternal: {fileID: 1363113223}
   m_Script: {fileID: 11500000, guid: 5204bb7718a75499685ec14cf4e1a162, type: 3}
 --- !u!1001 &1213325103
 Prefab:
@@ -483,7 +484,7 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cc396c0bff7087b449053292256ca410, type: 2}
   m_IsPrefabParent: 0
---- !u!1001 &1352183400
+--- !u!1001 &1363113223
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -561,30 +562,6 @@ Prefab:
     - target: {fileID: 22467624, guid: 9394afcf712bb44db992c5419ad26b00, type: 2}
       propertyPath: m_Pivot.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 22416316, guid: 9394afcf712bb44db992c5419ad26b00, type: 2}
-      propertyPath: m_AnchorMin.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 22416316, guid: 9394afcf712bb44db992c5419ad26b00, type: 2}
-      propertyPath: m_AnchoredPosition.y
-      value: -37.699997
-      objectReference: {fileID: 0}
-    - target: {fileID: 22416316, guid: 9394afcf712bb44db992c5419ad26b00, type: 2}
-      propertyPath: m_SizeDelta.y
-      value: 72
-      objectReference: {fileID: 0}
-    - target: {fileID: 22416316, guid: 9394afcf712bb44db992c5419ad26b00, type: 2}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 22416316, guid: 9394afcf712bb44db992c5419ad26b00, type: 2}
-      propertyPath: m_AnchoredPosition.x
-      value: 243.49997
-      objectReference: {fileID: 0}
-    - target: {fileID: 22416316, guid: 9394afcf712bb44db992c5419ad26b00, type: 2}
-      propertyPath: m_SizeDelta.x
-      value: -487
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9394afcf712bb44db992c5419ad26b00, type: 2}

@@ -23,7 +23,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 224: {fileID: 22456002}
-  - 114: {fileID: 11432174}
+  - 114: {fileID: 11485442}
   m_Layer: 0
   m_Name: TutorialExtensionUI
   m_TagString: Untagged
@@ -75,7 +75,7 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &11432174
+--- !u!114 &11485442
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -83,13 +83,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 162814}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 455def7d553604f8caa251795c24b021, type: 3}
+  m_Script: {fileID: 11500000, guid: ade3b3c9276214ef08ea223ce8a0a589, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   lessonScreenPrefab: {fileID: 160740, guid: 419366fbd914645579bd9b16c697b381, type: 2}
-  infoObject: {fileID: 189600}
-  lessonPlaceholder: {fileID: 152224}
-  noOfLessons: 3
 --- !u!222 &22212620
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -112,7 +109,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 49, y: 50}
+  m_AnchoredPosition: {x: 748.8, y: 50}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &22489816
@@ -129,7 +126,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -14.600002, y: -1}
+  m_AnchoredPosition: {x: 19.9, y: 10.8}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &22492082
@@ -146,7 +143,7 @@ RectTransform:
   m_RootOrder: 1
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -16, y: -26.94519}
+  m_AnchoredPosition: {x: 18.5, y: -22}
   m_SizeDelta: {x: 30, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &100100000
