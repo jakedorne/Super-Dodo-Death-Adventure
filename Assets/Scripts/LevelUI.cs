@@ -19,25 +19,20 @@ public class LevelUI : MonoBehaviour {
 		RectTransform comLevel =  Instantiate (completeLevel);
 		Transform scoreLabel = comLevel.FindChild ("Score");
         // The trophy info should probably be stored in a seperate label, but for now I put it in the score one.
-        string trophy = "You got no trophy.";
+        string filename = "";
         print(score + ", " + numDodos + ", " + GameManager.getGold());
-        if (score > (numDodos + GameManager.getGold()) * 10)
-        {
-            trophy = "You got Platinum!";
-        }
-        else if (score == (numDodos + GameManager.getGold()) * 10)
-        {
-            trophy = "You got Gold!";
-        }
-        else if (score >= (numDodos + GameManager.getSilver()) *10)
-        {
-            trophy = "You got Silver!";
-        }
-        else if (score >= (numDodos + GameManager.getBronze()) *10)
-        {
-            trophy = "You got Bronze!";
-        }
-        scoreLabel.GetComponent<Text>().text = "Score: " + score + "\n " + trophy;
+		if (score >= (numDodos + GameManager.getGold ()) * 10) {
+			filename = "fm_gold";
+		} else if (score >= (numDodos + GameManager.getSilver ()) * 10) {
+			filename = "fm_silver";
+		} else if (score >= (numDodos + GameManager.getBronze ()) * 10) {
+			filename = "fm_bronze";
+		} else {
+			filename = "fm_poop";
+		}
+		Sprite sprite = Resources.Load<Sprite>(filename);
+		comLevel.GetComponent<Image> ().sprite = sprite;
+		scoreLabel.GetComponent<Text>().text = ""+score;
         comLevel.transform.SetParent (transform, false);
 	}
 

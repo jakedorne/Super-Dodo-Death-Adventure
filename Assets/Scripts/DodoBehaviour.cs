@@ -57,15 +57,6 @@ public class DodoBehaviour : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-		if (Time.time >= nextTime) {
-
-			print("Coord: " + floorScript.getCoordAtVector (transform.position));
-			Vector2 coord = floorScript.getCoordAtVector (transform.position);
-			print("floor below: " + floorScript.getFloor()[((int) coord.x), ((int) coord.y)]);
-			nextTime += interval; 
-
-		}
-
         if (paused)
         {
             anim.SetBool("isWalking", false);
