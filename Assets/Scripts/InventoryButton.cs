@@ -44,7 +44,6 @@ public class InventoryButton : MonoBehaviour {
 	}
 
 	public void buttonClicked(){
-		print ("buttonClicked!");
 		// First deselect all blocks in case one is already selected
 		FindObjectOfType<SidePanelUI> ().deselectBlocks ();
 		GameObject managerGO = GameObject.FindGameObjectWithTag ("LevelManager");

@@ -107,13 +107,13 @@ public class LevelManager: MonoBehaviour {
 	// Called everytime a dodo dies
 	public void dodoDeath(){
 		dodoDeathCount++;
-		levelgui.lowerExtinctionCount ();
 		if (dodoDeathCount + dodoFinishedCount == noDodos) {
 			// Finished the level
 			calculateScore();
 			levelCompleted = true;
 			levelgui.CompleteLevel(score, noDodos);
 		}
+		levelgui.updateInventory ();
 	}
 
 	// Called everytime a dodo reaches the end point
@@ -191,4 +191,7 @@ public class LevelManager: MonoBehaviour {
 		return rocksAvailable;
 	}
 
+	public int getDodoDeathCount(){
+		return dodoDeathCount;
+	}
 }

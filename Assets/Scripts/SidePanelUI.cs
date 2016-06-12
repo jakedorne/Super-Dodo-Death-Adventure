@@ -8,6 +8,8 @@ public class SidePanelUI : MonoBehaviour {
 	public Button tileButton;
 	Transform blockInventory;
 	Transform rockInventory;
+	Transform liveDodoCount;
+	Transform deadDodoCount;
 
 	// Use this for initialization
 	void Awake () {
@@ -15,11 +17,16 @@ public class SidePanelUI : MonoBehaviour {
 		int children = transform.childCount;
 		for (int i = 0; i < children; i++)
 		{
-			if (transform.GetChild (i).name == "Blocks") {
-				blockInventory = transform.GetChild (i);
-			} else if (transform.GetChild (i).name == "RockCount") {
-				rockInventory = transform.GetChild (i);
-			}	
+			Transform child = transform.GetChild (i);
+			if (child.name == "Blocks") {
+				blockInventory = child;
+			} else if (child.name == "RockCount") {
+				rockInventory = child;
+			} else if (child.name == "LiveDodoCount") {
+				liveDodoCount = child;
+			} else if (child.name == "DeadDodoCount") {
+				deadDodoCount = child;
+			}
 		}
 	}
 
@@ -27,6 +34,13 @@ public class SidePanelUI : MonoBehaviour {
 		// First remove the inventory that is currently displayed:
 		updateRockInventory();
 		updateBlockInventory ();
+		updateDodoCounts ();
+	}
+
+	public void updateDodoCounts(){
+		LevelManager manager = GameObject.FindObjectOfType<LevelManager>();
+		liveDodoCount.GetComponent<Text>().text = "" + (manager.noDodos - manager.getDodoDeathCount());
+		deadDodoCount.GetComponent<Text> ().text = "" + manager.getDodoDeathCount ();
 	}
 
 	public void updateRockInventory(){

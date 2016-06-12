@@ -40,10 +40,6 @@ public class LevelUI : MonoBehaviour {
 		inventoryUI.updateInventory ();
 	}
 
-	public void lowerExtinctionCount (){
-		extinctionMeterUI.lowerExtinctionCount ();
-	}
-
 	public void tetrisBlockSelected(TetrisBlock.Type shapeSelected){
 		inventoryUI.tetrisBlockSelected (shapeSelected);
 	}
