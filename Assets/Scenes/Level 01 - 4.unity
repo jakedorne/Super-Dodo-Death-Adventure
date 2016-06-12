@@ -659,13 +659,6 @@ MonoBehaviour:
   dodoPrefab: {fileID: 192700, guid: fa16471c743793c4792243b304bef308, type: 2}
   dodoSpawnTimer: 2
   firstTutorial: 0
-  countdownText: {fileID: 1888716945}
---- !u!114 &1888716945 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 11470208, guid: 9394afcf712bb44db992c5419ad26b00,
-    type: 2}
-  m_PrefabInternal: {fileID: 1352183400}
-  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
 --- !u!1001 &1907399247
 Prefab:
   m_ObjectHideFlags: 0
@@ -712,45 +705,45 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cc396c0bff7087b449053292256ca410, type: 2}
   m_IsPrefabParent: 0
---- !u!1001 &1915595762
+--- !u!1001 &2052198219
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 407824, guid: 751f1e87215b9f34bb2211e09ef08e1c, type: 2}
+    - target: {fileID: 446156, guid: 1be353479409bfd42b90f58b8a27a322, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 3.59
+      value: 4.8
       objectReference: {fileID: 0}
-    - target: {fileID: 407824, guid: 751f1e87215b9f34bb2211e09ef08e1c, type: 2}
+    - target: {fileID: 446156, guid: 1be353479409bfd42b90f58b8a27a322, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 6.41
+      value: -3.29
       objectReference: {fileID: 0}
-    - target: {fileID: 407824, guid: 751f1e87215b9f34bb2211e09ef08e1c, type: 2}
+    - target: {fileID: 446156, guid: 1be353479409bfd42b90f58b8a27a322, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 5.72
+      value: 8.75
       objectReference: {fileID: 0}
-    - target: {fileID: 407824, guid: 751f1e87215b9f34bb2211e09ef08e1c, type: 2}
+    - target: {fileID: 446156, guid: 1be353479409bfd42b90f58b8a27a322, type: 2}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 407824, guid: 751f1e87215b9f34bb2211e09ef08e1c, type: 2}
+    - target: {fileID: 446156, guid: 1be353479409bfd42b90f58b8a27a322, type: 2}
       propertyPath: m_LocalRotation.y
       value: 0.7071068
       objectReference: {fileID: 0}
-    - target: {fileID: 407824, guid: 751f1e87215b9f34bb2211e09ef08e1c, type: 2}
+    - target: {fileID: 446156, guid: 1be353479409bfd42b90f58b8a27a322, type: 2}
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 407824, guid: 751f1e87215b9f34bb2211e09ef08e1c, type: 2}
+    - target: {fileID: 446156, guid: 1be353479409bfd42b90f58b8a27a322, type: 2}
       propertyPath: m_LocalRotation.w
       value: 0.7071067
       objectReference: {fileID: 0}
-    - target: {fileID: 407824, guid: 751f1e87215b9f34bb2211e09ef08e1c, type: 2}
+    - target: {fileID: 446156, guid: 1be353479409bfd42b90f58b8a27a322, type: 2}
       propertyPath: m_RootOrder
-      value: 7
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 751f1e87215b9f34bb2211e09ef08e1c, type: 2}
+  m_ParentPrefab: {fileID: 100100000, guid: 1be353479409bfd42b90f58b8a27a322, type: 2}
   m_IsPrefabParent: 0
