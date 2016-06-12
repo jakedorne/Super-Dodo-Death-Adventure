@@ -31,16 +31,26 @@ public class BreakableBlock : Block {
 		
 	public override bool interact(){
 		print ("Interact called");
+		StartCoroutine ("Degrade");
+
+		if (health <= 0) {
+			return true;
+		}
+		return false;
+	}
+
+	IEnumerator Degrade(){
+		yield return new WaitForSeconds (1f);
 		health--;
 		gameObject.GetComponent<MeshFilter> ().mesh = meshes [health]; 
 		if (health <= 0) {
 			Die ();
-			return true;
-		} 
-		return false;
+		}
 	}
 
 	void Die(){
+		Floor floor = GameObject.Find ("Floor").GetComponent<Floor>();
+		floor.removeBridgeAt (position);
 		Destroy (gameObject);
 	}
 

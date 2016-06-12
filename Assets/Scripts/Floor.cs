@@ -153,13 +153,6 @@ public class Floor : MonoBehaviour {
 		Block updatedBlock = blocks [(int)position.x, (int)position.y];
 		if (updatedBlock) {
 			updatedBlock.interact ();
-
-			if (updatedBlock is BreakableBlock) {
-				BreakableBlock bridgeBlock = (BreakableBlock)updatedBlock;
-				if (bridgeBlock.getHealth () <= 0) {
-					removeBridgeAt (new Vector2 ((int)position.x, (int)position.y));
-				}
-			}
 		}
 	}
 
