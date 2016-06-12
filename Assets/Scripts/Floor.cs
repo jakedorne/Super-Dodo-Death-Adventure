@@ -83,7 +83,7 @@ public class Floor : MonoBehaviour {
 			}
 		}
 
-		Instantiate(flag, new Vector3(blockXLength * map.GetLength(0)-1 + blockXLength/2, 1f, blockZLength * map.GetLength(1)-1 + blockZLength/2), flag.transform.rotation);
+		Instantiate(flag, new Vector3(blockXLength * map.GetLength(0)-1 + blockXLength/2, 0.75f, blockZLength * map.GetLength(1)-1 + blockZLength/2), flag.transform.rotation);
     }
 
 	/// <summary>
