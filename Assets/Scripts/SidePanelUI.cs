@@ -3,21 +3,21 @@ using System.Collections;
 using UnityEngine.UI;
 using System.Collections.Generic;
 
-public class InventoryUI : MonoBehaviour {
+public class SidePanelUI : MonoBehaviour {
 
 	public Button tileButton;
 	Transform blockInventory;
 	Transform rockInventory;
 
 	// Use this for initialization
-	void Start () {
+	void Awake () {
 		tileButton = tileButton.GetComponent<Button> ();
 		int children = transform.childCount;
 		for (int i = 0; i < children; i++)
 		{
 			if (transform.GetChild (i).name == "Blocks") {
 				blockInventory = transform.GetChild (i);
-			} else if (transform.GetChild (i).name == "Rocks") {
+			} else if (transform.GetChild (i).name == "RockCount") {
 				rockInventory = transform.GetChild (i);
 			}	
 		}
@@ -31,9 +31,9 @@ public class InventoryUI : MonoBehaviour {
 
 	public void updateRockInventory(){
 		LevelManager manager = GameObject.FindObjectOfType<LevelManager>();
-		rockInventory.GetChild(0).GetComponent<Text>().text = "" + manager.getNumberOfRocks ();
+		rockInventory.GetComponent<Text>().text = "" + manager.getNumberOfRocks ();
 	}
-
+		
 	public void updateBlockInventory(){
 		int children = blockInventory.childCount;
 		for (int i = 0; i < children; i++)

@@ -61,7 +61,6 @@ public class Tutorial1 : TutorialAbstract {
 
 	public override string getNextLesson(){
 		for (int i = 0; i < numberOfLessons; i++) {
-			print (i);
 			if (completeLessons [i] == false) {
 				return lessons [i];
 			}

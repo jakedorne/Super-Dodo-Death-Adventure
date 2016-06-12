@@ -56,11 +56,11 @@
      <Compile Include="Assets\Scripts\CameraEffects.cs" />
      <Compile Include="Assets\Scripts\DeadDodo.cs" />
      <Compile Include="Assets\Scripts\DodoBehaviour.cs" />
+     <Compile Include="Assets\Scripts\DynamicGrid.cs" />
      <Compile Include="Assets\Scripts\ExtinctionMeterUI.cs" />
      <Compile Include="Assets\Scripts\Floor.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\InventoryButton.cs" />
-     <Compile Include="Assets\Scripts\InventoryUI.cs" />
      <Compile Include="Assets\Scripts\LessonScreen.cs" />
      <Compile Include="Assets\Scripts\LevelInfo.cs" />
      <Compile Include="Assets\Scripts\LevelManager.cs" />
@@ -70,6 +70,7 @@
      <Compile Include="Assets\Scripts\Menu.cs" />
      <Compile Include="Assets\Scripts\ObstaclePlacer.cs" />
      <Compile Include="Assets\Scripts\PathFinder.cs" />
+     <Compile Include="Assets\Scripts\SidePanelUI.cs" />
      <Compile Include="Assets\Scripts\Spawner.cs" />
      <Compile Include="Assets\Scripts\TrailBehaviour.cs" />
      <Compile Include="Assets\Scripts\Tutorials\Tutorial1.cs" />

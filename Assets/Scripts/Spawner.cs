@@ -49,7 +49,7 @@ public class Spawner : MonoBehaviour {
 	void Update () {
 		if (!started && !paused) {
 			countdown -= Time.deltaTime;
-			countdownText.text = "Dodos spawn in: " + Mathf.Ceil (countdown).ToString ();
+			countdownText.text = "" + Mathf.Ceil (countdown).ToString ();
 			if (countdown <= 0) {
 				beginSpawning ();
 				countdownText.text = "";
