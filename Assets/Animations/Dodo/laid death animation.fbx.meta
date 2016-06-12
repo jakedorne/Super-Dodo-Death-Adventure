@@ -1,0 +1,158 @@
+fileFormatVersion: 2
+guid: 533ac758c85c80840aa227bca669f0f7
+timeCreated: 1465702161
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: controlnerbs
+    100002: controls
+    100004: group
+    100006: ikHandle1
+    100008: ikHandle2
+    100010: ikHandle3
+    100012: ikHandle4
+    100014: joint1
+    100016: joint10
+    100018: joint11
+    100020: joint12
+    100022: joint13
+    100024: joint14
+    100026: joint15
+    100028: joint16
+    100030: joint17
+    100032: joint18
+    100034: joint19
+    100036: joint2
+    100038: joint20
+    100040: joint3
+    100042: joint4
+    100044: joint5
+    100046: joint6
+    100048: joint7
+    100050: joint8
+    100052: joint9
+    100054: //RootNode
+    100056: mesh1
+    100058: nurbsCircle1
+    100060: nurbsCircle2
+    100062: nurbsCircle3
+    100064: nurbsCircle4
+    100066: nurbsCircle5
+    100068: nurbsCircle6
+    100070: nurbsCircle7
+    100072: nurbsCircle8
+    100074: polySurface1
+    100076: skeleton1
+    100078: Tongue
+    400000: controlnerbs
+    400002: controls
+    400004: group
+    400006: ikHandle1
+    400008: ikHandle2
+    400010: ikHandle3
+    400012: ikHandle4
+    400014: joint1
+    400016: joint10
+    400018: joint11
+    400020: joint12
+    400022: joint13
+    400024: joint14
+    400026: joint15
+    400028: joint16
+    400030: joint17
+    400032: joint18
+    400034: joint19
+    400036: joint2
+    400038: joint20
+    400040: joint3
+    400042: joint4
+    400044: joint5
+    400046: joint6
+    400048: joint7
+    400050: joint8
+    400052: joint9
+    400054: //RootNode
+    400056: mesh1
+    400058: nurbsCircle1
+    400060: nurbsCircle2
+    400062: nurbsCircle3
+    400064: nurbsCircle4
+    400066: nurbsCircle5
+    400068: nurbsCircle6
+    400070: nurbsCircle7
+    400072: nurbsCircle8
+    400074: polySurface1
+    400076: skeleton1
+    400078: Tongue
+    2300000: Tongue
+    3300000: Tongue
+    4300000: polySurface1
+    4300002: Tongue
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: polySurface1
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
