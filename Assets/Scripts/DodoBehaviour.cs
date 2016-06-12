@@ -129,17 +129,10 @@ public class DodoBehaviour : MonoBehaviour {
 		double x1 = System.Math.Round (position1.x, 4);
 		double x2 = System.Math.Round (position2.x, 4);
 
-		double y1 = System.Math.Round (position1.y, 2);
-		double y2 = System.Math.Round (position2.y, 2);
-
 		double z1 = System.Math.Round (position1.z, 2);
 		double z2 = System.Math.Round (position2.z, 2);
 
-		print ("currentPos: " + x1 + " : " + y1 + " : " + z1);
-		print ("TargetPos: " + x2 + " : " + y2 + " : " + z2);
-
 		bool x = false;
-		bool y = true;
 		bool z = false;			
 
 		if (Mathf.Abs ((float) (x1 - x2)) <= 0.001) {
@@ -150,7 +143,7 @@ public class DodoBehaviour : MonoBehaviour {
 			z = true;
 		}
 			
-		return (x && y && z);
+		return (x && z);
 	}
 
 	//These methods are not currently working.

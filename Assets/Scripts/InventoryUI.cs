@@ -6,18 +6,39 @@ using System.Collections.Generic;
 public class InventoryUI : MonoBehaviour {
 
 	public Button tileButton;
+	Transform blockInventory;
+	Transform rockInventory;
 
 	// Use this for initialization
 	void Start () {
 		tileButton = tileButton.GetComponent<Button> ();
+		int children = transform.childCount;
+		for (int i = 0; i < children; i++)
+		{
+			if (transform.GetChild (i).name == "Blocks") {
+				blockInventory = transform.GetChild (i);
+			} else if (transform.GetChild (i).name == "Rocks") {
+				rockInventory = transform.GetChild (i);
+			}	
+		}
 	}
 
 	public void updateInventory(){
 		// First remove the inventory that is currently displayed:
-		int childs = transform.childCount;
-		for (int i = 0; i < childs; i++)
+		updateRockInventory();
+		updateBlockInventory ();
+	}
+
+	public void updateRockInventory(){
+		LevelManager manager = GameObject.FindObjectOfType<LevelManager>();
+		rockInventory.GetChild(0).GetComponent<Text>().text = "" + manager.getNumberOfRocks ();
+	}
+
+	public void updateBlockInventory(){
+		int children = blockInventory.childCount;
+		for (int i = 0; i < children; i++)
 		{
-			GameObject.Destroy(transform.GetChild(i).gameObject);
+			GameObject.Destroy(blockInventory.GetChild(i).gameObject);
 		}
 
 		GameObject managerGO = GameObject.FindGameObjectWithTag ("LevelManager");
@@ -37,17 +58,17 @@ public class InventoryUI : MonoBehaviour {
 		foreach (TetrisBlock.Type key in formattedInventory.Keys) {
 			int amount = formattedInventory [key];
 			Button button = Instantiate (tileButton);
-			button.transform.SetParent (transform, false);
+			button.transform.SetParent (blockInventory, false);
 			button.GetComponent<InventoryButton> ().value = key;
 			button.GetComponent<InventoryButton> ().amount = amount;
 		}
 	}
 
 	public void tetrisBlockSelected(TetrisBlock.Type shapeSelected){
-		int childs = transform.childCount;
+		int childs = blockInventory.childCount;
 		for (int i = 0; i < childs; i++)
 		{
-			InventoryButton tileButton = transform.GetChild (i).GetComponent<InventoryButton> ();
+			InventoryButton tileButton = blockInventory.GetChild (i).GetComponent<InventoryButton> ();
 			if (tileButton.value == shapeSelected) {
 				tileButton.buttonClicked ();
 				return;
@@ -56,10 +77,10 @@ public class InventoryUI : MonoBehaviour {
 	}
 
 	public void deselectBlocks(){
-		int childs = transform.childCount;
+		int childs = blockInventory.childCount;
 		for (int i = 0; i < childs; i++)
 		{
-			InventoryButton tileButton = transform.GetChild (i).GetComponent<InventoryButton> ();
+			InventoryButton tileButton = blockInventory.GetChild (i).GetComponent<InventoryButton> ();
 			tileButton.unselectButton ();
 		}
 	}

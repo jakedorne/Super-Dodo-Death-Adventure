@@ -15,14 +15,11 @@ public class LevelManager: MonoBehaviour {
 	private int dodoFinishedCount;
     private int watermelonCollectedCount;
 	private bool levelCompleted;
-    private int rocksAvailable;
+	private int rocksAvailable;
 	private int score;
     private bool paused;
 
 	void Start(){
-		levelgui = levelgui.GetComponent<LevelUI> ();
-		levelgui.updateInventory ();
-
 		dodoDeathCount = 0;
 		dodoFinishedCount = 0;
         watermelonCollectedCount = 0;
@@ -31,6 +28,9 @@ public class LevelManager: MonoBehaviour {
 
         GameManager.setUpLevels();
         rocksAvailable = GameManager.getRocksAvailable();
+
+		levelgui = levelgui.GetComponent<LevelUI> ();
+		levelgui.updateInventory ();
     }
 
 	void Update(){
@@ -181,7 +181,14 @@ public class LevelManager: MonoBehaviour {
             return false;
         }
         rocksAvailable--;
+		levelgui = levelgui.GetComponent<LevelUI> ();
+		levelgui.updateInventory ();
         return true;
+
     }
+
+	public int getNumberOfRocks(){
+		return rocksAvailable;
+	}
 
 }
