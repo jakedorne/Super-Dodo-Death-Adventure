@@ -24,7 +24,6 @@ public class Spawner : MonoBehaviour {
     private bool paused = false;
 
 	private float countdown = 10.0f;
-	public Text countdownText;
 
 
 	// Use this for initialization
@@ -47,6 +46,11 @@ public class Spawner : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if(floor.GetComponent<Floor>().getNumberOfBlocksPlaced() > 0 && !started){
+			started = true;
+			beginSpawning ();
+		}
+		/*
 		if (!started && !paused) {
 			countdown -= Time.deltaTime;
 			countdownText.text = "" + Mathf.Ceil (countdown).ToString ();
@@ -54,7 +58,7 @@ public class Spawner : MonoBehaviour {
 				beginSpawning ();
 				countdownText.text = "";
 			}
-		}
+		} */
 	}
 
 	public void beginSpawning(){

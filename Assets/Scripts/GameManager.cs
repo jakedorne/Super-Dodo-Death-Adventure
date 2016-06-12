@@ -463,6 +463,10 @@ public class GameManager : MonoBehaviour {
         return levelInfo[levelNumber].getMap();
 	}
 
+	public static string getLevelName(){
+		return levelInfo [SceneManager.GetActiveScene ().buildIndex].getLevelName ();
+	}
+
     public static float getBronze()
     {
         int levelNumber = SceneManager.GetActiveScene().buildIndex;

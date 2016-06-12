@@ -60,4 +60,7 @@ public class LevelInfo : ScriptableObject {
         return rocksAvailable;
     }
 
+	public string getLevelName(){
+		return levelName;
+	}
 }

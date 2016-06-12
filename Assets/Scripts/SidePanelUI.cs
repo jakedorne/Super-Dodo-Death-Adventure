@@ -9,7 +9,7 @@ public class SidePanelUI : MonoBehaviour {
 	Transform blockInventory;
 	Transform rockInventory;
 	Transform liveDodoCount;
-	Transform deadDodoCount;
+	Transform levelName;
 
 	// Use this for initialization
 	void Awake () {
@@ -24,8 +24,8 @@ public class SidePanelUI : MonoBehaviour {
 				rockInventory = child;
 			} else if (child.name == "LiveDodoCount") {
 				liveDodoCount = child;
-			} else if (child.name == "DeadDodoCount") {
-				deadDodoCount = child;
+			} else if (child.name == "LevelName") {
+				levelName = child;
 			}
 		}
 	}
@@ -35,12 +35,14 @@ public class SidePanelUI : MonoBehaviour {
 		updateRockInventory();
 		updateBlockInventory ();
 		updateDodoCounts ();
+		// Set level title
+		LevelManager manager = GameObject.FindObjectOfType<LevelManager>();
+		levelName.GetComponent<Text> ().text = manager.getLevelName ();
 	}
 
 	public void updateDodoCounts(){
 		LevelManager manager = GameObject.FindObjectOfType<LevelManager>();
 		liveDodoCount.GetComponent<Text>().text = "" + (manager.noDodos - manager.getDodoDeathCount());
-		deadDodoCount.GetComponent<Text> ().text = "" + manager.getDodoDeathCount ();
 	}
 
 	public void updateRockInventory(){

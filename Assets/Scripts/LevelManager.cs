@@ -41,7 +41,7 @@ public class LevelManager: MonoBehaviour {
 		if(Input.GetKeyDown(KeyCode.L)){
 			dodoFinished();
 		}
-
+			
 		if (Input.GetMouseButtonDown (1) || Input.GetKeyDown("w")) {
 			if (blocks.Count != 0) {
 				TetrisBlock.Type automaticBlock = getAutomaticBlock ();
@@ -194,4 +194,9 @@ public class LevelManager: MonoBehaviour {
 	public int getDodoDeathCount(){
 		return dodoDeathCount;
 	}
+
+	public string getLevelName(){
+		return GameManager.getLevelName ();
+	}
+		
 }
