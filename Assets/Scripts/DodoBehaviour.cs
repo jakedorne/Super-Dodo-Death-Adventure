@@ -317,8 +317,8 @@ public class DodoBehaviour : MonoBehaviour {
 	void OnCollisionEnter(Collision other) {
 		if (other.gameObject.tag == "Dodo") {
             LevelManager script = FindObjectOfType<LevelManager>();
-            //script.dodoDeath();
-            //Destroy (this.gameObject);
+            script.dodoDeath();
+            Destroy (this.gameObject);
 		}
 	}
 
