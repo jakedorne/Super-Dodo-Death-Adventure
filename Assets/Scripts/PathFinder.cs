@@ -167,7 +167,7 @@ public class PathFinder : MonoBehaviour {
 			if (currentNode.getChildNum () == 1) {
 				//if only one possible child continue drawing the trail.
 				block.SetActive(true);
-                block.GetComponent<Renderer>().material.color = pathfinderBlock;
+				block.GetComponent<Renderer>().material.color = pathfinderBlock;
 				currentNode = currentNode.findOnlyChild ();
 			} else if (currentNode.getChildNum () == 2) {
 				//If at a fork, show left and right children, then stop the trail.
