@@ -60,18 +60,18 @@ public class DodoBehaviour : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        currentTime += Time.deltaTime;
-        if (currentTime >= maxLivingTime)
-        {
-            LevelManager script = FindObjectOfType<LevelManager>();
-            script.dodoDeath();
-            Destroy(this.gameObject);
-        }
         if (paused)
         {
             anim.SetBool("isWalking", false);
         } else
         {
+            currentTime += Time.deltaTime;
+            if (currentTime >= maxLivingTime)
+            {
+                LevelManager script = FindObjectOfType<LevelManager>();
+                script.dodoDeath();
+                Destroy(this.gameObject);
+            }
             if (transform.position.y < -0.5)
             {
 				Vector3 rotation = transform.eulerAngles;
