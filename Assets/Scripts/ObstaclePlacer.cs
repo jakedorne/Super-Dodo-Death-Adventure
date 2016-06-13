@@ -8,6 +8,8 @@ public class ObstaclePlacer : MonoBehaviour
     private BlockPlacement blockPlacement;
     Vector2 blockPosition;
 
+    private bool paused = false;
+
     // Use this for initialization
     void Start()
     {
@@ -25,21 +27,33 @@ public class ObstaclePlacer : MonoBehaviour
 
     void OnMouseDown()
     {
-        if (blockPlacement.isBlockPlacementOn())
+        if (!paused)
         {
-            blockPlacement.turnBlockPlacementOff((int)blockPosition.x - 1, (int)blockPosition.y - 1);
-        } else
-        {
-            floorScript.createObstacle(blockPosition);
+            if (blockPlacement.isBlockPlacementOn())
+            {
+                blockPlacement.turnBlockPlacementOff((int)blockPosition.x - 1, (int)blockPosition.y - 1);
+            }
+            else
+            {
+                floorScript.createObstacle(blockPosition);
+            }
         }
     }
 
     void OnMouseOver()
     {
-        if (blockPlacement.isBlockPlacementOn())
+        if (!paused)
         {
-            blockPlacement.showHoverOver((int)blockPosition.x - 1, (int)blockPosition.y - 1);
+            if (blockPlacement.isBlockPlacementOn())
+            {
+                blockPlacement.showHoverOver((int)blockPosition.x - 1, (int)blockPosition.y - 1);
+            }
         }
+    }
+
+    public void OnGamePause()
+    {
+        paused = !paused;
     }
 
 }

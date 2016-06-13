@@ -181,26 +181,20 @@ public class BlockPlacement : MonoBehaviour {
 
     public void turnBlockPlacementOff(int row, int col)
     {
-        if (!paused)
+        bool blockAdded = this.GetComponent<Floor>().AddTetrisBlock(row, col, tetrisBlock);
+        GameObject manager = GameObject.FindGameObjectWithTag("LevelManager");
+        if (blockAdded)
         {
-            bool blockAdded = this.GetComponent<Floor>().AddTetrisBlock(row, col, tetrisBlock);
-            GameObject manager = GameObject.FindGameObjectWithTag("LevelManager");
-            if (blockAdded)
-            {
-                playPlacementSound();
-                placingBlocks = false;
-                togglePlacementGrid();
-                getFloor();
-                // update inventory so that the button is no longer selected
-                manager.GetComponent<LevelManager>().removeTile(tetrisBlock.type);
-                manager.GetComponent<LevelManager>().levelgui.deselectBlocks();
-                this.tetrisBlock = null;
-            }
-            else
-            {
-                PlayBlockDeniedSound();
-            }
-        } else
+            playPlacementSound();
+            placingBlocks = false;
+            togglePlacementGrid();
+            getFloor();
+            // update inventory so that the button is no longer selected
+            manager.GetComponent<LevelManager>().removeTile(tetrisBlock.type);
+            manager.GetComponent<LevelManager>().levelgui.deselectBlocks();
+            this.tetrisBlock = null;
+        }
+        else
         {
             PlayBlockDeniedSound();
         }
@@ -301,6 +295,7 @@ public class BlockPlacement : MonoBehaviour {
 
     public void OnGamePause()
     {
+        turnBlockPlacementOff();
         paused = !paused;
     }
 }
