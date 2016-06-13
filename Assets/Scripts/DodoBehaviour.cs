@@ -117,7 +117,7 @@ public class DodoBehaviour : MonoBehaviour {
             }
             else
             {
-                anim.SetBool("isWalking", false);
+                //anim.SetBool("isWalking", false);
                 currentLerpTime = 0f;
                 moveCycle();
             }
