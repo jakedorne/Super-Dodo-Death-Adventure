@@ -52,7 +52,7 @@ public class SidePanelUI : MonoBehaviour {
 
 	public void updateRockInventory(){
 		LevelManager manager = GameObject.FindObjectOfType<LevelManager>();
-		rockInventory.GetComponent<Text>().text = "" + manager.getNumberOfRocks ();
+		rockInventory.GetComponent<Text>().text = "" + manager.getNumberOfRocks () + "/" + GameManager.getRocksAvailable();
 	}
 		
 	public void updateBlockInventory(){
