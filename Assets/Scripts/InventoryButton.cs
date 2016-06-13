@@ -16,6 +16,8 @@ public class InventoryButton : MonoBehaviour {
 	private float volume = 0.1f;
 	private float globalVolume = 1;
 
+	private bool pause = false;
+
 	// Use this for initialization
 	void Start () {
 		GameObject managerGO = GameObject.FindGameObjectWithTag ("LevelManager");
@@ -43,6 +45,16 @@ public class InventoryButton : MonoBehaviour {
 		}
 	}
 
+	public void OnGamePause(){
+		if (!pause) {
+			GetComponent<Button> ().interactable = false;
+			pause = true;
+		} else {
+			GetComponent<Button> ().interactable = true;
+			pause = false;
+		}
+	}
+		
 	public void buttonClicked(){
 		// First deselect all blocks in case one is already selected
 		FindObjectOfType<SidePanelUI> ().deselectBlocks ();

@@ -7,6 +7,7 @@ public class LevelUI : MonoBehaviour {
 	public GameObject pauseMenuPrefab;
 	public RectTransform completeLevel;
 	SidePanelUI inventoryUI;
+	Transform pauseButton;
 
 	// Use this for initialization
 	void Awake () {
@@ -14,20 +15,33 @@ public class LevelUI : MonoBehaviour {
 		inventoryUI = transform.FindChild ("SideGUI").GetComponent<SidePanelUI>();
 	}
 
+	void Start(){
+		for (int i = 0; i < transform.childCount; i++) {
+			if (transform.GetChild (i).name == "PauseButton") {
+				pauseButton = transform.GetChild (i);
+			}
+		}
+	}
+
+	public void resume(){
+		pauseButton.gameObject.GetComponent<Button> ().interactable = true;
+
+		string filename = "pause0";
+		Sprite sprite = Resources.Load<Sprite> (filename);
+		pauseButton.gameObject.GetComponent<Image> ().sprite = sprite;
+	}
+
 	public void pause(){
 		GameObject pauseMenu = Instantiate (pauseMenuPrefab);
 		pauseMenu.transform.SetParent (transform);
 		pauseMenu.transform.position = new Vector2 ((Screen.width / 2), (Screen.height / 2));
-		for (int i = 0; i < transform.childCount; i++) {
-			if (transform.GetChild (i).name == "PauseButton") {
-				Transform pauseButton = transform.GetChild (i);
-				pauseButton.gameObject.GetComponent<Button> ().interactable = false;
+		pauseButton.gameObject.GetComponent<Button> ().interactable = false;
 
-				string filename = "pause1";
-				Sprite sprite = Resources.Load<Sprite>(filename);
-				pauseButton.gameObject.GetComponent<Image>().sprite = sprite;
-			}
-		}
+		string filename = "pause1";
+		Sprite sprite = Resources.Load<Sprite> (filename);
+		pauseButton.gameObject.GetComponent<Image> ().sprite = sprite;
+			
+		FindObjectOfType<LevelManager> ().pause ();
 	}
 		
 

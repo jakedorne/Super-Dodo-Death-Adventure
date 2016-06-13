@@ -12,6 +12,8 @@ public class PauseMenu : MonoBehaviour {
 	}
 
 	public void close(){
+		FindObjectOfType<LevelUI> ().resume ();
+		FindObjectOfType<LevelManager> ().pause ();
 		Destroy (this.gameObject);
 	}
 

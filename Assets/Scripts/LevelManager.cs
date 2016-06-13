@@ -143,7 +143,7 @@ public class LevelManager: MonoBehaviour {
 		levelgui.updateInventory ();
     }
 
-    private void pause()
+    public void pause()
     {
         //Messing around with different pause options
         //Timescale stops all animations. Not ideal.
