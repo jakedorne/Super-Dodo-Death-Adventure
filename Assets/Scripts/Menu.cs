@@ -5,6 +5,10 @@ using UnityEngine.SceneManagement;
 public class Menu : MonoBehaviour {
 
 	public void startGame(){
-		SceneManager.LoadScene ("Level Selection");
+		GameManager.levelSelection ();
+	}
+
+	public void quitGame(){
+		GameManager.quitGame ();
 	}
 }
