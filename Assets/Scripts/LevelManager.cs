@@ -201,5 +201,4 @@ public class LevelManager: MonoBehaviour {
 	public int getNumberOfWatermelon(){
 		return watermelonCollectedCount;
 	}
-		
 }
