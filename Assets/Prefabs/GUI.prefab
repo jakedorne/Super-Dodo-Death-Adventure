@@ -405,6 +405,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5204bb7718a75499685ec14cf4e1a162, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  victoryJingle: {fileID: 8300000, guid: e44c6444d9dec074f8cb2fa5605762ec, type: 3}
+  failureJingle: {fileID: 8300000, guid: 15f37def973a2e24cbc59a66ebe3d1e8, type: 3}
   pauseMenuPrefab: {fileID: 163256, guid: b322a80649b024361be6b2ed47d5eb55, type: 2}
   completeLevel: {fileID: 22488014, guid: 0843123fb6e2b423b812a81d3995b73a, type: 2}
 --- !u!114 &11431216
@@ -901,6 +903,7 @@ Canvas:
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -919,6 +922,7 @@ Canvas:
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
