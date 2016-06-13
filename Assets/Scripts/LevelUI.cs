@@ -46,7 +46,6 @@ public class LevelUI : MonoBehaviour {
 	}
 
 	public void pause(){
-		print ("pause");
 		pauseMenu = Instantiate (pauseMenuPrefab);
 		pauseMenu.transform.SetParent (transform);
 		pauseMenu.transform.position = new Vector2 ((Screen.width / 2), (Screen.height / 2));

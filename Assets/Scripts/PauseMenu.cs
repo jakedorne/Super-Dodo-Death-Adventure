@@ -8,7 +8,7 @@ public class PauseMenu : MonoBehaviour {
 	}
 
 	public void levelSelection(){
-		GameManager.levelSelection ();
+		GameManager.startMenu ();
 	}
 
 	public void close(){

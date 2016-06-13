@@ -61,6 +61,10 @@ public class GameManager : MonoBehaviour {
 	public static void levelSelection(){
 		SceneManager.LoadScene ("Level Selection");
 	}
+
+	public static void startMenu(){
+		SceneManager.LoadScene ("Start Menu");
+	}
 		
     // ================================ LEVELS. THIS SHIT'S GONNA BE UGLY ================================ //
     public static void setUpLevels()
