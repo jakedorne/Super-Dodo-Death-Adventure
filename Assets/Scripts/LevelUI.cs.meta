@@ -1,10 +1,14 @@
 fileFormatVersion: 2
 guid: 5204bb7718a75499685ec14cf4e1a162
-timeCreated: 1463364845
+timeCreated: 1465813053
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - victoryJingle: {fileID: 8300000, guid: e44c6444d9dec074f8cb2fa5605762ec, type: 3}
+  - failureJingle: {fileID: 8300000, guid: 15f37def973a2e24cbc59a66ebe3d1e8, type: 3}
+  - pauseMenuPrefab: {instanceID: 0}
+  - completeLevel: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
