@@ -167,11 +167,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9394afcf712bb44db992c5419ad26b00, type: 2}
   m_IsPrefabParent: 0
---- !u!224 &90791078 stripped
-RectTransform:
-  m_PrefabParentObject: {fileID: 22467624, guid: 9394afcf712bb44db992c5419ad26b00,
-    type: 2}
-  m_PrefabInternal: {fileID: 90791077}
 --- !u!114 &90791079 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 11431216, guid: 9394afcf712bb44db992c5419ad26b00,
@@ -222,12 +217,12 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
---- !u!1001 &706741941
+--- !u!1001 &555875364
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 90791078}
+    m_TransformParent: {fileID: 585217806}
     m_Modifications:
     - target: {fileID: 22456002, guid: 0fa8f9af01e27423e8fb7f3763c0ea43, type: 2}
       propertyPath: m_LocalPosition.x
@@ -259,7 +254,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22456002, guid: 0fa8f9af01e27423e8fb7f3763c0ea43, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 22456002, guid: 0fa8f9af01e27423e8fb7f3763c0ea43, type: 2}
       propertyPath: m_AnchoredPosition.x
@@ -301,26 +296,14 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 11485442, guid: 0fa8f9af01e27423e8fb7f3763c0ea43, type: 2}
+    m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0fa8f9af01e27423e8fb7f3763c0ea43, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &706741942 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 162814, guid: 0fa8f9af01e27423e8fb7f3763c0ea43, type: 2}
-  m_PrefabInternal: {fileID: 706741941}
---- !u!114 &706741943
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 706741942}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 455def7d553604f8caa251795c24b021, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lessonScreenPrefab: {fileID: 160740, guid: 419366fbd914645579bd9b16c697b381, type: 2}
+--- !u!224 &585217806 stripped
+RectTransform:
+  m_PrefabParentObject: {fileID: 22467624, guid: 9394afcf712bb44db992c5419ad26b00,
+    type: 2}
+  m_PrefabInternal: {fileID: 90791077}
 --- !u!1 &742515543
 GameObject:
   m_ObjectHideFlags: 0

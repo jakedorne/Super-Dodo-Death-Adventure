@@ -8,6 +8,8 @@ public class LevelUI : MonoBehaviour {
 	public RectTransform completeLevel;
 	SidePanelUI inventoryUI;
 	Transform pauseButton;
+	GameObject pauseMenu;
+	bool paused = false;
 
 	// Use this for initialization
 	void Awake () {
@@ -23,19 +25,31 @@ public class LevelUI : MonoBehaviour {
 		}
 	}
 
-	public void resume(){
-		pauseButton.gameObject.GetComponent<Button> ().interactable = true;
+	public void pauseButtonClicked(){
+		if (paused) {
+			paused = false;
+			resume ();
+		} else {
+			paused = true;
+			pause ();
+		}
+	}
 
+	public void resume(){
 		string filename = "pause0";
 		Sprite sprite = Resources.Load<Sprite> (filename);
 		pauseButton.gameObject.GetComponent<Image> ().sprite = sprite;
+
+		FindObjectOfType<LevelManager> ().pause ();
+
+		Destroy (pauseMenu);
 	}
 
 	public void pause(){
-		GameObject pauseMenu = Instantiate (pauseMenuPrefab);
+		print ("pause");
+		pauseMenu = Instantiate (pauseMenuPrefab);
 		pauseMenu.transform.SetParent (transform);
 		pauseMenu.transform.position = new Vector2 ((Screen.width / 2), (Screen.height / 2));
-		pauseButton.gameObject.GetComponent<Button> ().interactable = false;
 
 		string filename = "pause1";
 		Sprite sprite = Resources.Load<Sprite> (filename);
