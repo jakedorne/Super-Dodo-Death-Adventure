@@ -8,6 +8,7 @@ TagManager:
   - LevelManager
   - SelectorBlock
   - Collectable
+  - Dodo
   layers:
   - Default
   - TransparentFX

@@ -296,14 +296,19 @@ public class DodoBehaviour : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Collectable")
-        {
-            LevelManager script = FindObjectOfType<LevelManager>();
-            script.watermelonCollected();
-            Destroy(other.gameObject);
-            playWatermelonCollectedSound();
-        }
+		if (other.tag == "Collectable") {
+			LevelManager script = FindObjectOfType<LevelManager> ();
+			script.watermelonCollected ();
+			Destroy (other.gameObject);
+			playWatermelonCollectedSound ();
+		}
     }
+
+	void OnCollisionEnter(Collision other) {
+		if (other.gameObject.tag == "Dodo") {
+			Destroy (this.gameObject);
+		}
+	}
 
     private void playDodoDeathSound()
     {

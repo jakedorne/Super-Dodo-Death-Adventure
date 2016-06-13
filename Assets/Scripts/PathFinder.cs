@@ -61,7 +61,7 @@ public class PathFinder : MonoBehaviour {
             for (int j=0; j< floorScript.getFloor().GetLength(1); j++)
             {
                 Vector3 position = floorScript.getVectorAtCoords(i, j);
-                GameObject block = (GameObject)Instantiate(trailPrefab, position, Quaternion.identity);
+				GameObject block = (GameObject)Instantiate(trailPrefab, position, Quaternion.identity);
                 pathFinderBlocks[i, j] = block;
                 block.SetActive(false);
             }
@@ -160,6 +160,7 @@ public class PathFinder : MonoBehaviour {
             currentPathLength++;
 
 			block.transform.eulerAngles = currentNode.getDirection();
+			block.transform.Rotate (0, 180, 0);
 
             if (currentPathLength >= maxPathLength) atEnd=true;
 
@@ -181,10 +182,12 @@ public class PathFinder : MonoBehaviour {
 
                 block = pathFinderBlocks[(int)leftChild.getPosition().x, (int)leftChild.getPosition().y];//(GameObject)Instantiate (trailPrefab, leftPos, Quaternion.identity);
 				block.transform.eulerAngles = currentNode.getDirection();
+				block.transform.Rotate (0, 180, 0);
                 block.SetActive(true);
                 block.GetComponent<Renderer>().material.color = pathfinderForkBlock;
                 block = pathFinderBlocks[(int)rightChild.getPosition().x, (int)rightChild.getPosition().y];//(GameObject)Instantiate (trailPrefab, rightPos, Quaternion.identity);
 				block.transform.eulerAngles = currentNode.getDirection();
+				block.transform.Rotate (0, 180, 0);
                 block.SetActive(true);
                 block.GetComponent<Renderer>().material.color = pathfinderForkBlock;
                 atEnd = true;
