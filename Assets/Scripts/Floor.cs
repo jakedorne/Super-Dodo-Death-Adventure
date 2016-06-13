@@ -20,6 +20,7 @@ public class Floor : MonoBehaviour {
 	private float blockZLength;
 
 	public static float GAME_HEIGHT = 0.35f;
+	private static float BRIDGE_HEIGHT = 0.2f;
 
 	// indexes in grid
 	public int startX;
@@ -127,7 +128,7 @@ public class Floor : MonoBehaviour {
 
 	public void AddBridgeBlock(int row, int col, TetrisBlock block){
 		int[,] blockFormation = block.GetBlocks ();
-		GameObject bridge = (GameObject) Instantiate(block.block, getVectorAtCoords(row + 1,col + 1), Quaternion.identity);
+		GameObject bridge = (GameObject) Instantiate(block.block, new Vector3(getVectorAtCoords(row + 1,col + 1).x, BRIDGE_HEIGHT ,getVectorAtCoords(row + 1,col + 1).z) , Quaternion.identity);
 		BreakableBlock script = bridge.GetComponent<BreakableBlock> ();
 		script.setPosition (new Vector2 (row + 1, col + 1));
 
