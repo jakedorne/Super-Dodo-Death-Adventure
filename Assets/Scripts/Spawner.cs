@@ -92,7 +92,7 @@ public class Spawner : MonoBehaviour {
             CancelInvoke("spawnDodo");
         } else
         {
-            if (dodosStarted)
+            if (dodosStarted && dodoCount < dodosToSpawn)
             {
                 InvokeRepeating("spawnDodo", dodoSpawnTimer - currentTime, dodoSpawnTimer);
             }
