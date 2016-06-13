@@ -498,7 +498,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3d32a9ec5600d740a95a72b158d000d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trailPrefab: {fileID: 164522, guid: 894c1ac99dba9874b8fbd2eb2c442331, type: 2}
+  trailPrefab: {fileID: 159958, guid: 67f1d4908b5d59645a57e38b5776dd19, type: 2}
 --- !u!33 &1186631993
 MeshFilter:
   m_ObjectHideFlags: 0
