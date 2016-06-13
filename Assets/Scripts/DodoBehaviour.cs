@@ -113,6 +113,8 @@ public class DodoBehaviour : MonoBehaviour {
 			else if (!atSamePos(transform.position, endPosition))
             {
                 anim.SetBool("isWalking", true);
+				print (transform.position.x + "," + transform.position.y + ". " + transform.position.z);
+				print (endPosition.x + "," + endPosition.y + ". " + endPosition.z);
                 moveDodo(startPosition, endPosition);
             }
             else
@@ -130,21 +132,20 @@ public class DodoBehaviour : MonoBehaviour {
 	}
 
 	public bool atSamePos(Vector3 position1, Vector3 position2){
-
 		double x1 = System.Math.Round (position1.x, 4);
 		double x2 = System.Math.Round (position2.x, 4);
 
-		double z1 = System.Math.Round (position1.z, 2);
-		double z2 = System.Math.Round (position2.z, 2);
+		double z1 = System.Math.Round (position1.z, 4);
+		double z2 = System.Math.Round (position2.z, 4);
 
 		bool x = false;
 		bool z = false;			
 
-		if (Mathf.Abs ((float) (x1 - x2)) <= 0.001) {
+		if (Mathf.Abs ((float) (x1 - x2)) <= 0.01) {
 			x = true;
 		}
 
-		if (z1 == z2) {
+		if (Mathf.Abs ((float) (z1 - z2)) <= 0.05) {
 			z = true;
 		}
 			
