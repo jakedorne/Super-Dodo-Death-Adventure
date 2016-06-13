@@ -518,7 +518,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 592a90847c51d4d8281b3761957ef977, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3286dff9aaf2846e497915288d6f73d0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -593,7 +593,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 09dc7a91685754b709e8458a9d5c78bc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 032d3a5af8db342be8313c967aba34ae, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -797,7 +797,6 @@ Canvas:
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
-  m_SortingBucketNormalizedSize: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -816,7 +815,6 @@ Canvas:
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
-  m_SortingBucketNormalizedSize: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -1049,10 +1047,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 22454918}
   m_RootOrder: 6
-  m_AnchorMin: {x: 0.108836964, y: 0.7803204}
-  m_AnchorMax: {x: 0.43600002, y: 0.8617473}
-  m_AnchoredPosition: {x: 1.2000008, y: -0.79999924}
-  m_SizeDelta: {x: -1, y: 0.13479996}
+  m_AnchorMin: {x: 0.096, y: 0.7803204}
+  m_AnchorMax: {x: 0.416837, y: 0.8617473}
+  m_AnchoredPosition: {x: 0.70000005, y: -0.79999924}
+  m_SizeDelta: {x: 0, y: 0.13479996}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &22487712
 RectTransform:
