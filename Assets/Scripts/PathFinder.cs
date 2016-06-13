@@ -167,7 +167,6 @@ public class PathFinder : MonoBehaviour {
 			if (currentNode.getChildNum () == 1) {
 				//if only one possible child continue drawing the trail.
 				block.SetActive(true);
-                block.transform.Rotate(new Vector3(0, 180, 0));
                 block.GetComponent<Renderer>().material.color = pathfinderBlock;
 				currentNode = currentNode.findOnlyChild ();
 			} else if (currentNode.getChildNum () == 2) {
@@ -185,20 +184,17 @@ public class PathFinder : MonoBehaviour {
                 block = pathFinderBlocks[(int)leftChild.getPosition().x, (int)leftChild.getPosition().y];//(GameObject)Instantiate (trailPrefab, leftPos, Quaternion.identity);
 				block.transform.eulerAngles = currentNode.getDirection();
                 block.SetActive(true);
-                //block.transform.Rotate(new Vector3(0, 180, 0));
                 block.GetComponent<Renderer>().material.color = pathfinderForkBlock;
 
 				//Right block
                 block = pathFinderBlocks[(int)rightChild.getPosition().x, (int)rightChild.getPosition().y];//(GameObject)Instantiate (trailPrefab, rightPos, Quaternion.identity);
 				block.transform.eulerAngles = currentNode.getDirection();
                 block.SetActive(true);
-                block.transform.Rotate(new Vector3(0, 180, 0));
                 block.GetComponent<Renderer>().material.color = pathfinderForkBlock;
                 atEnd = true;
 			} else {
 				//If no children stop the trail.
 				block.SetActive(true);
-                block.transform.Rotate(new Vector3(0, 180, 0));
                 block.GetComponent<Renderer>().material.color = pathfinderEndBlock;
 				atEnd = true;
 			}
