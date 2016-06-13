@@ -20,6 +20,8 @@ public class Spawner : MonoBehaviour {
 	private int startX;
 	private int startZ;
 
+    private float currentTime;
+
 	private bool dodosStarted = false;
     private bool paused = false;
 
@@ -46,19 +48,24 @@ public class Spawner : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(floor.GetComponent<Floor>().getNumberOfBlocksPlaced() > 0){
-			if (!dodosStarted && !paused) {
-				countdown -= Time.deltaTime;
-				countdownText.text = "Dodos spawn in: " + Mathf.Ceil (countdown).ToString () + "";
-				if (countdown <= 0) {
-					beginSpawning ();
-					countdownText.text = "";
-				}
-			} 
-		}
-
-
-	}
+        if (!paused)
+        {
+            currentTime += Time.deltaTime;
+            if (floor.GetComponent<Floor>().getNumberOfBlocksPlaced() > 0)
+            {
+                if (!dodosStarted && !paused)
+                {
+                    countdown -= Time.deltaTime;
+                    countdownText.text = "Dodos spawn in: " + Mathf.Ceil(countdown).ToString() + "";
+                    if (countdown <= 0)
+                    {
+                        beginSpawning();
+                        countdownText.text = "";
+                    }
+                }
+            }
+        }
+    }
 
 	public void beginSpawning(){
 		dodosStarted = true;
@@ -67,6 +74,7 @@ public class Spawner : MonoBehaviour {
 	}
 
 	void spawnDodo() {
+        currentTime = 0;
 		dodoList[dodoCount] = (GameObject)Instantiate (dodoPrefab, floor.GetComponent<Floor> ().getVectorAtCoords (startX, startZ), Quaternion.identity);
 		dodoCount++;
 		if (dodoCount >= dodosToSpawn) CancelInvoke ("spawnDodo");
@@ -78,10 +86,20 @@ public class Spawner : MonoBehaviour {
 
     public void OnGamePause()
     {
-        //Pause the invoke so dodos stop spawning... How??
+        paused = !paused;
+        if (paused)
+        {
+            CancelInvoke("spawnDodo");
+        } else
+        {
+            if (dodosStarted)
+            {
+                InvokeRepeating("spawnDodo", dodoSpawnTimer - currentTime, dodoSpawnTimer);
+            }
+        }
     }
 
 	public void resumeGame(){
-		paused = false;
+        paused = false;
 	}
 }

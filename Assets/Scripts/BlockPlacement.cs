@@ -11,6 +11,8 @@ public class BlockPlacement : MonoBehaviour {
     public AudioClip rockPlacement;
     AudioSource audio;
 
+    private bool paused = false;
+
     private bool placingBlocks;
     private int mapSize;
     private int[,] blocks;
@@ -44,41 +46,46 @@ public class BlockPlacement : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown("space"))
+        if (!paused)
         {
-            if (placingBlocks)
+            if (Input.GetKeyDown("space"))
             {
-                GameObject manager = GameObject.FindGameObjectWithTag("LevelManager");
-                manager.GetComponent<LevelManager>().levelgui.deselectBlocks();
-                turnBlockPlacementOff();
+                if (placingBlocks)
+                {
+                    GameObject manager = GameObject.FindGameObjectWithTag("LevelManager");
+                    manager.GetComponent<LevelManager>().levelgui.deselectBlocks();
+                    turnBlockPlacementOff();
+                }
             }
-        }
-        //Block rotation
-        if (Input.GetAxis("Mouse ScrollWheel") > 0 || Input.GetKeyDown("a"))
-        {
-            if (placingBlocks)
+            //Block rotation
+            if (Input.GetAxis("Mouse ScrollWheel") > 0 || Input.GetKeyDown("a"))
             {
-                playRotationSound();
-                tetrisBlock.RotateLeft();
+                if (placingBlocks)
+                {
+                    playRotationSound();
+                    tetrisBlock.RotateLeft();
+                }
             }
-        }
-        else if (Input.GetAxis("Mouse ScrollWheel") < 0 || Input.GetKeyDown("d")) 
-		{
-			if (placingBlocks)
-			{
-                playRotationSound();
-				tetrisBlock.RotateRight();
-			}	
-		} else if (Input.GetKeyDown("m"))
-        {
-            if (globalVolume == 1)
+            else if (Input.GetAxis("Mouse ScrollWheel") < 0 || Input.GetKeyDown("d"))
             {
-                globalVolume = 0;
-                AudioListener.volume = 0;
-            } else
+                if (placingBlocks)
+                {
+                    playRotationSound();
+                    tetrisBlock.RotateRight();
+                }
+            }
+            else if (Input.GetKeyDown("m"))
             {
-                globalVolume = 1;
-                AudioListener.volume = 1;
+                if (globalVolume == 1)
+                {
+                    globalVolume = 0;
+                    AudioListener.volume = 0;
+                }
+                else
+                {
+                    globalVolume = 1;
+                    AudioListener.volume = 1;
+                }
             }
         }
     }
@@ -174,17 +181,25 @@ public class BlockPlacement : MonoBehaviour {
 
     public void turnBlockPlacementOff(int row, int col)
     {
-        bool blockAdded = this.GetComponent<Floor>().AddTetrisBlock(row, col, tetrisBlock);
-		GameObject manager = GameObject.FindGameObjectWithTag ("LevelManager");
-		if (blockAdded) {
-            playPlacementSound();
-            placingBlocks = false;
-            togglePlacementGrid();
-            getFloor();
-            // update inventory so that the button is no longer selected
-            manager.GetComponent<LevelManager>().removeTile(tetrisBlock.type);
-            manager.GetComponent<LevelManager>().levelgui.deselectBlocks();
-			this.tetrisBlock = null;
+        if (!paused)
+        {
+            bool blockAdded = this.GetComponent<Floor>().AddTetrisBlock(row, col, tetrisBlock);
+            GameObject manager = GameObject.FindGameObjectWithTag("LevelManager");
+            if (blockAdded)
+            {
+                playPlacementSound();
+                placingBlocks = false;
+                togglePlacementGrid();
+                getFloor();
+                // update inventory so that the button is no longer selected
+                manager.GetComponent<LevelManager>().removeTile(tetrisBlock.type);
+                manager.GetComponent<LevelManager>().levelgui.deselectBlocks();
+                this.tetrisBlock = null;
+            }
+            else
+            {
+                PlayBlockDeniedSound();
+            }
         } else
         {
             PlayBlockDeniedSound();
@@ -282,5 +297,10 @@ public class BlockPlacement : MonoBehaviour {
     public void PlayRockPlacementSound()
     {
         audio.PlayOneShot(rockPlacement, volume);
+    }
+
+    public void OnGamePause()
+    {
+        paused = !paused;
     }
 }

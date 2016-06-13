@@ -160,13 +160,11 @@ public class LevelManager: MonoBehaviour {
         
         //Pause function can stop dodos but not animations which is cool.
         //BUT unsure how to pause the invoke to stop more dodos from spawning.
-        /*
         Object[] objects = FindObjectsOfType(typeof(GameObject));
         foreach (GameObject go in objects)
         {
             go.SendMessage("OnGamePause", SendMessageOptions.DontRequireReceiver);
         }
-        */
     }
 
 	// Methods below used for tutorial
