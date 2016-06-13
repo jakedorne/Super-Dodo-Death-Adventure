@@ -120,7 +120,7 @@ public class PathFinder : MonoBehaviour {
 					toReturn.setDirection (transform.eulerAngles);
 					toReturn.setRight (buildTree (right));
 
-					toReturn.setChildNum (2);
+                    toReturn.setChildNum (2);
 				} else {
 					//can only go left
 					//print("Adding left child");
@@ -195,7 +195,7 @@ public class PathFinder : MonoBehaviour {
 			} else {
 				//If no children stop the trail.
 				block.SetActive(true);
-				block.GetComponent<Renderer>().material.color = pathfinderEndBlock;
+                block.GetComponent<Renderer>().material.color = pathfinderEndBlock;
 				atEnd = true;
 			}
 		}

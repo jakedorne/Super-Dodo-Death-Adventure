@@ -23,6 +23,9 @@ public class DodoBehaviour : MonoBehaviour {
 	private float lerpTime = 1f;
 	private float currentLerpTime;
 
+    private float currentTime = 0;
+    private float maxLivingTime = 30;
+
 	private Animator anim;
 
 	public static Vector2 MAX_VECTOR2 = new Vector2 (float.MaxValue, float.MaxValue);
@@ -62,6 +65,13 @@ public class DodoBehaviour : MonoBehaviour {
             anim.SetBool("isWalking", false);
         } else
         {
+            currentTime += Time.deltaTime;
+            if (currentTime >= maxLivingTime)
+            {
+                LevelManager script = FindObjectOfType<LevelManager>();
+                script.dodoDeath();
+                Destroy(this.gameObject);
+            }
             if (transform.position.y < -0.5)
             {
 				Vector3 rotation = transform.eulerAngles;
