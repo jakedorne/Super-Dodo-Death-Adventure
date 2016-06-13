@@ -61,6 +61,7 @@ public class PathFinder : MonoBehaviour {
             for (int j=0; j< floorScript.getFloor().GetLength(1); j++)
             {
                 Vector3 position = floorScript.getVectorAtCoords(i, j);
+				position.y = position.y + 0.1f;
 				GameObject block = (GameObject)Instantiate(trailPrefab, position, Quaternion.identity);
                 pathFinderBlocks[i, j] = block;
                 block.SetActive(false);
