@@ -77,7 +77,7 @@
      <Compile Include="Assets\Scripts\Tutorials\Tutorial2.cs" />
      <Compile Include="Assets\Scripts\Tutorials\Tutorial3.cs" />
      <Compile Include="Assets\Scripts\Tutorials\TutorialAbstract.cs" />
-     <Compile Include="Assets\WatermelonRotation.cs" />
+     <Compile Include="Assets\Scripts\WatermelonRotation.cs" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlendOneOne.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\NoiseEffectShaderRGB.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_DepthOfField\SeparableWeightedBlurDof34.shader" />
