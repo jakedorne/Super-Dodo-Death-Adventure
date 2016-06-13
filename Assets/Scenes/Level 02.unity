@@ -331,7 +331,7 @@ MonoBehaviour:
   startX: 0
   startZ: 0
   endX: 12
-  endZ: 10
+  endZ: 12
 --- !u!4 &839605786
 Transform:
   m_ObjectHideFlags: 0
