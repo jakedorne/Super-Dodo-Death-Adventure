@@ -4,7 +4,12 @@ using UnityEngine.UI;
 
 public class LevelUI : MonoBehaviour {
 
-	public GameObject pauseMenuPrefab;
+    public AudioClip victoryJingle;
+    public AudioClip failureJingle;
+
+    AudioSource audio;
+
+    public GameObject pauseMenuPrefab;
 	public RectTransform completeLevel;
 	SidePanelUI inventoryUI;
 	Transform pauseButton;
@@ -23,6 +28,7 @@ public class LevelUI : MonoBehaviour {
 				pauseButton = transform.GetChild (i);
 			}
 		}
+        audio = GameObject.Find("Floor").GetComponent<AudioSource>();
 	}
 
 	public void pauseButtonClicked(){
@@ -65,13 +71,17 @@ public class LevelUI : MonoBehaviour {
         string filename = "";
         print(score + ", " + numDodos + ", " + GameManager.getGold());
 		if (score >= (numDodos + GameManager.getGold ()) * 10) {
+            playVictoryJingle();
 			filename = "fm_gold";
 		} else if (score >= (numDodos + GameManager.getSilver ()) * 10) {
-			filename = "fm_silver";
+            playVictoryJingle();
+            filename = "fm_silver";
 		} else if (score >= (numDodos + GameManager.getBronze ()) * 10) {
-			filename = "fm_bronze";
+            playVictoryJingle();
+            filename = "fm_bronze";
 		} else {
-			filename = "fm_poop";
+            playFailureJingle();
+            filename = "fm_poop";
 		}
 		Sprite sprite = Resources.Load<Sprite>(filename);
 		comLevel.GetComponent<Image> ().sprite = sprite;
@@ -79,7 +89,17 @@ public class LevelUI : MonoBehaviour {
         comLevel.transform.SetParent (transform, false);
 	}
 
-	public void updateInventory(){
+    private void playVictoryJingle()
+    {
+        audio.PlayOneShot(victoryJingle, 0.5f);
+    }
+
+    private void playFailureJingle()
+    {
+        audio.PlayOneShot(failureJingle, 0.5f);
+    }
+
+    public void updateInventory(){
 		inventoryUI.updateInventory ();
 	}
 
