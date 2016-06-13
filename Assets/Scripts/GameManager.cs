@@ -294,9 +294,9 @@ public class GameManager : MonoBehaviour {
 			{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
 		};
         levelName = "Tutorial 3";
-		bronze = 8;
-		silver = 9;
-		gold = 10;
+		bronze = -4;
+		silver = -2;
+		gold = 0;
 		nextLevelNumber = 16;
 		rocksAvailable = 1;
 		LevelInfo level8 = (LevelInfo)ScriptableObject.CreateInstance("LevelInfo");
