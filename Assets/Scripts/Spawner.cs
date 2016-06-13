@@ -24,7 +24,7 @@ public class Spawner : MonoBehaviour {
     private bool paused = false;
 
 	private float countdown = 5.0f;
-
+	public Text countdownText;
 
 	// Use this for initialization
 	void Start () {
@@ -49,10 +49,10 @@ public class Spawner : MonoBehaviour {
 		if(floor.GetComponent<Floor>().getNumberOfBlocksPlaced() > 0){
 			if (!dodosStarted && !paused) {
 				countdown -= Time.deltaTime;
-				//countdownText.text = "" + Mathf.Ceil (countdown).ToString ();
+				countdownText.text = "Dodos spawn in: " + Mathf.Ceil (countdown).ToString () + "";
 				if (countdown <= 0) {
 					beginSpawning ();
-					//countdownText.text = "";
+					countdownText.text = "";
 				}
 			} 
 		}

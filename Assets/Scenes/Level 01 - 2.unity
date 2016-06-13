@@ -129,6 +129,12 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
+--- !u!114 &543112309 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11431216, guid: 9394afcf712bb44db992c5419ad26b00,
+    type: 2}
+  m_PrefabInternal: {fileID: 2132658410}
+  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
 --- !u!1001 &650326929
 Prefab:
   m_ObjectHideFlags: 0
@@ -465,7 +471,7 @@ Prefab:
     - target: {fileID: 11493980, guid: 6b191cbea42692942b0afa9be8f8d25c, type: 2}
       propertyPath: countdownText
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 543112309}
     - target: {fileID: 188604, guid: 6b191cbea42692942b0afa9be8f8d25c, type: 2}
       propertyPath: m_Name
       value: Floor
@@ -685,6 +691,7 @@ MonoBehaviour:
   dodoPrefab: {fileID: 192700, guid: fa16471c743793c4792243b304bef308, type: 2}
   dodoSpawnTimer: 2
   firstTutorial: 0
+  countdownText: {fileID: 543112309}
 --- !u!1001 &1907399247
 Prefab:
   m_ObjectHideFlags: 0
