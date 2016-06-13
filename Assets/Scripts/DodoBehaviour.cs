@@ -55,6 +55,10 @@ public class DodoBehaviour : MonoBehaviour {
         transform.LookAt(endPosition);
         paused = false;
         audio = GetComponent<AudioSource>();
+        if (GameObject.Find("LevelManager").GetComponent<LevelManager>().levelID == 0)
+        {
+            spawnBlockOnDeath = false;
+        }
     }
 
     // Update is called once per frame
