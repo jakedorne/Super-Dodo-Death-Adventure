@@ -10,6 +10,7 @@ public class Floor : MonoBehaviour {
 	public GameObject spikePrefab;
 	public GameObject dustParticles;
 	public GameObject deadDodoPrefab;
+	//public GameObject spikedDodoPrefab;
     public GameObject watermelon;
 	public GameObject flag;
 
@@ -276,7 +277,7 @@ public class Floor : MonoBehaviour {
 			Instantiate(deadDodoPrefab, new Vector3(blockXLength * x, deadDodoHeight, blockZLength * z), Quaternion.Euler(0, rotation.y, 180));
             this.GetComponent<BlockPlacement>().updateOnDodoDeath((int)x,(int)z);
 			pathfinder.rebuildTree ();
-        }
+		}
     }
 
     public bool isBlock(Vector2 pos)
