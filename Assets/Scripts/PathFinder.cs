@@ -161,7 +161,6 @@ public class PathFinder : MonoBehaviour {
             currentPathLength++;
 
 			block.transform.eulerAngles = currentNode.getDirection();
-			block.transform.Rotate (0, 180, 0);
 
             if (currentPathLength >= maxPathLength) atEnd=true;
 
@@ -181,14 +180,15 @@ public class PathFinder : MonoBehaviour {
 				Vector3 leftPos = floorScript.getVectorAtCoords ((int)leftChild.getPosition ().x, (int)leftChild.getPosition ().y);
 				Vector3 rightPos = floorScript.getVectorAtCoords ((int)rightChild.getPosition ().x, (int)rightChild.getPosition ().y);
 
+				//Left block
                 block = pathFinderBlocks[(int)leftChild.getPosition().x, (int)leftChild.getPosition().y];//(GameObject)Instantiate (trailPrefab, leftPos, Quaternion.identity);
 				block.transform.eulerAngles = currentNode.getDirection();
-				block.transform.Rotate (0, 180, 0);
                 block.SetActive(true);
                 block.GetComponent<Renderer>().material.color = pathfinderForkBlock;
+
+				//Right block
                 block = pathFinderBlocks[(int)rightChild.getPosition().x, (int)rightChild.getPosition().y];//(GameObject)Instantiate (trailPrefab, rightPos, Quaternion.identity);
 				block.transform.eulerAngles = currentNode.getDirection();
-				block.transform.Rotate (0, 180, 0);
                 block.SetActive(true);
                 block.GetComponent<Renderer>().material.color = pathfinderForkBlock;
                 atEnd = true;
