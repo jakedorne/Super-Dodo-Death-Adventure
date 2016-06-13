@@ -225,7 +225,7 @@ public class Floor : MonoBehaviour {
 	/// Returns the world position of an index on the floor.
 	/// </summary>
     public Vector3 getVectorAtCoords(int x, int z){
-		return new Vector3(x * blockXLength, GAME_HEIGHT , z * blockZLength);
+		return new Vector3(x * blockXLength , GAME_HEIGHT , z * blockZLength);
     }
 
 	/// <summary>
