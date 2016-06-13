@@ -608,7 +608,6 @@ public class GameManager : MonoBehaviour {
     }
 
 	public static void quitGame(){
-		Application.Quit();
 	}
 
     public static int getRocksAvailable()

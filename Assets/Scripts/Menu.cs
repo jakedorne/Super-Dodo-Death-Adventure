@@ -9,6 +9,6 @@ public class Menu : MonoBehaviour {
 	}
 
 	public void quitGame(){
-		GameManager.quitGame ();
+		Application.Quit();
 	}
 }
